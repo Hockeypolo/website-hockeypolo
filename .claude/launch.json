@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Static Server (Python)",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "/Users/benjaminvansplunder/Library/Mobile Documents/com~apple~CloudDocs/Documents/Werk/Hockeypolo/Project Website/Website Folder", "-p", "3000", "--no-clipboard"],
+      "port": 3000
+    },
+    {
+      "name": "Static Server (npx serve)",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "/Users/benjaminvansplunder/Library/Mobile Documents/com~apple~CloudDocs/Documents/Werk/Hockeypolo/Project Website/Website Folder", "-p", "3001"],
+      "port": 3001
+    }
+  ]
+}
