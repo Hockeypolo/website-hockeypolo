@@ -178,7 +178,11 @@
     .search-res-title { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: #aaa; margin-bottom: 12px; }
     .search-res-grid { display: grid; gap: 10px; }
     .res-card { background: #f9f9f9; border: 1px solid #eee; border-radius: 3px; padding: 14px 16px; }
-    .res-card-name { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+    .res-card.added { border-color: var(--g); background: #f0fff8; }
+    .res-card-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .add-btn { background: #000; color: #fff; border: none; padding: 5px 12px; font-size: 11px; font-weight: 700; cursor: pointer; border-radius: 3px; font-family: inherit; flex-shrink: 0; }
+    .add-btn:disabled { background: var(--g); cursor: default; }
+    .res-card-name { font-weight: 700; font-size: 14px; }
     .res-card-info { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
     .res-field { font-size: 12px; color: #555; }
     .res-field strong { color: #000; font-weight: 600; }
@@ -674,9 +678,13 @@ async function runSearch() {
     const items = data.results || [];
     document.getElementById('search-res-title').textContent = `${items.length} prospects gevonden voor "${query}"`;
 
-    document.getElementById('search-res-grid').innerHTML = items.map(p => `
-      <div class="res-card">
-        <div class="res-card-name">${esc(p.naam || '—')}</div>
+    window._searchResults = items;
+    document.getElementById('search-res-grid').innerHTML = items.map((p, i) => `
+      <div class="res-card" id="res-card-${i}">
+        <div class="res-card-head">
+          <div class="res-card-name">${esc(p.naam || '—')}</div>
+          <button class="add-btn" id="add-btn-${i}" onclick="addToSheet(${i})">+ Toevoegen</button>
+        </div>
         <div class="res-card-info">
           <div class="res-field"><strong>Website:</strong> ${p.website ? `<a href="${esc(p.website)}" target="_blank" style="color:var(--g)">${esc(p.website)}</a>` : '—'}</div>
           <div class="res-field"><strong>Contact:</strong> ${esc(p.contactpersoon || '—')}</div>
@@ -702,6 +710,37 @@ document.addEventListener('DOMContentLoaded', () => {
   const inp = document.getElementById('search-inp');
   if (inp) inp.addEventListener('keydown', e => { if (e.key === 'Enter') runSearch(); });
 });
+
+async function addToSheet(idx) {
+  const p = window._searchResults[idx];
+  if (!p) return;
+  const btn = document.getElementById('add-btn-' + idx);
+  const card = document.getElementById('res-card-' + idx);
+  btn.disabled = true;
+  btn.textContent = '…';
+
+  const params = new URLSearchParams({
+    action: 'add',
+    Bedrijfsnaam: encodeURIComponent(p.naam || ''),
+    Contactpersoon: encodeURIComponent(p.contactpersoon || ''),
+    Email: encodeURIComponent(p.email || ''),
+    Telefoon: encodeURIComponent(p.telefoon || ''),
+    Regio: encodeURIComponent(p.regio || ''),
+    Segment: '',
+    Notities: encodeURIComponent(p.website || '')
+  });
+
+  try {
+    await fetch('/api/generate?' + params, { redirect: 'follow' });
+    btn.textContent = '✓ Toegevoegd';
+    card.classList.add('added');
+    // Refresh prospects list in background
+    loadProspects();
+  } catch {
+    btn.disabled = false;
+    btn.textContent = '+ Toevoegen';
+  }
+}
 
 function showErr(msg) {
   const el = document.getElementById('err-box');
