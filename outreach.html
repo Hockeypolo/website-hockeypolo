@@ -170,14 +170,16 @@
     <div class="brand">HOCKEYPOLO</div>
     <h1 class="setup-h">Outreach Tool — Setup</h1>
     <p class="setup-sub">Eenmalige configuratie. Daarna direct starten.</p>
-    <div class="progress">
-      <div class="prog-seg on" id="p1"></div>
-      <div class="prog-seg" id="p2"></div>
-    </div>
 
-    <div id="s1">
-      <label class="lbl">STAP 1 — GOOGLE APPS SCRIPT URL</label>
-      <input type="text" id="inp-url" class="dark-inp" placeholder="https://script.google.com/macros/s/.../exec" />
+    <div id="s1" style="margin-top:32px;">
+      <label class="lbl">NAMEN VAN DE DRIE VENNOOTEN</label>
+      <p style="color:#555;font-size:13px;margin-bottom:16px;">Deze namen verschijnen bij het inloggen.</p>
+      <input type="text" id="n0" class="dark-inp" placeholder="Naam vennoot 1" value="Benjamin" style="margin-bottom:12px;" />
+      <input type="text" id="n1" class="dark-inp" placeholder="Naam vennoot 2" value="Julius" style="margin-bottom:12px;" />
+      <input type="text" id="n2" class="dark-inp" placeholder="Naam vennoot 3" value="Mees" style="margin-bottom:12px;" />
+      <button class="btn btn-g" onclick="saveSetup()">Tool activeren →</button>
+    </div>
+    <!-- end setup
       <div class="setup-card">
         <div class="setup-card-title">⚡ SETUP IN 7 STAPPEN</div>
         <ol class="steps">
@@ -220,7 +222,7 @@ function doGet(e) {
   )).setMimeType(ContentService.MimeType.JSON);
 }</div>
       </div>
-      <button class="btn btn-g" id="next-btn" onclick="goStep2()">Volgende → Gebruikers instellen</button>
+
     </div>
 
     <div id="s2" style="display:none;">
@@ -230,7 +232,6 @@ function doGet(e) {
       <input type="text" id="n1" class="dark-inp" placeholder="Naam vennoot 2" value="Julius" style="margin-bottom:12px;" />
       <input type="text" id="n2" class="dark-inp" placeholder="Naam vennoot 3" value="Mees" style="margin-bottom:12px;" />
       <button class="btn btn-g" onclick="saveSetup()">Tool activeren →</button>
-      <button class="btn-ghost" onclick="goStep1()">← Terug</button>
     </div>
   </div>
 </div>
@@ -363,7 +364,6 @@ function doGet(e) {
 
 <script>
 // ── STATE ──
-let scriptUrl = '';
 let prospects = [];
 let filtered = [];
 let currentProspect = null;
@@ -402,10 +402,8 @@ function load(key) { try { const v = localStorage.getItem(key); return v ? JSON.
 // ── INIT ──
 (function init() {
   const cfg = load('hp-cfg');
-  if (cfg?.url) {
-    scriptUrl = cfg.url;
-    const names = cfg.names || ['Benjamin','Julius','Mees'];
-    buildUserBtns(names);
+  if (cfg?.names) {
+    buildUserBtns(cfg.names);
     show('userselect');
   } else {
     show('setup');
@@ -421,23 +419,10 @@ function copyCode() {
     setTimeout(() => { b.textContent = 'Kopieer'; b.className = 'smb'; }, 2000);
   });
 }
-function goStep2() {
-  const url = document.getElementById('inp-url').value.trim();
-  if (!url) return;
-  document.getElementById('s1').style.display = 'none';
-  document.getElementById('s2').style.display = 'block';
-  document.getElementById('p2').classList.add('on');
-}
-function goStep1() {
-  document.getElementById('s2').style.display = 'none';
-  document.getElementById('s1').style.display = 'block';
-  document.getElementById('p2').classList.remove('on');
-}
+
 function saveSetup() {
-  const url = document.getElementById('inp-url').value.trim();
   const names = [0,1,2].map(i => document.getElementById('n'+i).value.trim() || ['Benjamin','Julius','Mees'][i]);
-  save('hp-cfg', { url, names });
-  scriptUrl = url;
+  save('hp-cfg', { names });
   buildUserBtns(names);
   show('userselect');
 }
@@ -461,7 +446,7 @@ async function loadProspects() {
   btn.disabled = true; btn.textContent = '…';
   document.getElementById('err-box').style.display = 'none';
   try {
-    const res = await fetch(scriptUrl, { redirect: 'follow' });
+    const res = await fetch('/api/generate', { redirect: 'follow' });
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const data = await res.json();
     prospects = Array.isArray(data) ? data : [];
@@ -572,7 +557,7 @@ async function saveProspect() {
 
   const params = new URLSearchParams({ action: 'update', rowIndex: String(currentProspect.rowIndex) });
   Object.entries(updates).forEach(([k,v]) => params.append(k, encodeURIComponent(v)));
-  try { await fetch(scriptUrl + '?' + params, { redirect: 'follow' }); } catch {}
+  try { await fetch('/api/generate?' + params, { redirect: 'follow' }); } catch {}
 }
 
 // ── AI GENERATE ──
