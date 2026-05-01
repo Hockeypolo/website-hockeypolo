@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hockeypolo — Outreach</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Space Grotesk', sans-serif; background: #f4f4f4; color: #000; }
+    input, select, textarea, button { font-family: 'Space Grotesk', sans-serif; }
+    :root { --g: #00A652; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─ SCREENS ─ */
+    .screen { display: none; }
+    .screen.active { display: flex; }
+
+    /* ─ SETUP + USER SELECT ─ */
+    #setup, #userselect {
+      min-height: 100vh; background: #000;
+      align-items: center; justify-content: center; padding: 40px 20px; overflow-y: auto;
+    }
+    .setup-box { max-width: 580px; width: 100%; }
+    .brand { color: var(--g); font-size: 11px; font-weight: 700; letter-spacing: 3px; margin-bottom: 10px; }
+    h1.setup-h { color: #fff; font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+    .setup-sub { color: #555; font-size: 14px; }
+    .progress { display: flex; gap: 8px; margin: 28px 0; }
+    .prog-seg { flex: 1; height: 3px; background: #222; border-radius: 2px; transition: background .3s; }
+    .prog-seg.on { background: var(--g); }
+    .lbl { display: block; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: #aaa; margin-bottom: 8px; }
+    .dark-inp {
+      width: 100%; padding: 13px 16px; background: #111;
+      border: 1px solid #2a2a2a; color: #fff; font-size: 14px;
+      border-radius: 3px; outline: none;
+    }
+    .dark-inp:focus { border-color: var(--g); }
+    .dark-inp::placeholder { color: #444; }
+    .setup-card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 4px; padding: 20px; margin-top: 18px; }
+    .setup-card-title { color: var(--g); font-size: 12px; font-weight: 700; letter-spacing: 1px; margin-bottom: 14px; }
+    .steps { color: #aaa; font-size: 13px; padding-left: 20px; line-height: 2.1; }
+    .col-hint { background: #111; padding: 7px 10px; border-radius: 3px; margin: 5px 0; }
+    .col-hint code { color: var(--g); font-size: 10px; word-break: break-all; }
+    .code-pre {
+      background: #000; border-radius: 3px; padding: 12px; margin-top: 14px;
+      font-size: 10px; color: #555; font-family: monospace; line-height: 1.6;
+      white-space: pre; overflow-x: auto;
+    }
+    .btn { padding: 13px; font-size: 14px; font-weight: 700; border: none; border-radius: 3px; cursor: pointer; width: 100%; }
+    .btn-g { background: var(--g); color: #fff; margin-top: 18px; }
+    .btn-k { background: #000; color: #fff; }
+    .btn-off { background: #222; color: #666; cursor: not-allowed; }
+    .btn-ghost { background: none; border: none; color: #555; font-size: 13px; cursor: pointer; width: 100%; margin-top: 12px; }
+    .smb { background: #222; color: #fff; border: none; padding: 3px 9px; font-size: 11px; font-weight: 700; cursor: pointer; border-radius: 3px; margin-left: 8px; vertical-align: middle; }
+    .smb.ok { background: var(--g); }
+    .user-box { max-width: 360px; width: 100%; text-align: center; }
+    .user-box h2 { color: #fff; font-size: 24px; font-weight: 700; margin-bottom: 32px; }
+    .user-btn {
+      display: block; width: 100%; padding: 18px 24px; background: #111;
+      border: 1px solid #2a2a2a; color: #fff; font-size: 15px; font-weight: 600;
+      cursor: pointer; margin-bottom: 12px; border-radius: 3px; text-align: left;
+      transition: border-color .15s, color .15s;
+    }
+    .user-btn:hover { border-color: var(--g); color: var(--g); }
+
+    /* ─ MAIN APP ─ */
+    #app { flex-direction: column; min-height: 100vh; }
+    .topbar {
+      background: #000; padding: 0 24px; display: flex; align-items: center;
+      justify-content: space-between; height: 50px; position: sticky; top: 0; z-index: 100;
+    }
+    .topbar-l { display: flex; align-items: center; gap: 14px; }
+    .topbar-brand { color: var(--g); font-weight: 700; font-size: 12px; letter-spacing: 1.5px; }
+    .topbar-title { color: #333; font-size: 12px; }
+    .topbar-r { display: flex; align-items: center; gap: 12px; }
+    .topbar-user { color: #555; font-size: 11px; }
+    .sync-btn {
+      background: var(--g); color: #fff; border: none; padding: 5px 12px;
+      font-size: 11px; font-weight: 700; cursor: pointer; border-radius: 3px;
+    }
+    .sync-btn:disabled { background: #222; cursor: not-allowed; }
+    .statsbar { background: #111; padding: 9px 24px; display: flex; gap: 24px; overflow-x: auto; }
+    .stat { display: flex; align-items: baseline; gap: 5px; flex-shrink: 0; }
+    .stat-n { color: #fff; font-size: 17px; font-weight: 700; }
+    .stat-n.g { color: var(--g); }
+    .stat-l { color: #555; font-size: 11px; }
+    .filterbar {
+      background: #fff; border-bottom: 1px solid #e0e0e0;
+      padding: 12px 24px; display: flex; gap: 10px; flex-wrap: wrap;
+    }
+    .f-inp { flex: 1 1 200px; padding: 8px 12px; border: 1.5px solid #ddd; font-size: 12px; border-radius: 3px; outline: none; }
+    .f-inp:focus { border-color: #000; }
+    .f-sel { padding: 8px 12px; border: 1.5px solid #ddd; font-size: 12px; background: #fff; border-radius: 3px; cursor: pointer; }
+    .f-clr { padding: 8px 12px; border: 1.5px solid #ddd; background: #fff; font-size: 12px; cursor: pointer; border-radius: 3px; color: #888; }
+    .tbl-wrap { padding: 20px 24px; flex: 1; }
+    .err { background: #fce4ec; color: #b71c1c; padding: 11px 14px; border-radius: 3px; margin-bottom: 14px; font-size: 13px; }
+    .tbl-card { background: #fff; border-radius: 4px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.07); }
+    table { width: 100%; border-collapse: collapse; }
+    thead tr { background: #000; }
+    th { padding: 10px 14px; text-align: left; color: #fff; font-size: 9px; font-weight: 700; letter-spacing: 1.2px; white-space: nowrap; }
+    tbody tr { border-bottom: 1px solid #f0f0f0; cursor: pointer; transition: background .1s; }
+    tbody tr:nth-child(even) { background: #fafafa; }
+    tbody tr:hover { background: #f0fff8 !important; }
+    td { padding: 12px 14px; font-size: 13px; }
+    td.td-co { font-weight: 700; }
+    td.td-sm { font-size: 12px; color: #666; }
+    td.td-xs { font-size: 11px; color: #aaa; }
+    td.td-arr { text-align: right; color: var(--g); font-size: 16px; font-weight: 700; }
+    .badge { padding: 3px 10px; border-radius: 3px; font-size: 11px; font-weight: 700; white-space: nowrap; display: inline-block; }
+    .tbl-foot { padding: 9px 14px; background: #fafafa; border-top: 1px solid #f0f0f0; font-size: 11px; color: #ccc; }
+    .empty-msg { padding: 50px; text-align: center; color: #bbb; font-size: 14px; }
+
+    /* ─ MODAL ─ */
+    .overlay {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,.88);
+      align-items: flex-start; justify-content: center;
+      padding: 24px 16px; overflow-y: auto; z-index: 999;
+    }
+    .overlay.open { display: flex; }
+    .modal {
+      background: #fff; max-width: 660px; width: 100%;
+      border-radius: 4px; overflow: hidden; box-shadow: 0 24px 80px rgba(0,0,0,.6); margin-bottom: 24px;
+    }
+    .m-head { background: #000; padding: 20px 24px; display: flex; justify-content: space-between; align-items: flex-start; }
+    .m-title { color: #fff; font-size: 18px; font-weight: 700; margin-bottom: 5px; }
+    .m-sub { color: #666; font-size: 12px; }
+    .m-close { background: none; border: none; color: #555; font-size: 22px; cursor: pointer; padding: 0 0 0 16px; line-height: 1; }
+    .m-body { padding: 24px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+    .info-card { background: #f7f7f7; padding: 11px 14px; border-radius: 3px; }
+    .info-lbl { font-size: 10px; color: #aaa; font-weight: 700; letter-spacing: 1px; margin-bottom: 3px; }
+    .info-val { font-size: 13px; font-weight: 600; }
+    .fg { margin-bottom: 16px; }
+    .status-sel { width: 100%; padding: 11px 13px; border: 2px solid #000; font-size: 13px; font-weight: 600; background: #fff; border-radius: 3px; }
+    .notes-ta { width: 100%; padding: 11px 13px; border: 2px solid #eee; font-size: 13px; resize: vertical; border-radius: 3px; line-height: 1.6; outline: none; }
+    .notes-ta:focus { border-color: #000; }
+    .save-btn { width: 100%; padding: 13px; background: #000; color: #fff; border: none; font-weight: 700; font-size: 13px; cursor: pointer; border-radius: 3px; margin-bottom: 24px; }
+    .ai-sec { border-top: 2px solid #000; padding-top: 20px; }
+    .ai-head { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+    .ai-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--g); flex-shrink: 0; }
+    .ai-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; }
+    .ai-sub-lbl { font-size: 11px; color: #aaa; }
+    .gen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+    .gen-btn { padding: 13px; border: 2px solid #000; background: #fff; font-weight: 700; cursor: pointer; font-size: 13px; border-radius: 3px; transition: border-color .15s; }
+    .gen-btn:disabled { border-color: var(--g); cursor: not-allowed; color: #aaa; }
+    .gen-err { background: #fce4ec; color: #b71c1c; padding: 10px 14px; border-radius: 3px; font-size: 13px; margin-bottom: 14px; display: none; }
+    .result { background: #f9f9f9; border: 1px solid #eee; border-radius: 3px; padding: 18px; margin-bottom: 14px; display: none; }
+    .result-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .result-lbl { font-size: 11px; font-weight: 700; letter-spacing: 1px; }
+    .copy-btn { background: #000; color: #fff; border: none; padding: 8px 16px; font-size: 12px; font-weight: 700; cursor: pointer; border-radius: 3px; transition: background .2s; }
+    .copy-btn.done { background: var(--g); }
+    .mail-inner { background: #fff; padding: 14px; border-radius: 3px; border: 1px solid #eee; }
+    .mail-subj { font-weight: 700; font-size: 12px; color: #555; margin-bottom: 10px; }
+    .mail-subj span { color: #000; }
+    .mail-body { font-size: 13px; white-space: pre-wrap; line-height: 1.7; color: #222; }
+    .sc-sec { margin-bottom: 14px; }
+    .sc-lbl { font-size: 10px; font-weight: 700; color: #aaa; letter-spacing: 1px; margin-bottom: 5px; }
+    .sc-txt { font-size: 13px; line-height: 1.7; color: #222; }
+    .obj-card { background: #fff; border: 1px solid #eee; border-radius: 3px; padding: 12px; margin-bottom: 7px; }
+    .obj-q { font-weight: 700; font-size: 12px; color: #b71c1c; margin-bottom: 7px; }
+    .obj-a { font-size: 12px; color: #2e7d32; line-height: 1.6; }
+  </style>
+</head>
+<body>
+
+<!-- SETUP SCREEN -->
+<div id="setup" class="screen">
+  <div class="setup-box">
+    <div class="brand">HOCKEYPOLO</div>
+    <h1 class="setup-h">Outreach Tool — Setup</h1>
+    <p class="setup-sub">Eenmalige configuratie. Daarna direct starten.</p>
+    <div class="progress">
+      <div class="prog-seg on" id="p1"></div>
+      <div class="prog-seg" id="p2"></div>
+    </div>
+
+    <div id="s1">
+      <label class="lbl">STAP 1 — GOOGLE APPS SCRIPT URL</label>
+      <input type="text" id="inp-url" class="dark-inp" placeholder="https://script.google.com/macros/s/.../exec" />
+      <div class="setup-card">
+        <div class="setup-card-title">⚡ SETUP IN 7 STAPPEN</div>
+        <ol class="steps">
+          <li>Maak een nieuwe Google Sheet aan</li>
+          <li>
+            Kolomnamen in rij 1 — tabblad noemen: <strong style="color:#fff">Prospects</strong>
+            <div class="col-hint"><code>ID | Bedrijfsnaam | Contactpersoon | Email | Telefoon | Segment | Regio | Status | Datum_Laatste_Contact | Notities</code></div>
+          </li>
+          <li>Ga naar <strong style="color:#fff">Extensies → Apps Script</strong></li>
+          <li>
+            Verwijder alle code, plak onderstaand script
+            <button class="smb" id="copy-code-btn" onclick="copyCode()">Kopieer</button>
+          </li>
+          <li>Klik <strong style="color:#fff">Implementeren → Nieuwe implementatie</strong></li>
+          <li>Type: <em>Webtoepassing</em> · Uitvoeren als: <strong style="color:#fff">ik</strong> · Toegang: <strong style="color:#fff">iedereen</strong></li>
+          <li>Plak de URL hierboven</li>
+        </ol>
+        <div class="code-pre" id="script-code">const SN = 'Prospects';
+function doGet(e) {
+  const s = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SN);
+  if (e.parameter.action === 'update') {
+    const r = +e.parameter.rowIndex;
+    const h = s.getRange(1,1,1,s.getLastColumn()).getValues()[0];
+    ['Status','Notities','Datum_Laatste_Contact'].forEach(k => {
+      if (e.parameter[k] !== undefined) {
+        const c = h.indexOf(k) + 1;
+        if (c) s.getRange(r, c).setValue(decodeURIComponent(e.parameter[k]));
+      }
+    });
+    return ContentService.createTextOutput(JSON.stringify({ok:true}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+  const d = s.getDataRange().getValues(), h = d[0];
+  return ContentService.createTextOutput(JSON.stringify(
+    d.slice(1).map((row, i) => {
+      const o = { rowIndex: i + 2 };
+      h.forEach((k, j) => o[k] = row[j]);
+      return o;
+    })
+  )).setMimeType(ContentService.MimeType.JSON);
+}</div>
+      </div>
+      <button class="btn btn-g" id="next-btn" onclick="goStep2()">Volgende → Gebruikers instellen</button>
+    </div>
+
+    <div id="s2" style="display:none;">
+      <label class="lbl">STAP 2 — NAMEN VAN DE DRIE VENNOOTEN</label>
+      <p style="color:#555;font-size:13px;margin-bottom:16px;">Deze namen verschijnen bij het inloggen.</p>
+      <input type="text" id="n0" class="dark-inp" placeholder="Naam vennoot 1" value="Benjamin" style="margin-bottom:12px;" />
+      <input type="text" id="n1" class="dark-inp" placeholder="Naam vennoot 2" value="Julius" style="margin-bottom:12px;" />
+      <input type="text" id="n2" class="dark-inp" placeholder="Naam vennoot 3" value="Mees" style="margin-bottom:12px;" />
+      <button class="btn btn-g" onclick="saveSetup()">Tool activeren →</button>
+      <button class="btn-ghost" onclick="goStep1()">← Terug</button>
+    </div>
+  </div>
+</div>
+
+<!-- USER SELECT -->
+<div id="userselect" class="screen">
+  <div class="user-box">
+    <div class="brand">HOCKEYPOLO — OUTREACH</div>
+    <h2>Wie ben jij?</h2>
+    <div id="user-btns"></div>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app" class="screen">
+  <div class="topbar">
+    <div class="topbar-l">
+      <span class="topbar-brand">HOCKEYPOLO</span>
+      <span class="topbar-title">Outreach Pipeline</span>
+    </div>
+    <div class="topbar-r">
+      <span class="topbar-user" id="cur-user"></span>
+      <button class="sync-btn" id="sync-btn" onclick="loadProspects()">↻ Sync</button>
+    </div>
+  </div>
+  <div class="statsbar" id="statsbar"></div>
+  <div class="filterbar">
+    <input type="text" class="f-inp" id="f-search" placeholder="🔍  Zoek op bedrijf of contactpersoon..." oninput="renderTable()" />
+    <select class="f-sel" id="f-seg" onchange="renderTable()">
+      <option value="">Alle segmenten</option>
+      <option>Sportverenigingen</option>
+      <option>Studentenverenigingen / disputen</option>
+      <option>Bedrijven / MKB / tech</option>
+      <option>Horeca &amp; retail</option>
+      <option>Evenementen &amp; organisaties</option>
+      <option>CrossFit / fitness</option>
+    </select>
+    <select class="f-sel" id="f-st" onchange="renderTable()">
+      <option value="">Alle statussen</option>
+      <option>Nieuw lead</option>
+      <option>Mail verstuurd</option>
+      <option>Gebeld — geen gehoor</option>
+      <option>Gebeld — gesprek gehad</option>
+      <option>Offerte verstuurd</option>
+      <option>Gewonnen / klant</option>
+      <option>Niet geïnteresseerd / afgewezen</option>
+    </select>
+    <button class="f-clr" id="clr-btn" onclick="clearFilters()" style="display:none;">× Wis filters</button>
+  </div>
+  <div class="tbl-wrap">
+    <div class="err" id="err-box" style="display:none;"></div>
+    <div class="tbl-card">
+      <table>
+        <thead>
+          <tr>
+            <th>BEDRIJF</th><th>CONTACT</th><th>SEGMENT</th><th>REGIO</th><th>STATUS</th><th>LAATSTE CONTACT</th><th></th>
+          </tr>
+        </thead>
+        <tbody id="tbl-body"></tbody>
+      </table>
+      <div class="tbl-foot" id="tbl-foot"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="overlay" id="modal-overlay" onclick="closeModalOnBg(event)">
+  <div class="modal" id="modal">
+    <div class="m-head">
+      <div>
+        <div class="m-title" id="m-bedrijf"></div>
+        <div class="m-sub" id="m-sub"></div>
+      </div>
+      <button class="m-close" onclick="closeModal()">×</button>
+    </div>
+    <div class="m-body">
+      <div class="info-grid">
+        <div class="info-card"><div class="info-lbl">E-MAIL</div><div class="info-val" id="m-email"></div></div>
+        <div class="info-card"><div class="info-lbl">TELEFOON</div><div class="info-val" id="m-tel"></div></div>
+      </div>
+      <div class="fg">
+        <label class="lbl">STATUS</label>
+        <select class="status-sel" id="m-status">
+          <option>Nieuw lead</option>
+          <option>Mail verstuurd</option>
+          <option>Gebeld — geen gehoor</option>
+          <option>Gebeld — gesprek gehad</option>
+          <option>Offerte verstuurd</option>
+          <option>Gewonnen / klant</option>
+          <option>Niet geïnteresseerd / afgewezen</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label class="lbl">NOTITIES</label>
+        <textarea class="notes-ta" id="m-notes" rows="3" placeholder="Belnotities, afspraken, terugbelverzoeken..."></textarea>
+      </div>
+      <button class="save-btn" onclick="saveProspect()">✓ Opslaan & synchroniseren naar Google Sheets</button>
+      <div class="ai-sec">
+        <div class="ai-head">
+          <div class="ai-dot"></div>
+          <span class="ai-title">AI GENERATIE</span>
+          <span class="ai-sub-lbl">— segment · regio · status</span>
+        </div>
+        <div class="gen-grid">
+          <button class="gen-btn" id="btn-mail" onclick="generate('mail')">✉ Genereer Mail</button>
+          <button class="gen-btn" id="btn-script" onclick="generate('script')">📞 Genereer Belscript</button>
+        </div>
+        <div class="gen-err" id="gen-err"></div>
+        <div class="result" id="res-mail">
+          <div class="result-head">
+            <span class="result-lbl">✉ MAIL</span>
+            <button class="copy-btn" id="copy-mail" onclick="copyResult('mail')">Kopiëren</button>
+          </div>
+          <div class="mail-inner">
+            <div class="mail-subj">Onderwerp: <span id="mail-subj-val"></span></div>
+            <div class="mail-body" id="mail-body-val"></div>
+          </div>
+        </div>
+        <div class="result" id="res-script">
+          <div class="result-head">
+            <span class="result-lbl">📞 BELSCRIPT</span>
+            <button class="copy-btn" id="copy-script" onclick="copyResult('script')">Kopieer script</button>
+          </div>
+          <div id="script-sections"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── STATE ──
+let scriptUrl = '';
+let prospects = [];
+let filtered = [];
+let currentProspect = null;
+let currentUser = '';
+let lastMail = null;
+let lastScript = null;
+
+const STATUS_META = {
+  'Nieuw lead':                      { c:'#555',    bg:'#f0f0f0' },
+  'Mail verstuurd':                  { c:'#1565c0', bg:'#ddeeff' },
+  'Gebeld — geen gehoor':            { c:'#e65100', bg:'#fff3e0' },
+  'Gebeld — gesprek gehad':          { c:'#00695c', bg:'#e0f2f1' },
+  'Offerte verstuurd':               { c:'#6a1b9a', bg:'#f3e5f5' },
+  'Gewonnen / klant':                { c:'#2e7d32', bg:'#e8f5e9' },
+  'Niet geïnteresseerd / afgewezen': { c:'#b71c1c', bg:'#fce4ec' },
+};
+const TONE = {
+  'Sportverenigingen':               'vriendelijk en professioneel',
+  'Studentenverenigingen / disputen':'informeel en direct maar zakelijk',
+  'Bedrijven / MKB / tech':         'zakelijk en oplossingsgericht',
+  'Horeca & retail':                 'toegankelijk en praktisch',
+  'Evenementen & organisaties':      'projectmatig en resultaatgericht',
+  'CrossFit / fitness':             'energiek en direct',
+};
+
+// ── SCREEN MANAGEMENT ──
+function show(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+// ── LOCAL STORAGE ──
+function save(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch {} }
+function load(key) { try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : null; } catch { return null; } }
+
+// ── INIT ──
+(function init() {
+  const cfg = load('hp-cfg');
+  if (cfg?.url) {
+    scriptUrl = cfg.url;
+    const names = cfg.names || ['Benjamin','Julius','Mees'];
+    buildUserBtns(names);
+    show('userselect');
+  } else {
+    show('setup');
+  }
+})();
+
+// ── SETUP ──
+function copyCode() {
+  const code = document.getElementById('script-code').textContent;
+  navigator.clipboard.writeText(code).then(() => {
+    const b = document.getElementById('copy-code-btn');
+    b.textContent = '✓ Gekopieerd'; b.className = 'smb ok';
+    setTimeout(() => { b.textContent = 'Kopieer'; b.className = 'smb'; }, 2000);
+  });
+}
+function goStep2() {
+  const url = document.getElementById('inp-url').value.trim();
+  if (!url) return;
+  document.getElementById('s1').style.display = 'none';
+  document.getElementById('s2').style.display = 'block';
+  document.getElementById('p2').classList.add('on');
+}
+function goStep1() {
+  document.getElementById('s2').style.display = 'none';
+  document.getElementById('s1').style.display = 'block';
+  document.getElementById('p2').classList.remove('on');
+}
+function saveSetup() {
+  const url = document.getElementById('inp-url').value.trim();
+  const names = [0,1,2].map(i => document.getElementById('n'+i).value.trim() || ['Benjamin','Julius','Mees'][i]);
+  save('hp-cfg', { url, names });
+  scriptUrl = url;
+  buildUserBtns(names);
+  show('userselect');
+}
+
+// ── USER SELECT ──
+function buildUserBtns(names) {
+  document.getElementById('user-btns').innerHTML = names.map(n =>
+    `<button class="user-btn" onclick="selectUser('${n}')">${n}</button>`
+  ).join('');
+}
+function selectUser(name) {
+  currentUser = name;
+  document.getElementById('cur-user').textContent = '👤 ' + name;
+  show('app');
+  loadProspects();
+}
+
+// ── LOAD PROSPECTS ──
+async function loadProspects() {
+  const btn = document.getElementById('sync-btn');
+  btn.disabled = true; btn.textContent = '…';
+  document.getElementById('err-box').style.display = 'none';
+  try {
+    const res = await fetch(scriptUrl, { redirect: 'follow' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    prospects = Array.isArray(data) ? data : [];
+    renderStats();
+    renderTable();
+  } catch(e) {
+    showErr('Laden mislukt: ' + e.message + '. Controleer de Apps Script URL.');
+  }
+  btn.disabled = false; btn.textContent = '↻ Sync';
+}
+
+// ── STATS ──
+function renderStats() {
+  const bar = document.getElementById('statsbar');
+  const items = [
+    { l: 'totaal', n: prospects.length, g: true },
+    ...[['Mail verstuurd'],['Gebeld — gesprek gehad'],['Offerte verstuurd'],['Gewonnen / klant']].map(([s]) => ({
+      l: s.toLowerCase(), n: prospects.filter(p => p.Status === s).length, g: false
+    })).filter(x => x.n > 0)
+  ];
+  bar.innerHTML = items.map(({l,n,g}) =>
+    `<div class="stat"><span class="stat-n${g?' g':''}">${n}</span><span class="stat-l">${l}</span></div>`
+  ).join('');
+}
+
+// ── TABLE ──
+function renderTable() {
+  const q = document.getElementById('f-search').value.toLowerCase();
+  const seg = document.getElementById('f-seg').value;
+  const st = document.getElementById('f-st').value;
+  document.getElementById('clr-btn').style.display = (q||seg||st) ? 'block' : 'none';
+
+  filtered = prospects.filter(p => {
+    if (q && !((p.Bedrijfsnaam||'')+(p.Contactpersoon||'')).toLowerCase().includes(q)) return false;
+    if (seg && p.Segment !== seg) return false;
+    if (st && p.Status !== st) return false;
+    return true;
+  });
+
+  const tbody = document.getElementById('tbl-body');
+  if (!filtered.length) {
+    tbody.innerHTML = `<tr><td colspan="7" class="empty-msg">${prospects.length ? 'Geen prospects gevonden' : 'Prospects laden uit Google Sheets…'}</td></tr>`;
+  } else {
+    tbody.innerHTML = filtered.map((p, i) => {
+      const m = STATUS_META[p.Status] || {c:'#555',bg:'#eee'};
+      return `<tr onclick="openModal(${p.rowIndex})">
+        <td class="td-co">${esc(p.Bedrijfsnaam||'—')}</td>
+        <td class="td-sm">${esc(p.Contactpersoon||'—')}</td>
+        <td class="td-sm">${esc(p.Segment||'—')}</td>
+        <td class="td-xs">${esc(p.Regio||'—')}</td>
+        <td><span class="badge" style="background:${m.bg};color:${m.c}">${esc(p.Status||'Nieuw lead')}</span></td>
+        <td class="td-xs">${esc(p.Datum_Laatste_Contact||'—')}</td>
+        <td class="td-arr">›</td>
+      </tr>`;
+    }).join('');
+  }
+  document.getElementById('tbl-foot').textContent = `${filtered.length} van ${prospects.length} prospects`;
+}
+
+function clearFilters() {
+  document.getElementById('f-search').value = '';
+  document.getElementById('f-seg').value = '';
+  document.getElementById('f-st').value = '';
+  renderTable();
+}
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ── MODAL ──
+function openModal(rowIndex) {
+  const p = prospects.find(x => x.rowIndex === rowIndex);
+  if (!p) return;
+  currentProspect = p;
+  lastMail = null; lastScript = null;
+  document.getElementById('res-mail').style.display = 'none';
+  document.getElementById('res-script').style.display = 'none';
+  document.getElementById('gen-err').style.display = 'none';
+  document.getElementById('btn-mail').disabled = false;
+  document.getElementById('btn-script').disabled = false;
+  document.getElementById('btn-mail').textContent = '✉ Genereer Mail';
+  document.getElementById('btn-script').textContent = '📞 Genereer Belscript';
+
+  document.getElementById('m-bedrijf').textContent = p.Bedrijfsnaam || '—';
+  document.getElementById('m-sub').textContent = [p.Contactpersoon, p.Segment, p.Regio].filter(Boolean).join(' · ');
+  document.getElementById('m-email').textContent = p.Email || '—';
+  document.getElementById('m-tel').textContent = p.Telefoon || '—';
+  document.getElementById('m-status').value = p.Status || 'Nieuw lead';
+  document.getElementById('m-notes').value = p.Notities || '';
+
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+function closeModal() { document.getElementById('modal-overlay').classList.remove('open'); }
+function closeModalOnBg(e) { if (e.target === document.getElementById('modal-overlay')) closeModal(); }
+
+// ── SAVE ──
+async function saveProspect() {
+  if (!currentProspect) return;
+  const status = document.getElementById('m-status').value;
+  const notes = document.getElementById('m-notes').value;
+  const today = new Date().toLocaleDateString('nl-NL');
+  const updates = { Status: status, Notities: notes, Datum_Laatste_Contact: today };
+
+  prospects = prospects.map(p => p.rowIndex === currentProspect.rowIndex ? {...p, ...updates} : p);
+  renderStats(); renderTable(); closeModal();
+
+  const params = new URLSearchParams({ action: 'update', rowIndex: String(currentProspect.rowIndex) });
+  Object.entries(updates).forEach(([k,v]) => params.append(k, encodeURIComponent(v)));
+  try { await fetch(scriptUrl + '?' + params, { redirect: 'follow' }); } catch {}
+}
+
+// ── AI GENERATE ──
+async function generate(type) {
+  const p = currentProspect;
+  if (!p) return;
+  const status = document.getElementById('m-status').value;
+  const btn = document.getElementById('btn-' + (type === 'mail' ? 'mail' : 'script'));
+  btn.disabled = true;
+  btn.textContent = '⏳ Genereren...';
+  document.getElementById('gen-err').style.display = 'none';
+
+  const tone = TONE[p.Segment] || 'professioneel';
+  const followUp = status !== 'Nieuw lead';
+  const ctx = followUp
+    ? `Dit is een follow-up. Vorige status: "${status}". Verwijs subtiel naar eerder contact.`
+    : 'Dit is het allereerste contactmoment — de prospect kent Hockeypolo nog niet.';
+
+  const system = `Je bent een outreach copywriter voor Hockeypolo.\n\nOVER HOCKEYPOLO:\n- Rotterdams merchandisebedrijf, opgericht in 2005\n- Merkbelofte: "Maak indruk met jouw merchandise."\n- USP's: 20+ jaar ervaring | Snel en betrouwbaar | Beste prijs-kwaliteit | Volledig op maat\n- Producten: teamkleding (shirts, hoodies, sportkleding, jassen), accessoires (tassen, petten, mutsen), promotie (banners, vlaggen, mokken, glazen)\n- Toon: no-nonsense, Rotterdams, direct en eerlijk\n\nSCHRIJFSTIJL:\n- Altijd Nederlands\n- Korte actieve zinnen, focus op resultaat voor de klant\n- Gebruik "je/jij" behalve bij formele B2B-segmenten\n- Altijd afsluiten met een concrete CTA\n- Nooit wollig of generiek`;
+
+  const mailPrompt = `Schrijf een outreach e-mail voor:\n- Bedrijf: ${p.Bedrijfsnaam}\n- Contactpersoon: ${p.Contactpersoon}\n- Segment: ${p.Segment}\n- Stad: ${p.Regio}\n- Toon: ${tone}\n- Context: ${ctx}\n\nMax 120 woorden body. Één duidelijke CTA.\n\nGeef ALLEEN dit JSON terug, geen markdown:\n{"onderwerp":"...","body":"..."}`;
+  const scriptPrompt = `Schrijf een belscript voor:\n- Bedrijf: ${p.Bedrijfsnaam}\n- Contactpersoon: ${p.Contactpersoon}\n- Segment: ${p.Segment}\n- Stad: ${p.Regio}\n- Toon: ${tone}\n- Context: ${ctx}\n\nGeef ALLEEN dit JSON terug, geen markdown:\n{"opening":"...","kernboodschap":"...","bezwaren":[{"bezwaar":"...","antwoord":"..."},{"bezwaar":"...","antwoord":"..."}],"afsluiting":"..."}`;
+
+  try {
+    const res = await fetch('/api/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system,
+        messages: [{ role: 'user', content: type === 'mail' ? mailPrompt : scriptPrompt }]
+      })
+    });
+    const data = await res.json();
+    const raw = data.content[0].text.replace(/```json|```/g,'').trim();
+    const parsed = JSON.parse(raw);
+
+    if (type === 'mail') {
+      lastMail = parsed;
+      document.getElementById('mail-subj-val').textContent = parsed.onderwerp;
+      document.getElementById('mail-body-val').textContent = parsed.body;
+      document.getElementById('res-mail').style.display = 'block';
+    } else {
+      lastScript = parsed;
+      const secs = document.getElementById('script-sections');
+      secs.innerHTML = [
+        ['OPENING', parsed.opening],
+        ['KERNBOODSCHAP', parsed.kernboodschap],
+        ['AFSLUITING', parsed.afsluiting],
+      ].filter(([,t])=>t).map(([l,t]) => `<div class="sc-sec"><div class="sc-lbl">${l}</div><div class="sc-txt">${esc(t)}</div></div>`).join('') +
+      (parsed.bezwaren?.length ? `<div class="sc-lbl" style="margin-bottom:8px;">BEZWAREN &amp; ANTWOORDEN</div>` +
+        parsed.bezwaren.map(b => `<div class="obj-card"><div class="obj-q">"${esc(b.bezwaar)}"</div><div class="obj-a">→ ${esc(b.antwoord)}</div></div>`).join('') : '');
+      document.getElementById('res-script').style.display = 'block';
+    }
+  } catch {
+    const el = document.getElementById('gen-err');
+    el.textContent = 'Generatie mislukt — probeer opnieuw.';
+    el.style.display = 'block';
+  }
+
+  btn.disabled = false;
+  btn.textContent = type === 'mail' ? '✉ Genereer Mail' : '📞 Genereer Belscript';
+}
+
+// ── COPY ──
+function copyResult(type) {
+  let text = '';
+  if (type === 'mail' && lastMail) {
+    text = `Onderwerp: ${lastMail.onderwerp}\n\n${lastMail.body}`;
+  } else if (type === 'script' && lastScript) {
+    const s = lastScript;
+    text = `OPENING\n${s.opening}\n\nKERNBOODSCHAP\n${s.kernboodschap}`;
+    if (s.bezwaren?.length) text += '\n\nBEZWAREN\n' + s.bezwaren.map(b=>`Bezwaar: "${b.bezwaar}"\nAntwoord: ${b.antwoord}`).join('\n\n');
+    text += `\n\nAFSLUITING\n${s.afsluiting}`;
+  }
+  if (!text) return;
+  const id = 'copy-' + type;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById(id);
+    btn.textContent = '✓ Gekopieerd'; btn.className = 'copy-btn done';
+    setTimeout(() => { btn.textContent = type === 'mail' ? 'Kopiëren' : 'Kopieer script'; btn.className = 'copy-btn'; }, 2000);
+  });
+}
+
+function showErr(msg) {
+  const el = document.getElementById('err-box');
+  el.textContent = msg; el.style.display = 'block';
+}
+</script>
+</body>
+</html>
