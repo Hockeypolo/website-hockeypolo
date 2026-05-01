@@ -170,63 +170,8 @@
     <div class="brand">HOCKEYPOLO</div>
     <h1 class="setup-h">Outreach Tool — Setup</h1>
     <p class="setup-sub">Eenmalige configuratie. Daarna direct starten.</p>
-
-    <div id="s1" style="margin-top:32px;">
+    <div style="margin-top:32px;">
       <label class="lbl">NAMEN VAN DE DRIE VENNOOTEN</label>
-      <p style="color:#555;font-size:13px;margin-bottom:16px;">Deze namen verschijnen bij het inloggen.</p>
-      <input type="text" id="n0" class="dark-inp" placeholder="Naam vennoot 1" value="Benjamin" style="margin-bottom:12px;" />
-      <input type="text" id="n1" class="dark-inp" placeholder="Naam vennoot 2" value="Julius" style="margin-bottom:12px;" />
-      <input type="text" id="n2" class="dark-inp" placeholder="Naam vennoot 3" value="Mees" style="margin-bottom:12px;" />
-      <button class="btn btn-g" onclick="saveSetup()">Tool activeren →</button>
-    </div>
-    <!-- end setup
-      <div class="setup-card">
-        <div class="setup-card-title">⚡ SETUP IN 7 STAPPEN</div>
-        <ol class="steps">
-          <li>Maak een nieuwe Google Sheet aan</li>
-          <li>
-            Kolomnamen in rij 1 — tabblad noemen: <strong style="color:#fff">Prospects</strong>
-            <div class="col-hint"><code>ID | Bedrijfsnaam | Contactpersoon | Email | Telefoon | Segment | Regio | Status | Datum_Laatste_Contact | Notities</code></div>
-          </li>
-          <li>Ga naar <strong style="color:#fff">Extensies → Apps Script</strong></li>
-          <li>
-            Verwijder alle code, plak onderstaand script
-            <button class="smb" id="copy-code-btn" onclick="copyCode()">Kopieer</button>
-          </li>
-          <li>Klik <strong style="color:#fff">Implementeren → Nieuwe implementatie</strong></li>
-          <li>Type: <em>Webtoepassing</em> · Uitvoeren als: <strong style="color:#fff">ik</strong> · Toegang: <strong style="color:#fff">iedereen</strong></li>
-          <li>Plak de URL hierboven</li>
-        </ol>
-        <div class="code-pre" id="script-code">const SN = 'Prospects';
-function doGet(e) {
-  const s = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SN);
-  if (e.parameter.action === 'update') {
-    const r = +e.parameter.rowIndex;
-    const h = s.getRange(1,1,1,s.getLastColumn()).getValues()[0];
-    ['Status','Notities','Datum_Laatste_Contact'].forEach(k => {
-      if (e.parameter[k] !== undefined) {
-        const c = h.indexOf(k) + 1;
-        if (c) s.getRange(r, c).setValue(decodeURIComponent(e.parameter[k]));
-      }
-    });
-    return ContentService.createTextOutput(JSON.stringify({ok:true}))
-      .setMimeType(ContentService.MimeType.JSON);
-  }
-  const d = s.getDataRange().getValues(), h = d[0];
-  return ContentService.createTextOutput(JSON.stringify(
-    d.slice(1).map((row, i) => {
-      const o = { rowIndex: i + 2 };
-      h.forEach((k, j) => o[k] = row[j]);
-      return o;
-    })
-  )).setMimeType(ContentService.MimeType.JSON);
-}</div>
-      </div>
-
-    </div>
-
-    <div id="s2" style="display:none;">
-      <label class="lbl">STAP 2 — NAMEN VAN DE DRIE VENNOOTEN</label>
       <p style="color:#555;font-size:13px;margin-bottom:16px;">Deze namen verschijnen bij het inloggen.</p>
       <input type="text" id="n0" class="dark-inp" placeholder="Naam vennoot 1" value="Benjamin" style="margin-bottom:12px;" />
       <input type="text" id="n1" class="dark-inp" placeholder="Naam vennoot 2" value="Julius" style="margin-bottom:12px;" />
