@@ -160,6 +160,30 @@
     .obj-card { background: #fff; border: 1px solid #eee; border-radius: 3px; padding: 12px; margin-bottom: 7px; }
     .obj-q { font-weight: 700; font-size: 12px; color: #b71c1c; margin-bottom: 7px; }
     .obj-a { font-size: 12px; color: #2e7d32; line-height: 1.6; }
+
+    .search-tab-btn { background: #222; color: #fff; border: none; padding: 5px 12px; font-size: 11px; font-weight: 700; cursor: pointer; border-radius: 3px; margin-right: 8px; font-family: inherit; }
+    .search-tab-btn.active { background: var(--g); }
+    .search-panel { background: #fff; border-bottom: 2px solid #000; padding: 20px 24px; display: none; }
+    .search-panel.open { display: block; }
+    .search-row { display: flex; gap: 10px; margin-bottom: 16px; }
+    .search-main-inp { flex: 1; padding: 10px 14px; border: 2px solid #000; font-size: 14px; border-radius: 3px; font-family: inherit; }
+    .search-main-inp:focus { outline: none; border-color: var(--g); }
+    .search-go-btn { background: var(--g); color: #fff; border: none; padding: 10px 20px; font-size: 13px; font-weight: 700; cursor: pointer; border-radius: 3px; font-family: inherit; white-space: nowrap; }
+    .search-go-btn:disabled { background: #ccc; cursor: not-allowed; }
+    .search-hint { font-size: 12px; color: #aaa; margin-bottom: 16px; }
+    .search-hint span { background: #f0f0f0; padding: 2px 8px; border-radius: 3px; margin-right: 6px; cursor: pointer; font-size: 11px; }
+    .search-hint span:hover { background: #e0ffe8; }
+    .search-results { display: none; }
+    .search-results.show { display: block; }
+    .search-res-title { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: #aaa; margin-bottom: 12px; }
+    .search-res-grid { display: grid; gap: 10px; }
+    .res-card { background: #f9f9f9; border: 1px solid #eee; border-radius: 3px; padding: 14px 16px; }
+    .res-card-name { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+    .res-card-info { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+    .res-field { font-size: 12px; color: #555; }
+    .res-field strong { color: #000; font-weight: 600; }
+    .search-err { background: #fce4ec; color: #b71c1c; padding: 10px 14px; border-radius: 3px; font-size: 13px; display: none; }
+    .search-loading { color: #aaa; font-size: 13px; display: none; padding: 20px 0; text-align: center; }
   </style>
 </head>
 <body>
@@ -199,10 +223,31 @@
     </div>
     <div class="topbar-r">
       <span class="topbar-user" id="cur-user"></span>
+      <button class="search-tab-btn" id="search-tab-btn" onclick="toggleSearchTab()">🔍 Prospects zoeken</button>
       <button class="sync-btn" id="sync-btn" onclick="loadProspects()">↻ Sync</button>
     </div>
   </div>
   <div class="statsbar" id="statsbar"></div>
+  <div class="search-panel" id="search-panel">
+    <div class="search-row">
+      <input type="text" id="search-inp" class="search-main-inp" placeholder="bijv. hockeyclubs Rotterdam, studentenverenigingen Delft, CrossFit gyms Den Haag..." />
+      <button class="search-go-btn" id="search-go-btn" onclick="runSearch()">Zoek prospects</button>
+    </div>
+    <div class="search-hint">
+      Voorbeelden:
+      <span onclick="setSearchQuery(this)">hockeyclubs Rotterdam</span>
+      <span onclick="setSearchQuery(this)">studentenverenigingen Delft</span>
+      <span onclick="setSearchQuery(this)">CrossFit gyms Den Haag</span>
+      <span onclick="setSearchQuery(this)">voetbalverenigingen Dordrecht</span>
+      <span onclick="setSearchQuery(this)">evenementenbureaus Rotterdam</span>
+    </div>
+    <div class="search-err" id="search-err"></div>
+    <div class="search-loading" id="search-loading">⏳ Bezig met zoeken op het web… dit duurt 10-30 seconden.</div>
+    <div class="search-results" id="search-results">
+      <div class="search-res-title" id="search-res-title"></div>
+      <div class="search-res-grid" id="search-res-grid"></div>
+    </div>
+  </div>
   <div class="filterbar">
     <input type="text" class="f-inp" id="f-search" placeholder="🔍  Zoek op bedrijf of contactpersoon..." oninput="renderTable()" />
     <select class="f-sel" id="f-seg" onchange="renderTable()">
@@ -531,15 +576,17 @@ async function generate(type) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1500,
         system,
         messages: [{ role: 'user', content: type === 'mail' ? mailPrompt : scriptPrompt }]
       })
     });
     const data = await res.json();
-    const raw = data.content[0].text.replace(/```json|```/g,'').trim();
-    const parsed = JSON.parse(raw);
+    if (data.error) throw new Error(data.error);
+    const rawText = data.content[0].text.replace(/```json|```/g,'').trim();
+    const si = rawText.indexOf('{'), ei = rawText.lastIndexOf('}');
+    const parsed = JSON.parse((si >= 0 && ei > si) ? rawText.slice(si, ei + 1) : rawText);
 
     if (type === 'mail') {
       lastMail = parsed;
@@ -587,6 +634,74 @@ function copyResult(type) {
     setTimeout(() => { btn.textContent = type === 'mail' ? 'Kopiëren' : 'Kopieer script'; btn.className = 'copy-btn'; }, 2000);
   });
 }
+
+function toggleSearchTab() {
+  const panel = document.getElementById('search-panel');
+  const btn = document.getElementById('search-tab-btn');
+  const isOpen = panel.classList.contains('open');
+  panel.classList.toggle('open', !isOpen);
+  btn.classList.toggle('active', !isOpen);
+}
+
+function setSearchQuery(el) {
+  document.getElementById('search-inp').value = el.textContent;
+  document.getElementById('search-inp').focus();
+}
+
+async function runSearch() {
+  const query = document.getElementById('search-inp').value.trim();
+  if (!query) return;
+
+  const btn = document.getElementById('search-go-btn');
+  const loading = document.getElementById('search-loading');
+  const results = document.getElementById('search-results');
+  const err = document.getElementById('search-err');
+
+  btn.disabled = true;
+  loading.style.display = 'block';
+  results.classList.remove('show');
+  err.style.display = 'none';
+
+  try {
+    const res = await fetch('/api/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: 'search', query })
+    });
+    const data = await res.json();
+    if (data.error) throw new Error(data.error);
+
+    const items = data.results || [];
+    document.getElementById('search-res-title').textContent = `${items.length} prospects gevonden voor "${query}"`;
+
+    document.getElementById('search-res-grid').innerHTML = items.map(p => `
+      <div class="res-card">
+        <div class="res-card-name">${esc(p.naam || '—')}</div>
+        <div class="res-card-info">
+          <div class="res-field"><strong>Website:</strong> ${p.website ? `<a href="${esc(p.website)}" target="_blank" style="color:var(--g)">${esc(p.website)}</a>` : '—'}</div>
+          <div class="res-field"><strong>Contact:</strong> ${esc(p.contactpersoon || '—')}</div>
+          <div class="res-field"><strong>E-mail:</strong> ${esc(p.email || '—')}</div>
+          <div class="res-field"><strong>Telefoon:</strong> ${esc(p.telefoon || '—')}</div>
+          <div class="res-field"><strong>Regio:</strong> ${esc(p.regio || '—')}</div>
+        </div>
+      </div>
+    `).join('');
+
+    results.classList.add('show');
+  } catch(e) {
+    err.textContent = 'Zoeken mislukt: ' + e.message;
+    err.style.display = 'block';
+  }
+
+  btn.disabled = false;
+  loading.style.display = 'none';
+}
+
+// Allow Enter key in search input
+document.addEventListener('DOMContentLoaded', () => {
+  const inp = document.getElementById('search-inp');
+  if (inp) inp.addEventListener('keydown', e => { if (e.key === 'Enter') runSearch(); });
+});
 
 function showErr(msg) {
   const el = document.getElementById('err-box');
