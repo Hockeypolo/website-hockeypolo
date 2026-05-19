@@ -1,0 +1,17 @@
+{
+  "name": "website-hockeypolo",
+  "version": "1.0.0",
+  "description": "Hockeypolo website - Merchandise op maat",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Static site - no build needed'",
+    "dev": "npx http-server -p 3000"
+  },
+  "dependencies": {
+    "@vercel/speed-insights": "^1.0.17"
+  },
+  "devDependencies": {},
+  "keywords": ["hockeypolo", "merchandise"],
+  "author": "",
+  "license": "ISC"
+}
