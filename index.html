@@ -2647,30 +2647,34 @@
   /* ═══════════════════════════════════════════════════════════════
      NIEUWSBRIEF-STRIP (aparte sectie boven de footer)
   ═══════════════════════════════════════════════════════════════ */
-  .newsletter-strip {
-    background: var(--white);
-    padding: clamp(48px, 7vw, 80px) clamp(20px, 5vw, 80px);
-    border-top: 1px solid var(--gray-200);
-    position: relative;
-    overflow: hidden;
+  /* ── Footer newsletter rij (donker) ──────────────────────────── */
+  .footer-newsletter {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 48px;
+    align-items: center;
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
   }
-  /* Subtiel groen radial accent voor diepte */
-  .newsletter-strip::before {
-    content: '';
-    position: absolute;
-    top: -100px; left: 50%;
-    transform: translateX(-50%);
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(0,166,82,.05) 0%, transparent 60%);
-    pointer-events: none;
-    z-index: 0;
+  .footer-newsletter-text h4 {
+    font-family: var(--font-head);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -.02em;
+    color: var(--white);
+    margin-bottom: 8px;
   }
-  .newsletter-strip-inner {
-    max-width: 640px; margin: 0 auto;
-    position: relative; z-index: 1;
+  .footer-newsletter-text h4 em { font-style: normal; color: var(--green); }
+  .footer-newsletter-text p {
+    font-size: 13px;
+    color: rgba(255,255,255,.5);
+    line-height: 1.6;
+    max-width: 360px;
   }
-  /* Overgang van witte newsletter naar donkere footer */
-  .newsletter-strip + footer { border-top: none; }
+  @media (max-width: 768px) {
+    .footer-newsletter { grid-template-columns: 1fr; gap: 24px; }
+  }
 
   /* ═══════════════════════════════════════════════════════════════
      NIEUWSBRIEF-FORMULIER (Brevo, gestyled als Hockeypolo)
@@ -2778,7 +2782,35 @@
     color: #b91c1c;
     border: 1px solid rgba(229,62,62,.25);
   }
-  /* Compact variant voor witte newsletter-strip */
+  /* ── Footer variant (donker, ingebed in footer) ─────────────── */
+  .newsletter-form.footer {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.1);
+    padding: 20px 22px;
+    border-radius: 10px;
+    box-shadow: none;
+    max-width: none;
+  }
+  .newsletter-form.footer h3,
+  .newsletter-form.footer .nl-intro { display: none; }
+  .newsletter-form.footer input[type="text"],
+  .newsletter-form.footer input[type="email"] {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.14);
+    color: var(--white);
+    font-size: 13px;
+    padding: 11px 13px;
+  }
+  .newsletter-form.footer input[type="text"]::placeholder,
+  .newsletter-form.footer input[type="email"]::placeholder { color: rgba(255,255,255,.42); }
+  .newsletter-form.footer input[type="text"]:focus,
+  .newsletter-form.footer input[type="email"]:focus { border-color: var(--green); }
+  .newsletter-form.footer button { padding: 11px 18px; font-size: 11px; }
+  .newsletter-form.footer .nl-consent { color: rgba(255,255,255,.5); font-size: 11px; }
+  .newsletter-form.footer .nl-consent a { color: var(--green); }
+  .newsletter-form.footer .nl-captcha-wrap { transform: scale(0.86); transform-origin: top left; margin-top: 8px; }
+
+  /* Compact variant voor lichte popup-modal */
   .newsletter-form.compact {
     padding: 28px 32px;
     background: var(--white);
@@ -3204,6 +3236,93 @@
     #offerte-cta { left:50%; transform:translateX(-50%) translateY(80px); bottom:16px; white-space:nowrap; }
     #offerte-cta.visible { transform:translateX(-50%) translateY(0); }
   }
+
+  /* ── Nieuwsbrief Pop-up Modal ────────────────────────── */
+  #nl-popup-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.55);
+    backdrop-filter: blur(4px);
+    z-index: 10000;
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+    opacity: 0; pointer-events: none;
+    transition: opacity .3s var(--ease);
+  }
+  #nl-popup-overlay.open { opacity: 1; pointer-events: auto; }
+
+  #nl-popup-modal {
+    position: relative;
+    background: var(--white);
+    border-radius: 16px;
+    max-width: 480px; width: 100%;
+    padding: 36px 32px 28px;
+    box-shadow: 0 24px 60px rgba(0,0,0,.3);
+    transform: translateY(20px) scale(.96);
+    transition: transform .35s var(--ease);
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+  }
+  #nl-popup-overlay.open #nl-popup-modal { transform: translateY(0) scale(1); }
+
+  /* Decoratief groen accent linksboven */
+  #nl-popup-modal::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle at top left, rgba(0,166,82,.15) 0%, transparent 70%);
+    border-radius: 16px 0 0 0;
+    pointer-events: none;
+  }
+
+  #nl-popup-close {
+    position: absolute;
+    top: 14px; right: 14px;
+    width: 32px; height: 32px;
+    border: none; background: var(--gray-100); border-radius: 50%;
+    cursor: pointer; color: var(--gray-600);
+    display: grid; place-items: center;
+    font-size: 14px; line-height: 1;
+    transition: background .15s, color .15s;
+    z-index: 2;
+  }
+  #nl-popup-close:hover { background: var(--gray-200); color: var(--black); }
+
+  .nl-popup-header { position: relative; z-index: 1; margin-bottom: 20px; text-align: center; }
+  .nl-popup-icon {
+    width: 56px; height: 56px;
+    background: var(--green-dim);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    margin: 0 auto 14px;
+    color: var(--green);
+  }
+  .nl-popup-icon svg { width: 28px; height: 28px; }
+  .nl-popup-header h3 {
+    font-family: var(--font-head);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -.02em;
+    color: var(--black);
+    margin-bottom: 8px;
+  }
+  .nl-popup-header h3 em { font-style: normal; color: var(--green); }
+  .nl-popup-header p {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.55;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+  /* Het ingevoegde formulier hoeft geen eigen achtergrond meer in de modal */
+  #nl-popup-form-slot .newsletter-form.compact {
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    background: transparent;
+  }
+  #nl-popup-form-slot .newsletter-form.compact h3,
+  #nl-popup-form-slot .newsletter-form.compact .nl-intro { display: none; }
 
   </style>
   <script defer src="/_vercel/insights/script.js"></script>
@@ -3775,6 +3894,13 @@
 
   <!-- ═══════════════ FOOTER ═══════════════ -->
   <footer>
+    <div class="footer-newsletter">
+      <div class="footer-newsletter-text">
+        <h4>Blijf op de <em>hoogte</em></h4>
+        <p>Ontvang tips, seizoensacties en updates over nieuwe producten.</p>
+      </div>
+      <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
+    </div>
     <div class="footer-grid">
       <div class="footer-brand"><img src="brand-logo-2.png" alt="Hockeypolo" class="footer-logo-img" style="height:52px;width:auto;display:block;margin-bottom:16px;" /><p>Persoonlijke merchandise voor clubs, verenigingen en bedrijven. Rotterdam, sinds 2005.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
@@ -4037,6 +4163,13 @@
   </div>
 
 <footer>
+    <div class="footer-newsletter">
+      <div class="footer-newsletter-text">
+        <h4>Blijf op de <em>hoogte</em></h4>
+        <p>Ontvang tips, seizoensacties en updates over nieuwe producten.</p>
+      </div>
+      <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
+    </div>
     <div class="footer-grid">
       <div><div class="footer-logo"><img src="brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al bijna 20 jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
@@ -4177,6 +4310,13 @@
   </div>
 
   <footer>
+    <div class="footer-newsletter">
+      <div class="footer-newsletter-text">
+        <h4>Blijf op de <em>hoogte</em></h4>
+        <p>Ontvang tips, seizoensacties en updates over nieuwe producten.</p>
+      </div>
+      <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
+    </div>
     <div class="footer-grid">
       <div><div class="footer-logo"><img src="brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al bijna 20 jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
@@ -4303,6 +4443,13 @@
   </div>
 
   <footer>
+    <div class="footer-newsletter">
+      <div class="footer-newsletter-text">
+        <h4>Blijf op de <em>hoogte</em></h4>
+        <p>Ontvang tips, seizoensacties en updates over nieuwe producten.</p>
+      </div>
+      <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
+    </div>
     <div class="footer-grid">
       <div><div class="footer-logo"><img src="brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al bijna 20 jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
@@ -4388,6 +4535,13 @@
   </div>
 
   <footer>
+    <div class="footer-newsletter">
+      <div class="footer-newsletter-text">
+        <h4>Blijf op de <em>hoogte</em></h4>
+        <p>Ontvang tips, seizoensacties en updates over nieuwe producten.</p>
+      </div>
+      <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
+    </div>
     <div class="footer-grid">
       <div><div class="footer-logo"><img src="brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al bijna 20 jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
@@ -4468,6 +4622,13 @@
   </div>
 
   <footer>
+    <div class="footer-newsletter">
+      <div class="footer-newsletter-text">
+        <h4>Blijf op de <em>hoogte</em></h4>
+        <p>Ontvang tips, seizoensacties en updates over nieuwe producten.</p>
+      </div>
+      <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
+    </div>
     <div class="footer-grid">
       <div><div class="footer-logo"><img src="brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al bijna 20 jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
@@ -4540,6 +4701,13 @@
   </div>
 
   <footer>
+    <div class="footer-newsletter">
+      <div class="footer-newsletter-text">
+        <h4>Blijf op de <em>hoogte</em></h4>
+        <p>Ontvang tips, seizoensacties en updates over nieuwe producten.</p>
+      </div>
+      <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
+    </div>
     <div class="footer-grid">
       <div><div class="footer-logo"><img src="brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al bijna 20 jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
@@ -4612,6 +4780,13 @@
   </div>
 
   <footer>
+    <div class="footer-newsletter">
+      <div class="footer-newsletter-text">
+        <h4>Blijf op de <em>hoogte</em></h4>
+        <p>Ontvang tips, seizoensacties en updates over nieuwe producten.</p>
+      </div>
+      <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
+    </div>
     <div class="footer-grid">
       <div><div class="footer-logo"><img src="brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al bijna 20 jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
@@ -4717,6 +4892,13 @@
   </div>
 
   <footer>
+    <div class="footer-newsletter">
+      <div class="footer-newsletter-text">
+        <h4>Blijf op de <em>hoogte</em></h4>
+        <p>Ontvang tips, seizoensacties en updates over nieuwe producten.</p>
+      </div>
+      <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
+    </div>
     <div class="footer-grid">
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a onclick="showPage('producten')">T-shirts &amp; Polo's</a><a onclick="showPage('producten')">Hoodies &amp; Sweaters</a><a onclick="showPage('producten')">Sport &amp; Teamwear</a><a onclick="showPage('producten')">Sjaals &amp; Accessoires</a><a onclick="showPage('producten')">Bags &amp; Drinkwear</a><a onclick="showPage('producten')">Vlaggen &amp; Merchandise</a></div>
@@ -4934,6 +5116,13 @@
   </div>
 
   <footer>
+    <div class="footer-newsletter">
+      <div class="footer-newsletter-text">
+        <h4>Blijf op de <em>hoogte</em></h4>
+        <p>Ontvang tips, seizoensacties en updates over nieuwe producten.</p>
+      </div>
+      <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
+    </div>
     <div class="footer-grid">
       <div><div class="footer-logo"><img src="brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al bijna 20 jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
@@ -5114,6 +5303,13 @@
   </div>
 
   <footer>
+    <div class="footer-newsletter">
+      <div class="footer-newsletter-text">
+        <h4>Blijf op de <em>hoogte</em></h4>
+        <p>Ontvang tips, seizoensacties en updates over nieuwe producten.</p>
+      </div>
+      <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
+    </div>
     <div class="footer-grid">
       <div><div class="footer-logo"><img src="brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al bijna 20 jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
@@ -5488,6 +5684,13 @@
   </div>
 
   <footer>
+    <div class="footer-newsletter">
+      <div class="footer-newsletter-text">
+        <h4>Blijf op de <em>hoogte</em></h4>
+        <p>Ontvang tips, seizoensacties en updates over nieuwe producten.</p>
+      </div>
+      <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
+    </div>
     <div class="footer-grid">
       <div><div class="footer-logo"><img src="brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al bijna 20 jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
@@ -5573,6 +5776,13 @@
   </section>
 
   <footer>
+    <div class="footer-newsletter">
+      <div class="footer-newsletter-text">
+        <h4>Blijf op de <em>hoogte</em></h4>
+        <p>Ontvang tips, seizoensacties en updates over nieuwe producten.</p>
+      </div>
+      <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
+    </div>
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="footer-logo" onclick="showPage('home')" style="cursor:pointer">Hockeypolo.</div>
@@ -5660,6 +5870,13 @@
   </section>
 
   <footer>
+    <div class="footer-newsletter">
+      <div class="footer-newsletter-text">
+        <h4>Blijf op de <em>hoogte</em></h4>
+        <p>Ontvang tips, seizoensacties en updates over nieuwe producten.</p>
+      </div>
+      <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
+    </div>
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="footer-logo" onclick="showPage('home')" style="cursor:pointer">Hockeypolo.</div>
@@ -5749,6 +5966,13 @@
   </section>
 
   <footer>
+    <div class="footer-newsletter">
+      <div class="footer-newsletter-text">
+        <h4>Blijf op de <em>hoogte</em></h4>
+        <p>Ontvang tips, seizoensacties en updates over nieuwe producten.</p>
+      </div>
+      <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
+    </div>
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="footer-logo" onclick="showPage('home')" style="cursor:pointer">Hockeypolo.</div>
@@ -6076,19 +6300,19 @@
       try {
         var widgetId = grecaptcha.render(entry.el, {
           sitekey: RECAPTCHA_SITEKEY,
-          theme:   'light',
+          theme:   entry.theme || 'light',
           size:    'normal'
         });
         entry.el.dataset.widgetId = widgetId;
       } catch (e) { /* al gerenderd of niet beschikbaar */ }
     }
 
-    function mountCaptcha(host, compact) {
+    function mountCaptcha(host, theme) {
       var div = document.createElement('div');
       div.className = 'g-recaptcha';
       div.id = 'g-recaptcha-' + (++captchaCounter);
       host.appendChild(div);
-      var entry = { el: div, compact: compact };
+      var entry = { el: div, theme: theme || 'light' };
       if (typeof grecaptcha !== 'undefined' && grecaptcha.render) {
         renderOneCaptcha(entry);
       } else {
@@ -6099,8 +6323,10 @@
 
     function renderNewsletterForm(host, variant) {
       var compact = variant === 'compact';
+      var isFooter = variant === 'footer';
+      var variantClass = isFooter ? 'footer' : (compact ? 'compact' : 'full');
       host.innerHTML =
-        '<div class="newsletter-form ' + (compact ? 'compact' : 'full') + '">' +
+        '<div class="newsletter-form ' + variantClass + '">' +
           '<h3>Blijf op de <em>hoogte</em></h3>' +
           '<p class="nl-intro">Ontvang updates over nieuwe producten, seizoensacties en inspiratie voor jouw teamkleding.</p>' +
           '<form novalidate>' +
@@ -6126,7 +6352,7 @@
       var fb    = host.querySelector('.nl-feedback');
       var btn   = host.querySelector('button[type=submit]');
       var capW  = host.querySelector('.nl-captcha-wrap');
-      mountCaptcha(capW, compact);
+      mountCaptcha(capW, isFooter ? 'dark' : 'light');
 
       form.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -6169,26 +6395,17 @@
     }
 
     function mountAllNewsletterForms() {
-      // Injecteer een eigen sectie VOOR elke <footer> (SPA heeft 12 instanties).
-      // Zo staat het formulier los van de footer-content en heeft het eigen
-      // ademruimte. Dezelfde compact-stijl + donkere achtergrond blijven behouden.
-      document.querySelectorAll('footer').forEach(function(ft) {
-        // Skip als de strip ervoor al bestaat
-        if (ft.previousElementSibling && ft.previousElementSibling.classList.contains('newsletter-strip')) return;
-        var strip = document.createElement('section');
-        strip.className = 'newsletter-strip';
-        var inner = document.createElement('div');
-        inner.className = 'newsletter-strip-inner';
-        strip.appendChild(inner);
-        ft.parentNode.insertBefore(strip, ft);
-        renderNewsletterForm(inner, 'compact');
-      });
-      // Page-specifieke slots (bv. bedankt-pagina inline)
+      // Mount in alle slots met data-newsletter-variant:
+      // - 'footer'  → donkere variant in elke footer
+      // - 'compact' → lichte variant in popup-modal
+      // - 'full'    → lichte variant op aparte pagina's
       document.querySelectorAll('[data-newsletter-variant]').forEach(function(slot) {
         if (slot.querySelector('.newsletter-form')) return;
         renderNewsletterForm(slot, slot.dataset.newsletterVariant);
       });
     }
+    // Expose voor popup zodat we lazy kunnen mounten als modal opent
+    window.__mountNewsletterForms = mountAllNewsletterForms;
 
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', mountAllNewsletterForms);
@@ -8448,6 +8665,91 @@
   cta.addEventListener('click', function() {
     window.showPage('contact');
   });
+})();
+</script>
+
+<!-- ── Nieuwsbrief Pop-up Modal ────────────────────────── -->
+<div id="nl-popup-overlay" role="dialog" aria-modal="true" aria-labelledby="nl-popup-title">
+  <div id="nl-popup-modal">
+    <button id="nl-popup-close" aria-label="Sluiten">&#x2715;</button>
+    <div class="nl-popup-header">
+      <div class="nl-popup-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+      </div>
+      <h3 id="nl-popup-title">Krijg <em>10% korting</em> bij je eerste bestelling</h3>
+      <p>Meld je aan voor de nieuwsbrief en ontvang tips, seizoensacties en updates direct in je inbox.</p>
+    </div>
+    <div id="nl-popup-form-slot" data-newsletter-variant="compact"></div>
+  </div>
+</div>
+<script>
+(function() {
+  var POPUP_DELAY_MS  = 8000;
+  var STORAGE_KEY     = 'hp_nl_popup_seen';
+  var overlay = document.getElementById('nl-popup-overlay');
+  var closeBtn = document.getElementById('nl-popup-close');
+  var slot    = document.getElementById('nl-popup-form-slot');
+  var shown   = false;
+  var timer   = null;
+
+  function isHomePage() {
+    var home = document.getElementById('page-home');
+    return home && home.classList.contains('active');
+  }
+
+  function openPopup() {
+    if (shown) return;
+    shown = true;
+    sessionStorage.setItem(STORAGE_KEY, '1');
+    // Lazy-mount het formulier in de slot
+    if (window.__mountNewsletterForms) window.__mountNewsletterForms();
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePopup() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  closeBtn.addEventListener('click', closePopup);
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closePopup();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closePopup();
+  });
+
+  // Toon na 8 seconden op de homepage, maximaal 1x per sessie
+  function maybeStartTimer() {
+    if (sessionStorage.getItem(STORAGE_KEY) === '1') return;
+    if (!isHomePage()) return;
+    if (timer) return;
+    timer = setTimeout(openPopup, POPUP_DELAY_MS);
+  }
+
+  function cancelTimer() {
+    if (timer) { clearTimeout(timer); timer = null; }
+  }
+
+  // Reageer op SPA-navigatie via showPage
+  var origShow = window.showPage;
+  window.showPage = function(id, push) {
+    var r = origShow(id, push);
+    if (id === 'home') maybeStartTimer();
+    else cancelTimer();
+    return r;
+  };
+
+  // Initial check bij DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', maybeStartTimer);
+  } else {
+    maybeStartTimer();
+  }
 })();
 </script>
 </body>
