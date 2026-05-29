@@ -3123,6 +3123,26 @@
   }
   .wa-body a:hover { background:#1ebe5a; }
 
+  /* ── Sticky Offerte CTA ──────────────────────────────── */
+  #offerte-cta {
+    position:fixed; bottom:24px; left:24px; z-index:9998;
+    display:flex; align-items:center; gap:10px;
+    background:var(--green); color:var(--white);
+    font-family:var(--font-head); font-weight:600; font-size:14px;
+    padding:14px 22px; border-radius:32px; border:none; cursor:pointer;
+    box-shadow:0 4px 20px rgba(0,166,82,.35);
+    transform:translateY(80px); opacity:0; pointer-events:none;
+    transition:transform .3s var(--ease), opacity .3s var(--ease);
+  }
+  #offerte-cta.visible { transform:translateY(0); opacity:1; pointer-events:auto; }
+  #offerte-cta:hover { background:var(--green-dark); transform:translateY(-2px); }
+  #offerte-cta svg { width:16px; height:16px; flex-shrink:0; }
+
+  @media (max-width:640px) {
+    #offerte-cta { left:50%; transform:translateX(-50%) translateY(80px); bottom:16px; white-space:nowrap; }
+    #offerte-cta.visible { transform:translateX(-50%) translateY(0); }
+  }
+
   </style>
   <script defer src="/_vercel/insights/script.js"></script>
   <!-- Google tag (gtag.js) -->
@@ -8296,6 +8316,32 @@
     if (!document.getElementById('wa-widget').contains(e.target)) {
       popup.classList.remove('open');
     }
+  });
+})();
+</script>
+
+<!-- ── Sticky Offerte CTA ──────────────────────────────── -->
+<button id="offerte-cta" aria-label="Vraag een offerte aan">
+  <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17.5 12.5a1.667 1.667 0 0 1-1.667 1.667H5.833L2.5 17.5V4.167A1.667 1.667 0 0 1 4.167 2.5h11.666A1.667 1.667 0 0 1 17.5 4.167v8.333z"/>
+  </svg>
+  Vraag een offerte aan
+</button>
+<script>
+(function() {
+  var cta = document.getElementById('offerte-cta');
+  var origShow = window.showPage;
+  window.showPage = function(id, push) {
+    var r = origShow(id, push);
+    if (id === 'producten') {
+      cta.classList.add('visible');
+    } else {
+      cta.classList.remove('visible');
+    }
+    return r;
+  };
+  cta.addEventListener('click', function() {
+    window.showPage('contact');
   });
 })();
 </script>
