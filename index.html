@@ -1936,19 +1936,21 @@
 
     /* Stats band */
     .stats-band {
-      background: var(--gray-100); border-top: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200);
-      padding: 48px 80px;
+      background: var(--black);
+      padding: 72px 80px;
       display: grid; grid-template-columns: repeat(4, 1fr);
       gap: 0;
     }
     .stat-item {
-      text-align: center; padding: 0 24px;
-      border-right: 1px solid var(--gray-200);
+      text-align: center; padding: 0 32px;
+      border-right: 1px solid rgba(255,255,255,.12);
     }
     .stat-item:last-child { border-right: none; }
-    .stat-item-num { font-family: var(--font-h); font-size: 40px; font-weight: 700; letter-spacing: -.04em; color: var(--black); }
+    .stat-icon { width: 32px; height: 32px; margin: 0 auto 16px; color: var(--green); }
+    .stat-icon svg { width: 32px; height: 32px; }
+    .stat-item-num { font-family: var(--font-head); font-size: clamp(52px, 6vw, 72px); font-weight: 700; letter-spacing: -.04em; color: var(--white); line-height: 1; }
     .stat-item-num em { color: var(--green); font-style: normal; }
-    .stat-item-lbl { font-size: 13px; color: var(--gray-400); margin-top: 4px; font-family: var(--font-h); letter-spacing: .04em; text-transform: uppercase; font-size: 11px; }
+    .stat-item-lbl { font-size: 11px; color: rgba(255,255,255,.45); margin-top: 10px; font-family: var(--font-head); letter-spacing: .1em; text-transform: uppercase; }
 
     /* ════════════════════════════════════════════════════════════════
        PAGE 3: OVER ONS
@@ -1978,23 +1980,28 @@
     .about-timeline h2 { font-family: var(--font-h); font-size: clamp(32px, 3vw, 46px); font-weight: 700; letter-spacing: -.04em; margin-bottom: 64px; text-align: center; }
     .about-timeline h2 em { font-style: normal; color: var(--green); }
 
-    .timeline { position: relative; max-width: 800px; margin: 0 auto; }
-    .timeline::before { content: ''; position: absolute; left: 28px; top: 0; bottom: 0; width: 2px; background: var(--gray-200); }
+    .timeline { position: relative; max-width: 860px; margin: 0 auto; }
+    .timeline::before { content: ''; position: absolute; left: 50%; transform: translateX(-50%); top: 0; bottom: 0; width: 2px; background: var(--gray-200); }
 
-    .tl-item { display: grid; grid-template-columns: 72px 1fr; gap: 32px; margin-bottom: 48px; align-items: start; }
+    .tl-item { display: grid; grid-template-columns: 1fr 96px 1fr; gap: 0 32px; margin-bottom: 56px; align-items: center; }
+    .tl-item:nth-child(odd) .tl-dot    { grid-column: 2; grid-row: 1; }
+    .tl-item:nth-child(odd) .tl-content { grid-column: 1; grid-row: 1; text-align: right; }
+    .tl-item:nth-child(even) .tl-dot    { grid-column: 2; grid-row: 1; }
+    .tl-item:nth-child(even) .tl-content { grid-column: 3; grid-row: 1; text-align: left; }
     .tl-dot {
-      width: 68px; height: 68px; border-radius: 50%;
+      width: 96px; height: 96px; border-radius: 50%;
       background: var(--white); border: 2px solid var(--gray-200);
-      display: grid; place-items: center;
-      font-family: var(--font-h); font-size: 11px; font-weight: 700; color: var(--gray-400);
+      display: grid; place-items: center; z-index: 1;
+      font-family: var(--font-head); font-size: 13px; font-weight: 700; color: var(--gray-400);
       letter-spacing: -.02em;
-      position: relative; z-index: 1; flex-shrink: 0;
-      transition: border-color .2s, color .2s, background .2s;
+      transition: border-color .3s, color .3s, background .3s;
+      box-shadow: 0 2px 12px rgba(0,0,0,.08);
     }
-    .tl-item:hover .tl-dot { border-color: var(--green); color: var(--green); background: var(--green-dim); }
-    .tl-content { padding-top: 12px; }
-    .tl-year { font-family: var(--font-h); font-size: 13px; font-weight: 600; color: var(--green); letter-spacing: .06em; margin-bottom: 4px; }
-    .tl-title { font-family: var(--font-h); font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .tl-dot--active,
+    .tl-item:hover .tl-dot { border-color: var(--green); color: var(--white); background: var(--green); box-shadow: 0 4px 20px rgba(0,166,82,.3); }
+    .tl-content { background: var(--white); border-radius: 12px; padding: 24px 28px; box-shadow: 0 2px 16px rgba(0,0,0,.07); }
+    .tl-year { font-family: var(--font-head); font-size: 13px; font-weight: 600; color: var(--green); letter-spacing: .06em; margin-bottom: 4px; }
+    .tl-title { font-family: var(--font-head); font-size: 17px; font-weight: 700; margin-bottom: 8px; }
     .tl-text { font-size: 14px; line-height: 1.65; color: var(--gray-600); }
 
     /* Values dark section */
@@ -2447,14 +2454,22 @@
         min-height: 0;
       }
       .fp-img { min-height: 240px; max-height: 320px; }
-      .stats-band { padding: 40px 32px; grid-template-columns: repeat(2, 1fr); }
-      .stats-band .stat-item:nth-child(2) { border-right: none; }
-      .stats-band .stat-item:nth-child(3) { border-top: 1px solid var(--gray-200); }
+      .stats-band { padding: 48px 32px; grid-template-columns: repeat(2, 1fr); gap: 32px 0; }
+      .stats-band .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.12); padding-bottom: 32px; }
+      .stats-band .stat-item:nth-child(3),
+      .stats-band .stat-item:nth-child(4) { border-bottom: none; }
       .about-intro { grid-template-columns: 1fr; }
       .about-intro-right { min-height: 320px; }
       .about-intro-right::before { display: none; }
       .about-intro-left { padding: 48px 32px; }
-      .about-timeline { padding: 64px 32px; }
+      .about-timeline { padding: 64px 24px; }
+      .timeline::before { left: 40px; transform: none; }
+      .tl-item { grid-template-columns: 72px 1fr; gap: 0 20px; }
+      .tl-item:nth-child(odd) .tl-dot,
+      .tl-item:nth-child(even) .tl-dot    { grid-column: 1; }
+      .tl-item:nth-child(odd) .tl-content,
+      .tl-item:nth-child(even) .tl-content { grid-column: 2; grid-row: 1; text-align: left; }
+      .tl-dot { width: 72px; height: 72px; font-size: 11px; }
       .about-values { grid-template-columns: 1fr; padding: 64px 32px; gap: 48px; }
       .about-team { padding: 64px 32px; }
       .faq-layout { grid-template-columns: 1fr; padding: 40px 32px 64px; }
@@ -4011,10 +4026,22 @@
 
   <!-- Stats -->
   <div class="stats-band">
-    <div class="stat-item reveal"><div class="stat-item-num" data-target="500">500<em>+</em></div><div class="stat-item-lbl">Projecten afgerond</div></div>
-    <div class="stat-item reveal"><div class="stat-item-num" data-target="20">20<em>+</em></div><div class="stat-item-lbl">Jaar ervaring</div></div>
-    <div class="stat-item reveal"><div class="stat-item-num" data-target="100">100<em>%</em></div><div class="stat-item-lbl">Op maat</div></div>
-    <div class="stat-item reveal"><div class="stat-item-num" data-letter-target="Z">A<em>–<span class="stat-letter">Z</span></em></div><div class="stat-item-lbl">Volledig ontzorgd</div></div>
+    <div class="stat-item reveal">
+      <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="stat-item-num" data-target="500">500<em>+</em></div><div class="stat-item-lbl">Projecten afgerond</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <div class="stat-item-num" data-target="20">20<em>+</em></div><div class="stat-item-lbl">Jaar ervaring</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+      <div class="stat-item-num" data-target="100">100<em>%</em></div><div class="stat-item-lbl">Op maat</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+      <div class="stat-item-num" data-letter-target="Z">A<em>–<span class="stat-letter">Z</span></em></div><div class="stat-item-lbl">Volledig ontzorgd</div>
+    </div>
   </div>
 
   <!-- Filters -->
@@ -4687,10 +4714,22 @@
 
   <!-- Stats -->
   <div class="stats-band">
-    <div class="stat-item reveal"><div class="stat-item-num" data-target="20">20<em>+</em></div><div class="stat-item-lbl">Jaar ervaring</div></div>
-    <div class="stat-item reveal"><div class="stat-item-num" data-target="500">500<em>+</em></div><div class="stat-item-lbl">Tevreden klanten</div></div>
-    <div class="stat-item reveal"><div class="stat-item-num" data-target="100">100<em>%</em></div><div class="stat-item-lbl">Op maat</div></div>
-    <div class="stat-item reveal"><div class="stat-item-num">010</div><div class="stat-item-lbl">Rotterdam born</div></div>
+    <div class="stat-item reveal">
+      <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <div class="stat-item-num" data-target="20">20<em>+</em></div><div class="stat-item-lbl">Jaar ervaring</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <div class="stat-item-num" data-target="500">500<em>+</em></div><div class="stat-item-lbl">Tevreden klanten</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+      <div class="stat-item-num" data-target="100">100<em>%</em></div><div class="stat-item-lbl">Op maat</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <div class="stat-item-num">010</div><div class="stat-item-lbl">Rotterdam born</div>
+    </div>
   </div>
 
   <!-- Timeline -->
@@ -4719,7 +4758,7 @@
         </div>
       </div>
       <div class="tl-item reveal">
-        <div class="tl-dot">2025</div>
+        <div class="tl-dot tl-dot--active">2025</div>
         <div class="tl-content">
           <div class="tl-title">Landelijke klanten & jubileum</div>
           <div class="tl-text">Onze klantenkring groeit van Rotterdam naar heel Nederland. In 2025 vieren we ons 20-jarig jubileum, een mijlpaal voor het team en iedereen die ooit voor Hockeypolo heeft gewerkt.</div>
