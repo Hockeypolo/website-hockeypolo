@@ -6076,7 +6076,7 @@
       try {
         var widgetId = grecaptcha.render(entry.el, {
           sitekey: RECAPTCHA_SITEKEY,
-          theme:   entry.compact ? 'dark' : 'light',
+          theme:   'light',
           size:    'normal'
         });
         entry.el.dataset.widgetId = widgetId;
