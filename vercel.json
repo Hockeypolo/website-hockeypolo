@@ -5,6 +5,36 @@
       "has": [{ "type": "host", "value": "www.hockeypolo.com" }],
       "destination": "https://hockeypolo.com/$1",
       "permanent": true
+    },
+    {
+      "source": "/portfolio-collections/:path*",
+      "destination": "/impressies",
+      "permanent": true
+    },
+    {
+      "source": "/_frog",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/promotieartikelen-en-merchandise",
+      "destination": "/producten",
+      "permanent": true
+    },
+    {
+      "source": "/diensten",
+      "destination": "/producten",
+      "permanent": true
+    },
+    {
+      "source": "/kleding",
+      "destination": "/producten",
+      "permanent": true
+    },
+    {
+      "source": "/offerte-aanvragen",
+      "destination": "/contact",
+      "permanent": true
     }
   ],
   "rewrites": [
