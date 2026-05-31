@@ -1,12 +1,6 @@
 {
   "redirects": [
     {
-      "source": "/(.*)",
-      "has": [{ "type": "host", "value": "www.hockeypolo.com" }],
-      "destination": "https://hockeypolo.com/$1",
-      "permanent": true
-    },
-    {
       "source": "/portfolio-collections/:path*",
       "destination": "/impressies",
       "permanent": true
