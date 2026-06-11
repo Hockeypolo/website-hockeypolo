@@ -744,6 +744,13 @@
       .marquee-track { animation: none; }
     }
 
+    /* Pauzeer doorlopende animaties in secties die buiten beeld zijn (performance).
+       Toegevoegd via IntersectionObserver onderaan de pagina. */
+    .io-anim-paused,
+    .io-anim-paused *,
+    .io-anim-paused *::before,
+    .io-anim-paused *::after { animation-play-state: paused !important; }
+
     .marquee-item {
       font-family: var(--font-head);
       font-size: 13px;
@@ -9150,6 +9157,25 @@
     });
   }, { threshold: 0 });
   io.observe(band);
+})();
+</script>
+
+<!-- ── Pauzeer doorlopende sectie-animaties wanneer off-screen (performance) ── -->
+<script>
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var hosts = [];
+  ['.hero', '.values', '.about-values', '.contact-map'].forEach(function (sel) {
+    document.querySelectorAll(sel).forEach(function (el) { hosts.push(el); });
+  });
+  if (!hosts.length) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      e.target.classList.toggle('io-anim-paused', !e.isIntersecting);
+    });
+  }, { threshold: 0 });
+  hosts.forEach(function (el) { io.observe(el); });
 })();
 </script>
 </body>
