@@ -690,6 +690,14 @@
       to   { transform: translateX(-50%); }
     }
 
+    /* Pauzeer de logo-strook bij hover zodat een logo bekeken kan worden */
+    .logo-band:hover .marquee-track { animation-play-state: paused; }
+
+    /* Respecteer gebruikersvoorkeur voor minder beweging */
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track { animation: none; }
+    }
+
     .marquee-item {
       font-family: var(--font-head);
       font-size: 13px;
@@ -9079,6 +9087,23 @@
   } else {
     maybeStartTimer();
   }
+})();
+</script>
+
+<!-- ── Logo-strook: pauzeer animatie wanneer off-screen (performance) ── -->
+<script>
+(function () {
+  var band = document.querySelector('.logo-band');
+  var track = band && band.querySelector('.marquee-track');
+  if (!band || !track || !('IntersectionObserver' in window)) return;
+  // Reduced-motion: CSS zet de animatie al op none, niets te doen
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      track.style.animationPlayState = e.isIntersecting ? 'running' : 'paused';
+    });
+  }, { threshold: 0 });
+  io.observe(band);
 })();
 </script>
 </body>
