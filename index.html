@@ -739,17 +739,22 @@
     /* Pauzeer de logo-strook bij hover zodat een logo bekeken kan worden */
     .logo-band:hover .marquee-track { animation-play-state: paused; }
 
+    /* Off-screen: logo-strook gepauzeerd via CSS-klasse (gezet door IntersectionObserver).
+       Standaard loopt de animatie gewoon door — klasse voegt alleen pauze toe. */
+    .logo-band-offscreen .marquee-track { animation-play-state: paused; }
+
     /* Respecteer gebruikersvoorkeur voor minder beweging */
     @media (prefers-reduced-motion: reduce) {
       .marquee-track { animation: none; }
     }
 
     /* Pauzeer doorlopende animaties in secties die buiten beeld zijn (performance).
-       Toegevoegd via IntersectionObserver onderaan de pagina. */
+       Toegevoegd via IntersectionObserver onderaan de pagina.
+       Geldt NIET voor .logo-band (die heeft eigen klasse-aanpak hierboven). */
     .io-anim-paused,
     .io-anim-paused *,
     .io-anim-paused *::before,
-    .io-anim-paused *::after { animation-play-state: paused !important; }
+    .io-anim-paused *::after { animation-play-state: paused; }
 
     .marquee-item {
       font-family: var(--font-head);
@@ -9147,13 +9152,13 @@
 <script>
 (function () {
   var band = document.querySelector('.logo-band');
-  var track = band && band.querySelector('.marquee-track');
-  if (!band || !track || !('IntersectionObserver' in window)) return;
-  // Reduced-motion: CSS zet de animatie al op none, niets te doen
+  if (!band || !('IntersectionObserver' in window)) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  // Gebruik CSS-klasse (niet inline style) zodat de standaard altijd 'running' is.
+  // Als de observer niet vuurt blijft de animatie gewoon draaien — veilige fallback.
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
-      track.style.animationPlayState = e.isIntersecting ? 'running' : 'paused';
+      band.classList.toggle('logo-band-offscreen', !e.isIntersecting);
     });
   }, { threshold: 0 });
   io.observe(band);
