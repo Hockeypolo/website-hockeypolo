@@ -739,10 +739,6 @@
     /* Pauzeer de logo-strook bij hover zodat een logo bekeken kan worden */
     .logo-band:hover .marquee-track { animation-play-state: paused; }
 
-    /* Off-screen: logo-strook gepauzeerd via CSS-klasse (gezet door IntersectionObserver).
-       Standaard loopt de animatie gewoon door — klasse voegt alleen pauze toe. */
-    .logo-band-offscreen .marquee-track { animation-play-state: paused; }
-
     /* Respecteer gebruikersvoorkeur voor minder beweging */
     @media (prefers-reduced-motion: reduce) {
       .marquee-track { animation: none; }
@@ -9148,22 +9144,6 @@
 })();
 </script>
 
-<!-- ── Logo-strook: pauzeer animatie wanneer off-screen (performance) ── -->
-<script>
-(function () {
-  var band = document.querySelector('.logo-band');
-  if (!band || !('IntersectionObserver' in window)) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  // Gebruik CSS-klasse (niet inline style) zodat de standaard altijd 'running' is.
-  // Als de observer niet vuurt blijft de animatie gewoon draaien — veilige fallback.
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      band.classList.toggle('logo-band-offscreen', !e.isIntersecting);
-    });
-  }, { threshold: 0 });
-  io.observe(band);
-})();
-</script>
 
 <!-- ── Pauzeer doorlopende sectie-animaties wanneer off-screen (performance) ── -->
 <script>
