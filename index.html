@@ -94,7 +94,7 @@
       {
         "@type": "Question",
         "name": "Is er een minimale afnamehoeveelheid?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Voor de meeste producten hanteren wij geen harde minimum afname. Bij kleine aantallen kunnen de kosten per stuk iets hoger uitvallen. Neem contact op voor een vrijblijvende offerte." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Ja. Per product geldt een minimale afname; het minimum vind je bij elk product op de productenpagina. Bij grotere aantallen daalt de prijs per stuk. Neem contact op voor een vrijblijvende offerte." }
       },
       {
         "@type": "Question",
@@ -2055,12 +2055,23 @@
       .product-card-design-badge { font-size: 10px; padding: 6px 10px; top: 8px; right: 8px; }
     }
 
-    
+
     .product-card-title {
       padding: 14px 16px 8px;
       font-family: var(--font-h); font-size: 15px; font-weight: 700;
       letter-spacing: -.02em; color: var(--black);
     }
+    /* Subtiel label met de minimale afname per product (op kaart + modal) */
+    .product-card-minafname {
+      display: inline-flex; align-items: center; align-self: flex-start;
+      font-family: var(--font-body); font-size: 11px; font-weight: 600;
+      color: var(--green); background: var(--green-dim);
+      border: 1px solid rgba(0,166,82,.2);
+      padding: 3px 9px; border-radius: 100px; margin-bottom: 10px;
+      white-space: nowrap;
+    }
+    /* Variant in de productmodal: iets meer ademruimte t.o.v. de beschrijving */
+    .proj-minafname { margin: 4px 0 16px; }
     .product-card-body { padding: 0 16px 16px; display: flex; flex-direction: column; flex: 1; justify-content: flex-end; }
     .product-card-name { font-family: var(--font-h); font-size: 16px; font-weight: 700; margin-bottom: 6px; }
     .product-card-desc { font-size: 13px; line-height: 1.5; color: var(--gray-600); margin-bottom: 10px; }
@@ -4092,7 +4103,7 @@
         </div>
         <div class="cta-trust-item">
           <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-          Geen minimale afname
+          Digitale proef vooraf
         </div>
       </div>
     </div>
@@ -4177,6 +4188,7 @@
           </div>
           <div class="product-card-title">T-shirts</div>
           <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 15 stuks</div>
             <div class="product-card-desc">Hoogwaardige T-shirts volledig op maat bedrukt of geborduurd met jouw logo, tekst of ontwerp.</div>
             <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
@@ -4190,6 +4202,7 @@
           </div>
           <div class="product-card-title">Polo's</div>
           <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 15 stuks</div>
             <div class="product-card-desc">Klassieke polo's in piqué stof, beschikbaar in effen uitvoering of met contrasterende bies.</div>
             <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
@@ -4203,6 +4216,7 @@
           </div>
           <div class="product-card-title">Hoodies</div>
           <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 10 stuks</div>
             <div class="product-card-desc">Warme hoodies in fleece of french terry, ideaal als clubkleding of dispuutsartikel.</div>
             <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
@@ -4216,6 +4230,7 @@
           </div>
           <div class="product-card-title">Quarter-zip Sweaters</div>
           <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 12 stuks</div>
             <div class="product-card-desc">Stijlvolle quarter-zip sweaters met ritssluiting bij de kraag. Populair als teamwear.</div>
             <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
@@ -4233,6 +4248,7 @@
           </div>
           <div class="product-card-title">Sportshirts</div>
           <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 15 stuks</div>
             <div class="product-card-desc">Functionele sportshirts in ademend materiaal, perfect voor hockey, voetbal en andere sporten.</div>
             <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
@@ -4246,6 +4262,7 @@
           </div>
           <div class="product-card-title">Overhemden</div>
           <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 15 stuks</div>
             <div class="product-card-desc">Formele overhemden voor gala's, lustrumactiviteiten en bedrijfsevents.</div>
             <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
@@ -4259,6 +4276,7 @@
           </div>
           <div class="product-card-title">Sjaals</div>
           <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 20 stuks</div>
             <div class="product-card-desc">Op maat geweven of gebreide sjaals in jouw clubkleuren.</div>
             <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
@@ -4272,6 +4290,7 @@
           </div>
           <div class="product-card-title">Sokken</div>
           <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 25 stuks</div>
             <div class="product-card-desc">Op maat gebreide sokken in jouw clubkleuren. Voorzien van logo of tekstborduurwerk.</div>
             <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
@@ -4285,6 +4304,7 @@
           </div>
           <div class="product-card-title">Zwembroeken</div>
           <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 10 stuks</div>
             <div class="product-card-desc">Bedrukte zwembroeken voor roeiverenigingen, watersporten en evenementen.</div>
             <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
@@ -4298,6 +4318,7 @@
           </div>
           <div class="product-card-title">Schorten</div>
           <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 10 stuks</div>
             <div class="product-card-desc">Op maat bedrukte of geborduurde schorten voor horeca, evenementen en teams.</div>
             <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
@@ -4311,6 +4332,7 @@
           </div>
           <div class="product-card-title">Paraplu's</div>
           <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 20 stuks</div>
             <div class="product-card-desc">Stijlvolle vouwparaplu's met bedrukte panelen in jouw clubkleur of logo.</div>
             <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
@@ -4324,6 +4346,7 @@
           </div>
           <div class="product-card-title">Handdoeken</div>
           <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 20 stuks</div>
             <div class="product-card-desc">Zachte handdoeken in badstof, beschikbaar als strandhanddoek of sporthanddoek.</div>
             <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
@@ -4337,6 +4360,7 @@
           </div>
           <div class="product-card-title">Mutsen</div>
           <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 30 stuks</div>
             <div class="product-card-desc">Gebreide mutsen in jouw teamkleur of clubkleur.</div>
             <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
@@ -4350,6 +4374,7 @@
           </div>
           <div class="product-card-title">Vlaggen</div>
           <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 10 stuks</div>
             <div class="product-card-desc">Op maat gemaakte vlaggen voor verenigingen, evenementen en bedrijven.</div>
             <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
@@ -5128,7 +5153,7 @@
       <div class="cta-trust">
         <div class="cta-trust-item"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Gratis ontwerp advies</div>
         <div class="cta-trust-item"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Snelle levering</div>
-        <div class="cta-trust-item"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Geen minimale afname</div>
+        <div class="cta-trust-item"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Digitale proef vooraf</div>
       </div>
     </div>
   </div>
@@ -5544,7 +5569,7 @@
             <span class="faq-q-text">Is er een minimale afnamehoeveelheid?</span>
             <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
           </button>
-          <div class="faq-a"><div class="faq-a-inner">Voor de meeste producten hanteren wij geen harde minimum afname. Bij kleine aantallen kunnen de kosten per stuk iets hoger uitvallen. Neem contact met ons op voor een vrijblijvende offerte, we kijken altijd naar de beste oplossing voor jouw situatie.</div></div>
+          <div class="faq-a"><div class="faq-a-inner">Ja. Per product geldt een minimale afname; het minimum vind je bij elk product op de productenpagina. Bij grotere aantallen daalt de prijs per stuk. Neem contact met ons op voor een vrijblijvende offerte, we kijken altijd naar de beste oplossing voor jouw situatie.</div></div>
         </div>
 
         <div class="faq-item">
@@ -7205,6 +7230,7 @@
     {
       id: 0,
       name: "T-shirts",
+      minQty: 15,
       desc: "Hoogwaardige T-shirts volledig op maat bedrukt of geborduurd met jouw logo, tekst of ontwerp. Beschikbaar in tientallen kleuren en maten, geschikt voor elke gelegenheid.",
       specs: ["Katoen of polyester blend", "Zeefdruk, DTG of borduurwerk", "Alle kleuren en maten beschikbaar", "Geschikt voor kleine en grote aantallen"],
       photos: [
@@ -7215,6 +7241,7 @@
     {
       id: 1,
       name: "Polo's",
+      minQty: 15,
       desc: "Klassieke polo's in piqué stof, beschikbaar in effen uitvoering of met contrasterende bies. Perfect voor sportclubs, bedrijven en studentenverenigingen.",
       specs: ["100% katoen piqué", "Geborduurde of gedrukte branding", "Effen of met streepdetail", "Unisex pasvorm beschikbaar"],
       photos: [
@@ -7225,6 +7252,7 @@
     {
       id: 2,
       name: "Hoodies",
+      minQty: 10,
       desc: "Warme hoodies in fleece of french terry, ideaal als clubkleding of dispuutsartikel. Voorzien van kangoeroezak en verstelbare capuchon.",
       specs: ["280-320g fleece of french terry", "Zeefdruk of borduurwerk", "Unisex snit", "Geschikt voor hoge aantallen"],
       photos: [
@@ -7234,6 +7262,7 @@
     {
       id: 3,
       name: "Quarter-zip Sweaters",
+      minQty: 12,
       desc: "Stijlvolle quarter-zip sweaters met ritssluiting bij de kraag. Populair als teamwear, dispuutsartikel en bedrijfskleding. Verkrijgbaar met geborduurde branding.",
       specs: ["Fleece of french terry", "Rits bij kraag", "Borduurwerk of print", "Meerdere kleuren beschikbaar"],
       photos: [
@@ -7244,6 +7273,7 @@
     {
       id: 4,
       name: "Sportshirts",
+      minQty: 15,
       desc: "Functionele sportshirts in ademend materiaal, perfect voor hockey, voetbal en andere sporten. Verkrijgbaar in tweekleurig design met sublimatiemogelijkheden.",
       specs: ["100% polyester, ademend", "Sublimatie of zeefdruk", "Teamkleurenoptie", "Alle maten beschikbaar"],
       photos: [
@@ -7253,6 +7283,7 @@
     {
       id: 5,
       name: "Overhemden",
+      minQty: 15,
       desc: "Formele overhemden voor gala's, lustrumactiviteiten en bedrijfsevents. Voorzien van geborduurd logo of naam op de borst of manchet.",
       specs: ["Katoen of polyester mix", "Slanke of rechte snit", "Borduurwerk op borst of manchet", "Beschikbaar in meerdere kleuren"],
       photos: [
@@ -7262,8 +7293,9 @@
     {
       id: 6,
       name: "Sjaals",
+      minQty: 20,
       desc: "Op maat geweven of gebreide sjaals in jouw clubkleuren. Verkrijgbaar als supporterssjaal met franjes, volledig gepersonaliseerd met logo en tekst.",
-      specs: ["Geweven of gebreid", "Eigen kleur en logo", "Franjes naar keuze", "Minimum bestelling 50 stuks"],
+      specs: ["Geweven of gebreid", "Eigen kleur en logo", "Franjes naar keuze"],
       photos: [
         "product-photo-9.png",
         "product-photo-8.png"
@@ -7272,8 +7304,9 @@
     {
       id: 7,
       name: "Sokken",
+      minQty: 25,
       desc: "Op maat gebreide sokken in jouw clubkleuren. Voorzien van logo of tekstborduurwerk. Populair als dispuuts- of clubartikel.",
-      specs: ["Katoen/nylon mix", "Op maat gebreide patronen", "Eén maat of meerdere maten", "Minimum bestelling 50 paar"],
+      specs: ["Katoen/nylon mix", "Op maat gebreide patronen", "Eén maat of meerdere maten"],
       photos: [
         "product-photo-7.png"
       ]
@@ -7281,6 +7314,7 @@
     {
       id: 8,
       name: "Zwembroeken",
+      minQty: 10,
       desc: "Bedrukte zwembroeken voor roeiverenigingen, watersporten en evenementen. Voorzien van gekleurd koordje en logodruk op de zijkant.",
       specs: ["100% polyester, sneldrogend", "Sublimatiemogelijkheid", "Maat S t/m XXL", "Bedrukt koordje mogelijk"],
       photos: [
@@ -7290,8 +7324,9 @@
     {
       id: 9,
       name: "Schorten",
+      minQty: 10,
       desc: "Op maat bedrukte of geborduurde schorten voor horeca, evenementen en teamactiviteiten. Professionele uitstraling met jouw logo of naam op de borst of zak.",
-      specs: ["Katoen of polyester mix", "Zeefdruk of borduurwerk", "Verstelbaar nekband en tailleband", "Minimum 25 stuks"],
+      specs: ["Katoen of polyester mix", "Zeefdruk of borduurwerk", "Verstelbaar nekband en tailleband"],
       photos: [
         "product-photo-5.png"
       ]
@@ -7299,6 +7334,7 @@
     {
       id: 10,
       name: "Paraplu's",
+      minQty: 20,
       desc: "Stijlvolle vouwparaplu's met bedrukte panelen in jouw clubkleur of logo. Ideaal als relatiegeschenk of evenementartikel.",
       specs: ["Automatisch open/dicht", "Windproof frame", "Panelen bedrukt naar keuze", "Geschikt voor reliëflogo"],
       photos: [
@@ -7308,8 +7344,9 @@
     {
       id: 11,
       name: "Handdoeken",
+      minQty: 20,
       desc: "Zachte handdoeken in badstof, beschikbaar als strandhanddoek of sporthanddoek. Voorzien van geborduurde naam of zeefdruk.",
-      specs: ["400-600g badstof", "Borduurwerk of zeefdruk", "Sport- of strandformaat", "Minimum 25 stuks"],
+      specs: ["400-600g badstof", "Borduurwerk of zeefdruk", "Sport- of strandformaat"],
       photos: [
         "product-photo-3.png"
       ]
@@ -7317,6 +7354,7 @@
     {
       id: 12,
       name: "Mutsen",
+      minQty: 30,
       desc: "Gebreide mutsen in jouw teamkleur of clubkleur. Voorzien van geborduurde tekst of logo op de manchet. Populair bij roeiverenigingen en sportclubs.",
       specs: ["100% acryl of wol", "Geborduurde branding", "One size fits most", "Verkrijgbaar met of zonder pompon"],
       photos: [
@@ -7326,8 +7364,9 @@
     {
       id: 13,
       name: "Vlaggen",
+      minQty: 10,
       desc: "Op maat gemaakte vlaggen voor verenigingen, evenementen en bedrijven. Volledig bedrukt met jouw logo, wapen of clubkleuren. Verkrijgbaar als beachflag, gevelvlag of lustrumvlag.",
-      specs: ["Polyester satijn of doek", "Volledige sublimatiemogelijkheid", "Metalen ringen voor bevestiging", "Minimum 1 stuk mogelijk"],
+      specs: ["Polyester satijn of doek", "Volledige sublimatiemogelijkheid", "Metalen ringen voor bevestiging"],
       photos: [
         "product-photo-1.png"
       ]
@@ -7357,6 +7396,17 @@
     if (tagEl) tagEl.textContent = '';
     document.getElementById('prod-title').textContent = currentProduct.name;
     document.getElementById('prod-desc').textContent  = currentProduct.desc;
+
+    // Minimale afname (harde vereiste) tonen indien aanwezig
+    const minEl = document.getElementById('prod-minafname');
+    if (minEl) {
+      if (currentProduct.minQty) {
+        minEl.textContent = 'Min. afname ' + currentProduct.minQty + ' stuks';
+        minEl.style.display = 'inline-flex';
+      } else {
+        minEl.style.display = 'none';
+      }
+    }
 
     // Spec chips
     const detEl = document.getElementById('prod-details');
@@ -8866,6 +8916,7 @@
       </div>
       <h2 class="proj-title" id="prod-title">Productnaam</h2>
       <p class="proj-desc" id="prod-desc">Beschrijving</p>
+      <span class="product-card-minafname proj-minafname" id="prod-minafname"></span>
       <div class="proj-details" id="prod-details"></div>
 
       <!-- Customizer-blok: alleen zichtbaar bij producten met ontwerptool (sportshirts) -->
