@@ -34,6 +34,22 @@
   "rewrites": [
     { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
     { "source": "/robots.txt",  "destination": "/robots.txt"  },
+    { "source": "/deel-je-idee",          "destination": "/deel-je-idee.html" },
+    { "source": "/bedankt-deel-je-idee",  "destination": "/bedankt-deel-je-idee.html" },
+    { "source": "/producten/t-shirts",             "destination": "/producten-t-shirts.html" },
+    { "source": "/producten/polos",                "destination": "/producten-polos.html" },
+    { "source": "/producten/hoodies",              "destination": "/producten-hoodies.html" },
+    { "source": "/producten/quarter-zip-sweaters", "destination": "/producten-quarter-zip-sweaters.html" },
+    { "source": "/producten/sportshirts",          "destination": "/producten-sportshirts.html" },
+    { "source": "/producten/overhemden",           "destination": "/producten-overhemden.html" },
+    { "source": "/producten/sjaals",               "destination": "/producten-sjaals.html" },
+    { "source": "/producten/sokken",               "destination": "/producten-sokken.html" },
+    { "source": "/producten/zwembroeken",          "destination": "/producten-zwembroeken.html" },
+    { "source": "/producten/schorten",             "destination": "/producten-schorten.html" },
+    { "source": "/producten/paraplus",             "destination": "/producten-paraplus.html" },
+    { "source": "/producten/handdoeken",           "destination": "/producten-handdoeken.html" },
+    { "source": "/producten/mutsen",               "destination": "/producten-mutsen.html" },
+    { "source": "/producten/vlaggen",              "destination": "/producten-vlaggen.html" },
     { "source": "/(.*)",        "destination": "/index.html"  }
   ]
 }

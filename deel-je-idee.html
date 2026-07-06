@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deel jouw idee — Hockeypolo</title>
+  <meta name="description" content="Vertel ons over je project en wij maken er een scherpe offerte van. Vrijblijvend en zonder druk. Reactie binnen één werkdag." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hockeypolo.com/deel-je-idee" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="preload" as="font" type="font/woff2" href="fonts/space-grotesk-v22-latin-700.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="fonts/inter-v20-latin-regular.woff2" crossorigin />
+  <style>
+    /* ═══ SELF-HOSTED FONTS ═══ */
+    @font-face { font-family:'Inter'; font-style:normal; font-weight:400; font-display:swap; src:url('fonts/inter-v20-latin-regular.woff2') format('woff2'); }
+    @font-face { font-family:'Inter'; font-style:normal; font-weight:500; font-display:swap; src:url('fonts/inter-v20-latin-500.woff2') format('woff2'); }
+    @font-face { font-family:'Inter'; font-style:normal; font-weight:600; font-display:swap; src:url('fonts/inter-v20-latin-600.woff2') format('woff2'); }
+    @font-face { font-family:'Space Grotesk'; font-style:normal; font-weight:600; font-display:swap; src:url('fonts/space-grotesk-v22-latin-600.woff2') format('woff2'); }
+    @font-face { font-family:'Space Grotesk'; font-style:normal; font-weight:700; font-display:swap; src:url('fonts/space-grotesk-v22-latin-700.woff2') format('woff2'); }
+
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    :root {
+      --green:#00A652; --green-dark:#008f47; --green-dim:rgba(0,166,82,.08);
+      --black:#000; --white:#fff; --gray-50:#fafafa; --gray-100:#f4f4f4;
+      --gray-200:#e8e8e8; --gray-400:#aaa; --gray-600:#555; --red:#e53e3e;
+      --font-head:'Space Grotesk',sans-serif; --font-h:'Space Grotesk',sans-serif;
+      --font-body:'Inter',sans-serif; --font-b:'Inter',sans-serif;
+      --ease:cubic-bezier(.16,1,.3,1); --radius:8px; --r:8px;
+    }
+    html { scroll-behavior:smooth; }
+    body { font-family:var(--font-body); background:var(--white); color:var(--black); overflow-x:hidden; }
+    img { display:block; max-width:100%; }
+    a { color:inherit; text-decoration:none; }
+
+    /* ═══ NAVBAR ═══ */
+    nav { position:fixed; top:0; left:0; right:0; z-index:200; height:72px; display:flex; align-items:center; justify-content:space-between; padding:0 80px; background:rgba(255,255,255,.95); backdrop-filter:blur(16px); border-bottom:1px solid var(--gray-200); }
+    .nav-logo-img { height:64px; width:auto; display:block; }
+    .nav-right { display:flex; align-items:center; gap:16px; }
+    .nav-links { display:flex; align-items:center; gap:32px; list-style:none; }
+    .nav-links a { font-family:var(--font-head); font-size:12px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--black); transition:color .2s; }
+    .nav-links a:hover { color:var(--green); }
+    .nav-cta { background:var(--green)!important; color:var(--white)!important; padding:10px 24px; border-radius:var(--radius); transition:background .2s!important; }
+    .nav-cta:hover { background:var(--green-dark)!important; }
+    .nav-socials { display:flex; align-items:center; gap:6px; }
+    .nav-soc { width:36px; height:36px; border-radius:6px; border:1px solid var(--gray-200); display:grid; place-items:center; color:var(--black); transition:border-color .2s, background .2s, color .2s; flex-shrink:0; }
+    .nav-soc:hover { border-color:var(--green); background:var(--green-dim); color:var(--green); }
+    .nav-soc svg { width:15px; height:15px; stroke:currentColor; fill:none; stroke-width:1.8; display:block; }
+    .nav-hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; width:40px; height:40px; background:none; border:none; cursor:pointer; padding:4px; }
+    .ham-bar { display:block; width:24px; height:2px; background:var(--black); border-radius:2px; transition:transform .3s, opacity .3s; }
+    .nav-hamburger.open .ham-bar:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .nav-hamburger.open .ham-bar:nth-child(2) { opacity:0; }
+    .nav-hamburger.open .ham-bar:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display:none; position:fixed; top:72px; left:0; right:0; background:var(--white); border-bottom:1px solid var(--gray-200); z-index:199; flex-direction:column; padding:8px 0 16px; box-shadow:0 8px 24px rgba(0,0,0,.08); }
+    .mobile-menu.open { display:flex; }
+    .mobile-menu-item { font-family:var(--font-head); font-size:15px; font-weight:500; letter-spacing:.04em; text-transform:uppercase; padding:14px 24px; color:var(--black); border-bottom:1px solid var(--gray-100); transition:color .2s, background .2s; }
+    .mobile-menu-item:hover { color:var(--green); background:var(--gray-50); }
+    .mobile-menu-cta { margin:12px 24px 0; background:var(--green); color:var(--white)!important; border-radius:var(--radius); text-align:center; border-bottom:none; }
+    .mobile-menu-cta:hover { background:var(--green-dark)!important; }
+    @media (max-width:1024px) { .nav-links li:not(:last-child){ display:none; } }
+    @media (max-width:640px) { .nav-links{ display:none!important; } .nav-socials{ display:none!important; } .nav-hamburger{ display:flex; } nav{ padding:0 24px; } }
+
+    /* ═══ HERO + PROGRESS ═══ */
+    .section-label { display:inline-flex; align-items:center; gap:8px; font-family:var(--font-head); font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--green); margin-bottom:16px; }
+    .section-label::before { content:''; width:24px; height:2px; background:var(--green); border-radius:2px; }
+    .intake-hero { padding:118px 24px 24px; max-width:760px; margin:0 auto; text-align:center; }
+    .intake-hero h1 { font-family:var(--font-head); font-weight:700; font-size:clamp(34px,5vw,52px); letter-spacing:-.03em; margin-bottom:14px; }
+    .intake-hero h1 em { font-style:normal; color:var(--green); }
+    .intake-hero p { font-size:17px; color:var(--gray-600); line-height:1.6; max-width:560px; margin:0 auto; }
+    .progress { max-width:720px; margin:30px auto 0; padding:0 24px; }
+    .progress-bar { height:6px; background:var(--gray-200); border-radius:99px; overflow:hidden; }
+    .progress-fill { height:100%; background:var(--green); border-radius:99px; width:11.1%; transition:width .4s var(--ease); }
+    .progress-label { font-family:var(--font-head); font-size:12px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--green); margin-top:10px; text-align:right; }
+
+    /* ═══ FORM ═══ */
+    .intake-wrap { max-width:720px; margin:24px auto 0; padding:0 24px 90px; }
+    .step { display:none; animation:fadeUp .4s var(--ease); }
+    .step.active { display:block; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(12px);} to{opacity:1;transform:none;} }
+    .step-title { font-family:var(--font-head); font-weight:700; font-size:24px; letter-spacing:-.02em; margin-bottom:8px; }
+    .step-intro { font-size:15px; color:var(--gray-600); line-height:1.65; margin-bottom:24px; }
+    .step-intro ul { margin:12px 0 0 18px; }
+    .step-intro li { margin-bottom:6px; }
+
+    .form-group { margin-bottom:22px; }
+    .form-label { display:block; font-family:var(--font-head); font-size:13px; font-weight:600; margin-bottom:8px; }
+    .form-label .req { color:var(--green); }
+    .form-label .opt-tag { font-family:var(--font-body); font-weight:400; color:var(--gray-400); font-size:12px; }
+    .form-input, .form-textarea, .form-select { width:100%; font-family:var(--font-body); font-size:15px; padding:13px 15px; border:1.5px solid var(--gray-200); border-radius:var(--radius); background:var(--white); color:var(--black); transition:border-color .15s; min-height:50px; }
+    .form-input:focus, .form-textarea:focus, .form-select:focus { outline:none; border-color:var(--green); }
+    .form-textarea { min-height:120px; resize:vertical; line-height:1.55; }
+    .form-input.invalid, .form-textarea.invalid { border-color:var(--red); }
+    .field-hint { font-size:12.5px; color:var(--gray-400); margin-top:6px; }
+
+    /* radios als selecteerbare rijen */
+    .opt-row { display:flex; flex-direction:column; gap:10px; }
+    .opt { display:flex; align-items:center; gap:12px; padding:13px 16px; border:1.5px solid var(--gray-200); border-radius:var(--radius); cursor:pointer; transition:border-color .15s, background .15s; font-size:15px; min-height:52px; }
+    .opt:hover { border-color:var(--green); }
+    .opt input { accent-color:var(--green); width:18px; height:18px; flex-shrink:0; }
+    .opt:has(input:checked) { border-color:var(--green); background:var(--green-dim); }
+
+    /* product checkboxes */
+    .checkbox-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .prod-col h4 { font-family:var(--font-head); font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:var(--green); margin-bottom:12px; }
+    .prod-item { margin-bottom:6px; }
+    .prod-item > label { display:flex; align-items:center; gap:9px; font-size:14px; cursor:pointer; min-height:38px; }
+    .prod-item input[type=checkbox] { accent-color:var(--green); width:17px; height:17px; flex-shrink:0; }
+    .prod-qty { margin-top:4px; margin-left:26px; width:120px; min-height:40px; padding:8px 12px; font-size:14px; display:none; }
+    .prod-item.checked .prod-qty { display:block; }
+
+    /* logo blocks */
+    .logo-block { border:1.5px solid var(--gray-200); border-radius:12px; padding:20px; margin-bottom:16px; }
+    .logo-block-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
+    .logo-block-head .logo-num { font-family:var(--font-head); font-weight:700; font-size:15px; }
+    .logo-remove { background:none; border:none; color:var(--red); font-size:13px; cursor:pointer; font-family:var(--font-body); }
+    .logo-remove:hover { text-decoration:underline; }
+    .logo-block .form-group { margin-bottom:14px; }
+    .logo-block .form-group:last-child { margin-bottom:0; }
+    input[type=file] { width:100%; font-family:var(--font-body); font-size:14px; padding:12px 14px; border:1.5px dashed var(--gray-200); border-radius:var(--radius); background:var(--gray-50); cursor:pointer; }
+    input[type=file]::file-selector-button { font-family:var(--font-head); font-size:12px; font-weight:600; padding:8px 14px; margin-right:12px; border:none; border-radius:6px; background:var(--green-dim); color:var(--green); cursor:pointer; }
+
+    .add-btn { display:inline-flex; align-items:center; gap:8px; font-family:var(--font-head); font-size:13px; font-weight:600; color:var(--green); background:var(--green-dim); border:1.5px solid rgba(0,166,82,.25); padding:11px 18px; border-radius:var(--radius); cursor:pointer; transition:background .15s, border-color .15s; }
+    .add-btn:hover { background:rgba(0,166,82,.15); border-color:var(--green); }
+    .add-btn:disabled { opacity:.45; cursor:not-allowed; }
+
+    /* buttons */
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; font-family:var(--font-head); font-size:13px; font-weight:600; letter-spacing:.07em; text-transform:uppercase; padding:15px 30px; border-radius:var(--radius); cursor:pointer; border:2px solid transparent; transition:all .25s var(--ease); background:none; }
+    .btn svg { width:16px; height:16px; transition:transform .2s; }
+    .btn:hover svg { transform:translateX(3px); }
+    .btn-green { background:var(--green); color:var(--white); border-color:var(--green); }
+    .btn-green:hover { background:var(--green-dark); border-color:var(--green-dark); transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,166,82,.3); }
+    .btn-outline { background:transparent; color:var(--black); border-color:var(--black); }
+    .btn-outline:hover { background:var(--black); color:var(--white); transform:translateY(-2px); }
+    .btn-outline svg { transition:transform .2s; }
+    .btn-outline:hover svg { transform:translateX(-3px); }
+
+    .step-nav { display:flex; justify-content:space-between; gap:12px; margin-top:32px; padding-top:24px; border-top:1px solid var(--gray-100); }
+    .step-nav .btn { flex:0 0 auto; }
+    .form-error { color:var(--red); font-size:14px; margin-top:16px; display:none; line-height:1.5; }
+    .form-error.show { display:block; }
+
+    /* samenvatting */
+    .summary { background:var(--gray-50); border:1px solid var(--gray-200); border-radius:12px; padding:8px 22px; margin-bottom:6px; }
+    .summary-row { display:flex; gap:14px; padding:11px 0; border-bottom:1px solid var(--gray-200); font-size:14px; }
+    .summary-row:last-child { border-bottom:none; }
+    .summary-key { font-family:var(--font-head); font-weight:600; min-width:170px; color:var(--gray-600); }
+    .summary-val { flex:1; word-break:break-word; }
+    .summary-val.empty { color:var(--gray-400); }
+    .disclaimer { font-size:13px; color:var(--gray-400); margin-top:18px; line-height:1.6; }
+
+    /* loading */
+    .loading-overlay { position:fixed; inset:0; background:rgba(255,255,255,.94); display:none; align-items:center; justify-content:center; flex-direction:column; gap:18px; z-index:500; text-align:center; padding:24px; }
+    .loading-overlay.show { display:flex; }
+    .spinner { width:48px; height:48px; border:4px solid var(--gray-200); border-top-color:var(--green); border-radius:50%; animation:spin 1s linear infinite; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    .loading-overlay p { font-family:var(--font-head); font-size:15px; font-weight:600; }
+    .loading-overlay small { color:var(--gray-600); font-family:var(--font-body); font-weight:400; }
+
+    /* ═══ FOOTER ═══ */
+    footer { background:#090909; padding:56px 80px 36px; border-top:1px solid rgba(255,255,255,.05); }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:48px; margin-bottom:48px; }
+    .footer-logo { font-family:var(--font-head); font-size:17px; font-weight:700; color:var(--white); margin-bottom:14px; }
+    .footer-desc { font-size:14px; line-height:1.7; color:rgba(255,255,255,.4); max-width:260px; }
+    .footer-col h4 { font-family:var(--font-head); font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.85); margin-bottom:14px; }
+    .footer-col a { display:block; font-size:14px; color:rgba(255,255,255,.4); margin-bottom:9px; transition:color .2s; }
+    .footer-col a:hover { color:var(--green); }
+    .footer-bottom { display:flex; align-items:center; justify-content:space-between; padding-top:24px; border-top:1px solid rgba(255,255,255,.05); font-size:12px; color:rgba(255,255,255,.3); }
+    .footer-socials { display:flex; gap:10px; }
+    .soc { width:34px; height:34px; border-radius:8px; border:1px solid rgba(255,255,255,.1); display:grid; place-items:center; transition:border-color .2s, background .2s; }
+    .soc:hover { border-color:var(--green); background:rgba(0,166,82,.1); }
+    .soc svg { width:15px; height:15px; stroke:rgba(255,255,255,.5); fill:none; stroke-width:2; }
+    .soc:hover svg { stroke:var(--green); }
+    @media (max-width:768px) { .footer-grid{ grid-template-columns:1fr 1fr; gap:32px; } footer{ padding:48px 24px 28px; } .footer-bottom{ flex-direction:column; gap:16px; text-align:center; } }
+    @media (max-width:640px) { .checkbox-grid{ grid-template-columns:1fr; gap:20px; } .step-nav .btn{ padding:14px 20px; } }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav>
+  <a class="nav-logo" href="/"><img src="logo_hockeypolo.png" alt="Hockeypolo" class="nav-logo-img" /></a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/producten">Producten</a></li>
+      <li><a href="/impressies">Impressies</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/overons">Over Ons</a></li>
+      <li><a href="/faq">F.A.Q.</a></li>
+      <li><a class="nav-cta" href="/startproject">Start Project</a></li>
+    </ul>
+    <div class="nav-socials">
+      <a href="https://www.instagram.com/hockeypolo.rotterdam/" target="_blank" rel="noopener" class="nav-soc" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://nl.linkedin.com/company/hockeypolo" target="_blank" rel="noopener" class="nav-soc" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+      <a href="https://www.facebook.com/profile.php?id=61586950513778" target="_blank" rel="noopener" class="nav-soc" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+    </div>
+  </div>
+  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menu openen">
+    <span class="ham-bar"></span><span class="ham-bar"></span><span class="ham-bar"></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a class="mobile-menu-item" href="/">Home</a>
+  <a class="mobile-menu-item" href="/producten">Producten</a>
+  <a class="mobile-menu-item" href="/impressies">Impressies</a>
+  <a class="mobile-menu-item" href="/blog">Blog</a>
+  <a class="mobile-menu-item" href="/overons">Over Ons</a>
+  <a class="mobile-menu-item" href="/faq">F.A.Q.</a>
+  <a class="mobile-menu-item mobile-menu-cta" href="/startproject">Start Project →</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<header class="intake-hero">
+  <span class="section-label">Projectaanvraag</span>
+  <h1>Deel jouw <em>idee</em></h1>
+  <p>Vertel ons over je project — wij maken er een scherpe offerte van. Vrijblijvend, geen druk.</p>
+</header>
+<div class="progress">
+  <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+  <div class="progress-label" id="progress-label">Stap 1 van 9</div>
+</div>
+
+<!-- ═══ FORMULIER ═══ -->
+<main class="intake-wrap">
+  <form id="intake-form" autocomplete="on" novalidate>
+
+    <!-- STAP 1 — Welkom -->
+    <section class="step active" data-step="1">
+      <h2 class="step-title">Welkom 👋</h2>
+      <div class="step-intro">
+        <p>Fijn dat je je project met ons wilt delen. Met dit formulier verzamelen we in één keer alle info die we nodig hebben om je snel een scherpe offerte te sturen.</p>
+        <ul>
+          <li>Invullen duurt ongeveer <strong>5 tot 7 minuten</strong>.</li>
+          <li>Alle velden zijn <strong>optioneel</strong>, behalve je contactgegevens.</li>
+          <li>Je krijgt <strong>binnen één werkdag</strong> reactie van ons.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- STAP 2 — Wie ben je -->
+    <section class="step" data-step="2">
+      <h2 class="step-title">Wie ben je?</h2>
+      <p class="step-intro">Zodat we weten met wie we te maken hebben en de offerte goed kunnen richten.</p>
+      <div class="form-group">
+        <label class="form-label" for="f-naam">Naam <span class="req">*</span></label>
+        <input type="text" id="f-naam" class="form-input" placeholder="Jouw naam" autocomplete="name" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="f-organisatie">Organisatie / vereniging / bedrijf <span class="req">*</span></label>
+        <input type="text" id="f-organisatie" class="form-input" placeholder="Naam van je club, dispuut of bedrijf" autocomplete="organization" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Type organisatie <span class="req">*</span></label>
+        <div class="opt-row" id="type-org-options">
+          <label class="opt"><input type="radio" name="typeOrganisatie" value="Sportvereniging" /> Sportvereniging</label>
+          <label class="opt"><input type="radio" name="typeOrganisatie" value="Studentenvereniging, dispuut of jaarclub" /> Studentenvereniging, dispuut of jaarclub</label>
+          <label class="opt"><input type="radio" name="typeOrganisatie" value="Bedrijf / corporate" /> Bedrijf / corporate</label>
+          <label class="opt"><input type="radio" name="typeOrganisatie" value="Evenement / festival" /> Evenement / festival</label>
+          <label class="opt"><input type="radio" name="typeOrganisatie" value="Goed doel / stichting" /> Goed doel / stichting</label>
+          <label class="opt"><input type="radio" name="typeOrganisatie" value="Horeca / retail" /> Horeca / retail</label>
+          <label class="opt"><input type="radio" name="typeOrganisatie" value="Anders" id="type-anders-radio" /> Anders</label>
+        </div>
+        <input type="text" id="type-anders" class="form-input" placeholder="Namelijk..." style="display:none; margin-top:10px;" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="f-rol">Jouw rol <span class="opt-tag">(optioneel)</span></label>
+        <input type="text" id="f-rol" class="form-input" placeholder="Bijv. voorzitter, commissielid, marketing" />
+      </div>
+    </section>
+
+    <!-- STAP 3 — Wat wil je laten maken -->
+    <section class="step" data-step="3">
+      <h2 class="step-title">Wat wil je laten maken?</h2>
+      <p class="step-intro">Kies alles wat van toepassing is. Vul per product een geschat aantal in als je dat al weet. <span class="opt-tag">(alles optioneel)</span></p>
+      <div class="checkbox-grid">
+        <div class="prod-col"><h4>Kleding</h4><div id="prod-kleding"></div></div>
+        <div class="prod-col"><h4>Accessoires</h4><div id="prod-accessoires"></div></div>
+        <div class="prod-col"><h4>Promotie</h4><div id="prod-promotie"></div></div>
+      </div>
+      <div class="form-group" style="margin-top:24px;">
+        <label class="form-label" for="f-product-anders">Iets anders, namelijk <span class="opt-tag">(optioneel)</span></label>
+        <input type="text" id="f-product-anders" class="form-input" placeholder="Beschrijf het product" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="f-product-oms">Beschrijf je wensen <span class="opt-tag">(optioneel)</span></label>
+        <textarea id="f-product-oms" class="form-textarea" placeholder="Vertel vrijuit wat je voor ogen hebt: stijl, gelegenheid, bijzonderheden..."></textarea>
+      </div>
+    </section>
+
+    <!-- STAP 4 — Logo's & bedrukking -->
+    <section class="step" data-step="4">
+      <h2 class="step-title">Logo's &amp; bedrukking</h2>
+      <p class="step-intro">Upload je logo('s) en vertel hoe en waar ze geplaatst moeten worden. Bestanden: PNG, JPG, SVG, AI of PDF — max 10 MB per bestand. <span class="opt-tag">(optioneel)</span></p>
+      <div id="logos-container"></div>
+      <button type="button" class="add-btn" id="add-logo">+ Nog een logo toevoegen</button>
+    </section>
+
+    <!-- STAP 5 — Kleuren & maten -->
+    <section class="step" data-step="5">
+      <h2 class="step-title">Kleuren &amp; maten</h2>
+      <p class="step-intro">Help ons met de details als je die al weet. <span class="opt-tag">(alles optioneel)</span></p>
+      <div class="form-group">
+        <label class="form-label" for="f-kleuren">Kleuren <span class="opt-tag">(optioneel)</span></label>
+        <textarea id="f-kleuren" class="form-textarea" placeholder="Bijv. clubkleuren groen/wit, of specifieke kleurcodes (PMS/HEX)"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="f-maten">Maatverdeling <span class="opt-tag">(optioneel)</span></label>
+        <textarea id="f-maten" class="form-textarea" placeholder="Bijv. 5× S, 12× M, 8× L, 3× XL — of laat leeg als je dit nog niet weet"></textarea>
+      </div>
+    </section>
+
+    <!-- STAP 6 — Inspiratie -->
+    <section class="step" data-step="6">
+      <h2 class="step-title">Inspiratie</h2>
+      <p class="step-intro">Heb je voorbeelden, moodboards of een briefing? Deel ze hier. <span class="opt-tag">(alles optioneel)</span></p>
+      <div class="form-group">
+        <label class="form-label" for="inspiratie-files">Inspiratiefoto's <span class="opt-tag">(optioneel, max 5 · PNG/JPG · 10 MB per stuk)</span></label>
+        <input type="file" id="inspiratie-files" accept="image/png,image/jpeg,.png,.jpg,.jpeg" multiple />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="f-insp-urls">Links naar inspiratie <span class="opt-tag">(optioneel)</span></label>
+        <textarea id="f-insp-urls" class="form-textarea" placeholder="Plak hier URLs, bijv. naar Pinterest, Instagram of een webshop"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="briefing-file">Briefing-document <span class="opt-tag">(optioneel · PDF of DOCX · 10 MB)</span></label>
+        <input type="file" id="briefing-file" accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+      </div>
+    </section>
+
+    <!-- STAP 7 — Budget -->
+    <section class="step" data-step="7">
+      <h2 class="step-title">Budget</h2>
+      <p class="step-intro">Een indicatie helpt ons om je een passend voorstel te doen. Geen zorgen als je het nog niet precies weet. <span class="opt-tag">(optioneel)</span></p>
+      <div class="form-group">
+        <div class="opt-row">
+          <label class="opt"><input type="radio" name="budget" value="Onder €500" /> Onder €500</label>
+          <label class="opt"><input type="radio" name="budget" value="€500 – €1.500" /> €500 – €1.500</label>
+          <label class="opt"><input type="radio" name="budget" value="€1.500 – €5.000" /> €1.500 – €5.000</label>
+          <label class="opt"><input type="radio" name="budget" value="€5.000 – €15.000" /> €5.000 – €15.000</label>
+          <label class="opt"><input type="radio" name="budget" value="Meer dan €15.000" /> Meer dan €15.000</label>
+          <label class="opt"><input type="radio" name="budget" value="Geen idee, adviseer maar" /> Geen idee, adviseer maar</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="f-budget-toel">Toelichting <span class="opt-tag">(optioneel)</span></label>
+        <textarea id="f-budget-toel" class="form-textarea" placeholder="Eventuele toelichting bij je budget"></textarea>
+      </div>
+    </section>
+
+    <!-- STAP 8 — Deadline -->
+    <section class="step" data-step="8">
+      <h2 class="step-title">Deadline</h2>
+      <p class="step-intro">Wanneer heb je de producten nodig? <span class="opt-tag">(optioneel)</span></p>
+      <div class="form-group">
+        <label class="form-label" for="f-deadline">Gewenste datum <span class="opt-tag">(optioneel)</span></label>
+        <input type="date" id="f-deadline" class="form-input" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Hoe hard is deze datum? <span class="opt-tag">(optioneel)</span></label>
+        <div class="opt-row">
+          <label class="opt"><input type="radio" name="deadlineType" value="Hard deadline" /> Hard deadline</label>
+          <label class="opt"><input type="radio" name="deadlineType" value="Wens" /> Wens</label>
+          <label class="opt"><input type="radio" name="deadlineType" value="Geen deadline" /> Geen deadline</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="f-deadline-toel">Toelichting <span class="opt-tag">(optioneel)</span></label>
+        <textarea id="f-deadline-toel" class="form-textarea" placeholder="Bijv. nodig voor een lustrum, toernooi of event op die datum"></textarea>
+      </div>
+    </section>
+
+    <!-- STAP 9 — Contact & overzicht -->
+    <section class="step" data-step="9">
+      <h2 class="step-title">Contact &amp; overzicht</h2>
+      <p class="step-intro">Bijna klaar! Laat weten hoe we je kunnen bereiken en controleer je antwoorden.</p>
+      <div class="form-group">
+        <label class="form-label" for="c-naam">Naam</label>
+        <input type="text" id="c-naam" class="form-input" readonly />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="f-email">E-mailadres <span class="req">*</span></label>
+        <input type="email" id="f-email" class="form-input" placeholder="jij@voorbeeld.nl" autocomplete="email" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="f-telefoon">Telefoonnummer <span class="opt-tag">(optioneel)</span></label>
+        <input type="tel" id="f-telefoon" class="form-input" placeholder="+31 6 ..." autocomplete="tel" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Voorkeur contact <span class="opt-tag">(optioneel)</span></label>
+        <div class="opt-row">
+          <label class="opt"><input type="radio" name="voorkeurContact" value="Mail" /> Mail</label>
+          <label class="opt"><input type="radio" name="voorkeurContact" value="WhatsApp" /> WhatsApp</label>
+          <label class="opt"><input type="radio" name="voorkeurContact" value="Bellen" /> Bellen</label>
+          <label class="opt"><input type="radio" name="voorkeurContact" value="Maakt niet uit" /> Maakt niet uit</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Jouw aanvraag in het kort</label>
+        <div class="summary" id="summary"></div>
+      </div>
+      <p class="disclaimer">We reageren binnen één werkdag. Je krijgt direct een bevestigingsmail op het opgegeven adres.</p>
+    </section>
+
+    <!-- NAVIGATIE -->
+    <div class="step-nav">
+      <button type="button" class="btn btn-outline" id="btn-prev"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 8H3M8 3L3 8l5 5"/></svg> Vorige</button>
+      <button type="button" class="btn btn-green" id="btn-next"><span id="next-label">Laten we beginnen</span> <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+      <button type="button" class="btn btn-green" id="btn-submit" style="display:none;">Verstuur mijn idee <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+    </div>
+    <div class="form-error" id="form-error"></div>
+  </form>
+</main>
+
+<!-- ═══ LOADING OVERLAY ═══ -->
+<div class="loading-overlay" id="loading-overlay">
+  <div class="spinner"></div>
+  <p>Bestanden uploaden… dit kan even duren<br><small>Sluit dit venster niet.</small></p>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo"><img src="brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;"></div>
+      <p class="footer-desc">Al bijna 20 jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p>
+    </div>
+    <div class="footer-col"><h4>Navigatie</h4><a href="/">Home</a><a href="/producten">Producten</a><a href="/impressies">Impressies</a><a href="/blog">Blog</a><a href="/overons">Over Ons</a><a href="/faq">F.A.Q.</a><a href="/startproject">Contact</a></div>
+    <div class="footer-col"><h4>Assortiment</h4><a href="/producten">T-shirts &amp; Polo's</a><a href="/producten">Hoodies &amp; Sweaters</a><a href="/producten">Sport &amp; Teamwear</a><a href="/producten">Sjaals &amp; Accessoires</a><a href="/producten">Vlaggen &amp; Merchandise</a></div>
+    <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Hockeypolo · Alle rechten voorbehouden</span>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/hockeypolo.rotterdam/" target="_blank" rel="noopener" class="soc"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://nl.linkedin.com/company/hockeypolo" target="_blank" rel="noopener" class="soc"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ STEPPER + UPLOAD LOGICA ═══ -->
+<script type="module">
+  // @vercel/blob client wordt dynamisch geladen zodat een CDN-storing
+  // de rest van het formulier niet blokkeert.
+  let uploadFn = null;
+  import('https://esm.sh/@vercel/blob@2.4.0/client')
+    .then(function (m) { uploadFn = m.upload; })
+    .catch(function (e) { console.error('Blob client laden mislukt:', e); uploadFn = null; });
+
+  // ── Globale helper voor het mobiele menu ──
+  window.toggleMobileMenu = function () {
+    document.getElementById('mobile-menu').classList.toggle('open');
+    document.getElementById('nav-hamburger').classList.toggle('open');
+  };
+
+  const TOTAL = 9;
+  let current = 1;
+
+  const steps        = Array.from(document.querySelectorAll('.step'));
+  const progressFill = document.getElementById('progress-fill');
+  const progressLabel= document.getElementById('progress-label');
+  const btnPrev      = document.getElementById('btn-prev');
+  const btnNext      = document.getElementById('btn-next');
+  const btnSubmit    = document.getElementById('btn-submit');
+  const nextLabel    = document.getElementById('next-label');
+  const formError    = document.getElementById('form-error');
+  const loading      = document.getElementById('loading-overlay');
+
+  // ── Productlijsten dynamisch opbouwen ──
+  const PRODUCTS = {
+    'prod-kleding':     ['T-shirts','Polo’s','Hoodies','Sweaters','Quarter-zips','Sportshirts','Overhemden','Fleecetruien','Bomberjacks','Badjassen'],
+    'prod-accessoires': ['Sjaals','Sokken','Mutsen','Caps','Safari hats','Tassen','Strikken','Dassen','Bretels','Aanvoerdersbanden'],
+    'prod-promotie':    ['Vlaggen','Banners','Mokken','Glazen','Waterflessen','Stickers','Paraplu’s','Handdoeken','Dekbedden']
+  };
+  Object.keys(PRODUCTS).forEach(function (colId) {
+    const col = document.getElementById(colId);
+    PRODUCTS[colId].forEach(function (name) {
+      const item = document.createElement('div');
+      item.className = 'prod-item';
+      const safe = name.replace(/["&<>]/g, '');
+      item.innerHTML =
+        '<label><input type="checkbox" class="prod-cb" value="' + safe + '"> ' + safe + '</label>' +
+        '<input type="number" min="1" class="form-input prod-qty" placeholder="aantal">';
+      const cb = item.querySelector('.prod-cb');
+      cb.addEventListener('change', function () {
+        item.classList.toggle('checked', cb.checked);
+        if (!cb.checked) item.querySelector('.prod-qty').value = '';
+      });
+      col.appendChild(item);
+    });
+  });
+
+  // ── "Anders" tekstveld tonen/verbergen ──
+  document.querySelectorAll('input[name="typeOrganisatie"]').forEach(function (r) {
+    r.addEventListener('change', function () {
+      const andersField = document.getElementById('type-anders');
+      const show = document.getElementById('type-anders-radio').checked;
+      andersField.style.display = show ? 'block' : 'none';
+      if (!show) andersField.value = '';
+    });
+  });
+
+  // ── Logo-blokken ──
+  let logoCount = 0;
+  function logoBlockHTML(idx) {
+    return '' +
+      '<div class="logo-block-head"><span class="logo-num">Logo</span>' +
+      '<button type="button" class="logo-remove">Verwijderen</button></div>' +
+      '<div class="form-group"><label class="form-label">Bestand <span class="opt-tag">(PNG, JPG, SVG, AI of PDF · max 10 MB)</span></label>' +
+      '<input type="file" class="logo-file" accept=".png,.jpg,.jpeg,.svg,.ai,.pdf,image/png,image/jpeg,image/svg+xml,application/pdf,application/postscript"></div>' +
+      '<div class="form-group"><label class="form-label">Naam van het logo <span class="opt-tag">(voor referentie)</span></label>' +
+      '<input type="text" class="form-input logo-name" placeholder="Bijv. clublogo, sponsorlogo"></div>' +
+      '<div class="form-group"><label class="form-label">Techniek</label><div class="opt-row">' +
+      '<label class="opt"><input type="radio" name="logo-techniek-' + idx + '" value="Bedrukken"> Bedrukken</label>' +
+      '<label class="opt"><input type="radio" name="logo-techniek-' + idx + '" value="Borduren"> Borduren</label>' +
+      '<label class="opt"><input type="radio" name="logo-techniek-' + idx + '" value="Geen voorkeur"> Geen voorkeur</label>' +
+      '</div></div>' +
+      '<div class="form-group"><label class="form-label">Plaatsing <span class="opt-tag">(optioneel)</span></label>' +
+      '<input type="text" class="form-input logo-plaatsing" placeholder="Waar moet dit logo komen? Bijv. borst links, rug groot"></div>';
+  }
+  function addLogo() {
+    if (logoCount >= 5) return;
+    const idx = logoCount++;
+    const block = document.createElement('div');
+    block.className = 'logo-block';
+    block.dataset.index = idx;
+    block.innerHTML = logoBlockHTML(idx);
+    block.querySelector('.logo-remove').addEventListener('click', function () {
+      block.remove();
+      updateLogoUI();
+    });
+    document.getElementById('logos-container').appendChild(block);
+    updateLogoUI();
+  }
+  function updateLogoUI() {
+    const blocks = Array.from(document.querySelectorAll('.logo-block'));
+    blocks.forEach(function (b, i) {
+      b.querySelector('.logo-num').textContent = 'Logo ' + (i + 1);
+      b.querySelector('.logo-remove').style.display = blocks.length > 1 ? '' : 'none';
+    });
+    document.getElementById('add-logo').disabled = blocks.length >= 5;
+  }
+  document.getElementById('add-logo').addEventListener('click', addLogo);
+  addLogo(); // start met één leeg logo-blok
+
+  // ── Stepper ──
+  function showStep(n) {
+    current = n;
+    steps.forEach(function (s) { s.classList.toggle('active', +s.dataset.step === n); });
+    progressFill.style.width = (n / TOTAL * 100) + '%';
+    progressLabel.textContent = 'Stap ' + n + ' van ' + TOTAL;
+    btnPrev.style.visibility = (n === 1) ? 'hidden' : 'visible';
+    btnNext.style.display   = (n === TOTAL) ? 'none' : '';
+    btnSubmit.style.display = (n === TOTAL) ? '' : 'none';
+    nextLabel.textContent = (n === 1) ? 'Laten we beginnen' : 'Volgende';
+    clearError();
+    if (n === 9) { document.getElementById('c-naam').value = val('f-naam'); buildSummary(); }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function val(id) { const el = document.getElementById(id); return el ? el.value.trim() : ''; }
+  function radioVal(name) { const el = document.querySelector('input[name="' + name + '"]:checked'); return el ? el.value : ''; }
+  function showError(msg) { formError.textContent = msg; formError.classList.add('show'); }
+  function clearError() { formError.classList.remove('show'); formError.textContent = ''; }
+
+  function validateStep(n) {
+    clearError();
+    if (n === 2) {
+      const naam = document.getElementById('f-naam');
+      const org  = document.getElementById('f-organisatie');
+      naam.classList.toggle('invalid', !naam.value.trim());
+      org.classList.toggle('invalid', !org.value.trim());
+      if (!naam.value.trim() || !org.value.trim()) { showError('Vul je naam en organisatie in om verder te gaan.'); return false; }
+      if (!radioVal('typeOrganisatie')) { showError('Kies een type organisatie.'); return false; }
+      if (document.getElementById('type-anders-radio').checked && !val('type-anders')) {
+        document.getElementById('type-anders').classList.add('invalid');
+        showError('Vul in wat voor type organisatie je bedoelt.'); return false;
+      }
+    }
+    if (n === 9) {
+      const email = document.getElementById('f-email');
+      const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+      email.classList.toggle('invalid', !ok);
+      if (!ok) { showError('Vul een geldig e-mailadres in zodat we je kunnen bereiken.'); return false; }
+    }
+    return true;
+  }
+
+  btnNext.addEventListener('click', function () {
+    if (!validateStep(current)) return;
+    if (current < TOTAL) showStep(current + 1);
+  });
+  btnPrev.addEventListener('click', function () { if (current > 1) showStep(current - 1); });
+
+  // ── Data verzamelen ──
+  function collectData() {
+    let typeOrg = radioVal('typeOrganisatie');
+    if (typeOrg === 'Anders') typeOrg = 'Anders: ' + (val('type-anders') || '—');
+
+    const prods = [], qtyLines = [];
+    document.querySelectorAll('.prod-item').forEach(function (item) {
+      const cb = item.querySelector('.prod-cb');
+      if (cb.checked) {
+        prods.push(cb.value);
+        const q = item.querySelector('.prod-qty').value.trim();
+        if (q) qtyLines.push(cb.value + ': ' + q);
+      }
+    });
+
+    const logos = Array.from(document.querySelectorAll('.logo-block')).map(function (b) {
+      const file = b.querySelector('.logo-file').files[0];
+      return {
+        naam: b.querySelector('.logo-name').value.trim(),
+        techniek: (b.querySelector('input[name="logo-techniek-' + b.dataset.index + '"]:checked') || {}).value || '',
+        plaatsing: b.querySelector('.logo-plaatsing').value.trim(),
+        fileName: file ? file.name : '',
+        url: ''
+      };
+    });
+
+    return {
+      naam: val('f-naam'), organisatie: val('f-organisatie'), typeOrganisatie: typeOrg, rol: val('f-rol'),
+      producten: prods, aantallen: qtyLines.join(', '), productAnders: val('f-product-anders'), productOmschrijving: val('f-product-oms'),
+      logos: logos,
+      kleuren: val('f-kleuren'), maten: val('f-maten'),
+      inspiratieUrls: val('f-insp-urls'), inspiratie: [], briefingUrl: '',
+      budget: radioVal('budget'), budgetToelichting: val('f-budget-toel'),
+      deadline: val('f-deadline'), deadlineType: radioVal('deadlineType'), deadlineToelichting: val('f-deadline-toel'),
+      email: val('f-email'), telefoon: val('f-telefoon'), voorkeurContact: radioVal('voorkeurContact')
+    };
+  }
+
+  // ── Samenvatting (stap 9) ──
+  function buildSummary() {
+    const d = collectData();
+    const insp = document.getElementById('inspiratie-files').files.length;
+    const brief = document.getElementById('briefing-file').files[0];
+    const logoLines = d.logos.filter(function (l) { return l.naam || l.fileName || l.techniek || l.plaatsing; })
+      .map(function (l, i) {
+        const parts = [];
+        if (l.naam) parts.push(l.naam);
+        if (l.fileName) parts.push(l.fileName);
+        if (l.techniek) parts.push(l.techniek);
+        if (l.plaatsing) parts.push(l.plaatsing);
+        return 'Logo ' + (i + 1) + ': ' + parts.join(' · ');
+      });
+
+    const rows = [
+      ['Naam', d.naam],
+      ['Organisatie', d.organisatie],
+      ['Type organisatie', d.typeOrganisatie],
+      ['Rol', d.rol],
+      ['Producten', d.producten.join(', ')],
+      ['Aantallen', d.aantallen],
+      ['Anders', d.productAnders],
+      ['Wensen', d.productOmschrijving],
+      ['Logo’s', logoLines.join('  |  ')],
+      ['Kleuren', d.kleuren],
+      ['Maatverdeling', d.maten],
+      ['Inspiratiefoto’s', insp ? (insp + ' bestand(en)') : ''],
+      ['Inspiratie-links', d.inspiratieUrls],
+      ['Briefing', brief ? brief.name : ''],
+      ['Budget', d.budget],
+      ['Budget-toelichting', d.budgetToelichting],
+      ['Deadline', d.deadline],
+      ['Type deadline', d.deadlineType],
+      ['Deadline-toelichting', d.deadlineToelichting],
+      ['Telefoon', d.telefoon],
+      ['Voorkeur contact', d.voorkeurContact]
+    ];
+    const esc = function (s) { return String(s).replace(/[&<>]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; }); };
+    document.getElementById('summary').innerHTML = rows.map(function (r) {
+      const filled = r[1] && String(r[1]).trim();
+      return '<div class="summary-row"><div class="summary-key">' + esc(r[0]) + '</div>' +
+        '<div class="summary-val' + (filled ? '' : ' empty') + '">' + (filled ? esc(r[1]) : 'Niet ingevuld') + '</div></div>';
+    }).join('');
+  }
+
+  // ── Helpers voor uploads ──
+  function slugify(s) {
+    return (s || 'aanvraag').toLowerCase()
+      .normalize('NFD').replace(/[̀-ͯ]/g, '')
+      .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40) || 'aanvraag';
+  }
+  function sanitizeName(s) {
+    return (s || 'bestand').replace(/[^a-zA-Z0-9._-]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 80) || 'bestand';
+  }
+
+  function gatherFileTasks() {
+    const tasks = [];
+    Array.from(document.querySelectorAll('.logo-block')).forEach(function (b, i) {
+      const f = b.querySelector('.logo-file').files[0];
+      if (f) tasks.push({ file: f, kind: 'logo', logoIndex: i });
+    });
+    Array.from(document.getElementById('inspiratie-files').files).slice(0, 5).forEach(function (f) {
+      tasks.push({ file: f, kind: 'inspiratie' });
+    });
+    const brief = document.getElementById('briefing-file').files[0];
+    if (brief) tasks.push({ file: brief, kind: 'briefing' });
+    return tasks;
+  }
+
+  // ── Versturen ──
+  btnSubmit.addEventListener('click', async function () {
+    if (!validateStep(9)) return;
+
+    const tasks = gatherFileTasks();
+    const MB = 1024 * 1024;
+    let total = 0;
+    for (const t of tasks) {
+      if (t.file.size > 10 * MB) { showError('"' + t.file.name + '" is groter dan 10 MB. Verklein het bestand en probeer opnieuw.'); return; }
+      total += t.file.size;
+    }
+    if (total > 50 * MB) { showError('De bestanden zijn samen groter dan 50 MB. Verwijder of verklein een paar bestanden.'); return; }
+    if (tasks.length && !uploadFn) { showError('Uploaden is even niet beschikbaar. Probeer het zo opnieuw of mail je bestanden naar info@hockeypolo.com.'); return; }
+
+    clearError();
+    loading.classList.add('show');
+    btnSubmit.disabled = true;
+
+    const payload = collectData();
+    const orgSlug = slugify(payload.organisatie);
+
+    try {
+      const inspUrls = [];
+      for (const t of tasks) {
+        const path = orgSlug + '/' + t.kind + '-' + Date.now() + '-' + sanitizeName(t.file.name);
+        const res = await uploadFn(path, t.file, {
+          access: 'public',
+          handleUploadUrl: '/api/blob-upload',
+          contentType: t.file.type || undefined
+        });
+        if (t.kind === 'logo') payload.logos[t.logoIndex].url = res.url;
+        else if (t.kind === 'inspiratie') inspUrls.push(res.url);
+        else if (t.kind === 'briefing') payload.briefingUrl = res.url;
+      }
+      payload.inspiratie = inspUrls;
+      // fileName niet meesturen — backend gebruikt alleen url + tekst
+      payload.logos = payload.logos.map(function (l) { return { naam: l.naam, techniek: l.techniek, plaatsing: l.plaatsing, url: l.url }; });
+
+      const resp = await fetch('/api/upload-project', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const json = await resp.json().catch(function () { return { success: false }; });
+      if (!resp.ok || !json.success) throw new Error(json.error || 'serverfout');
+
+      window.location.href = '/bedankt-deel-je-idee';
+    } catch (err) {
+      console.error(err);
+      loading.classList.remove('show');
+      btnSubmit.disabled = false;
+      showError('Er ging iets mis bij het versturen. Probeer het opnieuw, of mail je aanvraag direct naar info@hockeypolo.com.');
+    }
+  });
+
+  // init
+  showStep(1);
+</script>
+</body>
+</html>
