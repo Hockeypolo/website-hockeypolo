@@ -88,14 +88,16 @@ export default async function handler(req, res) {
     // ── Versturen naar FormSubmit (AJAX → JSON-respons, geen redirect) ──
     // FormSubmit wijst server-naar-server requests af zonder Origin/Referer
     // (die headers zet een browser altijd automatisch, een serverless function niet).
-    // Expliciet meegeven zodat dit hetzelfde werkt als het bestaande contactformulier.
+    // Let op: FormSubmit's activatie is gekoppeld aan het EXACTE domein — het
+    // canonieke domein van deze site is www.hockeypolo.com (hockeypolo.com
+    // redirect ernaartoe), dus dat is de Origin/Referer die hier moet staan.
     const fsResp = await fetch(FORMSUBMIT_ENDPOINT, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Origin': 'https://hockeypolo.com',
-        'Referer': 'https://hockeypolo.com/deel-je-idee'
+        'Origin': 'https://www.hockeypolo.com',
+        'Referer': 'https://www.hockeypolo.com/deel-je-idee'
       },
       body: JSON.stringify(fields)
     });
