@@ -105,7 +105,10 @@ export default async function handler(req, res) {
     if (!fsResp.ok) {
       const text = await fsResp.text().catch(() => '');
       console.error('FormSubmit fout:', fsResp.status, text);
-      return res.status(502).json({ success: false, error: 'Versturen naar mail mislukte' });
+      // TIJDELIJK: fsStatus/fsBody meesturen voor live diagnose (niet zichtbaar in de UI,
+      // frontend toont altijd een vaste vriendelijke melding — alleen te zien via directe
+      // API-call of browserconsole). Verwijderen zodra het probleem is gevonden.
+      return res.status(502).json({ success: false, error: 'Versturen naar mail mislukte', fsStatus: fsResp.status, fsBody: text.slice(0, 500) });
     }
 
     return res.status(200).json({ success: true });
