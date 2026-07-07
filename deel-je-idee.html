@@ -774,6 +774,11 @@
   function sanitizeName(s) {
     return (s || 'bestand').replace(/[^a-zA-Z0-9._-]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 80) || 'bestand';
   }
+  // Leesbare, chronologisch sorteerbare mapnaam per inzending (UTC, komt overeen
+  // met de "Submitted at ... UTC" tijd die FormSubmit in de e-mail toont).
+  function submissionStamp() {
+    return new Date().toISOString().replace('T', '_').replace(/:/g, '-').split('.')[0];
+  }
 
   function gatherFileTasks() {
     const tasks = [];
@@ -809,11 +814,15 @@
 
     const payload = collectData();
     const orgSlug = slugify(payload.organisatie);
+    const submissionFolder = submissionStamp();
 
     try {
       const inspUrls = [];
       for (const t of tasks) {
-        const path = orgSlug + '/' + t.kind + '-' + Date.now() + '-' + sanitizeName(t.file.name);
+        // Eén map per inzending (organisatie/datum_tijd/...) zodat alle bestanden
+        // van dezelfde aanvraag in de Blob-browser bij elkaar staan, ook als
+        // dezelfde organisatie het formulier vaker invult.
+        const path = orgSlug + '/' + submissionFolder + '/' + t.kind + '-' + sanitizeName(t.file.name);
         const res = await uploadFn(path, t.file, {
           access: 'public',
           handleUploadUrl: '/api/blob-upload',
