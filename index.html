@@ -3934,7 +3934,7 @@
     <div class="instagram-widget-wrap reveal">
       <!-- LightWidget WIDGET -->
       <script src="https://cdn.lightwidget.com/widgets/lightwidget.js" async></script>
-      <iframe src="https://cdn.lightwidget.com/widgets/a12cd0a1f4b25b7ebda3989e02e5eeaf.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
+      <iframe src="https://cdn.lightwidget.com/widgets/a12cd0a1f4b25b7ebda3989e02e5eeaf.html" scrolling="no" allowtransparency="true" loading="lazy" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
     </div>
     <div class="instagram-cta reveal">
       <a href="https://www.instagram.com/hockeypolo.rotterdam/" target="_blank" rel="noopener">
@@ -6285,6 +6285,7 @@
     pageEl.classList.add('active');
     const navEl = document.getElementById('nav-' + id);
     if (navEl) navEl.classList.add('active');
+    if (window.__mountNewsletterForms) window.__mountNewsletterForms();
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setTimeout(triggerReveal, 100);
     setTimeout(triggerStatsAnim, 120);
@@ -6640,12 +6641,18 @@
     }
 
     function mountAllNewsletterForms() {
-      // Mount in alle slots met data-newsletter-variant:
+      // Mount in alle zichtbare slots met data-newsletter-variant:
       // - 'footer'  → donkere variant in elke footer
       // - 'compact' → lichte variant in popup-modal
       // - 'full'    → lichte variant op aparte pagina's
+      // Elke pagina-sectie heeft z'n eigen footer-slot in de DOM, maar er is
+      // maar 1 pagina tegelijk zichtbaar. Alleen de actieve pagina mounten
+      // voorkomt dat er 16x een reCAPTCHA-widget (met eigen iframes) onnodig
+      // in de achtergrond blijft draaien.
       document.querySelectorAll('[data-newsletter-variant]').forEach(function(slot) {
         if (slot.querySelector('.newsletter-form')) return;
+        var pageAncestor = slot.closest('.page');
+        if (pageAncestor && !pageAncestor.classList.contains('active')) return;
         renderNewsletterForm(slot, slot.dataset.newsletterVariant);
       });
     }
@@ -7497,18 +7504,6 @@
   }
 
   function verstuurAanvraag() { return validateForm(); }
-
-  // ── Hero slideshow ───────────────────────────────────────────
-  (function() {
-    const slides = document.querySelectorAll('#page-home .hero-slide');
-    if (!slides.length) return;
-    let current = 0;
-    setInterval(function() {
-      slides[current].classList.remove('active');
-      current = (current + 1) % slides.length;
-      slides[current].classList.add('active');
-    }, 1000);
-  })();
 
   // ═══════════════════════════════════════════════════════════════
   // ONTWERPTOOL — sportshirt customizer (MVP)
