@@ -3351,15 +3351,19 @@
   #idea-widget.visible { opacity:1; transform:translateY(0); pointer-events:auto; }
 
   #idea-fab {
-    width:56px; height:56px; border-radius:50%; border:none; cursor:pointer;
-    background:var(--green); display:flex; align-items:center; justify-content:center;
-    box-shadow:0 4px 16px rgba(0,0,0,.18); transition:transform .2s var(--ease), background .15s;
+    display:flex; align-items:center; gap:10px;
+    border:none; cursor:pointer; border-radius:32px;
+    background:var(--green); color:var(--white);
+    font-family:var(--font-head); font-weight:600; font-size:14px;
+    padding:14px 22px;
+    box-shadow:0 4px 20px rgba(0,166,82,.35);
+    transition:transform .2s var(--ease), background .15s;
   }
-  #idea-fab:hover { background:var(--green-dark); transform:scale(1.08); }
-  #idea-fab svg { width:26px; height:26px; }
+  #idea-fab:hover { background:var(--green-dark); transform:translateY(-2px); }
+  #idea-fab svg { width:18px; height:18px; flex-shrink:0; }
 
   #idea-popup {
-    position:absolute; bottom:68px; left:0;
+    position:absolute; bottom:64px; left:0;
     width:320px; max-width:calc(100vw - 48px);
     background:var(--white); border-radius:12px;
     box-shadow:0 8px 32px rgba(0,0,0,.14); overflow:hidden;
@@ -3387,6 +3391,7 @@
 
   @media (max-width:640px) {
     #idea-widget { left:16px; bottom:16px; }
+    #idea-fab { white-space:nowrap; font-size:13px; padding:12px 18px; }
     #idea-popup { width:calc(100vw - 32px); }
   }
 
@@ -8994,10 +8999,11 @@
       <a href="/deel-je-idee">Vul het formulier in</a>
     </div>
   </div>
-  <button id="idea-fab" aria-label="Deel je idee openen">
+  <button id="idea-fab" aria-label="Uitgebreid formulier openen">
     <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.5c.6.5 1 1.2 1 2v.5h6v-.5c0-.8.4-1.5 1-2A7 7 0 0 0 12 2z"/>
     </svg>
+    Uitgebreid formulier
   </button>
 </div>
 <script>
