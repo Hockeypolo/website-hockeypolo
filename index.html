@@ -9007,15 +9007,25 @@
   var fab    = document.getElementById('idea-fab');
   var close  = document.getElementById('idea-close');
 
-  var origShow2 = window.showPage;
-  window.showPage = function(id, push) {
-    var r = origShow2(id, push);
-    if (id === 'contact') {
+  function syncVisibility() {
+    var activePage = document.querySelector('.page.active');
+    if (activePage && activePage.id === 'page-contact') {
       widget.classList.add('visible');
     } else {
       widget.classList.remove('visible');
       popup.classList.remove('open');
     }
+  }
+
+  // Meteen synchroniseren met de huidige pagina — dekt ook het geval dat de
+  // site direct op /startproject geladen wordt, vóórdat showPage() ooit is
+  // aangeroepen ná het inhaken hieronder.
+  syncVisibility();
+
+  var origShow2 = window.showPage;
+  window.showPage = function(id, push) {
+    var r = origShow2(id, push);
+    syncVisibility();
     return r;
   };
 
