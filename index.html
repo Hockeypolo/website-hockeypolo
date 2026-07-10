@@ -2350,6 +2350,27 @@
     .toggle-switch input:checked + .toggle-track { background: var(--green); }
     .toggle-switch input:checked + .toggle-track::after { transform: translateX(20px); }
 
+    /* ── Contact: kies je route (Deel je idee vs. het korte formulier hieronder) ── */
+    .path-picker { margin-bottom: 40px; }
+    .path-picker-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .path-card {
+      border-radius: 12px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      padding: 28px 24px;
+      transition: box-shadow .25s, transform .25s, border-color .25s;
+    }
+    .path-card:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,.1);
+      transform: translateY(-4px);
+      border-color: transparent;
+    }
+    .path-card-title { font-family: var(--font-h); font-size: 16px; font-weight: 700; letter-spacing: -.01em; color: var(--black); margin-bottom: 8px; }
+    .path-card p { font-size: 13.5px; line-height: 1.6; color: var(--gray-600); margin-bottom: 20px; }
+    .path-card-quiet { background: var(--gray-50); }
+    .path-card-quiet p { margin-bottom: 0; }
+    .path-card-quiet:hover { transform: none; box-shadow: none; border-color: var(--gray-200); }
+
     .file-upload-area {
       border: 2px dashed var(--gray-200); border-radius: var(--radius);
       padding: 32px 24px; text-align: center; cursor: pointer;
@@ -2629,6 +2650,9 @@
   @media (max-width: 640px) {
     .impressies-masonry { padding: 24px 20px 48px; grid-template-columns: 1fr; }
     .imp-item { margin-bottom: 16px; }
+
+    /* ── Contact: kies-je-route-kaarten onder elkaar ── */
+    .path-picker-grid { grid-template-columns: 1fr !important; }
 
     /* ── Teamleden onder elkaar ── */
     .team-grid { grid-template-columns: 1fr !important; max-width: 340px; margin: 0 auto; }
@@ -5778,6 +5802,21 @@
   <div class="contact-layout">
     <!-- Form (volledige breedte; bedrijfsinfo staat in de footer) -->
     <div class="contact-right">
+      <div class="path-picker">
+        <span class="lbl">Hoe wil je starten?</span>
+        <div class="path-picker-grid">
+          <div class="path-card">
+            <div class="path-card-title">Je weet al precies wat je wilt</div>
+            <p>Product, aantallen, logo's, deadline: je hebt het al helder op een rij. Vul het uitgebreide Deel je idee-formulier in en we gaan direct voor je aan de slag.</p>
+            <a class="btn btn-green" href="/deel-je-idee">Naar Deel je idee <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a>
+          </div>
+          <div class="path-card path-card-quiet">
+            <div class="path-card-title">Je weet het nog niet precies</div>
+            <p>Nog geen concreet plan? Geen probleem. Vul het korte formulier hieronder in, dan denken we vrijblijvend met je mee.</p>
+          </div>
+        </div>
+      </div>
+
       <h3>Stuur ons een bericht</h3>
       <p>Vul het formulier in en we nemen binnen één werkdag contact met je op.</p>
 
