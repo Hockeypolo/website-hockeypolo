@@ -29,12 +29,17 @@
       "source": "/offerte-aanvragen",
       "destination": "/contact",
       "permanent": true
+    },
+    {
+      "source": "/deel-je-idee",
+      "destination": "/start-project",
+      "permanent": true
     }
   ],
   "rewrites": [
     { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
     { "source": "/robots.txt",  "destination": "/robots.txt"  },
-    { "source": "/deel-je-idee",          "destination": "/deel-je-idee.html" },
+    { "source": "/start-project",          "destination": "/start-project.html" },
     { "source": "/bedankt-deel-je-idee",  "destination": "/bedankt-deel-je-idee.html" },
     { "source": "/producten/t-shirts",             "destination": "/producten-t-shirts.html" },
     { "source": "/producten/polos",                "destination": "/producten-polos.html" },
