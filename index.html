@@ -1942,6 +1942,66 @@
     /* Vaste navbar is 72px hoog; voorkomt dat de kop eronder verdwijnt */
     .product-group-title[id] { scroll-margin-top: calc(90px + var(--usp-h)); }
 
+    /* ── Catalogus: filterbalk ───────────────────────────────────── */
+    .prod-filterbar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+    .prod-filter {
+      font-family: var(--font-h); font-size: 12px; font-weight: 600;
+      letter-spacing: .04em; color: var(--gray-600);
+      background: var(--white); border: 1px solid var(--gray-200);
+      padding: 9px 16px; border-radius: 100px; cursor: pointer;
+      transition: background .2s, border-color .2s, color .2s;
+    }
+    .prod-filter span { color: var(--gray-400); margin-left: 3px; }
+    .prod-filter:hover { border-color: var(--black); color: var(--black); }
+    .prod-filter.is-actief { background: var(--black); border-color: var(--black); color: var(--white); }
+    .prod-filter.is-actief span { color: rgba(255,255,255,.55); }
+
+    /* ── Catalogus: kaartelementen ───────────────────────────────────
+       Alles hieronder is bewust gescoped onder .product-groups. De class
+       .product-card wordt óók door de donkere homepage-collectiekaart
+       gebruikt; zonder scoping zou die mee veranderen.                */
+    .product-groups .product-card-img-wrap { position: relative; }
+    .product-groups .pc-hoverfoto {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0; transition: opacity .35s var(--ease);
+    }
+    .product-groups .product-card:hover .pc-hoverfoto { opacity: 1; }
+
+    .product-groups .pc-kleurbadge {
+      position: absolute; top: 12px; left: 12px; z-index: 2;
+      background: rgba(0,0,0,.72); color: var(--white);
+      backdrop-filter: blur(6px);
+      font-family: var(--font-h); font-size: 10px; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 100px;
+    }
+
+    .product-groups .pc-stalen {
+      display: flex; align-items: center; gap: 5px;
+      margin-bottom: 12px; min-height: 16px;
+    }
+    .product-groups .pc-staal {
+      width: 14px; height: 14px; border-radius: 50%;
+      border: 1px solid rgba(0,0,0,.16); flex-shrink: 0;
+    }
+    .product-groups .pc-staal-meer {
+      font-family: var(--font-h); font-size: 11px; font-weight: 600;
+      color: var(--gray-400); margin-left: 3px;
+    }
+
+    .producten-overig {
+      margin-top: 40px; padding-top: 24px;
+      border-top: 1px solid var(--gray-200);
+      font-size: 14px; color: var(--gray-600);
+    }
+    .producten-overig a { color: var(--black); text-decoration: underline; text-underline-offset: 3px; }
+    .producten-overig a:hover { color: var(--green); }
+
+    /* 3-koloms tussenstap: 27 kaarten in 4 kolommen wordt te smal onder 1440px */
+    @media (max-width: 1439px) {
+      .product-groups .product-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
     .product-card-new, .product-card {
       background: var(--white); border: 1px solid var(--gray-200);
       border-radius: 12px; overflow: hidden; cursor: pointer;
@@ -4196,215 +4256,556 @@
 
   <div class="products-section">
     <div class="product-groups">
+    <!-- CATALOGUS:START — gegenereerd door scripts/genereer-overzicht.py -->
+    <div class="prod-filterbar" role="group" aria-label="Filter op categorie">
+      <button class="prod-filter is-actief" data-filter="alles">Alles <span>27</span></button>
+      <button class="prod-filter" data-filter="kleding">Kleding <span>16</span></button> <button class="prod-filter" data-filter="accessoires">Accessoires <span>8</span></button> <button class="prod-filter" data-filter="promotie">Promotie <span>3</span></button>
+    </div>
     <h3 class="product-group-title" id="kleding">Kleding</h3>
     <div class="product-grid">
-        <a href="/producten/t-shirts" class="product-card reveal">
+        <a href="/producten/t-shirts" class="product-card reveal" data-cat="kleding" data-zoek="t-shirts kleding azuurblauw bordeauxrood felrood flessengroen geel hemelsblauw indigoblauw khaki klassiekrood koningsblauw lavendelblauw lichtgrijs melange limegroen marineblauw middengrijs mokkabruin naturel oker olijfgroen paars petrolgroen poederroze wit zwart">
           <div class="product-card-img-wrap">
-            <img src="shirt-preview-1.png" alt="T-shirts" />
-
+            <img src="/productfotos/t-shirts/azuurblauw/1_voorkant-300.webp"
+                 srcset="/productfotos/t-shirts/azuurblauw/1_voorkant-300.webp 300w, /productfotos/t-shirts/azuurblauw/1_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="T-shirts — Azuurblauw" />
+          <img src="/productfotos/t-shirts/azuurblauw/model_vrouw_divers_beweging-600.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" class="pc-hoverfoto" />
+            <span class="pc-kleurbadge">24 kleuren</span>
           <div class="imp-overlay"><div class="imp-overlay-title">T-shirts</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
           <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
           <div class="product-card-title">T-shirts</div>
           <div class="product-card-body">
             <div class="product-card-minafname">Min. afname 15 stuks</div>
-            <div class="product-card-desc">Hoogwaardige T-shirts volledig op maat bedrukt of geborduurd met jouw logo, tekst of ontwerp.</div>
-            <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+            <div class="product-card-desc">Hoogwaardige T-shirts volledig op maat bedrukt of geborduurd met jouw logo, tekst of ontwerp. Beschikbaar in tientallen kleuren en maten, geschikt voor elke gelegenheid.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#3367a8" title="Azuurblauw"></span><span class="pc-staal" style="background:#663145" title="Bordeauxrood"></span><span class="pc-staal" style="background:#dd2c4c" title="Felrood"></span><span class="pc-staal" style="background:#445954" title="Flessengroen"></span><span class="pc-staal" style="background:#eece5c" title="Geel"></span><span class="pc-staal" style="background:#99b9d6" title="Hemelsblauw"></span><span class="pc-staal-meer">+18</span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
         </a>
-        <a href="/producten/polos" class="product-card reveal">
+        <a href="/producten/longsleeve-t-shirts" class="product-card reveal" data-cat="kleding" data-zoek="longsleeve t-shirts kleding blauw blauw 2 bordeauxrood donkergrijs groen lichtgrijs marineblauw olijfgroen olijfgroen 2 oranje rood turquoise wit">
           <div class="product-card-img-wrap">
-            <img src="shirt-preview-2.png" alt="Polo's" />
-
-          <div class="imp-overlay"><div class="imp-overlay-title">Polo's</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
+            <img src="/productfotos/t-shirt-longsleeve/blauw/1_voorkant-300.webp"
+                 srcset="/productfotos/t-shirt-longsleeve/blauw/1_voorkant-300.webp 300w, /productfotos/t-shirt-longsleeve/blauw/1_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Longsleeve T-shirts — Blauw" />
+          <img src="/productfotos/t-shirt-longsleeve/wit/model_man_jong_beweging-600.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" class="pc-hoverfoto" />
+            <span class="pc-kleurbadge">13 kleuren</span>
+          <div class="imp-overlay"><div class="imp-overlay-title">Longsleeve T-shirts</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
           <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
-          <div class="product-card-title">Polo's</div>
+          <div class="product-card-title">Longsleeve T-shirts</div>
           <div class="product-card-body">
             <div class="product-card-minafname">Min. afname 15 stuks</div>
-            <div class="product-card-desc">Klassieke polo's in piqué stof, beschikbaar in effen uitvoering of met contrasterende bies.</div>
-            <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+            <div class="product-card-desc">T-shirts met lange mouwen, in hetzelfde katoen als onze reguliere shirts. Een logische keuze voor het tussenseizoen of als je meer bedrukbaar oppervlak wilt.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#2e2d76" title="Blauw"></span><span class="pc-staal" style="background:#5a64a4" title="Blauw 2"></span><span class="pc-staal" style="background:#4a1827" title="Bordeauxrood"></span><span class="pc-staal" style="background:#5a575b" title="Donkergrijs"></span><span class="pc-staal" style="background:#558f5b" title="Groen"></span><span class="pc-staal" style="background:#c1bebf" title="Lichtgrijs"></span><span class="pc-staal-meer">+7</span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
         </a>
-        <a href="/producten/hoodies" class="product-card reveal">
+        <a href="/producten/oversized-t-shirts" class="product-card reveal" data-cat="kleding" data-zoek="oversized t-shirts kleding blauw blauw 2 geel lichtgrijs marineblauw oranje wit wit 2 zwart">
           <div class="product-card-img-wrap">
-            <img src="shirt-preview-3.png" alt="Hoodies" />
-
+            <img src="/productfotos/t-shirt-oversized/blauw/1_voorkant-300.webp"
+                 srcset="/productfotos/t-shirt-oversized/blauw/1_voorkant-300.webp 300w, /productfotos/t-shirt-oversized/blauw/1_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Oversized T-shirts — Blauw" />
+          <img src="/productfotos/t-shirt-oversized/zwart/model_man_jong_beweging-600.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" class="pc-hoverfoto" />
+            <span class="pc-kleurbadge">9 kleuren</span>
+          <div class="imp-overlay"><div class="imp-overlay-title">Oversized T-shirts</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
+          <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+          </div>
+          <div class="product-card-title">Oversized T-shirts</div>
+          <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 15 stuks</div>
+            <div class="product-card-desc">T-shirts met een ruimere, moderne snit en laag vallende schoudernaad. Populair bij studentenverenigingen en voor merchandise met een streetwear-uitstraling.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#656d9d" title="Blauw"></span><span class="pc-staal" style="background:#716d83" title="Blauw 2"></span><span class="pc-staal" style="background:#f8e69e" title="Geel"></span><span class="pc-staal" style="background:#c4b7cf" title="Lichtgrijs"></span><span class="pc-staal" style="background:#2c2840" title="Marineblauw"></span><span class="pc-staal" style="background:#d7c5b6" title="Oranje"></span><span class="pc-staal-meer">+3</span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+          </div>
+        </a>
+        <a href="/producten/polos" class="product-card reveal" data-cat="kleding" data-zoek="polo&#x27;s kleding blauw blauw 2 blauw 3 blauw 4 blauw 5 bordeauxrood donkergrijs donkergrijs 2 donkerrood geel geel 2 groen groen 2 groen 3 lichtgrijs lichtgrijs 2 lichtgrijs 3 lichtgrijs 4 marineblauw marineblauw 2 oranje rood rood 2 wit zand zand 2 zwart">
+          <div class="product-card-img-wrap">
+            <img src="/productfotos/polo/blauw/1_voorkant-300.webp"
+                 srcset="/productfotos/polo/blauw/1_voorkant-300.webp 300w, /productfotos/polo/blauw/1_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Polo&#x27;s — Blauw" />
+          <img src="/productfotos/polo/zwart/model_man_jong_beweging-600.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" class="pc-hoverfoto" />
+            <span class="pc-kleurbadge">27 kleuren</span>
+          <div class="imp-overlay"><div class="imp-overlay-title">Polo&#x27;s</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
+          <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+          </div>
+          <div class="product-card-title">Polo&#x27;s</div>
+          <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 15 stuks</div>
+            <div class="product-card-desc">Klassieke polo&#x27;s in piqué stof, beschikbaar in effen uitvoering of met contrasterende bies. Perfect voor sportclubs, bedrijven en studentenverenigingen.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#a2b8e4" title="Blauw"></span><span class="pc-staal" style="background:#365396" title="Blauw 2"></span><span class="pc-staal" style="background:#445669" title="Blauw 3"></span><span class="pc-staal" style="background:#596882" title="Blauw 4"></span><span class="pc-staal" style="background:#598bba" title="Blauw 5"></span><span class="pc-staal" style="background:#6c393f" title="Bordeauxrood"></span><span class="pc-staal-meer">+21</span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+          </div>
+        </a>
+        <a href="/producten/longsleeve-polos" class="product-card reveal" data-cat="kleding" data-zoek="longsleeve polo&#x27;s kleding wit donkergrijs lichtgrijs marineblauw rood">
+          <div class="product-card-img-wrap">
+            <img src="/productfotos/polo-longsleeve/longsleeve_wit/1_voorkant-300.webp"
+                 srcset="/productfotos/polo-longsleeve/longsleeve_wit/1_voorkant-300.webp 300w, /productfotos/polo-longsleeve/longsleeve_wit/1_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Longsleeve Polo&#x27;s — Wit" />
+          <img src="/productfotos/polo-longsleeve/longsleeve_wit/model_man_jong_beweging-600.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" class="pc-hoverfoto" />
+            <span class="pc-kleurbadge">5 kleuren</span>
+          <div class="imp-overlay"><div class="imp-overlay-title">Longsleeve Polo&#x27;s</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
+          <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+          </div>
+          <div class="product-card-title">Longsleeve Polo&#x27;s</div>
+          <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 15 stuks</div>
+            <div class="product-card-desc">Polo&#x27;s met lange mouwen in piqué stof. Netjes genoeg voor bedrijfskleding en warm genoeg voor buiten, met dezelfde borduurmogelijkheden als de korte variant.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#c7c7c7" title="Wit"></span><span class="pc-staal" style="background:#312e2d" title="Donkergrijs"></span><span class="pc-staal" style="background:#bdbcbe" title="Lichtgrijs"></span><span class="pc-staal" style="background:#383644" title="Marineblauw"></span><span class="pc-staal" style="background:#b12e3e" title="Rood"></span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+          </div>
+        </a>
+        <a href="/producten/hoodies" class="product-card reveal" data-cat="kleding" data-zoek="hoodies kleding bordeauxrood donkergrijs koningsblauw lichtgrijs marineblauw olijfgroen rood wit zand zwart">
+          <div class="product-card-img-wrap">
+            <img src="/productfotos/hoodies/bordeauxrood/1_voorkant-300.webp"
+                 srcset="/productfotos/hoodies/bordeauxrood/1_voorkant-300.webp 300w, /productfotos/hoodies/bordeauxrood/1_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Hoodies — Bordeauxrood" />
+          <img src="/productfotos/hoodies/bordeauxrood/model_vrouw_divers_beweging-600.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" class="pc-hoverfoto" />
+            <span class="pc-kleurbadge">10 kleuren</span>
           <div class="imp-overlay"><div class="imp-overlay-title">Hoodies</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
           <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
           <div class="product-card-title">Hoodies</div>
           <div class="product-card-body">
             <div class="product-card-minafname">Min. afname 10 stuks</div>
-            <div class="product-card-desc">Warme hoodies in fleece of french terry, ideaal als clubkleding of dispuutsartikel.</div>
-            <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+            <div class="product-card-desc">Warme hoodies in fleece of french terry, ideaal als clubkleding of dispuutsartikel. Voorzien van kangoeroezak en verstelbare capuchon.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#541a2f" title="Bordeauxrood"></span><span class="pc-staal" style="background:#38353b" title="Donkergrijs"></span><span class="pc-staal" style="background:#08509c" title="Koningsblauw"></span><span class="pc-staal" style="background:#b5b4b6" title="Lichtgrijs"></span><span class="pc-staal" style="background:#1a1e33" title="Marineblauw"></span><span class="pc-staal" style="background:#797763" title="Olijfgroen"></span><span class="pc-staal-meer">+4</span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
         </a>
-        <a href="/producten/quarter-zip-sweaters" class="product-card reveal">
+        <a href="/producten/sweaters" class="product-card reveal" data-cat="kleding" data-zoek="sweaters kleding antraciet bordeauxrood donkergrijs flessengroen geel hemelsblauw houtskoolgrijs kakigroen koningsblauw lavendelblauw lichtgrijs marineblauw naturel poederroze rood wit zwart">
           <div class="product-card-img-wrap">
-            <img src="shirt-preview-4.png" alt="Quarter-zip Sweaters" />
-
+            <img src="/productfotos/sweaters/antraciet/1_voorkant-300.webp"
+                 srcset="/productfotos/sweaters/antraciet/1_voorkant-300.webp 300w, /productfotos/sweaters/antraciet/1_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Sweaters — Antraciet" />
+          <img src="/productfotos/sweaters/antraciet/model_vrouw_divers_beweging-600.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" class="pc-hoverfoto" />
+            <span class="pc-kleurbadge">17 kleuren</span>
+          <div class="imp-overlay"><div class="imp-overlay-title">Sweaters</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
+          <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+          </div>
+          <div class="product-card-title">Sweaters</div>
+          <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 12 stuks</div>
+            <div class="product-card-desc">Klassieke sweaters zonder capuchon, in stevig french terry. Een veelgevraagd basisstuk voor verenigingen die een rustiger alternatief voor de hoodie zoeken.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#3b3947" title="Antraciet"></span><span class="pc-staal" style="background:#65173e" title="Bordeauxrood"></span><span class="pc-staal" style="background:#464349" title="Donkergrijs"></span><span class="pc-staal" style="background:#1f3e31" title="Flessengroen"></span><span class="pc-staal" style="background:#f0ae28" title="Geel"></span><span class="pc-staal" style="background:#a0c4e8" title="Hemelsblauw"></span><span class="pc-staal-meer">+11</span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+          </div>
+        </a>
+        <a href="/producten/quarter-zip-sweaters" class="product-card reveal" data-cat="kleding" data-zoek="quarter-zip sweaters kleding blauw donkergrijs donkergroen lichtgrijs marineblauw rood roze wit zwart">
+          <div class="product-card-img-wrap">
+            <img src="/productfotos/sweater-quarter-zip/blauw/1_voorkant-300.webp"
+                 srcset="/productfotos/sweater-quarter-zip/blauw/1_voorkant-300.webp 300w, /productfotos/sweater-quarter-zip/blauw/1_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Quarter-zip Sweaters — Blauw" />
+          <img src="/productfotos/sweater-quarter-zip/zwart/model_man_jong_beweging-600.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" class="pc-hoverfoto" />
+            <span class="pc-kleurbadge">9 kleuren</span>
           <div class="imp-overlay"><div class="imp-overlay-title">Quarter-zip Sweaters</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
           <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
           <div class="product-card-title">Quarter-zip Sweaters</div>
           <div class="product-card-body">
             <div class="product-card-minafname">Min. afname 12 stuks</div>
-            <div class="product-card-desc">Stijlvolle quarter-zip sweaters met ritssluiting bij de kraag. Populair als teamwear.</div>
-            <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+            <div class="product-card-desc">Stijlvolle quarter-zip sweaters met ritssluiting bij de kraag. Populair als teamwear, dispuutsartikel en bedrijfskleding. Verkrijgbaar met geborduurde branding.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#0d62ac" title="Blauw"></span><span class="pc-staal" style="background:#4e494f" title="Donkergrijs"></span><span class="pc-staal" style="background:#244437" title="Donkergroen"></span><span class="pc-staal" style="background:#c3c3c8" title="Lichtgrijs"></span><span class="pc-staal" style="background:#161a2e" title="Marineblauw"></span><span class="pc-staal" style="background:#dc022e" title="Rood"></span><span class="pc-staal-meer">+3</span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
         </a>
-        <a href="/producten/sportshirts" class="product-card reveal">
+        <a href="/producten/sportshirts" class="product-card reveal" data-cat="kleding" data-zoek="sportshirts kleding blauw blauw 2 donkergroen geel geel 2 geel 3 groen marineblauw marineblauw 2 middengrijs oranje oranje 2 paars rood rood 2 roze wit zwart">
           <div class="product-card-img-wrap">
-            <span class="product-card-design-badge" onclick="event.preventDefault(); event.stopPropagation(); showPage('ontwerp-tool');" title="Ga naar de ontwerptool">
-              <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-              Ontwerp je eigen shirt!
-            </span>
-            <img src="shirt-preview-5.png" alt="Sportshirts" />
-
+            <img src="/productfotos/sportshirt/blauw/1_voorkant-300.webp"
+                 srcset="/productfotos/sportshirt/blauw/1_voorkant-300.webp 300w, /productfotos/sportshirt/blauw/1_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Sportshirts — Blauw" />
+          <img src="/productfotos/sportshirt/zwart/model_man_jong_beweging-600.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" class="pc-hoverfoto" />
+            <span class="pc-kleurbadge">18 kleuren</span>
           <div class="imp-overlay"><div class="imp-overlay-title">Sportshirts</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
           <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
           <div class="product-card-title">Sportshirts</div>
           <div class="product-card-body">
             <div class="product-card-minafname">Min. afname 15 stuks</div>
-            <div class="product-card-desc">Functionele sportshirts in ademend materiaal, perfect voor hockey, voetbal en andere sporten.</div>
-            <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+            <div class="product-card-desc">Functionele sportshirts in ademend materiaal, perfect voor hockey, voetbal en andere sporten. Verkrijgbaar in tweekleurig design met sublimatiemogelijkheden.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#354b94" title="Blauw"></span><span class="pc-staal" style="background:#68a0c0" title="Blauw 2"></span><span class="pc-staal" style="background:#343e36" title="Donkergroen"></span><span class="pc-staal" style="background:#c0cb61" title="Geel"></span><span class="pc-staal" style="background:#fbe618" title="Geel 2"></span><span class="pc-staal" style="background:#f0e628" title="Geel 3"></span><span class="pc-staal-meer">+12</span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
         </a>
-        <a href="/producten/overhemden" class="product-card reveal">
+        <a href="/producten/sport-tanktops" class="product-card reveal" data-cat="kleding" data-zoek="sport tanktops kleding blauw blauw 2 geel geel 2 groen marineblauw oranje rood roze wit zwart">
           <div class="product-card-img-wrap">
-            <img src="shirt-preview-6.png" alt="Overhemden" />
-
-          <div class="imp-overlay"><div class="imp-overlay-title">Overhemden</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
+            <img src="/productfotos/tanktop-sport/blauw/1_voorkant-300.webp"
+                 srcset="/productfotos/tanktop-sport/blauw/1_voorkant-300.webp 300w, /productfotos/tanktop-sport/blauw/1_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Sport Tanktops — Blauw" />
+          <img src="/productfotos/tanktop-sport/wit/model_man_jong_beweging-600.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" class="pc-hoverfoto" />
+            <span class="pc-kleurbadge">11 kleuren</span>
+          <div class="imp-overlay"><div class="imp-overlay-title">Sport Tanktops</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
           <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
-          <div class="product-card-title">Overhemden</div>
+          <div class="product-card-title">Sport Tanktops</div>
           <div class="product-card-body">
             <div class="product-card-minafname">Min. afname 15 stuks</div>
-            <div class="product-card-desc">Deze formele overhemden geven gala's, lustrums en events een verzorgde uitstraling.</div>
-            <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+            <div class="product-card-desc">Mouwloze sportshirts in ademend polyester. Veel gebruikt bij roeien, atletiek en zaalsporten, en als zomerartikel bij verenigingsevenementen.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#334487" title="Blauw"></span><span class="pc-staal" style="background:#5b92b7" title="Blauw 2"></span><span class="pc-staal" style="background:#d1d75e" title="Geel"></span><span class="pc-staal" style="background:#edd51a" title="Geel 2"></span><span class="pc-staal" style="background:#a7bf42" title="Groen"></span><span class="pc-staal" style="background:#252746" title="Marineblauw"></span><span class="pc-staal-meer">+5</span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
         </a>
-        <a href="/producten/zwembroeken" class="product-card reveal">
+        <a href="/producten/sportbroeken" class="product-card reveal" data-cat="kleding" data-zoek="sportbroeken kleding blauw marineblauw zwart">
           <div class="product-card-img-wrap">
-            <img src="shirt-preview-9.png" alt="Zwembroeken" />
-
+            <img src="/productfotos/shorts-sport/blauw/1_voorkant-300.webp"
+                 srcset="/productfotos/shorts-sport/blauw/1_voorkant-300.webp 300w, /productfotos/shorts-sport/blauw/1_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Sportbroeken — Blauw" />
+          <img src="/productfotos/shorts-sport/zwart/model_man_jong_beweging-600.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" class="pc-hoverfoto" />
+            <span class="pc-kleurbadge">3 kleuren</span>
+          <div class="imp-overlay"><div class="imp-overlay-title">Sportbroeken</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
+          <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+          </div>
+          <div class="product-card-title">Sportbroeken</div>
+          <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 15 stuks</div>
+            <div class="product-card-desc">Lichte sportbroeken met elastische taille en koordje. Te combineren met onze sportshirts tot een compleet tenue in jouw clubkleuren.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#475f9e" title="Blauw"></span><span class="pc-staal" style="background:#292a3a" title="Marineblauw"></span><span class="pc-staal" style="background:#39353d" title="Zwart"></span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+          </div>
+        </a>
+        <a href="/producten/sportbroeken-dames" class="product-card reveal" data-cat="kleding" data-zoek="sportbroeken dames kleding grijs melange / zwart marineblauw / wit rood / wit roze / wit zwart / wit zwart">
+          <div class="product-card-img-wrap">
+            <img src="/productfotos/shorts-dames/dames_grijsmelange_zwart/1_voorkant-300.webp"
+                 srcset="/productfotos/shorts-dames/dames_grijsmelange_zwart/1_voorkant-300.webp 300w, /productfotos/shorts-dames/dames_grijsmelange_zwart/1_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Sportbroeken Dames — Grijs melange / Zwart" />
+          <img src="/productfotos/shorts-dames/dames_zwart_zwart/model_man_jong_beweging-600.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" class="pc-hoverfoto" />
+            <span class="pc-kleurbadge">6 kleuren</span>
+          <div class="imp-overlay"><div class="imp-overlay-title">Sportbroeken Dames</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
+          <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+          </div>
+          <div class="product-card-title">Sportbroeken Dames</div>
+          <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 15 stuks</div>
+            <div class="product-card-desc">Sportbroeken met een damespasvorm, verkrijgbaar in tweekleurige uitvoeringen. Sluit aan op onze sportshirts voor een doorlopende teamlijn.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#aaaab6" title="Grijs melange / Zwart"></span><span class="pc-staal" style="background:#313d5f" title="Marineblauw / Wit"></span><span class="pc-staal" style="background:#e3203e" title="Rood / Wit"></span><span class="pc-staal" style="background:#f689af" title="Roze / Wit"></span><span class="pc-staal" style="background:#26222a" title="Zwart / Wit"></span><span class="pc-staal" style="background:#1b1918" title="Zwart"></span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+          </div>
+        </a>
+        <a href="/producten/zwembroeken" class="product-card reveal" data-cat="kleding" data-zoek="zwembroeken kleding zwart kersrood kobaltblauw antraciet bosgroen marineblauw olijfgroen">
+          <div class="product-card-img-wrap">
+            <img src="/productfotos/zwembroek-heren/black/1_voorkant-300.webp"
+                 srcset="/productfotos/zwembroek-heren/black/1_voorkant-300.webp 300w, /productfotos/zwembroek-heren/black/1_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Zwembroeken — Zwart" />
+          <img src="/productfotos/zwembroek-heren/cherry/model_man_jong_beweging-600.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" class="pc-hoverfoto" />
+            <span class="pc-kleurbadge">7 kleuren</span>
           <div class="imp-overlay"><div class="imp-overlay-title">Zwembroeken</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
           <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
           <div class="product-card-title">Zwembroeken</div>
           <div class="product-card-body">
             <div class="product-card-minafname">Min. afname 10 stuks</div>
-            <div class="product-card-desc">Bedrukte zwembroeken voor roeiverenigingen, watersporten en evenementen.</div>
-            <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+            <div class="product-card-desc">Bedrukte zwembroeken voor roeiverenigingen, watersporten en evenementen. Voorzien van gekleurd koordje en logodruk op de zijkant.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#2e2e2e" title="Zwart"></span><span class="pc-staal" style="background:#5f282e" title="Kersrood"></span><span class="pc-staal" style="background:#076ec9" title="Kobaltblauw"></span><span class="pc-staal" style="background:#5c5353" title="Antraciet"></span><span class="pc-staal" style="background:#1cb497" title="Bosgroen"></span><span class="pc-staal" style="background:#3b384c" title="Marineblauw"></span><span class="pc-staal-meer">+1</span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+          </div>
+        </a>
+        <a href="/producten/bomberjacks" class="product-card reveal" data-cat="kleding" data-zoek="bomberjacks kleding donkergrijs geel marineblauw middengrijs zwart">
+          <div class="product-card-img-wrap">
+            <img src="/productfotos/bomberjack/donkergrijs/1_voorkant-300.webp"
+                 srcset="/productfotos/bomberjack/donkergrijs/1_voorkant-300.webp 300w, /productfotos/bomberjack/donkergrijs/1_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Bomberjacks — Donkergrijs" />
+          <img src="/productfotos/bomberjack/zwart/model_man_jong_beweging-600.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" class="pc-hoverfoto" />
+            <span class="pc-kleurbadge">5 kleuren</span>
+          <div class="imp-overlay"><div class="imp-overlay-title">Bomberjacks</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
+          <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+          </div>
+          <div class="product-card-title">Bomberjacks</div>
+          <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 10 stuks</div>
+            <div class="product-card-desc">Bomberjacks met ritssluiting en geribde boorden. Een populair lustrum- en dispuutsartikel dat zich goed leent voor borduurwerk op rug en borst.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#6b6267" title="Donkergrijs"></span><span class="pc-staal" style="background:#bcaf9f" title="Geel"></span><span class="pc-staal" style="background:#33344f" title="Marineblauw"></span><span class="pc-staal" style="background:#b1afad" title="Middengrijs"></span><span class="pc-staal" style="background:#2b272d" title="Zwart"></span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+          </div>
+        </a>
+        <a href="/producten/softshell-jassen" class="product-card reveal" data-cat="kleding" data-zoek="softshell jassen kleding blauw bordeauxrood groen marineblauw olijfgroen zwart">
+          <div class="product-card-img-wrap">
+            <img src="/productfotos/softshell-jas/blauw/1_voorkant-300.webp"
+                 srcset="/productfotos/softshell-jas/blauw/1_voorkant-300.webp 300w, /productfotos/softshell-jas/blauw/1_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Softshell Jassen — Blauw" />
+          <img src="/productfotos/softshell-jas/zwart/model_man_jong_beweging-600.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" class="pc-hoverfoto" />
+            <span class="pc-kleurbadge">6 kleuren</span>
+          <div class="imp-overlay"><div class="imp-overlay-title">Softshell Jassen</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
+          <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+          </div>
+          <div class="product-card-title">Softshell Jassen</div>
+          <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 10 stuks</div>
+            <div class="product-card-desc">Winddichte softshell jassen met fleecevoering. Veel gekozen als bedrijfskleding en voor verenigingen die het hele seizoen buiten staan.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#3f5a9f" title="Blauw"></span><span class="pc-staal" style="background:#8a192b" title="Bordeauxrood"></span><span class="pc-staal" style="background:#465a41" title="Groen"></span><span class="pc-staal" style="background:#2b283b" title="Marineblauw"></span><span class="pc-staal" style="background:#595643" title="Olijfgroen"></span><span class="pc-staal" style="background:#272329" title="Zwart"></span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+          </div>
+        </a>
+        <a href="/producten/windjacks" class="product-card reveal" data-cat="kleding" data-zoek="windjacks kleding blauw donkergrijs groen marineblauw rood wit">
+          <div class="product-card-img-wrap">
+            <img src="/productfotos/windjack/blauw/1_voorkant-300.webp"
+                 srcset="/productfotos/windjack/blauw/1_voorkant-300.webp 300w, /productfotos/windjack/blauw/1_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Windjacks — Blauw" />
+          <img src="/productfotos/windjack/wit/model_man_jong_beweging-600.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" class="pc-hoverfoto" />
+            <span class="pc-kleurbadge">6 kleuren</span>
+          <div class="imp-overlay"><div class="imp-overlay-title">Windjacks</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
+          <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+          </div>
+          <div class="product-card-title">Windjacks</div>
+          <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 10 stuks</div>
+            <div class="product-card-desc">Lichte windjacks die klein op te vouwen zijn. Ideaal voor evenementen, sportdagen en als weerbestendig relatiegeschenk.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#5264a6" title="Blauw"></span><span class="pc-staal" style="background:#3b323c" title="Donkergrijs"></span><span class="pc-staal" style="background:#323e38" title="Groen"></span><span class="pc-staal" style="background:#333345" title="Marineblauw"></span><span class="pc-staal" style="background:#cb3042" title="Rood"></span><span class="pc-staal" style="background:#e9e6ec" title="Wit"></span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
         </a>
     </div>
     <h3 class="product-group-title" id="accessoires">Accessoires</h3>
     <div class="product-grid">
-        <a href="/producten/sjaals" class="product-card reveal">
+        <a href="/producten/bucket-hats" class="product-card reveal" data-cat="accessoires" data-zoek="bucket hats accessoires zwart marineblauw camouflage donker olijfgroen">
           <div class="product-card-img-wrap">
-            <img src="shirt-preview-7.png" alt="Sjaals" />
-
+            <img src="/productfotos/buckethats/black/1_voorkant-300.webp"
+                 srcset="/productfotos/buckethats/black/1_voorkant-300.webp 300w, /productfotos/buckethats/black/1_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Bucket Hats — Zwart" />
+          <img src="/productfotos/buckethats/black/model_man_jong_beweging-600.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" class="pc-hoverfoto" />
+            <span class="pc-kleurbadge">4 kleuren</span>
+          <div class="imp-overlay"><div class="imp-overlay-title">Bucket Hats</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
+          <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+          </div>
+          <div class="product-card-title">Bucket Hats</div>
+          <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 20 stuks</div>
+            <div class="product-card-desc">Bucket hats met een brede rand, geborduurd met jouw logo of tekst. Een vast onderdeel van introductieweken en festivalmerchandise.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#2b2a2f" title="Zwart"></span><span class="pc-staal" style="background:#23233a" title="Marineblauw"></span><span class="pc-staal" style="background:#2f2e30" title="Camouflage donker"></span><span class="pc-staal" style="background:#525343" title="Olijfgroen"></span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+          </div>
+        </a>
+        <a href="/producten/bucket-hats-washed" class="product-card reveal" data-cat="accessoires" data-zoek="bucket hats washed accessoires bordeauxrood (washed) grijs (washed) khaki (washed) roze (washed) zwart (washed)">
+          <div class="product-card-img-wrap">
+            <img src="/productfotos/buckethats-washed/wassing_bordeaux/1_voorkant-300.webp"
+                 srcset="/productfotos/buckethats-washed/wassing_bordeaux/1_voorkant-300.webp 300w, /productfotos/buckethats-washed/wassing_bordeaux/1_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Bucket Hats Washed — Bordeauxrood (washed)" />
+          <img src="/productfotos/buckethats-washed/wassing_zwart/model_man_jong_beweging-600.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" class="pc-hoverfoto" />
+            <span class="pc-kleurbadge">5 kleuren</span>
+          <div class="imp-overlay"><div class="imp-overlay-title">Bucket Hats Washed</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
+          <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+          </div>
+          <div class="product-card-title">Bucket Hats Washed</div>
+          <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 20 stuks</div>
+            <div class="product-card-desc">Bucket hats met een gewassen, licht vervaagde look. Zelfde model als de reguliere variant, maar met een zachtere stof en een gedragen uitstraling.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#863c53" title="Bordeauxrood (washed)"></span><span class="pc-staal" style="background:#48464b" title="Grijs (washed)"></span><span class="pc-staal" style="background:#b69885" title="Khaki (washed)"></span><span class="pc-staal" style="background:#e583b1" title="Roze (washed)"></span><span class="pc-staal" style="background:#3a343b" title="Zwart (washed)"></span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+          </div>
+        </a>
+        <a href="/producten/caps" class="product-card reveal" data-cat="accessoires" data-zoek="caps accessoires blauw lichtblauw">
+          <div class="product-card-img-wrap">
+            <img src="/productfotos/denim-cap/blue/1_voorkant-300.webp"
+                 srcset="/productfotos/denim-cap/blue/1_voorkant-300.webp 300w, /productfotos/denim-cap/blue/1_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Caps — Blauw" />
+          <img src="/productfotos/denim-cap/blue/model_man_jong_beweging-600.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" class="pc-hoverfoto" />
+            <span class="pc-kleurbadge">2 kleuren</span>
+          <div class="imp-overlay"><div class="imp-overlay-title">Caps</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
+          <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+          </div>
+          <div class="product-card-title">Caps</div>
+          <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 20 stuks</div>
+            <div class="product-card-desc">Caps met gebogen klep en verstelbare sluiting achter. Geborduurd met jouw logo, geschikt als clubartikel of relatiegeschenk.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#5f6f94" title="Blauw"></span><span class="pc-staal" style="background:#96acc2" title="Lichtblauw"></span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+          </div>
+        </a>
+        <a href="/producten/sjaals" class="product-card reveal" data-cat="accessoires" data-zoek="sjaals accessoires zwart">
+          <div class="product-card-img-wrap">
+            <img src="/productfotos/sjaals/zwart/1_dubbelgevouwen-300.webp"
+                 srcset="/productfotos/sjaals/zwart/1_dubbelgevouwen-300.webp 300w, /productfotos/sjaals/zwart/1_dubbelgevouwen-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Sjaals — Zwart" />
+            <span class="pc-kleurbadge">1 kleur</span>
           <div class="imp-overlay"><div class="imp-overlay-title">Sjaals</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
           <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
           <div class="product-card-title">Sjaals</div>
           <div class="product-card-body">
             <div class="product-card-minafname">Min. afname 20 stuks</div>
-            <div class="product-card-desc">Wij weven of breien deze sjaals op maat in jouw clubkleuren en voorzien ze van jouw logo.</div>
-            <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+            <div class="product-card-desc">Op maat geweven of gebreide sjaals in jouw clubkleuren. Verkrijgbaar als supporterssjaal met franjes, volledig gepersonaliseerd met logo en tekst.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#1b1a1d" title="Zwart"></span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
         </a>
-        <a href="/producten/sokken" class="product-card reveal">
+        <a href="/producten/tote-bags" class="product-card reveal" data-cat="accessoires" data-zoek="tote bags accessoires lichtgrijs naturel zwart">
           <div class="product-card-img-wrap">
-            <img src="shirt-preview-8.png" alt="Sokken" />
-
-          <div class="imp-overlay"><div class="imp-overlay-title">Sokken</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
+            <img src="/productfotos/tote-bag/lichtgrijs/1_voorkant-300.webp"
+                 srcset="/productfotos/tote-bag/lichtgrijs/1_voorkant-300.webp 300w, /productfotos/tote-bag/lichtgrijs/1_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Tote Bags — Lichtgrijs" />
+          <img src="/productfotos/tote-bag/naturel/model_man_jong_beweging-600.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" class="pc-hoverfoto" />
+            <span class="pc-kleurbadge">3 kleuren</span>
+          <div class="imp-overlay"><div class="imp-overlay-title">Tote Bags</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
           <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
-          <div class="product-card-title">Sokken</div>
+          <div class="product-card-title">Tote Bags</div>
           <div class="product-card-body">
-            <div class="product-card-minafname">Min. afname 25 stuks</div>
-            <div class="product-card-desc">Op maat gebreide sokken in jouw clubkleuren. Voorzien van logo of tekstborduurwerk.</div>
-            <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+            <div class="product-card-minafname">Min. afname 20 stuks</div>
+            <div class="product-card-desc">Katoenen schoudertassen met lange hengsels. Een praktisch en goedkoop merchandise-artikel dat lang meegaat en veel gebruikt wordt.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#e4dbcf" title="Lichtgrijs"></span><span class="pc-staal" style="background:#e5dfd3" title="Naturel"></span><span class="pc-staal" style="background:#2a2726" title="Zwart"></span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
         </a>
-        <a href="/producten/mutsen" class="product-card reveal">
+        <a href="/producten/badslippers" class="product-card reveal" data-cat="accessoires" data-zoek="badslippers accessoires blauw bruin donkerblauw donkerblauw / rode zool geel grijs grijs / mint zool groen mint oranje paars rood rood / witte zool roze wit zwart zwart / gele zool">
           <div class="product-card-img-wrap">
-            <img src="shirt-preview-13.png" alt="Mutsen" />
-
-          <div class="imp-overlay"><div class="imp-overlay-title">Mutsen</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
+            <img src="/productfotos/badslippers/blauw/1_bovenaanzicht-300.webp"
+                 srcset="/productfotos/badslippers/blauw/1_bovenaanzicht-300.webp 300w, /productfotos/badslippers/blauw/1_bovenaanzicht-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Badslippers — Blauw" />
+            <span class="pc-kleurbadge">17 kleuren</span>
+          <div class="imp-overlay"><div class="imp-overlay-title">Badslippers</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
           <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
-          <div class="product-card-title">Mutsen</div>
+          <div class="product-card-title">Badslippers</div>
           <div class="product-card-body">
-            <div class="product-card-minafname">Min. afname 30 stuks</div>
-            <div class="product-card-desc">Wij breien deze mutsen in jouw team- of clubkleur en borduren er jouw tekst of een logo op.</div>
-            <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+            <div class="product-card-minafname">Min. afname 20 stuks</div>
+            <div class="product-card-desc">Badslippers met bedrukte band, verkrijgbaar met contrasterende zool. Veelgevraagd bij roeiverenigingen, zwemclubs en sportweekenden.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#3d5597" title="Blauw"></span><span class="pc-staal" style="background:#665654" title="Bruin"></span><span class="pc-staal" style="background:#233569" title="Donkerblauw"></span><span class="pc-staal" style="background:#b90e30" title="Donkerblauw / rode zool"></span><span class="pc-staal" style="background:#e4ba48" title="Geel"></span><span class="pc-staal" style="background:#909195" title="Grijs"></span><span class="pc-staal-meer">+11</span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
         </a>
-        <a href="/producten/schorten" class="product-card reveal">
+        <a href="/producten/badjassen" class="product-card reveal" data-cat="accessoires" data-zoek="badjassen accessoires wit">
           <div class="product-card-img-wrap">
-            <img src="shirt-preview-10.png" alt="Schorten" />
-
-          <div class="imp-overlay"><div class="imp-overlay-title">Schorten</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
+            <img src="/productfotos/badjas/wit/1_voorkant-300.webp"
+                 srcset="/productfotos/badjas/wit/1_voorkant-300.webp 300w, /productfotos/badjas/wit/1_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Badjassen — Wit" />
+          <img src="/productfotos/badjas/wit/model_man_jong_beweging-600.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" class="pc-hoverfoto" />
+            <span class="pc-kleurbadge">1 kleur</span>
+          <div class="imp-overlay"><div class="imp-overlay-title">Badjassen</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
           <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
-          <div class="product-card-title">Schorten</div>
+          <div class="product-card-title">Badjassen</div>
           <div class="product-card-body">
             <div class="product-card-minafname">Min. afname 10 stuks</div>
-            <div class="product-card-desc">Op maat bedrukte of geborduurde schorten voor horeca, evenementen en teams.</div>
-            <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+            <div class="product-card-desc">Zachte badjassen in badstof, geborduurd met naam of logo. Populair bij roeiverenigingen, zwemclubs en als lustrumcadeau.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#c6c4d1" title="Wit"></span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
         </a>
-        <a href="/producten/paraplus" class="product-card reveal">
+        <a href="/producten/paraplus" class="product-card reveal" data-cat="accessoires" data-zoek="paraplu&#x27;s accessoires donkerblauw donkergroen grafietzwart grijsblauw lichtgrijs mistblauw zachtgroen oranje perzikroze wit">
           <div class="product-card-img-wrap">
-            <img src="shirt-preview-11.png" alt="Paraplu's" />
-
-          <div class="imp-overlay"><div class="imp-overlay-title">Paraplu's</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
+            <img src="/productfotos/paraplu/darkblue/1_voorkant-300.webp"
+                 srcset="/productfotos/paraplu/darkblue/1_voorkant-300.webp 300w, /productfotos/paraplu/darkblue/1_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Paraplu&#x27;s — Donkerblauw" />
+            <span class="pc-kleurbadge">10 kleuren</span>
+          <div class="imp-overlay"><div class="imp-overlay-title">Paraplu&#x27;s</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
           <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
-          <div class="product-card-title">Paraplu's</div>
+          <div class="product-card-title">Paraplu&#x27;s</div>
           <div class="product-card-body">
             <div class="product-card-minafname">Min. afname 20 stuks</div>
-            <div class="product-card-desc">Deze stijlvolle vouwparaplu's bedrukken wij met jouw clubkleur of logo, ideaal als geschenk.</div>
-            <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
-          </div>
-        </a>
-        <a href="/producten/handdoeken" class="product-card reveal">
-          <div class="product-card-img-wrap">
-            <img src="shirt-preview-12.png" alt="Handdoeken" />
-
-          <div class="imp-overlay"><div class="imp-overlay-title">Handdoeken</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
-          <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
-          </div>
-          <div class="product-card-title">Handdoeken</div>
-          <div class="product-card-body">
-            <div class="product-card-minafname">Min. afname 20 stuks</div>
-            <div class="product-card-desc">Zachte handdoeken in badstof, beschikbaar als strandhanddoek of sporthanddoek.</div>
-            <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+            <div class="product-card-desc">Stijlvolle vouwparaplu&#x27;s met bedrukte panelen in jouw clubkleur of logo. Ideaal als relatiegeschenk of evenementartikel.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#3f4565" title="Donkerblauw"></span><span class="pc-staal" style="background:#3c5045" title="Donkergroen"></span><span class="pc-staal" style="background:#2d2d2f" title="Grafietzwart"></span><span class="pc-staal" style="background:#7d829b" title="Grijsblauw"></span><span class="pc-staal" style="background:#c3c4c2" title="Lichtgrijs"></span><span class="pc-staal" style="background:#a1bdd8" title="Mistblauw"></span><span class="pc-staal-meer">+4</span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
         </a>
     </div>
     <h3 class="product-group-title" id="promotie">Promotie</h3>
     <div class="product-grid">
-        <a href="/producten/vlaggen" class="product-card reveal">
+        <a href="/producten/thermosflessen" class="product-card reveal" data-cat="promotie" data-zoek="thermosflessen promotie blauw rood roze wit zwart">
           <div class="product-card-img-wrap">
-            <img src="shirt-preview-14.png" alt="Vlaggen" />
-
+            <img src="/productfotos/thermos/blauw/1_voorkant-300.webp"
+                 srcset="/productfotos/thermos/blauw/1_voorkant-300.webp 300w, /productfotos/thermos/blauw/1_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Thermosflessen — Blauw" />
+            <span class="pc-kleurbadge">5 kleuren</span>
+          <div class="imp-overlay"><div class="imp-overlay-title">Thermosflessen</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
+          <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+          </div>
+          <div class="product-card-title">Thermosflessen</div>
+          <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 20 stuks</div>
+            <div class="product-card-desc">Dubbelwandige thermosflessen van roestvrij staal die dranken urenlang op temperatuur houden. Gegraveerd of bedrukt met jouw logo.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#2f5887" title="Blauw"></span><span class="pc-staal" style="background:#913b40" title="Rood"></span><span class="pc-staal" style="background:#daacb9" title="Roze"></span><span class="pc-staal" style="background:#cecece" title="Wit"></span><span class="pc-staal" style="background:#3a3a3a" title="Zwart"></span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+          </div>
+        </a>
+        <a href="/producten/waterflessen" class="product-card reveal" data-cat="promotie" data-zoek="waterflessen promotie blauw felroze geel grijs groen lichtroze mint marineblauw olijfgroen oranje wit zwart">
+          <div class="product-card-img-wrap">
+            <img src="/productfotos/waterbottle/blauw/1_voorkant-300.webp"
+                 srcset="/productfotos/waterbottle/blauw/1_voorkant-300.webp 300w, /productfotos/waterbottle/blauw/1_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Waterflessen — Blauw" />
+            <span class="pc-kleurbadge">12 kleuren</span>
+          <div class="imp-overlay"><div class="imp-overlay-title">Waterflessen</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
+          <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+          </div>
+          <div class="product-card-title">Waterflessen</div>
+          <div class="product-card-body">
+            <div class="product-card-minafname">Min. afname 20 stuks</div>
+            <div class="product-card-desc">Herbruikbare waterflessen met logo, in meerdere kleuren. Een duurzaam relatiegeschenk dat dagelijks gebruikt wordt en dus lang zichtbaar blijft.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#1c88bf" title="Blauw"></span><span class="pc-staal" style="background:#f87098" title="Felroze"></span><span class="pc-staal" style="background:#e5ce09" title="Geel"></span><span class="pc-staal" style="background:#79767b" title="Grijs"></span><span class="pc-staal" style="background:#61a15b" title="Groen"></span><span class="pc-staal" style="background:#ea9db3" title="Lichtroze"></span><span class="pc-staal-meer">+6</span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+          </div>
+        </a>
+        <a href="/producten/vlaggen" class="product-card reveal" data-cat="promotie" data-zoek="vlaggen promotie zwart">
+          <div class="product-card-img-wrap">
+            <img src="/productfotos/vlag/zwart/1_hangend_voorkant-300.webp"
+                 srcset="/productfotos/vlag/zwart/1_hangend_voorkant-300.webp 300w, /productfotos/vlag/zwart/1_hangend_voorkant-600.webp 600w"
+                 sizes="(max-width:640px) 46vw, (max-width:1023px) 46vw, (max-width:1439px) 30vw, 22vw"
+                 width="600" height="600" loading="lazy" decoding="async"
+                 alt="Vlaggen — Zwart" />
+            <span class="pc-kleurbadge">1 kleur</span>
           <div class="imp-overlay"><div class="imp-overlay-title">Vlaggen</div><div class="imp-overlay-sub">Klik voor meer info</div></div>
           <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
           <div class="product-card-title">Vlaggen</div>
           <div class="product-card-body">
             <div class="product-card-minafname">Min. afname 10 stuks</div>
-            <div class="product-card-desc">Op maat gemaakte vlaggen voor verenigingen, evenementen en bedrijven.</div>
-            <button class="btn-meer-info">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
+            <div class="product-card-desc">Op maat gemaakte vlaggen voor verenigingen, evenementen en bedrijven. Volledig bedrukt met jouw logo, wapen of clubkleuren. Verkrijgbaar als beachflag, gevelvlag of lustrumvlag.</div>
+            <div class="pc-stalen" aria-hidden="true"><span class="pc-staal" style="background:#1c1a1e" title="Zwart"></span></div>
+            <button class="btn-meer-info" tabindex="-1">Meer info <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></button>
           </div>
         </a>
     </div>
+    <p class="producten-overig">Ook leverbaar, op aanvraag: <a href="/producten/overhemden">Overhemden</a> &middot; <a href="/producten/sokken">Sokken</a> &middot; <a href="/producten/schorten">Schorten</a> &middot; <a href="/producten/handdoeken">Handdoeken</a> &middot; <a href="/producten/mutsen">Mutsen</a></p>
+    <!-- CATALOGUS:EINDE -->
     </div>
   </div>
 
@@ -6558,12 +6959,34 @@
   // Vanuit de footer naar een productgroep op de productenpagina
   function gotoProductGroup(id) {
     showPage('producten');
+    // Filter eerst terugzetten: met een actief filter kan de doelkop
+    // verborgen zijn en scrollt de footerlink naar niets.
+    if (window.zetProductFilter) window.zetProductFilter('alles');
     setTimeout(function() {
       var el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 220);
     return false;
   }
+
+  // ── Catalogus: filteren op categorie ──────────────────────────
+  window.zetProductFilter = function(cat) {
+    var groepen = document.querySelectorAll('#page-producten .product-group-title');
+    document.querySelectorAll('.prod-filter').forEach(function(b) {
+      b.classList.toggle('is-actief', b.dataset.filter === cat);
+    });
+    groepen.forEach(function(kop) {
+      var grid = kop.nextElementSibling;
+      var toon = (cat === 'alles' || kop.id === cat);
+      kop.hidden = !toon;
+      if (grid) grid.hidden = !toon;
+    });
+  };
+
+  document.addEventListener('click', function(e) {
+    var knop = e.target.closest('.prod-filter');
+    if (knop) window.zetProductFilter(knop.dataset.filter);
+  });
 
   // ── Scroll reveal ─────────────────────────────────────────────
   function triggerReveal() {
