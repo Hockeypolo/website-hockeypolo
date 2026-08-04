@@ -225,3 +225,172 @@ CATEGORIE_LABELS = {
     "accessoires": "Accessoires",
     "promotie": "Promotie",
 }
+
+
+# ── "Over {product}"-teksten voor de detailpagina's ──────────────────
+# De 9 producten die al een pagina hadden houden hun bestaande tekst;
+# de 18 nieuwe zijn geschreven door Claude en moeten gecontroleerd worden.
+OVER = {
+    't-shirts': (
+        'Over t-shirts',
+        [
+            'T-shirts zijn het meest veelzijdige product in ons assortiment: geschikt voor sportverenigingen, studentenverenigingen, bedrijfsuitjes en evenementen. Je kiest zelf de kleur, het materiaal en de manier van personaliseren — van een klein logo op de borst tot een groot ontwerp over de hele rug.',
+            'We bedrukken met zeefdruk of DTG (direct-to-garment) en borduren waar dat een steviger of premium resultaat geeft. Voor kleine oplages is DTG vaak voordeliger, bij grotere aantallen is zeefdruk vaak de scherpste keuze — we adviseren je hier kosteloos in.',
+        ]),
+    'longsleeve-t-shirts': (
+        'Over longsleeve T-shirts',
+        [
+            'Longsleeve T-shirts zijn dezelfde kwaliteit als onze reguliere shirts, maar met lange mouwen. Daardoor zijn ze het hele jaar door draagbaar en populair bij verenigingen die één shirt voor meerdere seizoenen willen.',
+            'De mouw biedt extra bedrukbaar oppervlak: veel klanten zetten het logo op de borst en een naam, jaartal of tekst op de mouw. Wij adviseren je graag over de combinatie.',
+        ]),
+    'oversized-t-shirts': (
+        'Over oversized T-shirts',
+        [
+            'Oversized T-shirts hebben een ruimere snit en een laag vallende schoudernaad. Die vorm sluit aan bij hoe merchandise nu gedragen wordt en is vooral gewild bij studentenverenigingen en introductiecommissies.',
+            'Door het zwaardere katoen en het grote bedrukbare vlak komen full-front en full-back ontwerpen goed tot hun recht. Voor grote prints is dit het shirt dat we het vaakst adviseren.',
+        ]),
+    'polos': (
+        "Over polo's",
+        [
+            "Onze polo's zijn gemaakt van piqué katoen en zijn een vaste keuze voor sportclubs, studentenverenigingen en bedrijven die representatief voor de dag willen. Effen uitvoeringen ogen strak en zakelijk, een contrasterende bies geeft net dat sportieve accent.",
+            "Logo's borduren we standaard op de borst; grotere ontwerpen bedrukken we. De pasvorm is unisex en beschikbaar in de meeste maten, zodat je hele team of vereniging in dezelfde stijl gekleed gaat.",
+        ]),
+    'longsleeve-polos': (
+        "Over longsleeve polo's",
+        [
+            'De longsleeve polo combineert de nette uitstraling van een polo met de warmte van lange mouwen. Een logische keuze voor bedrijven en verenigingen die er ook in het najaar verzorgd uit willen zien.',
+            'Het logo borduren we standaard op de borst; op de mouw is eveneens branding mogelijk. De pasvorm is unisex en beschikbaar in de gangbare maten.',
+        ]),
+    'hoodies': (
+        'Over hoodies',
+        [
+            'Hoodies zijn dé klassieker voor clubkleding en dispuutsartikelen: warm, comfortabel en herkenbaar. Wij werken met stevige fleece of het iets luxere french terry, beide voorzien van kangoeroezak en verstelbare capuchon.',
+            'Bij grotere aantallen is zeefdruk het meest kosteneffectief; voor een premium uitstraling borduren we het logo op de borst of mouw. Populair bij lustrums, jaarclubs en teamuitjes waar je elkaar op straat wilt herkennen.',
+        ]),
+    'sweaters': (
+        'Over sweaters',
+        [
+            'Sweaters zijn het rustige alternatief voor de hoodie: dezelfde warme french terry, maar zonder capuchon. Veel verenigingen kiezen ze als basisstuk waarvan jaarlijks nieuwe lichtingen besteld worden.',
+            'Geribde boorden aan hals, mouw en zoom houden het model in vorm. Borduurwerk op de borst geeft een premium uitstraling, zeefdruk is voordeliger bij hogere aantallen.',
+        ]),
+    'quarter-zip-sweaters': (
+        'Over quarter-zip sweaters',
+        [
+            'De quarter-zip is de sweater die net iets formeler oogt dan een hoodie, zonder in te leveren op comfort. De rits bij de kraag geeft een strakke afwerking die goed past bij bedrijfskleding, dispuutsuitjes en teamwear buiten het veld.',
+            'We borduren het logo doorgaans op de borst voor een premium finish, maar bedrukken kan ook. Verkrijgbaar in meerdere kleuren zodat de sweater aansluit bij je bestaande huisstijl of clubkleuren.',
+        ]),
+    'sportshirts': (
+        'Over sportshirts',
+        [
+            'Functionele sportshirts in ademend polyester, ontworpen om te presteren tijdens hockey, voetbal en andere sporten. Sublimatie maakt een volledig bedrukt, naadloos ontwerp mogelijk — inclusief kleurverloop en scherpe teamkleuren-combinaties.',
+            'Wil je zelf spelen met kleuren en indeling? Gebruik onze online ontwerptool en zie direct hoe jouw teamshirt eruitziet, voordat je een aanvraag indient.',
+        ]),
+    'sport-tanktops': (
+        'Over sporttanktops',
+        [
+            'Mouwloze sportshirts in ademend polyester, gemaakt voor intensieve inspanning. Veel gebruikt bij roeien, atletiek en zaalsporten, waar bewegingsvrijheid in de schouders telt.',
+            'Sublimatie maakt een volledig doorlopend ontwerp mogelijk, inclusief clubkleuren en rugnummers. Ook geschikt als zomerartikel bij verenigingsevenementen.',
+        ]),
+    'sportbroeken': (
+        'Over sportbroeken',
+        [
+            'Lichte sportbroeken met elastische taille en koordje, in hetzelfde ademende polyester als onze sportshirts. Samen vormen ze een compleet tenue in jouw clubkleuren.',
+            'Het logo drukken we op de pijp of bij de taille. Bij teamtenues stemmen we de kleuren van shirt en broek exact op elkaar af.',
+        ]),
+    'sportbroeken-dames': (
+        'Over sportbroeken voor dames',
+        [
+            'Sportbroeken met een damespasvorm, verkrijgbaar in tweekleurige uitvoeringen. Ze sluiten aan op onze sportshirts, zodat een gemengd team er als één geheel uitziet.',
+            'De tweekleurige uitvoering leent zich goed voor clubkleuren: de hoofdkleur voor de broek, de tweede kleur als accent. Logodruk is op meerdere posities mogelijk.',
+        ]),
+    'zwembroeken': (
+        'Over zwembroeken',
+        [
+            'Bedrukte zwembroeken zijn een vaste waarde bij roeiverenigingen en watersportclubs. Sneldrogend polyester, een sublimatiemogelijkheid voor een volledig bedrukt ontwerp, en een bedrukt koordje als extra detail.',
+            'Beschikbaar van maat S tot en met XXL, zodat een compleet team of vereniging in dezelfde uitstraling het water in kan.',
+        ]),
+    'bomberjacks': (
+        'Over bomberjacks',
+        [
+            'Bomberjacks zijn een vast onderdeel van lustrum- en dispuutscollecties. De stevige buitenstof en geribde boorden geven het model zijn herkenbare vorm, en de jas gaat jaren mee.',
+            'De rug biedt ruimte voor een groot geborduurd of gedrukt ontwerp; op de borst komt meestal het logo of een naam. Dit is bij uitstek het artikel waar leden zuinig op zijn.',
+        ]),
+    'softshell-jassen': (
+        'Over softshell jassen',
+        [
+            'Softshell jassen zijn winddicht en waterafstotend, met een zachte fleecevoering aan de binnenzijde. Daarmee zijn ze geschikt voor iedereen die veel buiten staat, van bouwplaats tot sportveld.',
+            'Als bedrijfskleding zijn ze een veilige keuze: netjes genoeg voor klantcontact, praktisch genoeg voor dagelijks gebruik. Het logo borduren we standaard op de borst.',
+        ]),
+    'windjacks': (
+        'Over windjacks',
+        [
+            'Lichte windjacks die compact op te vouwen zijn en nauwelijks ruimte innemen. Ideaal voor evenementen, sportdagen en als weerbestendig relatiegeschenk.',
+            'Ondanks het lage gewicht is de stof winddicht en waterafstotend. Zeefdruk of borduurwerk is op borst, rug en mouw mogelijk.',
+        ]),
+    'bucket-hats': (
+        'Over bucket hats',
+        [
+            'Bucket hats met een brede rand, geborduurd met jouw logo of tekst. Ze zijn de afgelopen jaren uitgegroeid tot een vast onderdeel van introductieweken en festivalmerchandise.',
+            'Het katoenen twill houdt zijn vorm en is goed te borduren. One size fits most, waardoor je bij het bestellen geen maatverdeling hoeft uit te vragen.',
+        ]),
+    'bucket-hats-washed': (
+        'Over washed bucket hats',
+        [
+            'Dezelfde bucket hat, maar met een gewassen afwerking: zachtere stof en een licht vervaagde kleur. Het resultaat oogt gedragen en minder uitgesproken dan de reguliere uitvoering.',
+            'De vintage-uitstraling past goed bij collecties waarin ook oversized shirts en sweaters zitten. Borduurwerk komt op de gewassen stof mooi tot zijn recht.',
+        ]),
+    'caps': (
+        'Over caps',
+        [
+            'Caps met een gebogen klep en een verstelbare sluiting achter. Een klassiek clubartikel dat het hele jaar door gedragen wordt en zich uitstekend leent voor borduurwerk.',
+            'Door de verstelbare sluiting past één maat vrijwel iedereen. Het logo borduren we op het voorpand; op de zijkant of achterzijde is aanvullende branding mogelijk.',
+        ]),
+    'sjaals': (
+        'Over sjaals',
+        [
+            'Een supporterssjaal in de eigen clubkleuren is een van de meest gevraagde artikelen bij sportclubs en studentenverenigingen. We weven of breien op maat, inclusief franjes als je daarvoor kiest, en verwerken logo en tekst volledig naar wens.',
+            'Sjaals worden vaak besteld rond een lustrum of jubileum — hou rekening met een iets langere doorlooptijd vanwege de weeftechniek, en neem op tijd contact op als je een vaste datum hebt.',
+        ]),
+    'tote-bags': (
+        'Over tote bags',
+        [
+            'Katoenen schoudertassen met lange hengsels: goedkoop in aanschaf, maar jarenlang zichtbaar. Als merchandise leveren ze per euro waarschijnlijk de meeste exposure van ons hele assortiment.',
+            'Het canvas is stevig genoeg voor dagelijks gebruik. Zeefdruk in meerdere kleuren is mogelijk, en juist bij hoge aantallen zakt de prijs per stuk snel.',
+        ]),
+    'badslippers': (
+        'Over badslippers',
+        [
+            'Badslippers met een bedrukte band, verkrijgbaar met een contrasterende zool. Veelgevraagd bij roeiverenigingen, zwemclubs en sportweekenden.',
+            'De zool is van zachte EVA en licht van gewicht. Door band- en zoolkleur te combineren maak je de slipper helemaal in de clubkleuren.',
+        ]),
+    'badjassen': (
+        'Over badjassen',
+        [
+            'Zachte badjassen in badstof, geborduurd met een naam of logo. Bij roeiverenigingen en zwemclubs zijn ze een vast artikel, en als lustrumcadeau worden ze zelden weggegeven.',
+            'Wij borduren standaard op de borst; een naam op de rug is een veelgevraagde toevoeging. De jassen zijn er in de gangbare maten met ceintuur en zijzakken.',
+        ]),
+    'paraplus': (
+        "Over paraplu's",
+        [
+            "Stijlvolle vouwparaplu's met bedrukte panelen in jouw clubkleur of logo, ideaal als relatiegeschenk of promotieartikel bij evenementen. Het automatische open/dicht-mechanisme en het windproof frame maken hem praktisch in gebruik.",
+            'Een reliëflogo is mogelijk voor een subtiele, premium afwerking. Kies zelf hoeveel panelen bedrukt worden — van een enkel accent tot een volledig doorlopend ontwerp.',
+        ]),
+    'thermosflessen': (
+        'Over thermosflessen',
+        [
+            'Dubbelwandige thermosflessen van roestvrij staal die warme en koude dranken urenlang op temperatuur houden. Een relatiegeschenk dat dagelijks gebruikt wordt.',
+            'Lasergravure geeft een strak, blijvend resultaat in het staal; rondom bedrukken kan ook. Beide technieken zijn bestand tegen langdurig gebruik.',
+        ]),
+    'waterflessen': (
+        'Over waterflessen',
+        [
+            'Herbruikbare waterflessen met logo, in meerdere kleuren. Een duurzaam alternatief voor wegwerpflesjes dat bovendien lang zichtbaar blijft bij de ontvanger.',
+            'De flessen zijn BPA-vrij, lekvrij afgesloten en vaatwasserbestendig. Rondom bedrukken maakt een ontwerp over de volledige fles mogelijk.',
+        ]),
+    'vlaggen': (
+        'Over vlaggen',
+        [
+            'Op maat gemaakte vlaggen voor verenigingen, evenementen en bedrijven — van beachflag tot gevelvlag of lustrumvlag. Volledige sublimatie maakt het mogelijk om je logo, wapen of clubkleuren over de hele vlag door te laten lopen.',
+            'Afgewerkt met metalen ringen voor eenvoudige bevestiging. Vlaggen worden vaak in kleine oplage besteld — ook een enkel exemplaar voor een jubileum of opening is bij ons mogelijk.',
+        ]),
+}

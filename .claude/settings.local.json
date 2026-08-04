@@ -4,7 +4,27 @@
       "Bash(node --version)",
       "mcp__Claude_Preview__preview_start",
       "Bash(python3:*)",
-      "Bash(xargs ls -t)"
+      "Bash(xargs ls -t)",
+      "Bash(rm -rf hockeypolo-sourcing)",
+      "Bash(npx --yes create-next-app@14.2.29 hockeypolo-sourcing --ts --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --no-turbo)",
+      "Bash(npm install:*)",
+      "Bash(npx shadcn-ui@latest init -y --defaults)",
+      "Bash(npx shadcn@latest init -y --defaults)",
+      "Bash(npx shadcn@latest add dialog input label select textarea badge dropdown-menu table toast checkbox slider card separator -y)",
+      "Bash(npx shadcn@latest add dialog input label select textarea badge dropdown-menu table checkbox slider card separator sonner -y)",
+      "Bash(npx prisma:*)",
+      "Bash(npx tsx:*)",
+      "Bash(awk 'NR>=3659 && NR<=3717' \"/Users/benjaminvansplunder/Library/Mobile Documents/com~apple~CloudDocs/Documents/Werk/Hockeypolo/Project Website/Website Folder/index.html\")",
+      "Bash(awk 'NR>=4437 && NR<=4442' \"/Users/benjaminvansplunder/Library/Mobile Documents/com~apple~CloudDocs/Documents/Werk/Hockeypolo/Project Website/Website Folder/index.html\")",
+      "Bash(awk 'NR>=5436 && NR<=5470' \"/Users/benjaminvansplunder/Library/Mobile Documents/com~apple~CloudDocs/Documents/Werk/Hockeypolo/Project Website/Website Folder/index.html\")",
+      "Bash(awk 'NR>=2470 && NR<=2540' \"/Users/benjaminvansplunder/Library/Mobile Documents/com~apple~CloudDocs/Documents/Werk/Hockeypolo/Project Website/Website Folder/index.html\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(git pull *)",
+      "Bash(git stash *)",
+      "Bash(git status *)",
+      "Bash(node -e \"const fs=require\\('fs'\\);const html=fs.readFileSync\\('index.html','utf8'\\);const scripts=[...html.matchAll\\(/<script\\(?![^>]*src\\)[^>]*>\\([\\\\s\\\\S]*?\\)<\\\\/script>/g\\)].map\\(m=>m[1]\\);scripts.forEach\\(\\(s,i\\)=>{try{new Function\\(s\\);}catch\\(e\\){console.error\\('Script #'+i+' error:',e.message.slice\\(0,200\\)\\);}}\\);console.log\\('parsed',scripts.length,'inline scripts OK'\\);\")"
     ]
   }
 }

@@ -37,24 +37,173 @@
     }
   ],
   "rewrites": [
-    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
-    { "source": "/robots.txt",  "destination": "/robots.txt"  },
-    { "source": "/start-project",          "destination": "/start-project.html" },
-    { "source": "/bedankt-deel-je-idee",  "destination": "/bedankt-deel-je-idee.html" },
-    { "source": "/producten/t-shirts",             "destination": "/producten-t-shirts.html" },
-    { "source": "/producten/polos",                "destination": "/producten-polos.html" },
-    { "source": "/producten/hoodies",              "destination": "/producten-hoodies.html" },
-    { "source": "/producten/quarter-zip-sweaters", "destination": "/producten-quarter-zip-sweaters.html" },
-    { "source": "/producten/sportshirts",          "destination": "/producten-sportshirts.html" },
-    { "source": "/producten/overhemden",           "destination": "/producten-overhemden.html" },
-    { "source": "/producten/sjaals",               "destination": "/producten-sjaals.html" },
-    { "source": "/producten/sokken",               "destination": "/producten-sokken.html" },
-    { "source": "/producten/zwembroeken",          "destination": "/producten-zwembroeken.html" },
-    { "source": "/producten/schorten",             "destination": "/producten-schorten.html" },
-    { "source": "/producten/paraplus",             "destination": "/producten-paraplus.html" },
-    { "source": "/producten/handdoeken",           "destination": "/producten-handdoeken.html" },
-    { "source": "/producten/mutsen",               "destination": "/producten-mutsen.html" },
-    { "source": "/producten/vlaggen",              "destination": "/producten-vlaggen.html" },
-    { "source": "/(.*)",        "destination": "/index.html"  }
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap.xml"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "/robots.txt"
+    },
+    {
+      "source": "/start-project",
+      "destination": "/start-project.html"
+    },
+    {
+      "source": "/bedankt-deel-je-idee",
+      "destination": "/bedankt-deel-je-idee.html"
+    },
+    {
+      "source": "/producten/t-shirts",
+      "destination": "/producten-t-shirts.html"
+    },
+    {
+      "source": "/producten/longsleeve-t-shirts",
+      "destination": "/producten-longsleeve-t-shirts.html"
+    },
+    {
+      "source": "/producten/oversized-t-shirts",
+      "destination": "/producten-oversized-t-shirts.html"
+    },
+    {
+      "source": "/producten/polos",
+      "destination": "/producten-polos.html"
+    },
+    {
+      "source": "/producten/longsleeve-polos",
+      "destination": "/producten-longsleeve-polos.html"
+    },
+    {
+      "source": "/producten/hoodies",
+      "destination": "/producten-hoodies.html"
+    },
+    {
+      "source": "/producten/sweaters",
+      "destination": "/producten-sweaters.html"
+    },
+    {
+      "source": "/producten/quarter-zip-sweaters",
+      "destination": "/producten-quarter-zip-sweaters.html"
+    },
+    {
+      "source": "/producten/sportshirts",
+      "destination": "/producten-sportshirts.html"
+    },
+    {
+      "source": "/producten/sport-tanktops",
+      "destination": "/producten-sport-tanktops.html"
+    },
+    {
+      "source": "/producten/sportbroeken",
+      "destination": "/producten-sportbroeken.html"
+    },
+    {
+      "source": "/producten/sportbroeken-dames",
+      "destination": "/producten-sportbroeken-dames.html"
+    },
+    {
+      "source": "/producten/zwembroeken",
+      "destination": "/producten-zwembroeken.html"
+    },
+    {
+      "source": "/producten/bomberjacks",
+      "destination": "/producten-bomberjacks.html"
+    },
+    {
+      "source": "/producten/softshell-jassen",
+      "destination": "/producten-softshell-jassen.html"
+    },
+    {
+      "source": "/producten/windjacks",
+      "destination": "/producten-windjacks.html"
+    },
+    {
+      "source": "/producten/bucket-hats",
+      "destination": "/producten-bucket-hats.html"
+    },
+    {
+      "source": "/producten/bucket-hats-washed",
+      "destination": "/producten-bucket-hats-washed.html"
+    },
+    {
+      "source": "/producten/caps",
+      "destination": "/producten-caps.html"
+    },
+    {
+      "source": "/producten/sjaals",
+      "destination": "/producten-sjaals.html"
+    },
+    {
+      "source": "/producten/tote-bags",
+      "destination": "/producten-tote-bags.html"
+    },
+    {
+      "source": "/producten/badslippers",
+      "destination": "/producten-badslippers.html"
+    },
+    {
+      "source": "/producten/badjassen",
+      "destination": "/producten-badjassen.html"
+    },
+    {
+      "source": "/producten/paraplus",
+      "destination": "/producten-paraplus.html"
+    },
+    {
+      "source": "/producten/thermosflessen",
+      "destination": "/producten-thermosflessen.html"
+    },
+    {
+      "source": "/producten/waterflessen",
+      "destination": "/producten-waterflessen.html"
+    },
+    {
+      "source": "/producten/vlaggen",
+      "destination": "/producten-vlaggen.html"
+    },
+    {
+      "source": "/producten/overhemden",
+      "destination": "/producten-overhemden.html"
+    },
+    {
+      "source": "/producten/sokken",
+      "destination": "/producten-sokken.html"
+    },
+    {
+      "source": "/producten/schorten",
+      "destination": "/producten-schorten.html"
+    },
+    {
+      "source": "/producten/handdoeken",
+      "destination": "/producten-handdoeken.html"
+    },
+    {
+      "source": "/producten/mutsen",
+      "destination": "/producten-mutsen.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/productfotos/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/producten-data.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    }
   ]
 }

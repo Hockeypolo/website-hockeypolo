@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>T-shirts bedrukken of borduren met logo | Hockeypolo</title>
-  <meta name="description" content="T-shirts op maat bedrukt of geborduurd met jouw logo, tekst of ontwerp. Alle kleuren en maten, vanaf 15 stuks. Al 20 jaar vanuit Rotterdam." />
+  <title>T-shirts bedrukken met eigen logo | Hockeypolo</title>
+  <meta name="description" content="Hoogwaardige T-shirts volledig op maat bedrukt of geborduurd met jouw logo, tekst of ontwerp. Beschikbaar in tientallen kleuren en maten, geschikt voor elke gelegenheid." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://hockeypolo.com/producten/t-shirts" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://hockeypolo.com/producten/t-shirts">
-  <meta property="og:title" content="T-shirts bedrukken of borduren met logo | Hockeypolo">
-  <meta property="og:description" content="T-shirts op maat bedrukt of geborduurd met jouw logo, tekst of ontwerp. Alle kleuren en maten, vanaf 15 stuks. Al 20 jaar vanuit Rotterdam.">
-  <meta property="og:image" content="https://hockeypolo.com/shirt-preview-1.png">
+  <meta property="og:title" content="T-shirts bedrukken met eigen logo | Hockeypolo">
+  <meta property="og:description" content="Hoogwaardige T-shirts volledig op maat bedrukt of geborduurd met jouw logo, tekst of ontwerp. Beschikbaar in tientallen kleuren en maten, geschikt voor elke gelegenheid.">
+  <meta property="og:image" content="https://hockeypolo.com/productfotos/t-shirts/azuurblauw/model_vrouw_divers_beweging-1200.webp">
   <meta property="og:locale" content="nl_NL">
   <meta property="og:site_name" content="Hockeypolo">
-  <link rel="preload" as="image" href="/shirt-preview-1.png" fetchpriority="high" />
+  <link rel="preload" as="image" href="/productfotos/t-shirts/azuurblauw/model_vrouw_divers_beweging-1200.webp" fetchpriority="high" />
   <link rel="preload" as="font" type="font/woff2" href="/fonts/space-grotesk-v22-latin-700.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-v20-latin-regular.woff2" crossorigin />
   <style>
@@ -182,9 +182,30 @@
       .usp-item:nth-child(2) { display: none; }
     }
 
+    /* ═══ Kleurkiezer + galerij (catalogus) ═══════════════════════ */
+    .kleur-kiezer { margin-bottom: 22px; }
+    .kleur-kop { font-family:var(--font-head); font-size:13px; font-weight:600;
+      margin-bottom:10px; display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+    .kleur-aantal { font-size:12px; font-weight:400; color:var(--gray-400); }
+    .kleur-stalen { display:flex; flex-wrap:wrap; gap:8px; max-width:420px; }
+    .kleur-staal { width:28px; height:28px; border-radius:50%; background:var(--sw);
+      border:1px solid rgba(0,0,0,.16); padding:0; cursor:pointer;
+      transition:transform .15s var(--ease), box-shadow .15s; }
+    .kleur-staal:hover { transform:scale(1.12); }
+    .kleur-staal:focus-visible { outline:2px solid var(--green); outline-offset:3px; }
+    .kleur-staal.is-actief { box-shadow:0 0 0 2px #fff, 0 0 0 4px var(--green); }
+    .product-detail-hero-img.is-portret { aspect-ratio:4/5; }
+    .product-detail-gallery { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:12px; }
+    .product-detail-gallery button { padding:0; border:none; background:none; cursor:pointer; border-radius:10px; }
+    .product-detail-gallery img { width:100%; aspect-ratio:1; object-fit:cover;
+      border-radius:10px; background:var(--gray-100); display:block; }
+    .product-detail-gallery button.is-actief img { outline:2px solid var(--green); outline-offset:2px; }
+    .product-detail-gallery button:focus-visible img { outline:2px solid var(--black); outline-offset:2px; }
+    @media (max-width:640px){ .kleur-staal{ width:26px; height:26px; } }
+
   </style>
 </head>
-<body>
+<body data-product="t-shirts">
 
 <div class="usp-bar">
   <div class="usp-inner">
@@ -244,13 +265,16 @@
 <main class="product-detail">
   <div class="product-detail-grid">
     <div class="product-detail-media">
-      <img src="/shirt-preview-1.png" alt="T-shirts" class="product-detail-hero-img" />
-        <div class="product-detail-gallery">
-          <img src="/product-photo-18.png" alt="T-shirts detailfoto" />
-          <img src="/product-photo-17.png" alt="T-shirts detailfoto" />
-        </div>
+      <img src="/productfotos/t-shirts/azuurblauw/model_vrouw_divers_beweging-1200.webp" alt="T-shirts — Azuurblauw" id="pd-hero"
+             class="product-detail-hero-img is-portret" width="1200" height="1200" fetchpriority="high" />
+        <div class="product-detail-gallery" id="pd-galerij"></div>
     </div>
     <div class="product-detail-info">
+      <div class="kleur-kiezer">
+        <div class="kleur-kop">Kleur: <strong id="pd-kleurnaam">Azuurblauw</strong>
+          <span class="kleur-aantal">24 kleuren beschikbaar</span></div>
+        <div class="kleur-stalen" role="radiogroup" aria-label="Kies een kleur"><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="azuurblauw" style="--sw:#3367a8" aria-label="Azuurblauw" title="Azuurblauw"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="bordeauxrood" style="--sw:#663145" aria-label="Bordeauxrood" title="Bordeauxrood"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="felrood" style="--sw:#dd2c4c" aria-label="Felrood" title="Felrood"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="flessengroen" style="--sw:#445954" aria-label="Flessengroen" title="Flessengroen"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="geel" style="--sw:#eece5c" aria-label="Geel" title="Geel"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="hemelsblauw" style="--sw:#99b9d6" aria-label="Hemelsblauw" title="Hemelsblauw"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="indigoblauw" style="--sw:#3c3f64" aria-label="Indigoblauw" title="Indigoblauw"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="khaki" style="--sw:#d0af93" aria-label="Khaki" title="Khaki"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="klassiekrood" style="--sw:#d31a40" aria-label="Klassiekrood" title="Klassiekrood"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="koningsblauw" style="--sw:#405492" aria-label="Koningsblauw" title="Koningsblauw"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="lavendelblauw" style="--sw:#b4b9d5" aria-label="Lavendelblauw" title="Lavendelblauw"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="lichtgrijs_melange" style="--sw:#b8b8bd" aria-label="Lichtgrijs melange" title="Lichtgrijs melange"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="limegroen" style="--sw:#b6c953" aria-label="Limegroen" title="Limegroen"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="marineblauw" style="--sw:#353449" aria-label="Marineblauw" title="Marineblauw"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="middengrijs" style="--sw:#756d7b" aria-label="Middengrijs" title="Middengrijs"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="mokkabruin" style="--sw:#614e46" aria-label="Mokkabruin" title="Mokkabruin"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="naturel" style="--sw:#e6dacd" aria-label="Naturel" title="Naturel"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="oker" style="--sw:#df9e3c" aria-label="Oker" title="Oker"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="olijfgroen" style="--sw:#585548" aria-label="Olijfgroen" title="Olijfgroen"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="paars" style="--sw:#563f71" aria-label="Paars" title="Paars"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="petrolgroen" style="--sw:#477d7a" aria-label="Petrolgroen" title="Petrolgroen"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="poederroze" style="--sw:#e8ccd0" aria-label="Poederroze" title="Poederroze"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="wit" style="--sw:#eae7ef" aria-label="Wit" title="Wit"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="zwart" style="--sw:#352a34" aria-label="Zwart" title="Zwart"></button></div>
+      </div>
       <div class="product-card-minafname">Min. afname 15 stuks</div>
       <!-- PRIJS-PILL (nog niet gevuld — wacht op prijsdata, zie /plan). Voeg toe zodra bekend:
       <span class="product-card-minafname">Vanaf €X,XX p.st.</span>
@@ -320,6 +344,76 @@
     document.getElementById('mobile-menu').classList.toggle('open');
     document.getElementById('nav-hamburger').classList.toggle('open');
   }
+</script>
+
+<script src="/producten-data.js" defer></script>
+<script>
+// Kleurwissel + galerij. Werkt op HP_PRODUCTEN uit producten-data.js.
+document.addEventListener('DOMContentLoaded', function () {
+  var slug = document.body.dataset.product;
+  var p = (window.HP_PRODUCTEN || []).find(function (x) { return x.slug === slug; });
+  if (!p) return;
+
+  var hero    = document.getElementById('pd-hero');
+  var galerij = document.getElementById('pd-galerij');
+  var naamEl  = document.getElementById('pd-kleurnaam');
+  var stalen  = document.querySelectorAll('.kleur-staal');
+  var actief  = p.kleuren[0];
+
+  function foto(k, shot, maat) {
+    return window.hpFoto(p.fotomap, k.slug, shot, maat);
+  }
+  // 1200px bestaat alleen voor de hoofdfoto en de modelfoto's
+  function heeftGroot(k, shot) { return (k.groot || []).indexOf(shot) !== -1; }
+
+  function toonShot(k, shot) {
+    hero.src = foto(k, shot, heeftGroot(k, shot) ? 1200 : 600);
+    hero.alt = p.naam + ' — ' + k.naam;
+    hero.classList.toggle('is-portret', shot.indexOf('model_') === 0);
+    galerij.querySelectorAll('button').forEach(function (b) {
+      b.classList.toggle('is-actief', b.dataset.shot === shot);
+    });
+  }
+
+  function bouwGalerij(k) {
+    var shots = (k.modelfotos || []).concat(k.fotos);   // modelfoto vooraan
+    galerij.innerHTML = shots.map(function (s) {
+      return '<button type="button" data-shot="' + s + '" aria-label="' + s + '">' +
+             '<img src="' + foto(k, s, 300) + '" alt="" loading="lazy" ' +
+             'width="300" height="300" /></button>';
+    }).join('');
+    toonShot(k, shots[0]);
+  }
+
+  function kies(k) {
+    actief = k;
+    naamEl.textContent = k.naam;
+    stalen.forEach(function (b) {
+      var aan = b.dataset.kleur === k.slug;
+      b.classList.toggle('is-actief', aan);
+      b.setAttribute('aria-checked', aan ? 'true' : 'false');
+    });
+    bouwGalerij(k);
+    history.replaceState(null, '', '?kleur=' + k.slug);
+  }
+
+  stalen.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var k = p.kleuren.find(function (x) { return x.slug === b.dataset.kleur; });
+      if (k) kies(k);
+    });
+  });
+
+  galerij.addEventListener('click', function (ev) {
+    var b = ev.target.closest('button');
+    if (b) toonShot(actief, b.dataset.shot);
+  });
+
+  // Deelbare kleur via ?kleur=
+  var gevraagd = new URLSearchParams(location.search).get('kleur');
+  var start = gevraagd && p.kleuren.find(function (x) { return x.slug === gevraagd; });
+  kies(start || p.kleuren[0]);
+});
 </script>
 </body>
 </html>

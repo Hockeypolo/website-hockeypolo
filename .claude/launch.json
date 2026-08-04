@@ -12,6 +12,14 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["serve", "/Users/benjaminvansplunder/Library/Mobile Documents/com~apple~CloudDocs/Documents/Werk/Hockeypolo/Project Website/Website Folder", "-p", "3001"],
       "port": 3001
+    },
+    {
+      "name": "Sourcing Dashboard",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 3001,
+      "autoPort": false,
+      "cwd": "/Users/benjaminvansplunder/Library/Mobile Documents/com~apple~CloudDocs/Documents/Werk/Hockeypolo/Project Website/Website Folder/hockeypolo-sourcing"
     }
   ]
 }
