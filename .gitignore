@@ -1,0 +1,9 @@
+# Interne Next.js dashboard — hoort niet bij de website-deploy
+hockeypolo-sourcing/
+node_modules/
+
+# macOS
+.DS_Store
+
+# Bronbestanden leveranciers (te groot / niet nodig voor de site)
+*.zip

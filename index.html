@@ -273,7 +273,7 @@
     ═══════════════════════════════════════════════════ */
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: var(--usp-h); left: 0; right: 0;
       z-index: 100;
       height: 72px;
       display: flex;
@@ -368,7 +368,7 @@
     .mobile-menu {
       display: none;
       position: fixed;
-      top: 72px; left: 0; right: 0;
+      top: calc(72px + var(--usp-h)); left: 0; right: 0;
       background: var(--white);
       border-bottom: 1px solid var(--gray-200);
       z-index: 99;
@@ -1827,7 +1827,7 @@
 
     /* ═══ NAVBAR ═══════════════════════════════════════════════════ */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      position: fixed; top: var(--usp-h); left: 0; right: 0; z-index: 200;
       height: 72px; display: flex; align-items: center; justify-content: space-between;
       padding: 0 80px;
       background: rgba(255,255,255,.96); backdrop-filter: blur(16px);
@@ -1847,7 +1847,7 @@
     .nav-soc svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.8; display: block; }
 
     /* ═══ PAGES ════════════════════════════════════════════════════ */
-    .page { display: none; padding-top: 72px; }
+    .page { display: none; padding-top: calc(72px + var(--usp-h)); }
     .page.active { display: block; }
 
     /* ═══ PAGE HERO BANNER ════════════════════════════════════════ */
@@ -1889,7 +1889,7 @@
 
     /* Filter bar */
     .filter-bar {
-      position: sticky; top: 72px; z-index: 100;
+      position: sticky; top: calc(72px + var(--usp-h)); z-index: 100;
       background: var(--white); border-bottom: 1px solid var(--gray-200);
       padding: 0 80px;
       display: flex; align-items: center; gap: 8px;
@@ -1940,7 +1940,7 @@
     .product-group-title + .product-grid { margin-bottom: 56px; }
     .product-groups .product-grid:last-child { margin-bottom: 0; }
     /* Vaste navbar is 72px hoog; voorkomt dat de kop eronder verdwijnt */
-    .product-group-title[id] { scroll-margin-top: 90px; }
+    .product-group-title[id] { scroll-margin-top: calc(90px + var(--usp-h)); }
 
     .product-card-new, .product-card {
       background: var(--white); border: 1px solid var(--gray-200);
@@ -3517,6 +3517,38 @@
   #nl-popup-form-slot .newsletter-form.compact h3,
   #nl-popup-form-slot .newsletter-form.compact .nl-intro { display: none; }
 
+
+    /* ═══ USP-BALK (boven de navbar) ═══════════════════════════════ */
+    :root { --usp-h: 38px; }
+    /* Vangt in één klap alle ankersprongen op: #kleding, #faq-levering, enz. */
+    html { scroll-padding-top: calc(72px + var(--usp-h) + 18px); }
+    .usp-bar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--usp-h); z-index: 201;
+      background: #000;
+      color: rgba(255,255,255,.72);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-head); font-size: 11px; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .usp-inner { display: flex; align-items: center; gap: 48px; }
+    .usp-item { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+    .usp-item::before {
+      content: ''; width: 4px; height: 4px; border-radius: 50%;
+      background: var(--green); flex-shrink: 0;
+    }
+    .usp-item em { font-style: normal; color: var(--green); }
+    @media (max-width: 900px) {
+      .usp-bar { font-size: 10px; letter-spacing: .06em; }
+      .usp-inner { gap: 24px; }
+      .usp-item:nth-child(3) { display: none; }
+    }
+    @media (max-width: 640px) {
+      :root { --usp-h: 34px; }
+      .usp-item:nth-child(2) { display: none; }
+    }
+
   </style>
   <script defer src="/_vercel/insights/script.js"></script>
   <!-- Google tag (gtag.js) -->
@@ -3563,6 +3595,14 @@
 <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
+
+<div class="usp-bar">
+  <div class="usp-inner">
+    <span class="usp-item">Gratis ontwerpvoorstel</span>
+    <span class="usp-item">Digitale proef vooraf</span>
+    <span class="usp-item">Al 20+ jaar &middot; <em>500+ projecten</em></span>
+  </div>
+</div>
 
 <!-- ═══════════════════════ NAVBAR ═══════════════════════════════ -->
 <nav>
@@ -5502,7 +5542,7 @@
 
     <div class="faq-content">
 
-      <div class="faq-group" id="faq-bestellen" style="scroll-margin-top:90px">
+      <div class="faq-group" id="faq-bestellen" style="scroll-margin-top:calc(90px + var(--usp-h))">
         <div class="faq-group-title">Bestellen & Proces</div>
 
         <div class="faq-item">
@@ -5550,7 +5590,7 @@
         </div>
       </div>
 
-      <div class="faq-group" id="faq-ontwerp" style="scroll-margin-top:90px">
+      <div class="faq-group" id="faq-ontwerp" style="scroll-margin-top:calc(90px + var(--usp-h))">
         <div class="faq-group-title">Ontwerp & Drukwerk</div>
 
         <div class="faq-item">
@@ -5578,7 +5618,7 @@
         </div>
       </div>
 
-      <div class="faq-group" id="faq-levering" style="scroll-margin-top:90px">
+      <div class="faq-group" id="faq-levering" style="scroll-margin-top:calc(90px + var(--usp-h))">
         <div class="faq-group-title">Levering & Verzending</div>
 
         <div class="faq-item">
@@ -5606,7 +5646,7 @@
         </div>
       </div>
 
-      <div class="faq-group" id="faq-prijzen" style="scroll-margin-top:90px">
+      <div class="faq-group" id="faq-prijzen" style="scroll-margin-top:calc(90px + var(--usp-h))">
         <div class="faq-group-title">Prijzen & Betaling</div>
 
         <div class="faq-item">
