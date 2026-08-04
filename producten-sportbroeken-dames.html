@@ -194,10 +194,17 @@
     .kleur-staal:hover { transform:scale(1.12); }
     .kleur-staal:focus-visible { outline:2px solid var(--green); outline-offset:3px; }
     .kleur-staal.is-actief { box-shadow:0 0 0 2px #fff, 0 0 0 4px var(--green); }
+
+    /* Hoofdfoto: volledig in beeld, niet bijgesneden.
+       height:auto is nodig omdat een height-attribuut op de <img> anders de
+       CSS aspect-ratio overrulet en de foto tot 1200px uitrekt.
+       Productfoto's zijn 1:1, modelfoto's 4:5 — vandaar de is-portret-variant. */
+    .product-detail-hero-img { height:auto; object-fit:contain; background:var(--gray-100); }
     .product-detail-hero-img.is-portret { aspect-ratio:4/5; }
+
     .product-detail-gallery { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:12px; }
     .product-detail-gallery button { padding:0; border:none; background:none; cursor:pointer; border-radius:10px; }
-    .product-detail-gallery img { width:100%; aspect-ratio:1; object-fit:cover;
+    .product-detail-gallery img { width:100%; height:auto; aspect-ratio:1; object-fit:contain;
       border-radius:10px; background:var(--gray-100); display:block; }
     .product-detail-gallery button.is-actief img { outline:2px solid var(--green); outline-offset:2px; }
     .product-detail-gallery button:focus-visible img { outline:2px solid var(--black); outline-offset:2px; }
@@ -322,7 +329,7 @@
   <div class="product-detail-grid">
     <div class="product-detail-media">
       <img src="/productfotos/shorts-dames/dames_grijsmelange_zwart/1_voorkant-1200.webp" alt="Sportbroeken Dames — Grijs melange / Zwart" id="pd-hero"
-             class="product-detail-hero-img" width="1200" height="1200" fetchpriority="high" />
+             class="product-detail-hero-img" fetchpriority="high" />
         <div class="product-detail-gallery" id="pd-galerij"></div>
     </div>
     <div class="product-detail-info">
@@ -434,9 +441,10 @@ document.addEventListener('DOMContentLoaded', function () {
   function bouwGalerij(k) {
     var shots = (k.modelfotos || []).concat(k.fotos);   // modelfoto vooraan
     galerij.innerHTML = shots.map(function (s) {
+      // Geen width/height-attributen: die zouden de CSS aspect-ratio overrulen.
+      // De vaste aspect-ratio in de CSS voorkomt al dat de layout verspringt.
       return '<button type="button" data-shot="' + s + '" aria-label="' + s + '">' +
-             '<img src="' + foto(k, s, 300) + '" alt="" loading="lazy" ' +
-             'width="300" height="300" /></button>';
+             '<img src="' + foto(k, s, 300) + '" alt="" loading="lazy" /></button>';
     }).join('');
     toonShot(k, shots[0]);
   }

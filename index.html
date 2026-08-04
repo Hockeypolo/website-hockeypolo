@@ -1960,10 +1960,20 @@
        Alles hieronder is bewust gescoped onder .product-groups. De class
        .product-card wordt óók door de donkere homepage-collectiekaart
        gebruikt; zonder scoping zou die mee veranderen.                */
+    /* Modelfoto's zijn staand (1200x1490); in een vierkante kaart sneed
+       object-fit:cover het hoofd eraf. Met contain past het hele model erin.
+       De productfoto's zijn 1:1 en vullen de kaart dus nog steeds precies.
+       De achtergrond is gelijk aan die van de studiofoto's (~#f1f1f1),
+       waardoor de opvulling links en rechts niet opvalt. */
     .product-groups .product-card-img-wrap { position: relative; }
+    .product-groups .product-card-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      background: var(--gray-100);
+    }
     .product-groups .pc-hoverfoto {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover; opacity: 0; transition: opacity .35s var(--ease);
+      position: absolute; inset: 0;
+      opacity: 0; transition: opacity .35s var(--ease);
     }
     .product-groups .product-card:hover .pc-hoverfoto { opacity: 1; }
 

@@ -22,7 +22,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from productteksten import OVER  # noqa: E402
 
 WORTEL = Path(__file__).resolve().parent.parent
-SJABLOON = WORTEL / "producten-polos.html"
+# Vast sjabloon, NIET producten-polos.html: dat bestand wordt door dit script
+# zelf overschreven, waardoor een tweede run zijn eigen invoer kapotmaakt.
+SJABLOON = Path(__file__).resolve().parent / "sjabloon-productpagina.html"
 DATA = WORTEL / "producten-data.js"
 
 # Labels voor alt-teksten en miniatuur-titels
@@ -69,10 +71,17 @@ EXTRA_CSS = """
     .kleur-staal:hover { transform:scale(1.12); }
     .kleur-staal:focus-visible { outline:2px solid var(--green); outline-offset:3px; }
     .kleur-staal.is-actief { box-shadow:0 0 0 2px #fff, 0 0 0 4px var(--green); }
+
+    /* Hoofdfoto: volledig in beeld, niet bijgesneden.
+       height:auto is nodig omdat een height-attribuut op de <img> anders de
+       CSS aspect-ratio overrulet en de foto tot 1200px uitrekt.
+       Productfoto's zijn 1:1, modelfoto's 4:5 — vandaar de is-portret-variant. */
+    .product-detail-hero-img { height:auto; object-fit:contain; background:var(--gray-100); }
     .product-detail-hero-img.is-portret { aspect-ratio:4/5; }
+
     .product-detail-gallery { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:12px; }
     .product-detail-gallery button { padding:0; border:none; background:none; cursor:pointer; border-radius:10px; }
-    .product-detail-gallery img { width:100%; aspect-ratio:1; object-fit:cover;
+    .product-detail-gallery img { width:100%; height:auto; aspect-ratio:1; object-fit:contain;
       border-radius:10px; background:var(--gray-100); display:block; }
     .product-detail-gallery button.is-actief img { outline:2px solid var(--green); outline-offset:2px; }
     .product-detail-gallery button:focus-visible img { outline:2px solid var(--black); outline-offset:2px; }
@@ -112,9 +121,10 @@ document.addEventListener('DOMContentLoaded', function () {
   function bouwGalerij(k) {
     var shots = (k.modelfotos || []).concat(k.fotos);   // modelfoto vooraan
     galerij.innerHTML = shots.map(function (s) {
+      // Geen width/height-attributen: die zouden de CSS aspect-ratio overrulen.
+      // De vaste aspect-ratio in de CSS voorkomt al dat de layout verspringt.
       return '<button type="button" data-shot="' + s + '" aria-label="' + s + '">' +
-             '<img src="' + foto(k, s, 300) + '" alt="" loading="lazy" ' +
-             'width="300" height="300" /></button>';
+             '<img src="' + foto(k, s, 300) + '" alt="" loading="lazy" /></button>';
     }).join('');
     toonShot(k, shots[0]);
   }
@@ -195,8 +205,10 @@ def bouw_pagina(sjabloon: str, p: dict) -> str:
                lambda m: m.group(1) + e(p["omschrijving"]) + m.group(2), t, count=1, flags=re.S)
 
     # ── media-kolom ──
+    # Geen width/height-attributen: die overrulen de CSS aspect-ratio en rekken
+    # de foto uit. De aspect-ratio in de CSS zorgt zelf voor een stabiele layout.
     media = f"""<img src="{hero_pad}" alt="{e(naam)} — {e(k['naam'])}" id="pd-hero"
-             class="product-detail-hero-img{portret}" width="1200" height="1200" fetchpriority="high" />
+             class="product-detail-hero-img{portret}" fetchpriority="high" />
         <div class="product-detail-gallery" id="pd-galerij"></div>"""
     t = re.sub(r'<img src="[^"]*" alt="[^"]*" class="product-detail-hero-img" />\s*'
                r'(<div class="product-detail-gallery">.*?</div>)?',
