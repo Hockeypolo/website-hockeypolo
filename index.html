@@ -1033,6 +1033,12 @@
       align-items: center;
       text-align: center;
       position: relative;
+      /* Boven de track (z-index 0) houden. Zonder deze z-index verspringt de
+         stapelvolgorde tijdens de animatie: opacity < 1 maakt van de stap een
+         stacking context, waardoor de z-index van het icoon opgesloten raakt
+         en de lijn eroverheen loopt. Bij .active wordt opacity 1, valt die
+         stacking context weg en springt het icoon ineens vóór de lijn. */
+      z-index: 1;
       opacity: .5;
       transition: opacity .5s var(--ease);
     }
