@@ -33,6 +33,14 @@ VERBORGEN_NAMEN = {
 
 MAX_STALEN = 6   # kleurstalen op de kaart; de rest als "+N"
 
+# Hover-foto per product overschrijven. Standaard pakt de kaart de eerste
+# modelfoto, maar bij kleine accessoires draagt het model het product zo klein
+# (of buiten beeld) dat de hover niet laat zien waar je naar kijkt. Dan liever
+# een tweede productfoto onder een andere hoek.
+HOVER_OVERRIDE = {
+    "caps": "3_driekwart",
+}
+
 
 def laad_producten():
     js = DATA.read_text(encoding="utf-8")
@@ -57,13 +65,19 @@ def kaart(p):
     basis = hoofdfoto(p, k)
     pad = f"/productfotos/{p['fotomap']}/{k['slug']}/{basis}"
 
-    # Modelfoto als hover-beeld, waar beschikbaar
-    model = next((mk for mk in p["kleuren"] if mk.get("modelfotos")), None)
+    # Hover-beeld: override waar ingesteld, anders de eerste modelfoto
     hover = ""
-    if model:
-        mb = model["modelfotos"][0]
-        mpad = f"/productfotos/{p['fotomap']}/{model['slug']}/{mb}"
-        hover = (f'\n          <img src="{mpad}-600.webp" alt="" aria-hidden="true"'
+    hpad = None
+    if p["slug"] in HOVER_OVERRIDE:
+        shot = HOVER_OVERRIDE[p["slug"]]
+        if shot in k["fotos"]:
+            hpad = f"/productfotos/{p['fotomap']}/{k['slug']}/{shot}"
+    else:
+        model = next((mk for mk in p["kleuren"] if mk.get("modelfotos")), None)
+        if model:
+            hpad = f"/productfotos/{p['fotomap']}/{model['slug']}/{model['modelfotos'][0]}"
+    if hpad:
+        hover = (f'\n          <img src="{hpad}-600.webp" alt="" aria-hidden="true"'
                  f' loading="lazy" decoding="async" class="pc-hoverfoto" />')
 
     # Kleurstalen

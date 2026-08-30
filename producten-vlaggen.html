@@ -7,7 +7,7 @@
   <meta name="description" content="Op maat gemaakte vlaggen voor verenigingen, evenementen en bedrijven. Volledig bedrukt met jouw logo, wapen of clubkleuren. Verkrijgbaar als beachflag, gevelvlag of lustrumvlag." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://hockeypolo.com/producten/vlaggen" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="icon" type="image/png" href="/fotomateriaal/partner-logos/favicon.png" />
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://hockeypolo.com/producten/vlaggen">
   <meta property="og:title" content="Vlaggen bedrukken met eigen logo | Hockeypolo">
@@ -210,21 +210,73 @@
     .product-detail-gallery button:focus-visible img { outline:2px solid var(--black); outline-offset:2px; }
     @media (max-width:640px){ .kleur-staal{ width:26px; height:26px; } }
 
+
+    /* ═══ PRODUCTZOEKEN ═══════════════════════════════════════════ */
+    .zoek-knop {
+      width: 36px; height: 36px; border-radius: 6px;
+      border: 1px solid var(--gray-200); background: none;
+      display: grid; place-items: center; cursor: pointer;
+      color: var(--black); flex-shrink: 0;
+      transition: border-color .2s, background .2s, color .2s;
+    }
+    .zoek-knop:hover { border-color: var(--green); background: var(--green-dim); color: var(--green); }
+    .zoek-knop svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    .zoek-overlay {
+      position: fixed; inset: 0; z-index: 300;
+      background: rgba(0,0,0,.45); backdrop-filter: blur(3px);
+      display: none; align-items: flex-start; justify-content: center;
+      padding: calc(var(--usp-h) + 100px) 20px 20px;
+    }
+    .zoek-overlay.open { display: flex; }
+    .zoek-paneel {
+      width: 100%; max-width: 560px; background: var(--white);
+      border-radius: 14px; box-shadow: 0 24px 60px rgba(0,0,0,.28);
+      overflow: hidden;
+    }
+    .zoek-veldrij { display: flex; align-items: center; gap: 10px; padding: 14px 18px; border-bottom: 1px solid var(--gray-200); }
+    .zoek-veldrij svg { width: 17px; height: 17px; stroke: var(--gray-400); fill: none; stroke-width: 2; flex-shrink: 0; }
+    .zoek-veld {
+      flex: 1; border: none; outline: none; background: none;
+      font-family: var(--font-body); font-size: 16px; color: var(--black);
+    }
+    .zoek-veld::placeholder { color: var(--gray-400); }
+    .zoek-sluit {
+      border: none; background: var(--gray-100); border-radius: 6px;
+      font-family: var(--font-head); font-size: 11px; font-weight: 600;
+      color: var(--gray-600); padding: 4px 8px; cursor: pointer;
+    }
+    .zoek-lijst { max-height: 60vh; overflow-y: auto; padding: 6px; }
+    .zoek-rij {
+      display: flex; align-items: center; gap: 12px;
+      padding: 9px 10px; border-radius: 8px; cursor: pointer;
+      text-decoration: none; color: inherit;
+    }
+    .zoek-rij[aria-selected="true"], .zoek-rij:hover { background: var(--gray-100); }
+    .zoek-rij img { width: 44px; height: 44px; border-radius: 6px; object-fit: cover; background: var(--gray-100); flex-shrink: 0; }
+    .zoek-rij-naam { font-family: var(--font-head); font-size: 14px; font-weight: 700; letter-spacing: -.01em; }
+    .zoek-rij-meta { font-size: 12px; color: var(--gray-400); }
+    .zoek-leeg { padding: 26px 16px; text-align: center; font-size: 14px; color: var(--gray-600); }
+    @media (max-width: 640px) {
+      .zoek-overlay { padding: calc(var(--usp-h) + 84px) 12px 12px; }
+      .nav-hamburger + .zoek-knop, .zoek-knop { display: grid; }
+    }
+
   </style>
 </head>
 <body data-product="vlaggen">
 
 <div class="usp-bar">
   <div class="usp-inner">
-    <span class="usp-item">Gratis ontwerpvoorstel</span>
-    <span class="usp-item">Digitale proef vooraf</span>
-    <span class="usp-item">Al 20+ jaar &middot; <em>500+ projecten</em></span>
+    <span class="usp-item">Gratis ontwerp</span>
+    <span class="usp-item">Beste prijs-kwaliteit</span>
+    <span class="usp-item"><em>500+ projecten</em></span>
   </div>
 </div>
 
 <!-- ═══ NAVBAR ═══ -->
 <nav>
-  <a class="nav-logo" href="/"><img src="/logo_hockeypolo.png" alt="Hockeypolo" class="nav-logo-img" /></a>
+  <a class="nav-logo" href="/"><img src="/fotomateriaal/partner-logos/logo_hockeypolo.png" alt="Hockeypolo" class="nav-logo-img" /></a>
   <div class="nav-right">
     <ul class="nav-links">
       <li><a href="/">Home</a></li>
@@ -236,6 +288,10 @@
       <li><a href="/startproject">Contact</a></li>
       <li><a class="nav-cta" href="/start-project">Start Project</a></li>
     </ul>
+      <button class="zoek-knop" id="zoek-knop" aria-label="Zoek in het assortiment">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </button>
+
     <div class="nav-socials">
       <a href="https://www.instagram.com/hockeypolo.rotterdam/" target="_blank" rel="noopener" class="nav-soc" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
       <a href="https://nl.linkedin.com/company/hockeypolo" target="_blank" rel="noopener" class="nav-soc" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
@@ -329,7 +385,7 @@
 <footer>
   <div class="footer-grid">
     <div>
-      <div class="footer-logo"><img src="/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div>
+      <div class="footer-logo"><img src="/fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div>
       <p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p>
     </div>
     <div class="footer-col"><h4>Navigatie</h4><a href="/">Home</a><a href="/producten">Producten</a><a href="/impressies">Impressies</a><a href="/blog">Blog</a><a href="/overons">Over Ons</a><a href="/faq">F.A.Q.</a><a href="/startproject">Contact</a><a href="/privacyverklaring">Privacyverklaring</a></div>
@@ -388,154 +444,6 @@ document.addEventListener('DOMContentLoaded', function () {
       // De vaste aspect-ratio in de CSS voorkomt al dat de layout verspringt.
       return '<button type="button" data-shot="' + s + '" aria-label="' + s + '">' +
              '<img src="' + foto(k, s, 300) + '" alt="" loading="lazy" /></button>';
-    }).join('');
-    toonShot(k, shots[0]);
-  }
-
-  function kies(k) {
-    actief = k;
-    naamEl.textContent = k.naam;
-    stalen.forEach(function (b) {
-      var aan = b.dataset.kleur === k.slug;
-      b.classList.toggle('is-actief', aan);
-      b.setAttribute('aria-checked', aan ? 'true' : 'false');
-    });
-    bouwGalerij(k);
-    history.replaceState(null, '', '?kleur=' + k.slug);
-  }
-
-  stalen.forEach(function (b) {
-    b.addEventListener('click', function () {
-      var k = p.kleuren.find(function (x) { return x.slug === b.dataset.kleur; });
-      if (k) kies(k);
-    });
-  });
-
-  galerij.addEventListener('click', function (ev) {
-    var b = ev.target.closest('button');
-    if (b) toonShot(actief, b.dataset.shot);
-  });
-
-  // Deelbare kleur via ?kleur=
-  var gevraagd = new URLSearchParams(location.search).get('kleur');
-  var start = gevraagd && p.kleuren.find(function (x) { return x.slug === gevraagd; });
-  kies(start || p.kleuren[0]);
-});
-</script>
-</body>
-</html>
-io" aria-checked="false" data-kleur="lichtgrijs_4" style="--sw:#bababf" aria-label="Lichtgrijs 4" title="Lichtgrijs 4"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="marineblauw" style="--sw:#3e445b" aria-label="Marineblauw" title="Marineblauw"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="marineblauw_2" style="--sw:#282b46" aria-label="Marineblauw 2" title="Marineblauw 2"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="oranje" style="--sw:#de791e" aria-label="Oranje" title="Oranje"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="rood" style="--sw:#ac1028" aria-label="Rood" title="Rood"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="rood_2" style="--sw:#c54a4c" aria-label="Rood 2" title="Rood 2"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="wit" style="--sw:#d1d1d1" aria-label="Wit" title="Wit"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="zand" style="--sw:#e9c8a3" aria-label="Zand" title="Zand"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="zand_2" style="--sw:#f6dfd5" aria-label="Zand 2" title="Zand 2"></button><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="zwart" style="--sw:#272629" aria-label="Zwart" title="Zwart"></button></div>
-      </div>
-      <div class="kleur-kiezer">
-        <div class="kleur-kop">Kleur: <strong id="pd-kleurnaam">Zwart</strong>
-          <span class="kleur-aantal">1 kleur</span></div>
-        <div class="kleur-stalen" role="radiogroup" aria-label="Kies een kleur"><button type="button" class="kleur-staal" role="radio" aria-checked="false" data-kleur="zwart" style="--sw:#1c1a1e" aria-label="Zwart" title="Zwart"></button></div>
-      </div>
-      <div class="product-card-minafname">Min. afname 10 stuks</div>
-      <!-- PRIJS-PILL (nog niet gevuld — wacht op prijsdata, zie /plan). Voeg toe zodra bekend:
-      <span class="product-card-minafname">Vanaf €X,XX p.st.</span>
-      -->
-      <div class="proj-details">
-          <div class="proj-detail-item"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Polyester satijn of doek</div>
-          <div class="proj-detail-item"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Volledige sublimatiemogelijkheid</div>
-          <div class="proj-detail-item"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Metalen ringen voor bevestiging</div>
-      </div>
-      <div class="product-delivery">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-        <div>
-          <strong>Levertijd: 2 tot 4 weken</strong> na goedkeuring van het ontwerp.
-          <span>Heb je het eerder nodig? Een spoedorder is in overleg mogelijk. <a href="/startproject">Neem contact met ons op</a>, dan houden we er in de productieplanning rekening mee.</span>
-        </div>
-      </div>
-      <div class="product-detail-ctas">
-        <a href="/start-project" class="btn btn-green">Deel je idee <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a>
-        <a href="/startproject" class="btn btn-outline">Contact opnemen</a>
-      </div>
-      <div class="product-detail-copy">
-      <h2>Over vlaggen</h2>
-      <p>Op maat gemaakte vlaggen voor verenigingen, evenementen en bedrijven — van beachflag tot gevelvlag of lustrumvlag. Volledige sublimatie maakt het mogelijk om je logo, wapen of clubkleuren over de hele vlag door te laten lopen.</p>
-      <p>Afgewerkt met metalen ringen voor eenvoudige bevestiging. Vlaggen worden vaak in kleine oplage besteld — ook een enkel exemplaar voor een jubileum of opening is bij ons mogelijk.</p>
-      </div>
-    </div>
-  </div>
-</main>
-
-<!-- ═══ CTA SECTION ═══ -->
-<div class="cta-section">
-  <div class="cta-inner">
-    <span class="lbl">Interesse?</span>
-    <h2>Vraag een offerte aan voor <em>Vlaggen</em></h2>
-    <p>Vertel ons over je project en ontvang een vrijblijvende offerte, zonder verplichtingen.</p>
-    <div class="cta-btns">
-      <a href="/start-project" class="btn btn-green">Deel je idee <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a>
-      <a href="/startproject" class="btn btn-outline-white">Contact opnemen</a>
-    </div>
-  </div>
-</div>
-</div>
-
-<!-- ═══ FOOTER ═══ -->
-<footer>
-  <div class="footer-grid">
-    <div>
-      <div class="footer-logo"><img src="/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div>
-      <p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p>
-    </div>
-    <div class="footer-col"><h4>Navigatie</h4><a href="/">Home</a><a href="/producten">Producten</a><a href="/impressies">Impressies</a><a href="/blog">Blog</a><a href="/overons">Over Ons</a><a href="/faq">F.A.Q.</a><a href="/startproject">Contact</a><a href="/privacyverklaring">Privacyverklaring</a></div>
-    <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding">Kleding</a><a href="/producten#accessoires">Accessoires</a><a href="/producten#promotie">Promotie</a></div>
-    <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW NL814306639B01</a></div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2026 Hockeypolo · Alle rechten voorbehouden</span>
-    <div class="footer-socials">
-      <a href="https://www.instagram.com/hockeypolo.rotterdam/" target="_blank" rel="noopener" class="soc"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-      <a href="https://nl.linkedin.com/company/hockeypolo" target="_blank" rel="noopener" class="soc"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
-    </div>
-  </div>
-</footer>
-
-<script>
-  function toggleMobileMenu() {
-    document.getElementById('mobile-menu').classList.toggle('open');
-    document.getElementById('nav-hamburger').classList.toggle('open');
-  }
-</script>
-
-<script src="/producten-data.js" defer></script>
-<script>
-// Kleurwissel + galerij. Werkt op HP_PRODUCTEN uit producten-data.js.
-document.addEventListener('DOMContentLoaded', function () {
-  var slug = document.body.dataset.product;
-  var p = (window.HP_PRODUCTEN || []).find(function (x) { return x.slug === slug; });
-  if (!p) return;
-
-  var hero    = document.getElementById('pd-hero');
-  var galerij = document.getElementById('pd-galerij');
-  var naamEl  = document.getElementById('pd-kleurnaam');
-  var stalen  = document.querySelectorAll('.kleur-staal');
-  var actief  = p.kleuren[0];
-
-  function foto(k, shot, maat) {
-    return window.hpFoto(p.fotomap, k.slug, shot, maat);
-  }
-  // 1200px bestaat alleen voor de hoofdfoto en de modelfoto's
-  function heeftGroot(k, shot) { return (k.groot || []).indexOf(shot) !== -1; }
-
-  function toonShot(k, shot) {
-    hero.src = foto(k, shot, heeftGroot(k, shot) ? 1200 : 600);
-    hero.alt = p.naam + ' — ' + k.naam;
-    hero.classList.toggle('is-portret', shot.indexOf('model_') === 0);
-    galerij.querySelectorAll('button').forEach(function (b) {
-      b.classList.toggle('is-actief', b.dataset.shot === shot);
-    });
-  }
-
-  function bouwGalerij(k) {
-    var shots = (k.modelfotos || []).concat(k.fotos);   // modelfoto vooraan
-    galerij.innerHTML = shots.map(function (s) {
-      return '<button type="button" data-shot="' + s + '" aria-label="' + s + '">' +
-             '<img src="' + foto(k, s, 300) + '" alt="" loading="lazy" ' +
-             'width="300" height="300" /></button>';
     }).join('');
     toonShot(k, shots[0]);
   }
@@ -707,77 +615,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if ((e.key === 'k' || e.key === 'K') && (e.metaKey || e.ctrlKey)) { e.preventDefault(); open(); }
   });
 })();
-</script>
-
-<script src="/producten-data.js" defer></script>
-<script>
-// Kleurwissel + galerij. Werkt op HP_PRODUCTEN uit producten-data.js.
-document.addEventListener('DOMContentLoaded', function () {
-  var slug = document.body.dataset.product;
-  var p = (window.HP_PRODUCTEN || []).find(function (x) { return x.slug === slug; });
-  if (!p) return;
-
-  var hero    = document.getElementById('pd-hero');
-  var galerij = document.getElementById('pd-galerij');
-  var naamEl  = document.getElementById('pd-kleurnaam');
-  var stalen  = document.querySelectorAll('.kleur-staal');
-  var actief  = p.kleuren[0];
-
-  function foto(k, shot, maat) {
-    return window.hpFoto(p.fotomap, k.slug, shot, maat);
-  }
-  // 1200px bestaat alleen voor de hoofdfoto en de modelfoto's
-  function heeftGroot(k, shot) { return (k.groot || []).indexOf(shot) !== -1; }
-
-  function toonShot(k, shot) {
-    hero.src = foto(k, shot, heeftGroot(k, shot) ? 1200 : 600);
-    hero.alt = p.naam + ' — ' + k.naam;
-    hero.classList.toggle('is-portret', shot.indexOf('model_') === 0);
-    galerij.querySelectorAll('button').forEach(function (b) {
-      b.classList.toggle('is-actief', b.dataset.shot === shot);
-    });
-  }
-
-  function bouwGalerij(k) {
-    var shots = (k.modelfotos || []).concat(k.fotos);   // modelfoto vooraan
-    galerij.innerHTML = shots.map(function (s) {
-      // Geen width/height-attributen: die zouden de CSS aspect-ratio overrulen.
-      // De vaste aspect-ratio in de CSS voorkomt al dat de layout verspringt.
-      return '<button type="button" data-shot="' + s + '" aria-label="' + s + '">' +
-             '<img src="' + foto(k, s, 300) + '" alt="" loading="lazy" /></button>';
-    }).join('');
-    toonShot(k, shots[0]);
-  }
-
-  function kies(k) {
-    actief = k;
-    naamEl.textContent = k.naam;
-    stalen.forEach(function (b) {
-      var aan = b.dataset.kleur === k.slug;
-      b.classList.toggle('is-actief', aan);
-      b.setAttribute('aria-checked', aan ? 'true' : 'false');
-    });
-    bouwGalerij(k);
-    history.replaceState(null, '', '?kleur=' + k.slug);
-  }
-
-  stalen.forEach(function (b) {
-    b.addEventListener('click', function () {
-      var k = p.kleuren.find(function (x) { return x.slug === b.dataset.kleur; });
-      if (k) kies(k);
-    });
-  });
-
-  galerij.addEventListener('click', function (ev) {
-    var b = ev.target.closest('button');
-    if (b) toonShot(actief, b.dataset.shot);
-  });
-
-  // Deelbare kleur via ?kleur=
-  var gevraagd = new URLSearchParams(location.search).get('kleur');
-  var start = gevraagd && p.kleuren.find(function (x) { return x.slug === gevraagd; });
-  kies(start || p.kleuren[0]);
-});
 </script>
 </body>
 </html>

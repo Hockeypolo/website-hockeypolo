@@ -17,8 +17,24 @@ Dit project bestaat uit **twee aparte onderdelen**:
 ```
 Website Folder/
 ├── index.html                    # Volledige marketingwebsite (HTML/CSS/JS)
+├── producten-*.html              # 34 productdetailpagina's (gegenereerd, zie scripts/)
+├── producten-data.js             # Datamodel achter de productpagina's
 ├── vercel.json                   # Vercel deployment config
-├── *.jpg / *.jpeg                # Foto's van klantprojecten
+├── productfotos/                 # Officiële productfoto's, per producttype/kleur
+├── shirt-designer/                # Sportshirt-mockups voor de live custom-designtool
+│   └── sportshirt-<kleur>/        # (voorkant/achterkant/zijkant, geladen via shirtImageUrl())
+├── fotomateriaal/                 # Alle overige media, per doel/fotolocatie gegroepeerd
+│   ├── klantprojecten/<project>/  # Impressies-gallery + blogfoto's, één map per fotoshoot/klant
+│   ├── hero-homepage/             # Homepage hero-carousel (hero-slide-1..6)
+│   ├── partner-logos/             # Marquee "Vertrouwd door"-logo's + favicon + huislogo
+│   ├── over-ons/                  # Foto's bij de "Over Ons"-sectie
+│   ├── team/                      # Teamfoto's
+│   ├── homepage-productoverzicht/ # Generieke categoriefoto's in het homepage-productgrid
+│   ├── categoriepaginas-fallback/ # Placeholder-hero voor categorieën zonder eigen productfotos
+│   └── ongebruikt/                # Onbenoemde/ongebruikte bestanden, nog niet toegewezen
+├── scripts/                       # Python-generatoren voor de productpagina's
+├── fonts/                         # Zelf-gehoste webfonts
+├── api/                           # Vercel serverless functions (blob-upload, generate)
 └── hockeypolo-sourcing/          # Next.js sourcing dashboard
     ├── src/app/                  # Next.js App Router pagina's
     ├── src/components/           # React componenten (layout + ui)
@@ -81,7 +97,7 @@ Beide fonts via Google Fonts geladen.
 ```
 CSS Grid creëert witte ruimte bij ongelijke hoogtes. Met `column-count` stroomt de browser items top-to-bottom per kolom en balanceert hoogtes automatisch.
 
-**Afbeeldingen in gallery**: Base64 embedded in de HTML.
+**Afbeeldingen in gallery**: gewone bestandsverwijzingen naar `fotomateriaal/klantprojecten/<project>/`, niet base64 (elk masonry-item + de bijbehorende `projects`-array in de `<script>` onderaan `index.html` wijzen naar dezelfde map per fotoshoot).
 
 **Instagram feed**: LightWidget iframe embed, lichtgrijze achtergrond passend bij sitesstijl.
 
@@ -187,9 +203,21 @@ Vercel deployt alleen de `index.html` en bijbehorende assets uit de root. Het da
 
 ---
 
-## Klantprojecten (gallery)
+## Klantprojecten (gallery + blog)
 
-Huidige volgorde in masonry gallery (kolom 1 → 2 → 3):
-- KWF Bruggenloop, Botlek Dispuutsblouses → Apollo Lustrum → Meatboys Event, Philips Innovation
+Elke klantfotoshoot heeft één map onder `fotomateriaal/klantprojecten/<slug>/`, met daarin
+zowel de masonry-thumbnail, de detailfoto's uit de `projects`-array (`openProject()` in
+`index.html`) als eventuele foto's die elders (blogartikelen, page-hero achtergronden) naar
+dezelfde shoot verwijzen. Nieuwe klantfoto's van een bestaande shoot horen in dezelfde map;
+een nieuwe shoot krijgt een nieuwe map.
 
-Afbeeldingsbestanden in de root: `apache1.jpg`, `botlek1.JPG`, `keizersnee1.JPG`, `ovide1.jpg`, `phia*.jpeg`, `ruis*.JPG`, `twijfelaar1.jpg`, `Fraters_KWF2026_*.jpg`, `Keizersnee_KWF2026_*.jpg`
+Huidige mappen: `fraters-kwf2026`, `keizersnee-kwf2026`, `kwf-bruggenloop-2025`, `botlek`,
+`phia`, `ruis`, `apollo-2023`, `apollo-comitas-2025`, `meatboys-2026`, `apache-vlaggen-2024`,
+`apache-skireis`.
+
+Sommige oudere `projects`-entries gebruiken uitsluitend externe Wix-URL's
+(`static.wixstatic.com/...`) — die staan niet lokaal en zijn dus niet verplaatst.
+
+`fotomateriaal/ongebruikt/` bevat bestanden zonder enige code-referentie op het moment van
+de reorganisatie (bijv. `twijfelaar1.jpg`, `ovide1.jpg`, oude `shirt-preview-*`-varianten) —
+nog niet verwijderd omdat onduidelijk was of ze nog nodig zijn.
