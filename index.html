@@ -725,7 +725,7 @@
     .marquee-track {
       display: flex;
       gap: 56px;
-      animation: marquee 24s linear infinite;
+      animation: marquee 31s linear infinite;
       flex-shrink: 0;
     }
 
@@ -977,98 +977,24 @@
 
     .process-head h2 em { font-style: normal; color: var(--green); }
 
-    /* ── Process Timeline ── */
-    .process-wrapper {
-      position: relative;
-      height: 420vh;
-    }
-
-    .process-wrapper .process {
-      position: sticky;
-      top: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding-top: 60px;
-      padding-bottom: 40px;
-    }
-
-    .process-timeline {
-      position: relative;
-      max-width: 1100px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .timeline-steps {
+    /* ── Stappen ── */
+    .process-steps {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 20px;
-      position: relative;
+      gap: 32px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
     }
 
-    .timeline-track {
-      position: absolute;
-      left: calc(100% / 10);
-      right: calc(100% / 10);
-      top: 0;
-      height: 3px;
-      background: var(--gray-200);
-      z-index: 0;
+    .process-step {
+      border-top: 2px solid var(--gray-200);
+      padding-top: 20px;
+      transition: border-color .3s var(--ease);
     }
 
-    .timeline-fill {
-      height: 100%;
-      width: 0%;
-      background: var(--green);
-      border-radius: 2px;
-      will-change: width;
-    }
-
-    .timeline-step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      opacity: .5;
-      transition: opacity .5s var(--ease);
-    }
-
-    .timeline-step.active { opacity: 1; }
-
-    .timeline-icon {
-      width: 66px; height: 66px;
-      border-radius: 50%;
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      display: grid; place-items: center;
-      margin-bottom: 22px;
-      position: relative;
-      z-index: 2;
-      flex-shrink: 0;
-      box-shadow: 0 0 0 5px var(--white);
-      transition: background .4s var(--ease), border-color .4s var(--ease), transform .4s var(--ease), box-shadow .4s var(--ease);
-    }
-
-    .timeline-icon svg {
-      width: 28px; height: 28px;
-      stroke: var(--green); fill: none;
-      stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
-      display: block;
-      transition: stroke .4s var(--ease);
-    }
-
-    .timeline-step.active .timeline-icon {
-      background: var(--green);
-      border-color: var(--green);
-      transform: scale(1.08);
-      box-shadow: 0 0 0 5px var(--white), 0 10px 28px rgba(0,166,82,.28);
-    }
-
-    .timeline-step.active .timeline-icon svg { stroke: var(--white); }
+    .process-step:hover { border-top-color: var(--green); }
 
     .step-num {
       font-family: var(--font-head);
@@ -1091,7 +1017,6 @@
       font-size: 14px;
       line-height: 1.6;
       color: var(--gray-600);
-      max-width: 220px;
     }
 
     /* ═══════════════════════════════════════════════════
@@ -1731,14 +1656,7 @@
 
       /* ── Overig ── */
       .collectie-grid { grid-template-columns: 1fr; }
-      .process-wrapper { height: auto !important; }
-      .process { position: relative !important; min-height: unset !important; }
-      .timeline-steps { grid-template-columns: 1fr; gap: 40px; }
-      .timeline-track { display: none; }
-      .timeline-step { opacity: 1; }
-      .timeline-icon { box-shadow: none; background: var(--green); border-color: var(--green); }
-      .timeline-icon svg { stroke: var(--white); }
-      .step-text { max-width: 320px; }
+      .process-steps { grid-template-columns: 1fr; gap: 28px; }
       .cta-section { padding: 64px 24px; }
       footer { padding: 48px 24px 32px; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -3706,6 +3624,9 @@
         <span class="marquee-item"><img src="img-9.png" alt="Heart to Handle" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
         <span class="marquee-item"><img src="img-10.png" alt="The Meat Boys" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
         <span class="marquee-item"><img src="img-11.png" alt="EY" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="client-logo-spaik.png" alt="SPAIK" style="height:30px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="client-logo-no-such-ventures.png" alt="No Such Ventures" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="client-logo-fsa.svg" alt="FSA – Financial Study Association Amsterdam" style="height:26px;width:auto;display:block;opacity:.8;" /></span>
         <span class="marquee-item"><img src="brand-logo-1.png" alt="R.S.C. / R.V.S.V." style="height:44px;width:auto;display:block;opacity:.8;" /></span>
         <span class="marquee-item"><img src="img-2.png" alt="Philips Innovation Award" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
         <span class="marquee-item"><img src="img-3.png" alt="Panorama Festival Rotterdam" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
@@ -3717,6 +3638,9 @@
         <span class="marquee-item"><img src="img-9.png" alt="Heart to Handle" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
         <span class="marquee-item"><img src="img-10.png" alt="The Meat Boys" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
         <span class="marquee-item"><img src="img-11.png" alt="EY" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="client-logo-spaik.png" alt="SPAIK" style="height:30px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="client-logo-no-such-ventures.png" alt="No Such Ventures" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="client-logo-fsa.svg" alt="FSA – Financial Study Association Amsterdam" style="height:26px;width:auto;display:block;opacity:.8;" /></span>
       </div>
     </div>
   </div>
@@ -3855,60 +3779,40 @@
   </section>
 
   <!-- ═══════════════ ZO WERKT HET ═══════════════ -->
-  <div class="process-wrapper" id="process-wrapper">
   <section class="process">
     <div class="process-head reveal">
       <span class="section-label">Werkwijze</span>
       <h2>Zo werkt <em>het</em></h2>
     </div>
 
-    <div class="process-timeline" id="process-timeline">
-      <div class="timeline-steps">
-        <div class="timeline-step">
-          <div class="timeline-icon">
-            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-          </div>
-          <div class="step-num">01</div>
-          <div class="step-title">Aanvraag</div>
-          <p class="step-text">Je deelt je idee, logo of wensen. Wij denken mee en adviseren over materiaal, techniek en aantallen.</p>
-        </div>
-        <div class="timeline-step">
-          <div class="timeline-icon">
-            <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
-          </div>
-          <div class="step-num">02</div>
-          <div class="step-title">Bestelling</div>
-          <p class="step-text">Je ontvangt een heldere offerte en digitale proef. Na jouw akkoord staat de order definitief vast.</p>
-        </div>
-        <div class="timeline-step">
-          <div class="timeline-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-          </div>
-          <div class="step-num">03</div>
-          <div class="step-title">Productie</div>
-          <p class="step-text">We bedrukken of borduren in onze vaste kwaliteit. Gecontroleerd, consistent en met oog voor detail.</p>
-        </div>
-        <div class="timeline-step">
-          <div class="timeline-icon">
-            <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-          </div>
-          <div class="step-num">04</div>
-          <div class="step-title">Levering</div>
-          <p class="step-text">We verpakken je bestelling netjes en verzenden snel. Je weet precies wanneer alles binnenkomt.</p>
-        </div>
-        <div class="timeline-step">
-          <div class="timeline-icon">
-            <svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
-          </div>
-          <div class="step-num">05</div>
-          <div class="step-title">After-sales</div>
-          <p class="step-text">Ook na levering staan we voor je klaar. Nabestellen of een vraag? Eén bericht en we regelen het.</p>
-        </div>
-      </div>
-      <div class="timeline-track"><div class="timeline-fill" id="timeline-fill"></div></div>
-    </div>
+    <ol class="process-steps">
+      <li class="process-step reveal">
+        <div class="step-num">01</div>
+        <div class="step-title">Aanvraag</div>
+        <p class="step-text">Je deelt je idee, logo of wensen. Wij denken mee en adviseren over materiaal, techniek en aantallen.</p>
+      </li>
+      <li class="process-step reveal">
+        <div class="step-num">02</div>
+        <div class="step-title">Bestelling</div>
+        <p class="step-text">Je ontvangt een heldere offerte en digitale proef. Na jouw akkoord staat de order definitief vast.</p>
+      </li>
+      <li class="process-step reveal">
+        <div class="step-num">03</div>
+        <div class="step-title">Productie</div>
+        <p class="step-text">We bedrukken of borduren in onze vaste kwaliteit. Gecontroleerd, consistent en met oog voor detail.</p>
+      </li>
+      <li class="process-step reveal">
+        <div class="step-num">04</div>
+        <div class="step-title">Levering</div>
+        <p class="step-text">We verpakken je bestelling netjes en verzenden snel. Je weet precies wanneer alles binnenkomt.</p>
+      </li>
+      <li class="process-step reveal">
+        <div class="step-num">05</div>
+        <div class="step-title">After-sales</div>
+        <p class="step-text">Ook na levering staan we voor je klaar. Nabestellen of een vraag? Eén bericht en we regelen het.</p>
+      </li>
+    </ol>
   </section>
-  </div>
 
   <!-- ═══════════════ IMPRESSIES ═══════════════ -->
   <section class="impressies">
@@ -6416,66 +6320,6 @@
       history.pushState({ page: id }, '', path);
     }
   }
-
-  // ── Process timeline scroll-pinned animation ────────────────
-  (function() {
-    var wrapper = document.getElementById('process-wrapper');
-    var tl      = document.getElementById('process-timeline');
-    if (!wrapper || !tl) return;
-    var fill  = document.getElementById('timeline-fill');
-    var icons = tl.querySelectorAll('.timeline-icon');
-    var steps = tl.querySelectorAll('.timeline-step');
-    var track = tl.querySelector('.timeline-track');
-
-    // Laatste stap licht op bij dit deel van de scroll; de resterende ruimte
-    // is buffer zodat de sectie niet te abrupt "af" is.
-    var LAST = 0.8;
-    var n = steps.length;
-    var stepGap = n > 1 ? LAST / (n - 1) : LAST;
-
-    function positionTrack() {
-      if (!icons.length || !track) return;
-      var tlRect = tl.getBoundingClientRect();
-      var first  = icons[0].getBoundingClientRect();
-      var last   = icons[icons.length - 1].getBoundingClientRect();
-      var firstCenter = first.left - tlRect.left + first.width / 2;
-      var lastCenter  = last.left  - tlRect.left + last.width / 2;
-      track.style.left  = firstCenter + 'px';
-      track.style.right = 'auto';
-      track.style.width = (lastCenter - firstCenter) + 'px';
-      track.style.top   = (first.top - tlRect.top + first.height / 2 - 1.5) + 'px';
-    }
-
-    function update() {
-      positionTrack();
-      var wh = window.innerHeight;
-      var wRect = wrapper.getBoundingClientRect();
-
-      // scrolled = how far wrapper top has passed viewport top
-      var scrolled   = -wRect.top;
-      var scrollRoom = wrapper.offsetHeight - wh;
-
-      // progress: 0 when sticky begins, 1 when wrapper ends
-      var progress = Math.min(1, Math.max(0, scrolled / scrollRoom));
-
-      // Vulling bereikt elke node exact op zijn drempel (100% bij de laatste stap).
-      fill.style.width = Math.min(100, (progress / LAST) * 100) + '%';
-
-      for (var i = 0; i < steps.length; i++) {
-        // drempels: 0.0, 0.2, 0.4, 0.6, 0.8 — eerste stap direct actief
-        var threshold = i * stepGap;
-        if (progress >= threshold) {
-          steps[i].classList.add('active');
-        } else {
-          steps[i].classList.remove('active');
-        }
-      }
-    }
-
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
-    setTimeout(update, 200);
-  })();
 
     // ── URL routing: back/forward knoppen ─────────────────────────
   window.addEventListener('popstate', function(e) {
