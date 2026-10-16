@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Cookiemelding + Google-tag (Consent Mode v2) + Meta Pixel na toestemming -->
+  <script src="/consent.js"></script>
   <title>Deel jouw idee — Hockeypolo</title>
   <meta name="description" content="Vertel ons over je project en wij maken er een scherpe offerte van. Vrijblijvend en zonder druk. Reactie binnen één werkdag." />
   <meta name="robots" content="index, follow" />
@@ -845,7 +847,9 @@
       Object.keys(fields).forEach(function (k) { fd.append(k, fields[k]); });
       await fetch('https://formsubmit.co/info@hockeypolo.com', { method: 'POST', mode: 'no-cors', body: fd });
 
-      window.location.href = '/bedankt-deel-je-idee';
+      // Eenmalige vlag voor de conversie op de bedanktpagina + gclid meenemen (consent.js)
+      if (window.hpMarkeerAanvraag) window.hpMarkeerAanvraag();
+      window.location.href = window.hpUrl ? window.hpUrl('/bedankt-deel-je-idee') : '/bedankt-deel-je-idee';
     } catch (err) {
       console.error(err);
       loading.classList.remove('show');
