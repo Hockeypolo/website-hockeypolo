@@ -3564,6 +3564,43 @@
       .featured-project-wrap { padding: 24px 0 0; }
       #page-impressies .featured-project { margin: 0 16px 40px; }
 
+      /* Hero: foto-carrousel vult het eerste scherm, tekst onderin op een donkere overloop */
+      #page-home .hero {
+        display: block; position: relative; isolation: isolate; overflow: hidden;
+        min-height: calc(100svh - 72px - var(--usp-h));
+        background: #000;
+      }
+      #page-home .hero-right {
+        position: absolute; inset: 0; width: auto; height: auto;
+        z-index: 0; background: #000;
+      }
+      #page-home .hero-right::after {
+        content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+        background: linear-gradient(to top,
+          rgba(0,0,0,.9) 0%, rgba(0,0,0,.78) 34%, rgba(0,0,0,.25) 62%, rgba(0,0,0,0) 78%);
+      }
+      #page-home .hero-slide { transition: opacity 1.2s ease; }
+      #page-home .hero-badge { display: none; }
+      #page-home .hero-left {
+        position: relative; z-index: 2; width: auto;
+        min-height: calc(100svh - 72px - var(--usp-h));
+        display: flex; flex-direction: column; justify-content: flex-end;
+        padding: 0 20px 28px;
+      }
+      #page-home .hero-trust,
+      #page-home .hero-stats,
+      #page-home .hero-sub-extra { display: none; }
+      #page-home .hero-h1 { font-size: 42px; color: #fff; }
+      #page-home .hero-accent {
+        font-size: 42px; margin-bottom: 14px;
+        background: transparent; clip-path: none;
+      }
+      #page-home .hero-sub { color: rgba(255,255,255,.85); font-size: 15px; line-height: 1.5; margin-bottom: 20px; }
+      #page-home .hero-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
+      #page-home .hero-btns .btn { justify-content: center; padding: 14px 10px; white-space: nowrap; }
+      #page-home .hero-btns .btn-black { background: var(--green); border-color: var(--green); color: #fff; }
+      #page-home .hero-btns .btn-outline { color: #fff; border-color: rgba(255,255,255,.75); background: transparent; }
+
       /* Stats-band: rustiger, minder groot */
       .stats-band { padding: 32px 16px; gap: 0; }
       .stats-band .stat-item { padding: 14px 8px; }
@@ -3721,7 +3758,7 @@
       </h1>
       <span class="hero-accent">Merchandise</span>
 
-      <p class="hero-sub">Voor elke gelegenheid en elke groep. Van ontwerp tot levering, zorgvuldig, snel en volledig op maat.</p>
+      <p class="hero-sub">Voor elke gelegenheid en elke groep.<span class="hero-sub-extra"> Van ontwerp tot levering, zorgvuldig, snel en volledig op maat.</span></p>
 
       <div class="hero-btns">
         <a href="/start-project" class="btn btn-black">
@@ -4184,11 +4221,14 @@
       const slides = document.querySelectorAll('#page-home .hero-slide');
       if (!slides.length) return;
       let current = 0;
+      // Op mobiel staan de foto's achter de tekst: daar rustiger wisselen
+      const mobiel = window.matchMedia('(max-width: 640px)').matches;
+      if (mobiel && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       setInterval(function() {
         slides[current].classList.remove('active');
         current = (current + 1) % slides.length;
         slides[current].classList.add('active');
-      }, 1000);
+      }, mobiel ? 5000 : 1000);
     })();
 
     const revealEls = document.querySelectorAll('.reveal');
@@ -9412,8 +9452,17 @@
     const wrap = document.querySelector('.stagger-wrap');
     const nav  = wrap && wrap.querySelector('.stagger-nav');
     if (!wrap || !nav) return;
-    if (window.innerWidth >= 640) { nav.style.top = ''; nav.style.bottom = ''; wrap.style.height = ''; return; }
-    const wTop = wrap.getBoundingClientRect().top;
+    if (window.innerWidth >= 640) { nav.style.top = ''; nav.style.bottom = ''; wrap.style.height = ''; var c0 = wrap.querySelector('.stagger-cards'); if (c0) c0.style.marginTop = ''; return; }
+    const cont = wrap.querySelector('.stagger-cards');
+    // Kaarten omhoog schuiven tot 16px onder de bovenkant van het blok
+    cont.style.marginTop = '0px';
+    let wTop = wrap.getBoundingClientRect().top;
+    let boven = Infinity;
+    wrap.querySelectorAll('.stagger-card').forEach(function(c) {
+      if (parseFloat(c.style.opacity) > 0) boven = Math.min(boven, c.getBoundingClientRect().top - wTop);
+    });
+    if (isFinite(boven) && boven > 16) cont.style.marginTop = (16 - boven) + 'px';
+    wTop = wrap.getBoundingClientRect().top;   // opnieuw meten: de negatieve marge kan het blok zelf verschuiven
     let onder = 0;
     wrap.querySelectorAll('.stagger-card').forEach(function(c) {
       if (parseFloat(c.style.opacity) > 0) onder = Math.max(onder, c.getBoundingClientRect().bottom - wTop);
