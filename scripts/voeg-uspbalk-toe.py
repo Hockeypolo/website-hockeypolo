@@ -45,11 +45,26 @@ CSS = """
     @media (max-width: 900px) {
       .usp-bar { font-size: 10px; letter-spacing: .06em; }
       .usp-inner { gap: 24px; }
-      .usp-item:nth-child(3) { display: none; }
     }
     @media (max-width: 640px) {
       :root { --usp-h: 34px; }
-      .usp-item:nth-child(2) { display: none; }
+      /* Op mobiel wisselen de drie USP's elkaar af, in plaats van dat er twee verdwijnen */
+      .usp-inner { position: relative; display: block; width: 100%; height: var(--usp-h); }
+      .usp-item {
+        position: absolute; inset: 0; justify-content: center;
+        opacity: 0; animation: usp-wissel 9s infinite;
+      }
+      .usp-item:nth-child(2) { animation-delay: 3s; }
+      .usp-item:nth-child(3) { animation-delay: 6s; }
+    }
+    @keyframes usp-wissel {
+      0%      { opacity: 0; transform: translateY(6px); }
+      4%, 30% { opacity: 1; transform: none; }
+      34%, 100% { opacity: 0; transform: translateY(-6px); }
+    }
+    @media (max-width: 640px) and (prefers-reduced-motion: reduce) {
+      .usp-item { animation: none; }
+      .usp-item:first-child { opacity: 1; }
     }
 """
 

@@ -113,11 +113,26 @@
     @media (max-width: 900px) {
       .usp-bar { font-size: 10px; letter-spacing: .06em; }
       .usp-inner { gap: 24px; }
-      .usp-item:nth-child(3) { display: none; }
     }
     @media (max-width: 640px) {
       :root { --usp-h: 34px; }
-      .usp-item:nth-child(2) { display: none; }
+      /* Op mobiel wisselen de drie USP's elkaar af, in plaats van dat er twee verdwijnen */
+      .usp-inner { position: relative; display: block; width: 100%; height: var(--usp-h); }
+      .usp-item {
+        position: absolute; inset: 0; justify-content: center;
+        opacity: 0; animation: usp-wissel 9s infinite;
+      }
+      .usp-item:nth-child(2) { animation-delay: 3s; }
+      .usp-item:nth-child(3) { animation-delay: 6s; }
+    }
+    @keyframes usp-wissel {
+      0%      { opacity: 0; transform: translateY(6px); }
+      4%, 30% { opacity: 1; transform: none; }
+      34%, 100% { opacity: 0; transform: translateY(-6px); }
+    }
+    @media (max-width: 640px) and (prefers-reduced-motion: reduce) {
+      .usp-item { animation: none; }
+      .usp-item:first-child { opacity: 1; }
     }
 
 
@@ -242,7 +257,7 @@
     </div>
     <div class="footer-col"><h4>Navigatie</h4><a href="/">Home</a><a href="/producten">Producten</a><a href="/impressies">Impressies</a><a href="/blog">Blog</a><a href="/overons">Over Ons</a><a href="/faq">F.A.Q.</a><a href="/startproject">Contact</a><a href="/privacyverklaring">Privacyverklaring</a></div>
     <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding">Kleding</a><a href="/producten#accessoires">Accessoires</a><a href="/producten#promotie">Promotie</a></div>
-    <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW NL814306639B01</a></div>
+    <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
   </div>
   <div class="footer-bottom">
     <span>© 2026 Hockeypolo · Alle rechten voorbehouden</span>

@@ -952,6 +952,18 @@
 
     .product-card-arrow svg { width: 16px; height: 16px; stroke: white; fill: none; stroke-width: 2.5; }
 
+    /* Altijd zichtbare knop naar de productpagina */
+    .product-card-btn {
+      display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0;
+      background: var(--green); color: var(--white); text-decoration: none;
+      font-family: var(--font-head); font-size: 12px; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: 10px 14px; border-radius: 8px;
+      transition: background .2s;
+    }
+    .product-card-btn:hover { background: #008c45; }
+    .product-card-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.5; }
+
     .collectie-cta {
       text-align: center;
       margin-top: 48px;
@@ -1667,24 +1679,8 @@
       .page { overflow-x: hidden; }
       .hero { overflow-x: hidden; }
 
-      /* ── Instagram feed: horizontale swipe-slider op mobiel ── */
-      .instagram-widget-wrap {
-        position: relative;
-        overflow-x: auto;
-        overflow-y: hidden;
-        -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: thin;
-        padding: 0 16px;
-      }
-      .instagram-widget-wrap .lightwidget-widget {
-        width: 880px !important;
-        min-width: 880px;
-        scroll-snap-align: start;
-      }
-      /* Subtiele scrollbar (Webkit) zodat duidelijk is dat er horizontaal te scrollen valt */
-      .instagram-widget-wrap::-webkit-scrollbar { height: 4px; background: transparent; }
-      .instagram-widget-wrap::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 2px; }
+      /* ── Instagram feed: volle breedte, foto's onder elkaar (geen horizontaal scrollen) ── */
+      .instagram-widget-wrap { padding: 0 16px; }
     }
   
 
@@ -2094,6 +2090,7 @@
       min-height: clamp(320px, 52vh, 480px);
       max-height: calc(100vh - 100px);
     }
+    .featured-project-wrap { padding: 40px 80px 0; }
     .fp-img { position: relative; overflow: hidden; }
     .fp-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease); opacity: .85; }
     .featured-project:hover .fp-img img { transform: scale(1.04); }
@@ -3532,11 +3529,52 @@
     @media (max-width: 900px) {
       .usp-bar { font-size: 10px; letter-spacing: .06em; }
       .usp-inner { gap: 24px; }
-      .usp-item:nth-child(3) { display: none; }
     }
     @media (max-width: 640px) {
       :root { --usp-h: 34px; }
-      .usp-item:nth-child(2) { display: none; }
+      /* Op mobiel wisselen de drie USP's elkaar af, in plaats van dat er twee verdwijnen */
+      .usp-inner { position: relative; display: block; width: 100%; height: var(--usp-h); }
+      .usp-item {
+        position: absolute; inset: 0; justify-content: center;
+        opacity: 0; animation: usp-wissel 9s infinite;
+      }
+      .usp-item:nth-child(2) { animation-delay: 3s; }
+      .usp-item:nth-child(3) { animation-delay: 6s; }
+    }
+    @keyframes usp-wissel {
+      0%      { opacity: 0; transform: translateY(6px); }
+      4%, 30% { opacity: 1; transform: none; }
+      34%, 100% { opacity: 0; transform: translateY(-6px); }
+    }
+    @media (max-width: 640px) and (prefers-reduced-motion: reduce) {
+      .usp-item { animation: none; }
+      .usp-item:first-child { opacity: 1; }
+    }
+
+    /* ═══ MOBIELE VERFIJNINGEN ═══════════════════════════════════ */
+    @media (max-width: 640px) {
+      /* Impressies: 2 kolommen i.p.v. 3, projectnaam altijd zichtbaar (geen hover op mobiel) */
+      .impressies-masonry { columns: 2; column-gap: 12px; }
+      .impressies-masonry .imp-item { margin-bottom: 12px; border-radius: 12px; }
+      .impressies-masonry .imp-overlay { opacity: 1; padding: 12px; background: linear-gradient(to top, rgba(0,0,0,.55) 0%, transparent 45%); }
+      .impressies-masonry .imp-overlay-title { font-size: 13px; line-height: 1.25; }
+      .impressies-masonry .imp-overlay-sub { display: none; }
+
+      /* Uitgelicht project: volle breedte i.p.v. een smalle kolom */
+      .featured-project-wrap { padding: 24px 0 0; }
+      #page-impressies .featured-project { margin: 0 16px 40px; }
+
+      /* Stats-band: rustiger, minder groot */
+      .stats-band { padding: 32px 16px; gap: 0; }
+      .stats-band .stat-item { padding: 14px 8px; }
+      .stats-band .stat-icon { width: 20px; height: 20px; margin-bottom: 8px; }
+      .stats-band .stat-icon svg { width: 20px; height: 20px; }
+      .stats-band .stat-item-num { font-size: 30px; }
+      .stats-band .stat-item-lbl { font-size: 10px; margin-top: 6px; }
+
+      /* Productkaarten collectie: knop compacter */
+      .product-card-label { padding: 32px 16px 16px; gap: 8px; }
+      .product-card-btn { padding: 8px 12px; font-size: 11px; }
     }
 
 
@@ -3841,69 +3879,57 @@
 
     <div class="collectie-grid">
       <!-- Featured -->
-      <div class="product-card reveal" style="cursor:pointer;" onclick="showPage('producten')">
+      <div class="product-card reveal" style="cursor:pointer;" onclick="location.href='/producten/zwembroeken'">
         <img class="product-card-img"
           src="https://static.wixstatic.com/media/0cb13e_1dcf14e69dd3458a9f73ffaa076383d7~mv2.png"
           alt="Zwembroeken" />
         <div class="product-card-label">
           <span class="product-card-name">Zwembroeken</span>
-          <div class="product-card-arrow">
-            <svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg>
-          </div>
+          <a class="product-card-btn" href="/producten/zwembroeken" onclick="event.stopPropagation()">Kopen <svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a>
         </div>
       </div>
       <!-- Grid items -->
-      <div class="product-card reveal" style="cursor:pointer;" onclick="showPage('producten')">
+      <div class="product-card reveal" style="cursor:pointer;" onclick="location.href='/producten/hoodies'">
         <img class="product-card-img"
           src="https://static.wixstatic.com/media/0cb13e_19e17d2bcf4f4e22916dc4d6f22ebfd1~mv2.png"
           alt="Hoodies" />
         <div class="product-card-label">
           <span class="product-card-name">Hoodies</span>
-          <div class="product-card-arrow">
-            <svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg>
-          </div>
+          <a class="product-card-btn" href="/producten/hoodies" onclick="event.stopPropagation()">Kopen <svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a>
         </div>
       </div>
-      <div class="product-card reveal" style="cursor:pointer;" onclick="showPage('producten')">
+      <div class="product-card reveal" style="cursor:pointer;" onclick="location.href='/producten/sjaals'">
         <img class="product-card-img"
           src="https://static.wixstatic.com/media/0cb13e_38bd63c90108403ea563c89f8325416a~mv2.png"
           alt="Sjaals" />
         <div class="product-card-label">
           <span class="product-card-name">Sjaals</span>
-          <div class="product-card-arrow">
-            <svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg>
-          </div>
+          <a class="product-card-btn" href="/producten/sjaals" onclick="event.stopPropagation()">Kopen <svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a>
         </div>
       </div>
-      <div class="product-card reveal" style="cursor:pointer;" onclick="showPage('producten')">
+      <div class="product-card reveal" style="cursor:pointer;" onclick="location.href='/producten/sportshirts'">
         <img class="product-card-img"
           src="https://static.wixstatic.com/media/0cb13e_5932cd8fc2e9458ba8870c2165f84499~mv2.png"
           alt="Sportshirts" />
         <div class="product-card-label">
           <span class="product-card-name">Sportshirts</span>
-          <div class="product-card-arrow">
-            <svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg>
-          </div>
+          <a class="product-card-btn" href="/producten/sportshirts" onclick="event.stopPropagation()">Kopen <svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a>
         </div>
       </div>
-      <div class="product-card reveal" style="cursor:pointer;" onclick="showPage('producten')">
+      <div class="product-card reveal" style="cursor:pointer;" onclick="location.href='/producten/overhemden'">
         <img class="product-card-img"
           src="https://static.wixstatic.com/media/0cb13e_9b1786d56f45432fab46f5eff049267f~mv2.png"
           alt="Overhemden" />
         <div class="product-card-label">
           <span class="product-card-name">Overhemden</span>
-          <div class="product-card-arrow">
-            <svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg>
-          </div>
+          <a class="product-card-btn" href="/producten/overhemden" onclick="event.stopPropagation()">Kopen <svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a>
         </div>
       </div>
-      <div class="product-card reveal" style="cursor:pointer;" onclick="showPage('producten')">
+      <div class="product-card reveal" style="cursor:pointer;" onclick="location.href='/producten/vlaggen'">
         <img class="product-card-img" id="collectie-vlaggen-img" src="" alt="Vlaggen" />
         <div class="product-card-label">
           <span class="product-card-name">Vlaggen</span>
-          <div class="product-card-arrow">
-            <svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg>
-          </div>
+          <a class="product-card-btn" href="/producten/vlaggen" onclick="event.stopPropagation()">Kopen <svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a>
         </div>
       </div>
     </div>
@@ -4139,7 +4165,7 @@
       <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
-      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW NL814306639B01</a></div>
+      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Hockeypolo · Alle rechten voorbehouden</span>
@@ -4773,7 +4799,7 @@
       <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
-      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW NL814306639B01</a></div>
+      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Hockeypolo · Alle rechten voorbehouden</span>
@@ -4814,7 +4840,7 @@
   </div>
 
   <!-- Featured project -->
-  <div style="padding: 40px 80px 0;">
+  <div class="featured-project-wrap">
     <div class="featured-project reveal">
       <div class="fp-img">
         <img src="fotomateriaal/klantprojecten/fraters-kwf2026/Fraters_KWF2026_1.jpg" alt="Dispuut Fraters x KWF Bruggenloop 2026" />
@@ -4921,7 +4947,7 @@
       <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
-      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW NL814306639B01</a></div>
+      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Hockeypolo · Alle rechten voorbehouden</span>
@@ -5067,7 +5093,7 @@
       <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
-      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW NL814306639B01</a></div>
+      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Hockeypolo · Alle rechten voorbehouden</span>
@@ -5159,7 +5185,7 @@
       <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
-      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW NL814306639B01</a></div>
+      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Hockeypolo · Alle rechten voorbehouden</span>
@@ -5246,7 +5272,7 @@
       <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
-      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW NL814306639B01</a></div>
+      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Hockeypolo · Alle rechten voorbehouden</span>
@@ -5325,7 +5351,7 @@
       <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
-      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW NL814306639B01</a></div>
+      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Hockeypolo · Alle rechten voorbehouden</span>
@@ -5404,7 +5430,7 @@
       <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
-      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW NL814306639B01</a></div>
+      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Hockeypolo · Alle rechten voorbehouden</span>
@@ -5539,7 +5565,7 @@
       <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
-      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW NL814306639B01</a></div>
+      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Hockeypolo · Alle rechten voorbehouden</span>
@@ -5649,7 +5675,7 @@
       <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
-      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW NL814306639B01</a></div>
+      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Hockeypolo · Alle rechten voorbehouden</span>
@@ -5838,7 +5864,7 @@
       <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
-      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW NL814306639B01</a></div>
+      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Hockeypolo · Alle rechten voorbehouden</span>
@@ -6033,7 +6059,7 @@
       <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
-      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW NL814306639B01</a></div>
+      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Hockeypolo · Alle rechten voorbehouden</span>
@@ -6283,7 +6309,7 @@
       <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
-      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW NL814306639B01</a></div>
+      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Hockeypolo · Alle rechten voorbehouden</span>
@@ -6433,7 +6459,7 @@
       <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
-      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW NL814306639B01</a></div>
+      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Hockeypolo · Alle rechten voorbehouden</span>
@@ -6558,7 +6584,7 @@
       <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
-      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW NL814306639B01</a></div>
+      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Hockeypolo · Alle rechten voorbehouden</span>
@@ -6653,7 +6679,7 @@
       <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
-      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW NL814306639B01</a></div>
+      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Hockeypolo · Alle rechten voorbehouden</span>
@@ -6750,7 +6776,7 @@
       <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
-      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW NL814306639B01</a></div>
+      <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Hockeypolo · Alle rechten voorbehouden</span>
@@ -9377,10 +9403,41 @@
     const n = staggerData.length;
     staggerActive = ((staggerActive + steps) % n + n) % n;
     renderStagger();
+    if (typeof plaatsStaggerNav === 'function') plaatsStaggerNav();
+  }
+
+  // Op mobiel hebben de kaarten geen vaste hoogte. Zet de vorige/volgende-knoppen
+  // daarom direct onder de onderste zichtbare kaart, i.p.v. op een vaste afstand.
+  function plaatsStaggerNav() {
+    const wrap = document.querySelector('.stagger-wrap');
+    const nav  = wrap && wrap.querySelector('.stagger-nav');
+    if (!wrap || !nav) return;
+    if (window.innerWidth >= 640) { nav.style.top = ''; nav.style.bottom = ''; wrap.style.height = ''; return; }
+    const wTop = wrap.getBoundingClientRect().top;
+    let onder = 0;
+    wrap.querySelectorAll('.stagger-card').forEach(function(c) {
+      if (parseFloat(c.style.opacity) > 0) onder = Math.max(onder, c.getBoundingClientRect().bottom - wTop);
+    });
+    if (!onder) return;
+    nav.style.top = (onder + 24) + 'px';
+    nav.style.bottom = 'auto';
+    wrap.style.height = (onder + 24 + nav.offsetHeight) + 'px';
   }
 
   renderStagger();
-  window.addEventListener('resize', renderStagger);
+  plaatsStaggerNav();
+  window.addEventListener('resize', function() { renderStagger(); plaatsStaggerNav(); });
+  // Opnieuw meten zodra lettertypen geladen zijn en als de homepage (opnieuw) zichtbaar wordt
+  window.addEventListener('load', plaatsStaggerNav);
+  (function() {
+    var orig = window.showPage;
+    if (typeof orig !== 'function') return;
+    window.showPage = function(id) {
+      var r = orig.apply(this, arguments);
+      if (id === 'home') setTimeout(plaatsStaggerNav, 50);
+      return r;
+    };
+  })();
 
 </script>
 
