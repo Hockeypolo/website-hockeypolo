@@ -6,6 +6,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Cookiemelding + Google-tag (Consent Mode v2) + Meta Pixel na toestemming -->
+  <script src="/consent.js"></script>
   <!-- ═══ SEO: Basis ═══════════════════════════════════════════ -->
   <title>Hockeypolo | Maatwerk Merchandise voor Clubs &amp; Bedrijven · Rotterdam</title>
   <meta name="description" content="Merchandise op maat voor sportclubs, studentenverenigingen en bedrijven. Eigen logo, kleuren en ontwerp op polo's, hoodies, sjaals en meer. Al sinds 2005 vanuit Rotterdam. Snel geleverd, scherpe prijs.">
@@ -725,7 +727,7 @@
     .marquee-track {
       display: flex;
       gap: 56px;
-      animation: marquee 24s linear infinite;
+      animation: marquee 31s linear infinite;
       flex-shrink: 0;
     }
 
@@ -977,104 +979,24 @@
 
     .process-head h2 em { font-style: normal; color: var(--green); }
 
-    /* ── Process Timeline ── */
-    .process-wrapper {
-      position: relative;
-      height: 420vh;
-    }
-
-    .process-wrapper .process {
-      position: sticky;
-      top: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding-top: 60px;
-      padding-bottom: 40px;
-    }
-
-    .process-timeline {
-      position: relative;
-      max-width: 1100px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .timeline-steps {
+    /* ── Stappen ── */
+    .process-steps {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 20px;
-      position: relative;
+      gap: 32px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
     }
 
-    .timeline-track {
-      position: absolute;
-      left: calc(100% / 10);
-      right: calc(100% / 10);
-      top: 0;
-      height: 3px;
-      background: var(--gray-200);
-      z-index: 0;
+    .process-step {
+      border-top: 2px solid var(--gray-200);
+      padding-top: 20px;
+      transition: border-color .3s var(--ease);
     }
 
-    .timeline-fill {
-      height: 100%;
-      width: 0%;
-      background: var(--green);
-      border-radius: 2px;
-      will-change: width;
-    }
-
-    .timeline-step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      /* Boven de track (z-index 0) houden. Zonder deze z-index verspringt de
-         stapelvolgorde tijdens de animatie: opacity < 1 maakt van de stap een
-         stacking context, waardoor de z-index van het icoon opgesloten raakt
-         en de lijn eroverheen loopt. Bij .active wordt opacity 1, valt die
-         stacking context weg en springt het icoon ineens vóór de lijn. */
-      z-index: 1;
-      opacity: .5;
-      transition: opacity .5s var(--ease);
-    }
-
-    .timeline-step.active { opacity: 1; }
-
-    .timeline-icon {
-      width: 66px; height: 66px;
-      border-radius: 50%;
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      display: grid; place-items: center;
-      margin-bottom: 22px;
-      position: relative;
-      z-index: 2;
-      flex-shrink: 0;
-      box-shadow: 0 0 0 5px var(--white);
-      transition: background .4s var(--ease), border-color .4s var(--ease), transform .4s var(--ease), box-shadow .4s var(--ease);
-    }
-
-    .timeline-icon svg {
-      width: 28px; height: 28px;
-      stroke: var(--green); fill: none;
-      stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
-      display: block;
-      transition: stroke .4s var(--ease);
-    }
-
-    .timeline-step.active .timeline-icon {
-      background: var(--green);
-      border-color: var(--green);
-      transform: scale(1.08);
-      box-shadow: 0 0 0 5px var(--white), 0 10px 28px rgba(0,166,82,.28);
-    }
-
-    .timeline-step.active .timeline-icon svg { stroke: var(--white); }
+    .process-step:hover { border-top-color: var(--green); }
 
     .step-num {
       font-family: var(--font-head);
@@ -1097,7 +1019,6 @@
       font-size: 14px;
       line-height: 1.6;
       color: var(--gray-600);
-      max-width: 220px;
     }
 
     /* ═══════════════════════════════════════════════════
@@ -1737,14 +1658,7 @@
 
       /* ── Overig ── */
       .collectie-grid { grid-template-columns: 1fr; }
-      .process-wrapper { height: auto !important; }
-      .process { position: relative !important; min-height: unset !important; }
-      .timeline-steps { grid-template-columns: 1fr; gap: 40px; }
-      .timeline-track { display: none; }
-      .timeline-step { opacity: 1; }
-      .timeline-icon { box-shadow: none; background: var(--green); border-color: var(--green); }
-      .timeline-icon svg { stroke: var(--white); }
-      .step-text { max-width: 320px; }
+      .process-steps { grid-template-columns: 1fr; gap: 28px; }
       .cta-section { padding: 64px 24px; }
       footer { padding: 48px 24px 32px; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -3679,38 +3593,6 @@
 
   </style>
   <script defer src="/_vercel/insights/script.js"></script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17893122065"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-17893122065');
-  </script>
-  <!-- Event snippet for Leadformulier indienen conversion page -->
-  <script>
-    if (window.location.pathname === '/bedankt') {
-      gtag('event', 'conversion', {'send_to': 'AW-17893122065/EZRhCMzqk4kcEJHAjdRC'});
-      fbq('track', 'Contact');
-    }
-  </script>
-  <!-- Meta Pixel Code -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2193791588043355');
-    fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2193791588043355&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
 
   <!-- Fabric.js voor ontwerptool — defer = laden naast de pagina i.p.v. blokkerend -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js" defer></script>
@@ -3880,6 +3762,9 @@
         <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-9.png" alt="Heart to Handle" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
         <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-10.png" alt="The Meat Boys" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
         <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-11.png" alt="EY" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/client-logo-spaik.png" alt="SPAIK" style="height:30px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/client-logo-no-such-ventures.png" alt="No Such Ventures" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/client-logo-fsa.svg" alt="FSA – Financial Study Association Amsterdam" style="height:26px;width:auto;display:block;opacity:.8;" /></span>
         <span class="marquee-item"><img src="fotomateriaal/partner-logos/brand-logo-1.png" alt="R.S.C. / R.V.S.V." style="height:44px;width:auto;display:block;opacity:.8;" /></span>
         <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-2.png" alt="Philips Innovation Award" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
         <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-3.png" alt="Panorama Festival Rotterdam" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
@@ -3891,6 +3776,9 @@
         <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-9.png" alt="Heart to Handle" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
         <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-10.png" alt="The Meat Boys" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
         <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-11.png" alt="EY" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/client-logo-spaik.png" alt="SPAIK" style="height:30px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/client-logo-no-such-ventures.png" alt="No Such Ventures" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/client-logo-fsa.svg" alt="FSA – Financial Study Association Amsterdam" style="height:26px;width:auto;display:block;opacity:.8;" /></span>
       </div>
     </div>
   </div>
@@ -4029,60 +3917,40 @@
   </section>
 
   <!-- ═══════════════ ZO WERKT HET ═══════════════ -->
-  <div class="process-wrapper" id="process-wrapper">
   <section class="process">
     <div class="process-head reveal">
       <span class="section-label">Werkwijze</span>
       <h2>Zo werkt <em>het</em></h2>
     </div>
 
-    <div class="process-timeline" id="process-timeline">
-      <div class="timeline-steps">
-        <div class="timeline-step">
-          <div class="timeline-icon">
-            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-          </div>
-          <div class="step-num">01</div>
-          <div class="step-title">Aanvraag</div>
-          <p class="step-text">Je deelt je idee, logo of wensen. Wij denken mee en adviseren over materiaal, techniek en aantallen.</p>
-        </div>
-        <div class="timeline-step">
-          <div class="timeline-icon">
-            <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
-          </div>
-          <div class="step-num">02</div>
-          <div class="step-title">Bestelling</div>
-          <p class="step-text">Je ontvangt een heldere offerte en digitale proef. Na jouw akkoord staat de order definitief vast.</p>
-        </div>
-        <div class="timeline-step">
-          <div class="timeline-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-          </div>
-          <div class="step-num">03</div>
-          <div class="step-title">Productie</div>
-          <p class="step-text">We bedrukken of borduren in onze vaste kwaliteit. Gecontroleerd, consistent en met oog voor detail.</p>
-        </div>
-        <div class="timeline-step">
-          <div class="timeline-icon">
-            <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-          </div>
-          <div class="step-num">04</div>
-          <div class="step-title">Levering</div>
-          <p class="step-text">We verpakken je bestelling netjes en verzenden snel. Je weet precies wanneer alles binnenkomt.</p>
-        </div>
-        <div class="timeline-step">
-          <div class="timeline-icon">
-            <svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
-          </div>
-          <div class="step-num">05</div>
-          <div class="step-title">After-sales</div>
-          <p class="step-text">Ook na levering staan we voor je klaar. Nabestellen of een vraag? Eén bericht en we regelen het.</p>
-        </div>
-      </div>
-      <div class="timeline-track"><div class="timeline-fill" id="timeline-fill"></div></div>
-    </div>
+    <ol class="process-steps">
+      <li class="process-step reveal">
+        <div class="step-num">01</div>
+        <div class="step-title">Aanvraag</div>
+        <p class="step-text">Je deelt je idee, logo of wensen. Wij denken mee en adviseren over materiaal, techniek en aantallen.</p>
+      </li>
+      <li class="process-step reveal">
+        <div class="step-num">02</div>
+        <div class="step-title">Bestelling</div>
+        <p class="step-text">Je ontvangt een heldere offerte en digitale proef. Na jouw akkoord staat de order definitief vast.</p>
+      </li>
+      <li class="process-step reveal">
+        <div class="step-num">03</div>
+        <div class="step-title">Productie</div>
+        <p class="step-text">We bedrukken of borduren in onze vaste kwaliteit. Gecontroleerd, consistent en met oog voor detail.</p>
+      </li>
+      <li class="process-step reveal">
+        <div class="step-num">04</div>
+        <div class="step-title">Levering</div>
+        <p class="step-text">We verpakken je bestelling netjes en verzenden snel. Je weet precies wanneer alles binnenkomt.</p>
+      </li>
+      <li class="process-step reveal">
+        <div class="step-num">05</div>
+        <div class="step-title">After-sales</div>
+        <p class="step-text">Ook na levering staan we voor je klaar. Nabestellen of een vraag? Eén bericht en we regelen het.</p>
+      </li>
+    </ol>
   </section>
-  </div>
 
   <!-- ═══════════════ IMPRESSIES ═══════════════ -->
   <section class="impressies">
@@ -6587,7 +6455,7 @@
       <div class="breadcrumb"><span onclick="showPage('home')">Home</span> <i>/</i> <span>Privacyverklaring</span></div>
       <span class="lbl">Juridisch</span>
       <h2>Privacy<em>verklaring</em></h2>
-      <p>Hoe Hockeypolo omgaat met jouw persoonsgegevens. Laatst bijgewerkt: 16 mei 2026.</p>
+      <p>Hoe Hockeypolo omgaat met jouw persoonsgegevens. Laatst bijgewerkt: 16 oktober 2026.</p>
     </div>
   </div>
 
@@ -6610,6 +6478,10 @@
       <ul class="privacy-list">
         <li>Voor- en achternaam</li>
         <li>E-mailadres</li>
+        <li>Telefoonnummer (als je dat invult)</li>
+        <li>Naam van je bedrijf, vereniging of dispuut (als je dat invult)</li>
+        <li>De inhoud van je aanvraag, zoals je bericht, ontwerpen, logo's en andere bestanden die je meestuurt</li>
+        <li>Gegevens over je bezoek aan onze website en over de advertentie waarop je hebt geklikt, alleen als je daarvoor toestemming geeft (zie Cookies)</li>
       </ul>
 
       <h2>Bijzondere en/of gevoelige persoonsgegevens</h2>
@@ -6618,7 +6490,11 @@
       <h2>Met welk doel verwerken wij persoonsgegevens?</h2>
       <p>Hockeypolo verwerkt jouw persoonsgegevens voor de volgende doelen:</p>
       <ul class="privacy-list">
-        <li>Verzenden van onze nieuwsbrief en/of reclamefolder</li>
+        <li>Het behandelen van je offerteaanvraag of bericht en het uitvoeren van je bestelling</li>
+        <li>Contact met je opnemen per e-mail, telefoon of WhatsApp (WhatsApp alleen als je daarvoor kiest)</li>
+        <li>Verzenden van onze nieuwsbrief en/of reclamefolder, als je je daarvoor hebt aangemeld</li>
+        <li>Meten welke advertenties tot een offerteaanvraag leiden en onze advertenties verbeteren, alleen met jouw toestemming</li>
+        <li>Het beveiligen van onze formulieren tegen spam en misbruik</li>
       </ul>
 
       <h2>Geautomatiseerde besluitvorming</h2>
@@ -6628,10 +6504,35 @@
       <p>Hockeypolo bewaart je persoonsgegevens niet langer dan strikt nodig is om de doelen te realiseren waarvoor je gegevens worden verzameld. Wij hanteren een bewaartermijn van <strong>24 maanden</strong> voor persoonsgegevens.</p>
 
       <h2>Delen van persoonsgegevens met derden</h2>
-      <p>Hockeypolo verstrekt uitsluitend aan derden en alleen als dit nodig is voor de uitvoering van onze overeenkomst met jou of om te voldoen aan een wettelijke verplichting.</p>
+      <p>Hockeypolo verstrekt uitsluitend aan derden en alleen als dit nodig is voor de uitvoering van onze overeenkomst met jou, om te voldoen aan een wettelijke verplichting of als je daar toestemming voor hebt gegeven. Wij maken gebruik van de volgende dienstverleners:</p>
+      <ul class="privacy-list">
+        <li><strong>Vercel</strong> — hosting van onze website, opslag van bestanden die je via een formulier meestuurt, en anonieme bezoekersstatistieken zonder cookies</li>
+        <li><strong>FormSubmit</strong> — doorsturen van ingevulde formulieren naar ons e-mailadres</li>
+        <li><strong>Brevo</strong> — verzenden van onze nieuwsbrief</li>
+        <li><strong>Google</strong> — reCAPTCHA (spambeveiliging), Google Maps (kaart op de contactpagina) en, alleen met jouw toestemming, Google Ads (advertentiemeting)</li>
+        <li><strong>Meta</strong> — alleen met jouw toestemming: de Meta Pixel (advertentiemeting voor Facebook en Instagram)</li>
+        <li><strong>LightWidget / Instagram</strong> — tonen van onze Instagram-feed op de website</li>
+      </ul>
+      <p>Sommige van deze partijen zijn gevestigd buiten de Europese Economische Ruimte, met name in de Verenigde Staten. Zij verwerken gegevens op basis van passende waarborgen, zoals het EU-VS Data Privacy Framework of de standaardcontractbepalingen van de Europese Commissie.</p>
 
       <h2>Cookies, of vergelijkbare technieken</h2>
-      <p>Hockeypolo gebruikt geen cookies of vergelijkbare technieken.</p>
+      <p>Bij je eerste bezoek vragen we via een cookiemelding of je marketingcookies accepteert of weigert. Je kunt je keuze altijd wijzigen via <button type="button" onclick="window.hpCookieInstellingen &amp;&amp; window.hpCookieInstellingen()" style="background:none;border:0;padding:0;font:inherit;color:var(--green);text-decoration:underline;cursor:pointer;">Cookie-instellingen</button> (ook onderaan elke pagina). Je keuze bewaren we in je browser, zodat we het niet bij elk bezoek opnieuw hoeven te vragen.</p>
+
+      <h3 style="font-family:var(--font-h);font-size:17px;font-weight:700;margin:24px 0 8px;">Altijd actief (noodzakelijk en functioneel)</h3>
+      <ul class="privacy-list">
+        <li><strong>Google reCAPTCHA</strong> — beveiligt ons nieuwsbriefformulier tegen spam en bots. Google kan hiervoor cookies plaatsen en gegevens over je apparaat en gedrag op de pagina gebruiken.</li>
+        <li><strong>Google Maps</strong> — de kaart op onze contactpagina wordt geladen vanaf de servers van Google. Google kan daarbij cookies plaatsen en je IP-adres ontvangen.</li>
+        <li><strong>Instagram-feed (LightWidget)</strong> — onze Instagram-berichten op de homepage worden geladen via LightWidget en Instagram. Deze partijen kunnen daarbij cookies plaatsen en je IP-adres ontvangen.</li>
+        <li><strong>Vercel Web Analytics en Speed Insights</strong> — anonieme statistieken over het gebruik en de snelheid van de website. Hierbij worden geen cookies geplaatst en worden bezoekers niet herkenbaar gevolgd.</li>
+        <li><strong>Functionele opslag in je browser</strong> — bijvoorbeeld je cookiekeuze en een ontwerp uit de ontwerptool dat je naar het contactformulier meeneemt.</li>
+      </ul>
+
+      <h3 style="font-family:var(--font-h);font-size:17px;font-weight:700;margin:24px 0 8px;">Alleen met jouw toestemming (marketing)</h3>
+      <ul class="privacy-list">
+        <li><strong>Google Ads conversiemeting</strong> — meet of een bezoek via een advertentie van Google leidt tot een offerteaanvraag. Cookies: <code>_gcl_au</code>, <code>_gcl_aw</code> (bewaartermijn maximaal 90 dagen).</li>
+        <li><strong>Meta Pixel</strong> — meet of een bezoek via een advertentie op Facebook of Instagram leidt tot een offerteaanvraag en helpt ons die advertenties te verbeteren. Cookies: <code>_fbp</code>, <code>_fbc</code> (bewaartermijn maximaal 90 dagen).</li>
+      </ul>
+      <p>Als je marketingcookies weigert, plaatsen Google en Meta geen cookies. Google kan dan nog wel een melding zonder cookies ontvangen dat er een offerteaanvraag is verstuurd, eventueel met de code van de advertentie waarop je hebt geklikt. Zo kunnen we zien hoe onze advertenties werken zonder jou te volgen. Je kunt cookies ook altijd via de instellingen van je browser verwijderen of blokkeren.</p>
 
       <h2>Gegevens inzien, aanpassen of verwijderen</h2>
       <p>Je hebt het recht om je persoonsgegevens in te zien, te corrigeren of te verwijderen. Daarnaast heb je het recht om je eventuele toestemming voor de gegevensverwerking in te trekken of bezwaar te maken tegen de verwerking van jouw persoonsgegevens door Hockeypolo en heb je het recht op gegevensoverdraagbaarheid. Dat betekent dat je bij ons een verzoek kan indienen om de persoonsgegevens die wij van jou beschikken in een computerbestand naar jou of een ander, door jou genoemde organisatie, te sturen.</p>
@@ -6933,66 +6834,6 @@
       history.pushState({ page: id }, '', path);
     }
   }
-
-  // ── Process timeline scroll-pinned animation ────────────────
-  (function() {
-    var wrapper = document.getElementById('process-wrapper');
-    var tl      = document.getElementById('process-timeline');
-    if (!wrapper || !tl) return;
-    var fill  = document.getElementById('timeline-fill');
-    var icons = tl.querySelectorAll('.timeline-icon');
-    var steps = tl.querySelectorAll('.timeline-step');
-    var track = tl.querySelector('.timeline-track');
-
-    // Laatste stap licht op bij dit deel van de scroll; de resterende ruimte
-    // is buffer zodat de sectie niet te abrupt "af" is.
-    var LAST = 0.8;
-    var n = steps.length;
-    var stepGap = n > 1 ? LAST / (n - 1) : LAST;
-
-    function positionTrack() {
-      if (!icons.length || !track) return;
-      var tlRect = tl.getBoundingClientRect();
-      var first  = icons[0].getBoundingClientRect();
-      var last   = icons[icons.length - 1].getBoundingClientRect();
-      var firstCenter = first.left - tlRect.left + first.width / 2;
-      var lastCenter  = last.left  - tlRect.left + last.width / 2;
-      track.style.left  = firstCenter + 'px';
-      track.style.right = 'auto';
-      track.style.width = (lastCenter - firstCenter) + 'px';
-      track.style.top   = (first.top - tlRect.top + first.height / 2 - 1.5) + 'px';
-    }
-
-    function update() {
-      positionTrack();
-      var wh = window.innerHeight;
-      var wRect = wrapper.getBoundingClientRect();
-
-      // scrolled = how far wrapper top has passed viewport top
-      var scrolled   = -wRect.top;
-      var scrollRoom = wrapper.offsetHeight - wh;
-
-      // progress: 0 when sticky begins, 1 when wrapper ends
-      var progress = Math.min(1, Math.max(0, scrolled / scrollRoom));
-
-      // Vulling bereikt elke node exact op zijn drempel (100% bij de laatste stap).
-      fill.style.width = Math.min(100, (progress / LAST) * 100) + '%';
-
-      for (var i = 0; i < steps.length; i++) {
-        // drempels: 0.0, 0.2, 0.4, 0.6, 0.8 — eerste stap direct actief
-        var threshold = i * stepGap;
-        if (progress >= threshold) {
-          steps[i].classList.add('active');
-        } else {
-          steps[i].classList.remove('active');
-        }
-      }
-    }
-
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
-    setTimeout(update, 200);
-  })();
 
     // ── URL routing: back/forward knoppen ─────────────────────────
   window.addEventListener('popstate', function(e) {
@@ -8163,7 +8004,9 @@
     // maar de e-mail wordt aan onze kant wel netjes afgeleverd.
     fetch(form.action, { method: 'POST', mode: 'no-cors', body: fd })
       .then(function() {
-        window.location.href = '/bedankt';
+        // Eenmalige vlag voor de conversie op /bedankt + gclid meenemen (consent.js)
+        if (window.hpMarkeerAanvraag) window.hpMarkeerAanvraag();
+        window.location.href = window.hpUrl ? window.hpUrl('/bedankt') : '/bedankt';
       })
       .catch(function() {
         feedback.style.color = '#e53e3e';
@@ -9706,6 +9549,14 @@
 
   function openPopup() {
     if (shown) return;
+    // Niet tegelijk met de cookiemelding: wacht tot de bezoeker een keuze heeft gemaakt
+    if (window.hpCookieKeuze && !window.hpCookieKeuze()) {
+      timer = null;
+      document.addEventListener('hp:cookiekeuze', function() {
+        if (isHomePage()) timer = setTimeout(openPopup, 1500);
+      }, { once: true });
+      return;
+    }
     shown = true;
     sessionStorage.setItem(STORAGE_KEY, '1');
     // Lazy-mount het formulier in de slot
