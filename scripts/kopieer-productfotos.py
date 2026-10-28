@@ -69,6 +69,8 @@ def verzamel_taken():
             # Basisnamen afleiden uit de originelen (fotosets verschillen per product)
             for origineel in sorted(kleurmap.glob("*.jpg")):
                 basis = origineel.stem
+                if basis.startswith("model_"):
+                    continue    # modelfoto's tonen we niet op de site
                 maten = MATEN_GROOT if is_grote_foto(basis) else MATEN_ALLE
                 for maat in maten:
                     bron = webmap / f"{basis}-{maat}.webp"

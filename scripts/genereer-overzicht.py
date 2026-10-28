@@ -33,13 +33,9 @@ VERBORGEN_NAMEN = {
 
 MAX_STALEN = 6   # kleurstalen op de kaart; de rest als "+N"
 
-# Hover-foto per product overschrijven. Standaard pakt de kaart de eerste
-# modelfoto, maar bij kleine accessoires draagt het model het product zo klein
-# (of buiten beeld) dat de hover niet laat zien waar je naar kijkt. Dan liever
-# een tweede productfoto onder een andere hoek.
-HOVER_OVERRIDE = {
-    "caps": "3_driekwart",
-}
+# Hover-foto: een tweede productfoto onder een andere hoek (geen modelfoto's).
+# Eerste beschikbare uit deze lijst die niet al de hoofdfoto is.
+HOVER_VOORKEUR = ("3_driekwart", "1_voorkant", "2_achterkant")
 
 
 def laad_producten():
@@ -56,8 +52,8 @@ def e(s):
 
 
 def hoofdfoto(p, k):
-    """Basisnaam van de primaire foto (1_*), anders de eerste."""
-    return next((f for f in k["fotos"] if f.startswith("1_")), k["fotos"][0])
+    """Basisnaam van de primaire foto: de eerste in de lijst (zie EERSTE_FOTO in genereer-productdata.py)."""
+    return k["fotos"][0]
 
 
 def kaart(p):
@@ -65,17 +61,12 @@ def kaart(p):
     basis = hoofdfoto(p, k)
     pad = f"/productfotos/{p['fotomap']}/{k['slug']}/{basis}"
 
-    # Hover-beeld: override waar ingesteld, anders de eerste modelfoto
+    # Hover-beeld: dezelfde kleur onder een andere hoek
     hover = ""
     hpad = None
-    if p["slug"] in HOVER_OVERRIDE:
-        shot = HOVER_OVERRIDE[p["slug"]]
-        if shot in k["fotos"]:
-            hpad = f"/productfotos/{p['fotomap']}/{k['slug']}/{shot}"
-    else:
-        model = next((mk for mk in p["kleuren"] if mk.get("modelfotos")), None)
-        if model:
-            hpad = f"/productfotos/{p['fotomap']}/{model['slug']}/{model['modelfotos'][0]}"
+    shot = next((f for f in HOVER_VOORKEUR if f in k["fotos"] and f != basis), None)
+    if shot:
+        hpad = f"/productfotos/{p['fotomap']}/{k['slug']}/{shot}"
     if hpad:
         hover = (f'\n          <img src="{hpad}-600.webp" alt="" aria-hidden="true"'
                  f' loading="lazy" decoding="async" class="pc-hoverfoto" />')

@@ -29,14 +29,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_divers_beweging",
-     "model_vrouw_divers_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_divers_beweging",
-     "model_vrouw_divers_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -51,14 +46,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -73,14 +63,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -95,14 +80,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_divers_beweging",
-     "model_vrouw_divers_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_divers_beweging",
-     "model_vrouw_divers_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -117,14 +97,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_zakelijk_beweging",
-     "model_man_zakelijk_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_zakelijk_beweging",
-     "model_man_zakelijk_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -139,14 +114,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -161,14 +131,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -183,14 +148,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_divers_beweging",
-     "model_vrouw_divers_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_divers_beweging",
-     "model_vrouw_divers_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -205,14 +165,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_divers_beweging",
-     "model_vrouw_divers_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_divers_beweging",
-     "model_vrouw_divers_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -227,14 +182,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_divers_beweging",
-     "model_vrouw_divers_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_divers_beweging",
-     "model_vrouw_divers_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -249,14 +199,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_zakelijk_beweging",
-     "model_man_zakelijk_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_zakelijk_beweging",
-     "model_man_zakelijk_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -271,14 +216,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -293,14 +233,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_zakelijk_beweging",
-     "model_man_zakelijk_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_zakelijk_beweging",
-     "model_man_zakelijk_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -315,14 +250,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -337,14 +267,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_zakelijk_beweging",
-     "model_man_zakelijk_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_zakelijk_beweging",
-     "model_man_zakelijk_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -359,14 +284,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -381,14 +301,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -403,14 +318,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_divers_beweging",
-     "model_vrouw_divers_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_divers_beweging",
-     "model_vrouw_divers_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -425,14 +335,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -447,14 +352,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_zakelijk_beweging",
-     "model_man_zakelijk_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_zakelijk_beweging",
-     "model_man_zakelijk_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -469,14 +369,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_zakelijk_beweging",
-     "model_man_zakelijk_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_zakelijk_beweging",
-     "model_man_zakelijk_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -491,14 +386,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -513,14 +403,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -535,14 +420,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
+     "1_voorkant"
     ]
    }
   ]
@@ -777,14 +657,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    }
   ]
@@ -951,14 +826,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    }
   ]
@@ -1431,14 +1301,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    }
   ]
@@ -1469,14 +1334,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -1575,14 +1435,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_divers_beweging",
-     "model_vrouw_divers_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_divers_beweging",
-     "model_vrouw_divers_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -1597,14 +1452,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -1619,14 +1469,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -1641,14 +1486,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_zakelijk_beweging",
-     "model_man_zakelijk_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_zakelijk_beweging",
-     "model_man_zakelijk_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -1663,14 +1503,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_divers_beweging",
-     "model_vrouw_divers_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_divers_beweging",
-     "model_vrouw_divers_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -1685,14 +1520,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -1707,14 +1537,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_zakelijk_beweging",
-     "model_man_zakelijk_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_zakelijk_beweging",
-     "model_man_zakelijk_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -1729,14 +1554,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -1751,14 +1571,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -1773,14 +1588,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
+     "1_voorkant"
     ]
    }
   ]
@@ -1811,14 +1621,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_divers_beweging",
-     "model_vrouw_divers_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_divers_beweging",
-     "model_vrouw_divers_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -1833,14 +1638,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_zakelijk_beweging",
-     "model_man_zakelijk_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_zakelijk_beweging",
-     "model_man_zakelijk_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -1855,14 +1655,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -1877,14 +1672,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -1899,14 +1689,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_zakelijk_beweging",
-     "model_man_zakelijk_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_zakelijk_beweging",
-     "model_man_zakelijk_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -1921,14 +1706,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -1943,14 +1723,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -1965,14 +1740,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -1987,14 +1757,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_divers_beweging",
-     "model_vrouw_divers_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_divers_beweging",
-     "model_vrouw_divers_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -2009,14 +1774,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_zakelijk_beweging",
-     "model_man_zakelijk_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_zakelijk_beweging",
-     "model_man_zakelijk_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -2031,14 +1791,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_zakelijk_beweging",
-     "model_man_zakelijk_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_zakelijk_beweging",
-     "model_man_zakelijk_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -2053,14 +1808,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -2075,14 +1825,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -2097,14 +1842,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_divers_beweging",
-     "model_vrouw_divers_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_divers_beweging",
-     "model_vrouw_divers_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -2119,14 +1859,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_jong_beweging",
-     "model_vrouw_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -2141,14 +1876,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -2163,14 +1893,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_vrouw_divers_beweging",
-     "model_vrouw_divers_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_vrouw_divers_beweging",
-     "model_vrouw_divers_staand"
+     "1_voorkant"
     ]
    }
   ]
@@ -2337,14 +2062,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    }
   ]
@@ -2664,14 +2384,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    }
   ]
@@ -2855,14 +2570,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -2903,9 +2613,9 @@ window.HP_PRODUCTEN = [
     "naam": "Blauw",
     "hex": "#475f9e",
     "fotos": [
+     "3_driekwart",
      "1_voorkant",
      "2_achterkant",
-     "3_driekwart",
      "4_gevouwen",
      "5_closeup_logo",
      "6_closeup_stof"
@@ -2920,9 +2630,9 @@ window.HP_PRODUCTEN = [
     "naam": "Marineblauw",
     "hex": "#292a3a",
     "fotos": [
+     "3_driekwart",
      "1_voorkant",
      "2_achterkant",
-     "3_driekwart",
      "4_gevouwen",
      "5_closeup_logo",
      "6_closeup_stof"
@@ -2937,21 +2647,16 @@ window.HP_PRODUCTEN = [
     "naam": "Zwart",
     "hex": "#39353d",
     "fotos": [
+     "3_driekwart",
      "1_voorkant",
      "2_achterkant",
-     "3_driekwart",
      "4_gevouwen",
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    }
   ]
@@ -2975,9 +2680,9 @@ window.HP_PRODUCTEN = [
     "naam": "Grijs melange / Zwart",
     "hex": "#aaaab6",
     "fotos": [
+     "3_driekwart",
      "1_voorkant",
      "2_achterkant",
-     "3_driekwart",
      "4_gevouwen",
      "5_closeup_logo",
      "6_closeup_stof"
@@ -2992,9 +2697,9 @@ window.HP_PRODUCTEN = [
     "naam": "Marineblauw / Wit",
     "hex": "#313d5f",
     "fotos": [
+     "3_driekwart",
      "1_voorkant",
      "2_achterkant",
-     "3_driekwart",
      "4_gevouwen",
      "5_closeup_logo",
      "6_closeup_stof"
@@ -3009,9 +2714,9 @@ window.HP_PRODUCTEN = [
     "naam": "Rood / Wit",
     "hex": "#e3203e",
     "fotos": [
+     "3_driekwart",
      "1_voorkant",
      "2_achterkant",
-     "3_driekwart",
      "4_gevouwen",
      "5_closeup_logo",
      "6_closeup_stof"
@@ -3026,9 +2731,9 @@ window.HP_PRODUCTEN = [
     "naam": "Roze / Wit",
     "hex": "#f689af",
     "fotos": [
+     "3_driekwart",
      "1_voorkant",
      "2_achterkant",
-     "3_driekwart",
      "4_gevouwen",
      "5_closeup_logo",
      "6_closeup_stof"
@@ -3043,9 +2748,9 @@ window.HP_PRODUCTEN = [
     "naam": "Zwart / Wit",
     "hex": "#26222a",
     "fotos": [
+     "3_driekwart",
      "1_voorkant",
      "2_achterkant",
-     "3_driekwart",
      "4_gevouwen",
      "5_closeup_logo",
      "6_closeup_stof"
@@ -3060,21 +2765,16 @@ window.HP_PRODUCTEN = [
     "naam": "Zwart",
     "hex": "#1b1918",
     "fotos": [
+     "3_driekwart",
      "1_voorkant",
      "2_achterkant",
-     "3_driekwart",
      "4_gevouwen",
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    }
   ]
@@ -3122,14 +2822,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -3313,14 +3008,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    }
   ]
@@ -3436,14 +3126,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    }
   ]
@@ -3559,14 +3244,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    }
   ]
@@ -3597,14 +3277,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -3754,14 +3429,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    }
   ]
@@ -3792,14 +3462,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -3895,14 +3560,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    },
    {
@@ -4221,14 +3881,9 @@ window.HP_PRODUCTEN = [
      "5_closeup_logo",
      "6_closeup_stof"
     ],
-    "modelfotos": [
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
-    ],
+    "modelfotos": [],
     "groot": [
-     "1_voorkant",
-     "model_man_jong_beweging",
-     "model_man_jong_staand"
+     "1_voorkant"
     ]
    }
   ]

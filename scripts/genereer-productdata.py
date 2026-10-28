@@ -57,6 +57,13 @@ KLEURNAMEN = {
     "rood": "Rood", "roze": "Roze", "wit": "Wit", "zand": "Zand", "zwart": "Zwart",
 }
 
+# Welke productfoto per product vooraan staat (hoofdfoto op productpagina en
+# in het overzicht). Standaard is dat 1_voorkant; hier uitzonderingen.
+EERSTE_FOTO = {
+    "sportbroeken": "3_driekwart",
+    "sportbroeken-dames": "3_driekwart",
+}
+
 # Prefixen in mapnamen die geen kleur aanduiden maar een modelvariant
 LOSSE_PREFIXEN = ("longsleeve_", "ls_", "dames_")
 
@@ -136,7 +143,7 @@ def hex_uit_foto(pad: Path) -> str:
 
 
 # ── Fotoboom uitlezen ────────────────────────────────────────────────────
-def lees_kleuren(product_slug_map: Path):
+def lees_kleuren(product_slug_map: Path, eerste: str = None):
     kleuren = []
     for kleurmap in sorted(p for p in product_slug_map.iterdir() if p.is_dir()):
         bestanden = [f.name for f in kleurmap.glob("*.webp")]
@@ -150,9 +157,13 @@ def lees_kleuren(product_slug_map: Path):
             if m:
                 basissen.setdefault(m.group(1), set()).add(int(m.group(2)))
 
+        # Alleen productfoto's: modelfoto's (model_*) worden bewust niet getoond
         product_fotos = sorted(b for b in basissen if not b.startswith("model_"))
-        model_fotos = sorted(b for b in basissen if b.startswith("model_"))
-        groot = sorted(b for b, maten in basissen.items() if 1200 in maten)
+        if eerste in product_fotos:
+            product_fotos.remove(eerste)
+            product_fotos.insert(0, eerste)
+        groot = sorted(b for b, maten in basissen.items()
+                       if 1200 in maten and not b.startswith("model_"))
 
         # hex uit de hoofdfoto (1_*), anders de eerste beschikbare
         hoofd = next((b for b in product_fotos if b.startswith("1_")),
@@ -166,7 +177,7 @@ def lees_kleuren(product_slug_map: Path):
             "naam": kleurnaam(kleurmap.name),
             "hex": hexkleur,
             "fotos": product_fotos,
-            "modelfotos": model_fotos,
+            "modelfotos": [],
             "groot": groot,
         })
     return kleuren
@@ -182,7 +193,7 @@ def main():
         if not map_.is_dir():
             print(f"  ! fotomap ontbreekt, overgeslagen: {p['fotomap']}")
             continue
-        kleuren = lees_kleuren(map_)
+        kleuren = lees_kleuren(map_, EERSTE_FOTO.get(p["slug"]))
         if not kleuren:
             print(f"  ! geen kleuren gevonden: {p['fotomap']}")
             continue
@@ -197,7 +208,7 @@ def main():
             "kleuren": kleuren,
         })
         print(f"  {p['naam']:<26} {len(kleuren):>2} kleuren, "
-              f"{sum(len(k['fotos']) + len(k['modelfotos']) for k in kleuren):>3} foto's")
+              f"{sum(len(k['fotos']) for k in kleuren):>3} foto's")
 
     js = (
         "/* AUTOMATISCH GEGENEREERD — niet met de hand aanpassen.\n"
@@ -213,7 +224,7 @@ def main():
     UITVOER.write_text(js, encoding="utf-8")
 
     tot_k = sum(len(p["kleuren"]) for p in uitvoer)
-    tot_f = sum(len(k["fotos"]) + len(k["modelfotos"]) for p in uitvoer for k in p["kleuren"])
+    tot_f = sum(len(k["fotos"]) for p in uitvoer for k in p["kleuren"])
     print(f"\n{UITVOER.name}: {len(uitvoer)} producten, {tot_k} kleuren, {tot_f} foto's "
           f"({UITVOER.stat().st_size / 1024:.0f} kB)")
 
