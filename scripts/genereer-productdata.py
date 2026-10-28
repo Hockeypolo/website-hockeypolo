@@ -64,6 +64,18 @@ EERSTE_FOTO = {
     "sportbroeken-dames": "3_driekwart",
 }
 
+# Welke kleur standaard getoond wordt (kaart in het overzicht, productpagina).
+# Standaard de eerste map op alfabet; hier uitzonderingen.
+EERSTE_KLEUR = {
+    "sportbroeken-dames": "dames_rood_wit",   # logo klein rechtsonder, zoals gewenst
+}
+
+# Foto's die we per kleur weglaten
+FOTO_WEGLATEN = {
+    # Schuine foto toont twee logo's i.p.v. één
+    "zwembroeken": {"black": ["3_driekwart"], "cherry": ["3_driekwart"]},
+}
+
 # Prefixen in mapnamen die geen kleur aanduiden maar een modelvariant
 LOSSE_PREFIXEN = ("longsleeve_", "ls_", "dames_")
 
@@ -143,7 +155,7 @@ def hex_uit_foto(pad: Path) -> str:
 
 
 # ── Fotoboom uitlezen ────────────────────────────────────────────────────
-def lees_kleuren(product_slug_map: Path, eerste: str = None):
+def lees_kleuren(product_slug_map: Path, eerste: str = None, weglaten: dict = None):
     kleuren = []
     for kleurmap in sorted(p for p in product_slug_map.iterdir() if p.is_dir()):
         bestanden = [f.name for f in kleurmap.glob("*.webp")]
@@ -158,7 +170,8 @@ def lees_kleuren(product_slug_map: Path, eerste: str = None):
                 basissen.setdefault(m.group(1), set()).add(int(m.group(2)))
 
         # Alleen productfoto's: modelfoto's (model_*) worden bewust niet getoond
-        product_fotos = sorted(b for b in basissen if not b.startswith("model_"))
+        weg = (weglaten or {}).get(kleurmap.name, [])
+        product_fotos = sorted(b for b in basissen if not b.startswith("model_") and b not in weg)
         if eerste in product_fotos:
             product_fotos.remove(eerste)
             product_fotos.insert(0, eerste)
@@ -193,7 +206,10 @@ def main():
         if not map_.is_dir():
             print(f"  ! fotomap ontbreekt, overgeslagen: {p['fotomap']}")
             continue
-        kleuren = lees_kleuren(map_, EERSTE_FOTO.get(p["slug"]))
+        kleuren = lees_kleuren(map_, EERSTE_FOTO.get(p["slug"]), FOTO_WEGLATEN.get(p["slug"]))
+        voorkeur = EERSTE_KLEUR.get(p["slug"])
+        if voorkeur:
+            kleuren.sort(key=lambda k: k["slug"] != voorkeur)   # stabiel: rest blijft op volgorde
         if not kleuren:
             print(f"  ! geen kleuren gevonden: {p['fotomap']}")
             continue

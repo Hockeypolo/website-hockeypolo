@@ -2676,6 +2676,23 @@ window.HP_PRODUCTEN = [
   ],
   "kleuren": [
    {
+    "slug": "dames_rood_wit",
+    "naam": "Rood / Wit",
+    "hex": "#e3203e",
+    "fotos": [
+     "3_driekwart",
+     "1_voorkant",
+     "2_achterkant",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
     "slug": "dames_grijsmelange_zwart",
     "naam": "Grijs melange / Zwart",
     "hex": "#aaaab6",
@@ -2696,23 +2713,6 @@ window.HP_PRODUCTEN = [
     "slug": "dames_navy_wit",
     "naam": "Marineblauw / Wit",
     "hex": "#313d5f",
-    "fotos": [
-     "3_driekwart",
-     "1_voorkant",
-     "2_achterkant",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "dames_rood_wit",
-    "naam": "Rood / Wit",
-    "hex": "#e3203e",
     "fotos": [
      "3_driekwart",
      "1_voorkant",
@@ -2800,7 +2800,6 @@ window.HP_PRODUCTEN = [
     "fotos": [
      "1_voorkant",
      "2_achterkant",
-     "3_driekwart",
      "4_gevouwen",
      "5_closeup_logo",
      "6_closeup_stof"
@@ -2817,7 +2816,6 @@ window.HP_PRODUCTEN = [
     "fotos": [
      "1_voorkant",
      "2_achterkant",
-     "3_driekwart",
      "4_gevouwen",
      "5_closeup_logo",
      "6_closeup_stof"
