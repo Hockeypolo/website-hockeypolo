@@ -72,8 +72,11 @@ CSS = """
     .zoek-leeg { padding: 26px 16px; text-align: center; font-size: 14px; color: var(--gray-600); }
     @media (max-width: 640px) {
       .zoek-overlay { padding: calc(var(--usp-h) + 84px) 12px 12px; }
-      .nav-hamburger + .zoek-knop, .zoek-knop { display: grid; }
+      /* Op mobiel zit Zoeken in het menu (rechtsboven), niet als losse knop in de header */
+      .zoek-knop { display: none; }
     }
+    .mobile-menu-zoek { display: flex; align-items: center; gap: 10px; }
+    .mobile-menu-zoek svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 2; }
 """
 
 KNOP = """      <button class="zoek-knop" id="zoek-knop" aria-label="Zoek in het assortiment">
@@ -135,7 +138,7 @@ OVERLAY = """
     if (index || !window.HP_PRODUCTEN) return index;
     index = window.HP_PRODUCTEN.map(function (p) {
       var k = p.kleuren[0];
-      var hoofd = k.fotos.filter(function (f) { return f.indexOf('1_') === 0; })[0] || k.fotos[0];
+      var hoofd = k.fotos[0];
       var cat = (window.HP_CATEGORIEEN || {})[p.categorie] || p.categorie;
       return {
         slug: p.slug, naam: p.naam, cat: cat,

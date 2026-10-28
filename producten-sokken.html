@@ -248,8 +248,11 @@
     .zoek-leeg { padding: 26px 16px; text-align: center; font-size: 14px; color: var(--gray-600); }
     @media (max-width: 640px) {
       .zoek-overlay { padding: calc(var(--usp-h) + 84px) 12px 12px; }
-      .nav-hamburger + .zoek-knop, .zoek-knop { display: grid; }
+      /* Op mobiel zit Zoeken in het menu (rechtsboven), niet als losse knop in de header */
+      .zoek-knop { display: none; }
     }
+    .mobile-menu-zoek { display: flex; align-items: center; gap: 10px; }
+    .mobile-menu-zoek svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 2; }
 
   </style>
 </head>
@@ -284,7 +287,6 @@
     <div class="nav-socials">
       <a href="https://www.instagram.com/hockeypolo.rotterdam/" target="_blank" rel="noopener" class="nav-soc" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
       <a href="https://nl.linkedin.com/company/hockeypolo" target="_blank" rel="noopener" class="nav-soc" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
-      <a href="https://www.facebook.com/profile.php?id=61586950513778" target="_blank" rel="noopener" class="nav-soc" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
     </div>
   </div>
   <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menu openen">
@@ -292,6 +294,7 @@
   </button>
 </nav>
 <div class="mobile-menu" id="mobile-menu">
+  <a class="mobile-menu-item mobile-menu-zoek" href="#" onclick="var m=document.getElementById('mobile-menu');if(m.classList.contains('open'))toggleMobileMenu();document.getElementById('zoek-knop').click();return false;"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Zoeken</a>
   <a class="mobile-menu-item" href="/">Home</a>
   <a class="mobile-menu-item" href="/producten">Producten</a>
   <a class="mobile-menu-item" href="/impressies">Impressies</a>
@@ -443,7 +446,7 @@
     if (index || !window.HP_PRODUCTEN) return index;
     index = window.HP_PRODUCTEN.map(function (p) {
       var k = p.kleuren[0];
-      var hoofd = k.fotos.filter(function (f) { return f.indexOf('1_') === 0; })[0] || k.fotos[0];
+      var hoofd = k.fotos[0];
       var cat = (window.HP_CATEGORIEEN || {})[p.categorie] || p.categorie;
       return {
         slug: p.slug, naam: p.naam, cat: cat,

@@ -3551,6 +3551,37 @@
       .usp-item:first-child { opacity: 1; }
     }
 
+    /* ═══ FILTERKNOPPEN — overal gelijk (producten, impressies, blog) ═══ */
+    .prod-filter, .imp-filter, #page-blog .filter-btn {
+      padding: 9px 18px; border-radius: 100px;
+      font-family: var(--font-h); font-size: 12px; font-weight: 600;
+      letter-spacing: .06em; text-transform: uppercase; white-space: nowrap;
+      border: 1px solid var(--gray-200); background: var(--white); color: var(--gray-600);
+      cursor: pointer; transition: background .2s, border-color .2s, color .2s;
+    }
+    .prod-filter:hover, .imp-filter:hover, #page-blog .filter-btn:hover {
+      border-color: var(--black); color: var(--black); background: var(--white);
+    }
+    .prod-filter.is-actief, .imp-filter.active, #page-blog .filter-btn.active {
+      background: var(--black); border-color: var(--black); color: var(--white);
+    }
+    .prod-filter span { color: var(--gray-400); margin-left: 4px; }
+    .prod-filter.is-actief span { color: rgba(255,255,255,.55); }
+    #page-blog .filter-bar {
+      position: static; background: none; border-bottom: none; overflow: visible;
+      display: flex; flex-wrap: wrap; gap: 8px; padding: 32px 80px 0;
+    }
+    @media (max-width: 1024px) { #page-blog .filter-bar { padding: 24px 32px 0; } }
+    @media (max-width: 640px)  { #page-blog .filter-bar { padding: 20px 16px 0; } }
+
+    /* Gefilterde elementen echt verbergen (display:grid/flex zou [hidden] anders overrulen) */
+    .product-groups [hidden], #page-impressies [data-cats][hidden] { display: none !important; }
+
+    /* Projectmodal: foto's volledig tonen (niet bijsnijden), zodat personen helemaal in beeld zijn */
+    #project-modal .proj-gallery-main { aspect-ratio: auto; height: clamp(300px, 62vh, 640px); }
+    #project-modal .proj-gallery-main img { object-fit: contain; }
+    @media (max-width: 640px) { #project-modal .proj-gallery-main { height: clamp(260px, 56vh, 520px); } }
+
     /* ═══ MOBIELE VERFIJNINGEN ═══════════════════════════════════ */
     @media (max-width: 640px) {
       /* Impressies: 2 kolommen i.p.v. 3, projectnaam altijd zichtbaar (geen hover op mobiel) */
@@ -3663,8 +3694,11 @@
     .zoek-leeg { padding: 26px 16px; text-align: center; font-size: 14px; color: var(--gray-600); }
     @media (max-width: 640px) {
       .zoek-overlay { padding: calc(var(--usp-h) + 84px) 12px 12px; }
-      .nav-hamburger + .zoek-knop, .zoek-knop { display: grid; }
+      /* Op mobiel zit Zoeken in het menu (rechtsboven), niet als losse knop in de header */
+      .zoek-knop { display: none; }
     }
+    .mobile-menu-zoek { display: flex; align-items: center; gap: 10px; }
+    .mobile-menu-zoek svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 2; }
 
   </style>
   <script defer src="/_vercel/insights/script.js"></script>
@@ -3714,9 +3748,6 @@
       <a href="https://nl.linkedin.com/company/hockeypolo" target="_blank" rel="noopener" class="nav-soc" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
       </a>
-      <a href="https://www.facebook.com/profile.php?id=61586950513778" target="_blank" rel="noopener" class="nav-soc" aria-label="Facebook">
-        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-      </a>
     </div>
   </div>
   <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menu openen">
@@ -3726,6 +3757,7 @@
   </button>
 </nav>
 <div class="mobile-menu" id="mobile-menu">
+  <a class="mobile-menu-item mobile-menu-zoek" href="#" onclick="var m=document.getElementById('mobile-menu');if(m.classList.contains('open'))toggleMobileMenu();document.getElementById('zoek-knop').click();return false;"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Zoeken</a>
   <a class="mobile-menu-item" onclick="showPage('home');closeMobileMenu()">Home</a>
   <a class="mobile-menu-item" onclick="showPage('producten');closeMobileMenu()">Producten</a>
   <a class="mobile-menu-item" onclick="showPage('impressies');closeMobileMenu()">Impressies</a>
@@ -4869,16 +4901,15 @@
 
   <!-- Filters -->
   <div class="impressies-filters">
-    <button class="imp-filter active">Alles</button>
-    <button class="imp-filter">Sportkleding</button>
-    <button class="imp-filter">Disputen</button>
-    <button class="imp-filter">Evenementen</button>
-    <button class="imp-filter">Accessoires</button>
-    <button class="imp-filter">Gala</button>
+    <button class="imp-filter active" data-filter="alles">Alles</button>
+    <button class="imp-filter" data-filter="sportkleding">Sportkleding</button>
+    <button class="imp-filter" data-filter="disputen">Disputen</button>
+    <button class="imp-filter" data-filter="evenementen">Evenementen</button>
+    <button class="imp-filter" data-filter="accessoires">Accessoires</button>
   </div>
 
   <!-- Featured project -->
-  <div class="featured-project-wrap">
+  <div class="featured-project-wrap" data-cats="sportkleding disputen evenementen">
     <div class="featured-project reveal">
       <div class="fp-img">
         <img src="fotomateriaal/klantprojecten/fraters-kwf2026/Fraters_KWF2026_1.jpg" alt="Dispuut Fraters x KWF Bruggenloop 2026" />
@@ -4914,7 +4945,7 @@
 
   <!-- Masonry gallery -->
   <div class="impressies-masonry">
-    <div class="imp-item reveal" onclick="openProject(14)">
+    <div class="imp-item reveal" data-cats="sportkleding disputen evenementen" onclick="openProject(14)">
       <img src="fotomateriaal/klantprojecten/keizersnee-kwf2026/gallery-3.jpg" alt="Dispuut Keizersnee x KWF Bruggenloop 2026" loading="lazy" />
       <div class="imp-overlay">
         <div class="imp-overlay-title">Dispuut Keizersnee x KWF Bruggenloop 2026</div>
@@ -4924,37 +4955,37 @@
         </div>
       </div>
     </div>
-    <div class="imp-item reveal" onclick="openProject(1)">
+    <div class="imp-item reveal" data-cats="sportkleding evenementen" onclick="openProject(1)">
       <img src="fotomateriaal/klantprojecten/kwf-bruggenloop-2025/gallery-1.jpg" alt="KWF Bruggenloop 2025" />
       <div class="imp-overlay"><div class="imp-overlay-title">KWF Bruggenloop 2025</div><div class="imp-overlay-sub">Hardloopshirts · Evenement</div></div>
       <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="imp-item reveal" onclick="openProject(2)">
+    <div class="imp-item reveal" data-cats="disputen" onclick="openProject(2)">
       <img src="https://static.wixstatic.com/media/d9f76e_4354bbe426304ae69807344a1a664347~mv2.jpg" alt="Dispuutsblouses Botlek" />
       <div class="imp-overlay"><div class="imp-overlay-title">Dispuutsblouses Botlek</div><div class="imp-overlay-sub">Blouses · R.S.C./R.V.S.V.</div></div>
       <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="imp-item reveal" onclick="openProject(12)">
+    <div class="imp-item reveal" data-cats="disputen" onclick="openProject(12)">
       <img src="fotomateriaal/klantprojecten/apollo-comitas-2025/img-12.jpg" alt="Custom sweaters S.C.D. Apollo" />
       <div class="imp-overlay"><div class="imp-overlay-title">S.C.D. Apollo Lustrum</div><div class="imp-overlay-sub">Sweaters · Amsterdam</div></div>
       <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="imp-item reveal" onclick="openProject(11)">
-      <img src="fotomateriaal/klantprojecten/meatboys-2026/img-13.jpg" alt="Meatboys Event 2026" />
-      <div class="imp-overlay"><div class="imp-overlay-title">Meatboys Event 2026</div><div class="imp-overlay-sub">Sweaters · Evenement</div></div>
+    <div class="imp-item reveal" data-cats="evenementen" onclick="openProject(11)">
+      <img src="fotomateriaal/klantprojecten/meatboys-2026/img-13.jpg" alt="Meatboys 2026" />
+      <div class="imp-overlay"><div class="imp-overlay-title">Meatboys 2026</div><div class="imp-overlay-sub">Sweaters · Evenement</div></div>
       <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="imp-item reveal" onclick="openProject(3)">
+    <div class="imp-item reveal" data-cats="evenementen" onclick="openProject(3)">
       <img src="fotomateriaal/klantprojecten/phia/gallery-2.jpg" alt="Philips Innovation Award 2025" />
       <div class="imp-overlay"><div class="imp-overlay-title">Philips Innovation Award 2025</div><div class="imp-overlay-sub">Merchandise · Rotterdam</div></div>
       <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="imp-item reveal" onclick="openProject(13)">
+    <div class="imp-item reveal" data-cats="disputen accessoires" onclick="openProject(13)">
       <img src="/fotomateriaal/klantprojecten/apache-vlaggen-2024/apache1.jpg" alt="Vlaggen Dispuut Apache" />
       <div class="imp-overlay"><div class="imp-overlay-title">Vlaggen Dispuut Apache</div><div class="imp-overlay-sub">Vlaggen · Rotterdam</div></div>
       <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="imp-item reveal" onclick="openProject(4)">
+    <div class="imp-item reveal" data-cats="disputen" onclick="openProject(4)">
       <img src="/fotomateriaal/klantprojecten/ruis/ruis1.JPG" alt="Dispuutsblouses Ruis" />
       <div class="imp-overlay"><div class="imp-overlay-title">Dispuutsblouses Ruis</div><div class="imp-overlay-sub">Blouses · R.S.C./R.V.S.V.</div></div>
       <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
@@ -7273,11 +7304,15 @@
     if (!isOpen) item.classList.add('open');
   }
 
-  // ── Impressies filter (visual only) ───────────────────────────
+  // ── Impressies filter ─────────────────────────────────────────
+  // Elk project heeft data-cats (meerdere categorieën mogelijk, spatie-gescheiden).
   document.querySelectorAll('.imp-filter').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.imp-filter').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+      const cat = btn.dataset.filter;
+      document.querySelectorAll('.imp-filter').forEach(b => b.classList.toggle('active', b === btn));
+      document.querySelectorAll('#page-impressies [data-cats]').forEach(el => {
+        el.hidden = !(cat === 'alles' || el.dataset.cats.split(' ').indexOf(cat) !== -1);
+      });
     });
   });
 
@@ -7473,7 +7508,7 @@
       ]
     },
     {
-      title: "Meatboys Event 2026",
+      title: "Meatboys 2026",
       tag: "Evenement",
       year: "2026",
       desc: "The Meat Boys is een Rotterdams fenomeen: een premium slagerij en cateringbedrijf dat bekendstaat om zijn spectaculaire live cooking events. Voor hun event in 2026 verzorgde Hockeypolo de teamkleding voor het volledige keukenteam: strakke zwarte sweaters met het iconische Meatboys-logo geborduurd op de borst. De sweaters zorgden voor een uniforme, professionele uitstraling die naadloos aansloot bij het no-nonsense imago van het merk. Van chef tot assistent — iedereen herkenbaar in dezelfde outfit, klaar voor actie.",
@@ -9785,7 +9820,7 @@
     if (index || !window.HP_PRODUCTEN) return index;
     index = window.HP_PRODUCTEN.map(function (p) {
       var k = p.kleuren[0];
-      var hoofd = k.fotos.filter(function (f) { return f.indexOf('1_') === 0; })[0] || k.fotos[0];
+      var hoofd = k.fotos[0];
       var cat = (window.HP_CATEGORIEEN || {})[p.categorie] || p.categorie;
       return {
         slug: p.slug, naam: p.naam, cat: cat,
