@@ -3589,6 +3589,14 @@
     #project-modal .proj-gallery-main img { object-fit: contain; }
     @media (max-width: 640px) { #project-modal .proj-gallery-main { height: clamp(260px, 56vh, 520px); } }
 
+    /* Impressies: kolommen die rij voor rij gevuld worden (zie verdeelImpressies) */
+    .impressies-masonry.is-verdeeld { columns: auto; display: flex; gap: 16px; align-items: flex-start; }
+    .impressies-masonry.is-verdeeld .imp-kolom { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+    .impressies-masonry.is-verdeeld .imp-item { margin-bottom: 0; }
+    @media (max-width: 640px) {
+      .impressies-masonry.is-verdeeld, .impressies-masonry.is-verdeeld .imp-kolom { gap: 12px; }
+    }
+
     /* ═══ MOBIELE VERFIJNINGEN ═══════════════════════════════════ */
     @media (max-width: 640px) {
       /* Impressies: 2 kolommen i.p.v. 3, projectnaam altijd zichtbaar (geen hover op mobiel) */
@@ -4067,9 +4075,9 @@
     </div>
 
     <div class="impressies-grid">
-      <div class="impressie-item reveal" onclick="openProject(1)">
-        <img src="fotomateriaal/klantprojecten/kwf-bruggenloop-2025/gallery-1.jpg" alt="KWF Bruggenloop 2025" />
-        <div class="impressie-overlay"><div class="impressie-overlay-title">KWF Bruggenloop 2025</div><div class="impressie-overlay-sub">Evenement · 2025</div></div><div class="impressie-overlay-icon"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      <div class="impressie-item reveal" onclick="openProject(16)">
+        <img src="fotomateriaal/klantprojecten/eurekaweek-2026/eureka-stelz.jpg" alt="R.S.C./R.V.S.V. Eurekaweek 2026" style="object-position:center 30%;" />
+        <div class="impressie-overlay"><div class="impressie-overlay-title">R.S.C./R.V.S.V. Eurekaweek 2026</div><div class="impressie-overlay-sub">Evenement · 2026</div></div><div class="impressie-overlay-icon"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
       </div>
       <div class="impressie-item reveal" onclick="openProject(14)">
         <img src="/fotomateriaal/klantprojecten/keizersnee-kwf2026/keizersnee1.JPG" alt="Dispuut Keizersnee x KWF Bruggenloop 2026" />
@@ -4973,6 +4981,11 @@
 
   <!-- Masonry gallery -->
   <div class="impressies-masonry">
+    <div class="imp-item reveal" data-cats="sportkleding evenementen" onclick="openProject(16)">
+      <img src="fotomateriaal/klantprojecten/eurekaweek-2026/eureka-stelz.jpg" alt="R.S.C./R.V.S.V. Eurekaweek 2026" />
+      <div class="imp-overlay"><div class="imp-overlay-title">R.S.C./R.V.S.V. Eurekaweek 2026</div><div class="imp-overlay-sub">Sportshirts · Evenement</div></div>
+      <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+    </div>
     <div class="imp-item reveal" data-cats="sportkleding disputen evenementen" onclick="openProject(14)">
       <img src="fotomateriaal/klantprojecten/keizersnee-kwf2026/gallery-3.jpg" alt="Dispuut Keizersnee x KWF Bruggenloop 2026" loading="lazy" />
       <div class="imp-overlay">
@@ -4982,6 +4995,11 @@
           <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
         </div>
       </div>
+    </div>
+    <div class="imp-item reveal" data-cats="evenementen" onclick="openProject(11)">
+      <img src="fotomateriaal/klantprojecten/meatboys-2026/meatboys-rug.jpg" alt="Meatboys 2026" />
+      <div class="imp-overlay"><div class="imp-overlay-title">Meatboys 2026</div><div class="imp-overlay-sub">Sweaters · Evenement</div></div>
+      <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
     <div class="imp-item reveal" data-cats="sportkleding evenementen" onclick="openProject(1)">
       <img src="fotomateriaal/klantprojecten/kwf-bruggenloop-2025/gallery-1.jpg" alt="KWF Bruggenloop 2025" />
@@ -4998,24 +5016,19 @@
       <div class="imp-overlay"><div class="imp-overlay-title">S.C.D. Apollo Lustrum</div><div class="imp-overlay-sub">Sweaters · Amsterdam</div></div>
       <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="imp-item reveal" data-cats="evenementen" onclick="openProject(11)">
-      <img src="fotomateriaal/klantprojecten/meatboys-2026/meatboys-rug.jpg" alt="Meatboys 2026" />
-      <div class="imp-overlay"><div class="imp-overlay-title">Meatboys 2026</div><div class="imp-overlay-sub">Sweaters · Evenement</div></div>
-      <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
-    </div>
     <div class="imp-item reveal" data-cats="evenementen" onclick="openProject(3)">
       <img src="fotomateriaal/klantprojecten/phia/gallery-2.jpg" alt="Philips Innovation Award 2025" />
       <div class="imp-overlay"><div class="imp-overlay-title">Philips Innovation Award 2025</div><div class="imp-overlay-sub">Merchandise · Rotterdam</div></div>
       <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
-    <div class="imp-item reveal" data-cats="disputen accessoires" onclick="openProject(13)">
-      <img src="/fotomateriaal/klantprojecten/apache-vlaggen-2024/apache1.jpg" alt="Vlaggen Dispuut Apache" />
-      <div class="imp-overlay"><div class="imp-overlay-title">Vlaggen Dispuut Apache</div><div class="imp-overlay-sub">Vlaggen · Rotterdam</div></div>
-      <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
-    </div>
     <div class="imp-item reveal" data-cats="disputen" onclick="openProject(4)">
       <img src="/fotomateriaal/klantprojecten/ruis/ruis1.JPG" alt="Dispuutsblouses Ruis" />
       <div class="imp-overlay"><div class="imp-overlay-title">Dispuutsblouses Ruis</div><div class="imp-overlay-sub">Blouses · R.S.C./R.V.S.V.</div></div>
+      <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+    </div>
+    <div class="imp-item reveal" data-cats="disputen accessoires" onclick="openProject(13)">
+      <img src="/fotomateriaal/klantprojecten/apache-vlaggen-2024/apache1.jpg" alt="Vlaggen Dispuut Apache" />
+      <div class="imp-overlay"><div class="imp-overlay-title">Vlaggen Dispuut Apache</div><div class="imp-overlay-sub">Vlaggen · Rotterdam</div></div>
       <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
   </div>
@@ -7341,8 +7354,46 @@
       document.querySelectorAll('#page-impressies [data-cats]').forEach(el => {
         el.hidden = !(cat === 'alles' || el.dataset.cats.split(' ').indexOf(cat) !== -1);
       });
+      if (window.verdeelImpressies) window.verdeelImpressies();
     });
   });
+
+  // ── Impressies: rij voor rij over de kolommen verdelen ──────────
+  // CSS-kolommen vullen van boven naar beneden (eerst kolom 1 helemaal).
+  // Dan staan de nieuwste projecten allemaal links. Daarom verdelen we de
+  // projecten (nieuw -> oud in de HTML) om de beurt over de kolommen, zodat
+  // de bovenste rij de nieuwste projecten toont.
+  (function() {
+    var bak = document.querySelector('.impressies-masonry');
+    if (!bak) return;
+    var items = [].slice.call(bak.querySelectorAll('.imp-item'));
+    var huidig = 0;
+    function aantalKolommen() { return window.matchMedia('(max-width: 640px)').matches ? 2 : 3; }
+    function verdeel() {
+      var n = aantalKolommen();
+      huidig = n;
+      var kols = [];
+      bak.innerHTML = '';
+      for (var i = 0; i < n; i++) {
+        var k = document.createElement('div');
+        k.className = 'imp-kolom';
+        bak.appendChild(k); kols.push(k);
+      }
+      var z = 0;
+      items.forEach(function(el) {
+        if (el.hidden) { kols[0].appendChild(el); return; }   // blijft verborgen in de DOM
+        kols[z % n].appendChild(el); z++;
+      });
+      bak.classList.add('is-verdeeld');
+    }
+    window.verdeelImpressies = verdeel;
+    verdeel();
+    var t;
+    window.addEventListener('resize', function() {
+      clearTimeout(t);
+      t = setTimeout(function() { if (aantalKolommen() !== huidig) verdeel(); }, 150);
+    });
+  })();
 
   // Homepage scroll reveal
   (function() {
@@ -7618,6 +7669,26 @@
         "fotomateriaal/klantprojecten/fraters-kwf2026/product-photo-21.jpg",
         "fotomateriaal/klantprojecten/fraters-kwf2026/product-photo-20.jpg",
         "fotomateriaal/klantprojecten/fraters-kwf2026/product-photo-19.jpg"
+      ]
+    },
+    {
+      title: "R.S.C./R.V.S.V. Eurekaweek 2026",
+      tag: "Evenement",
+      year: "2026",
+      desc: "Tijdens de Eurekaweek 2026, de introductieweek in Rotterdam, droeg het team van het R.S.C./R.V.S.V. paarse sportshirts van Hockeypolo met een geel-gouden opdruk. Zo was iedereen op het terrein direct herkenbaar, van het podium tot het terras.",
+      details: [
+        { icon: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>', label: "R.S.C./R.V.S.V." },
+        { icon: '<path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>', label: "Sportshirts" },
+        { icon: '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>', label: "Rotterdam" }
+      ],
+      photos: [
+        "fotomateriaal/klantprojecten/eurekaweek-2026/eureka-stelz.jpg",
+        "fotomateriaal/klantprojecten/eurekaweek-2026/eureka-duo.jpg",
+        "fotomateriaal/klantprojecten/eurekaweek-2026/eureka-trio.jpg",
+        "fotomateriaal/klantprojecten/eurekaweek-2026/eureka-groep.jpg",
+        "fotomateriaal/klantprojecten/eurekaweek-2026/eureka-podium.jpg",
+        "fotomateriaal/klantprojecten/eurekaweek-2026/eureka-publiek.jpg",
+        "fotomateriaal/klantprojecten/eurekaweek-2026/eureka-terras.jpg"
       ]
     }
   ];
