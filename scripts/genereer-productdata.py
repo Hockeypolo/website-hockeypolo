@@ -68,6 +68,14 @@ EERSTE_FOTO = {
 # Standaard de eerste map op alfabet; hier uitzonderingen.
 EERSTE_KLEUR = {
     "sportbroeken-dames": "dames_rood_wit",   # logo klein rechtsonder, zoals gewenst
+    "caps": "wassing_groen",                  # echte productfoto, groen washed met borduursel
+    "tote-bags": "mint_naturel",              # gestreepte tas als hoofdfoto
+}
+
+# Kleurbolletje handmatig vastzetten waar de automatische mediaan misleidt
+# (bijv. gestreept: de mediaan valt op de lichte baan).
+HEX_OVERRIDE = {
+    "tote-bags": {"mint_naturel": "#a8d8bf"},
 }
 
 # Foto's die we per kleur weglaten
@@ -207,6 +215,8 @@ def main():
             print(f"  ! fotomap ontbreekt, overgeslagen: {p['fotomap']}")
             continue
         kleuren = lees_kleuren(map_, EERSTE_FOTO.get(p["slug"]), FOTO_WEGLATEN.get(p["slug"]))
+        for k in kleuren:
+            k["hex"] = HEX_OVERRIDE.get(p["slug"], {}).get(k["slug"], k["hex"])
         voorkeur = EERSTE_KLEUR.get(p["slug"])
         if voorkeur:
             kleuren.sort(key=lambda k: k["slug"] != voorkeur)   # stabiel: rest blijft op volgorde

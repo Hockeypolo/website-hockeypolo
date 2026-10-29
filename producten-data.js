@@ -3449,6 +3449,18 @@ window.HP_PRODUCTEN = [
   ],
   "kleuren": [
    {
+    "slug": "wassing_groen",
+    "naam": "Groen (washed)",
+    "hex": "#487465",
+    "fotos": [
+     "1_voorkant"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
     "slug": "blue",
     "naam": "Blauw",
     "hex": "#5f6f94",
@@ -3529,6 +3541,18 @@ window.HP_PRODUCTEN = [
    "Geschikt voor hoge aantallen"
   ],
   "kleuren": [
+   {
+    "slug": "mint_naturel",
+    "naam": "Mint / Naturel",
+    "hex": "#a8d8bf",
+    "fotos": [
+     "1_voorkant"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
    {
     "slug": "lichtgrijs",
     "naam": "Lichtgrijs",
@@ -3878,6 +3902,34 @@ window.HP_PRODUCTEN = [
      "4_gevouwen",
      "5_closeup_logo",
      "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   }
+  ]
+ },
+ {
+  "slug": "handdoeken",
+  "naam": "Handdoeken",
+  "fotomap": "handdoeken",
+  "categorie": "accessoires",
+  "minQty": 20,
+  "omschrijving": "Zachte handdoeken in badstof, als strand- of sporthanddoek. Uitsluitend geborduurd met je logo of clubnaam, niet bedrukt.",
+  "kenmerken": [
+   "Zachte badstof, 400-600g",
+   "Alleen borduren (geen bedrukking)",
+   "Strand- of sporthanddoek",
+   "Logo of naam geborduurd"
+  ],
+  "kleuren": [
+   {
+    "slug": "groen_wit",
+    "naam": "Groen / Wit",
+    "hex": "#052b1a",
+    "fotos": [
+     "1_voorkant"
     ],
     "modelfotos": [],
     "groot": [

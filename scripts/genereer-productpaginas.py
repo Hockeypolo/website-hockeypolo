@@ -25,6 +25,9 @@ WORTEL = Path(__file__).resolve().parent.parent
 # Vast sjabloon, NIET producten-polos.html: dat bestand wordt door dit script
 # zelf overschreven, waardoor een tweede run zijn eigen invoer kapotmaakt.
 SJABLOON = Path(__file__).resolve().parent / "sjabloon-productpagina.html"
+
+# Producten die alleen geborduurd kunnen worden: titel zegt "borduren" i.p.v. "bedrukken"
+ALLEEN_BORDUREN = {"handdoeken": "borduren"}
 DATA = WORTEL / "producten-data.js"
 
 # Labels voor alt-teksten en miniatuur-titels
@@ -171,10 +174,12 @@ def bouw_pagina(sjabloon: str, p: dict) -> str:
     portret = " is-portret" if hoofdshot.startswith("model_") else ""
 
     t = sjabloon
+    # Handdoeken kunnen alleen geborduurd worden; de rest wordt (ook) bedrukt
+    werkwoord = ALLEEN_BORDUREN.get(p["slug"], "bedrukken")
 
     # ── <head> ──
     t = re.sub(r"<title>.*?</title>",
-               f"<title>{e(naam)} bedrukken met eigen logo | Hockeypolo</title>", t, count=1)
+               f"<title>{e(naam)} {werkwoord} met eigen logo | Hockeypolo</title>", t, count=1)
     t = re.sub(r'(<meta name="description" content=")[^"]*(")',
                lambda m: m.group(1) + e(p["omschrijving"]) + m.group(2), t, count=1)
     t = re.sub(r'(<link rel="canonical" href="https://hockeypolo\.com/producten/)[^"]*(")',
@@ -182,7 +187,7 @@ def bouw_pagina(sjabloon: str, p: dict) -> str:
     t = re.sub(r'(<meta property="og:url" content="https://hockeypolo\.com/producten/)[^"]*(")',
                lambda m: m.group(1) + p["slug"] + m.group(2), t, count=1)
     t = re.sub(r'(<meta property="og:title" content=")[^"]*(")',
-               lambda m: m.group(1) + e(naam) + " bedrukken met eigen logo | Hockeypolo" + m.group(2), t, count=1)
+               lambda m: m.group(1) + e(naam) + f" {werkwoord} met eigen logo | Hockeypolo" + m.group(2), t, count=1)
     t = re.sub(r'(<meta property="og:description" content=")[^"]*(")',
                lambda m: m.group(1) + e(p["omschrijving"]) + m.group(2), t, count=1)
     t = re.sub(r'(<meta property="og:image" content="https://hockeypolo\.com)[^"]*(")',

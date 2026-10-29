@@ -185,6 +185,13 @@ PRODUCTEN = [
                   "Met ceintuur en zijzakken", "Maat S t/m XXL"],
     },
     {
+        "fotomap": "handdoeken", "slug": "handdoeken", "naam": "Handdoeken",
+        "categorie": "accessoires", "minQty": 20,
+        "desc": "Zachte handdoeken in badstof, als strand- of sporthanddoek. Uitsluitend geborduurd met je logo of clubnaam, niet bedrukt.",
+        "specs": ["Zachte badstof, 400-600g", "Alleen borduren (geen bedrukking)",
+                  "Strand- of sporthanddoek", "Logo of naam geborduurd"],
+    },
+    {
         "fotomap": "paraplu", "slug": "paraplus", "naam": "Paraplu's",
         "categorie": "accessoires", "minQty": 20,
         "desc": "Stijlvolle vouwparaplu's met bedrukte panelen in jouw clubkleur of logo. Ideaal als relatiegeschenk of evenementartikel.",
@@ -218,7 +225,7 @@ PRODUCTEN = [
 
 # Producten zonder nieuwe fotografie. Hun pagina's blijven live (geen 404's,
 # SEO blijft behouden) maar ze verschijnen niet in het overzicht of de zoekfunctie.
-VERBORGEN_SLUGS = ["overhemden", "sokken", "schorten", "handdoeken", "mutsen"]
+VERBORGEN_SLUGS = ["overhemden", "sokken", "schorten", "mutsen"]
 
 CATEGORIE_LABELS = {
     "kleding": "Kleding",
@@ -362,6 +369,12 @@ OVER = {
         [
             'Badslippers met een bedrukte band, verkrijgbaar met een contrasterende zool. Veelgevraagd bij roeiverenigingen, zwemclubs en sportweekenden.',
             'De zool is van zachte EVA en licht van gewicht. Door band- en zoolkleur te combineren maak je de slipper helemaal in de clubkleuren.',
+        ]),
+    'handdoeken': (
+        'Over handdoeken',
+        [
+            'Zachte handdoeken in badstof, leverbaar als strand- of sporthanddoek. Een prettig, functioneel artikel dat regelmatig wordt gebruikt en zo je logo of clubnaam blijvend zichtbaar houdt.',
+            'Let op: handdoeken kunnen we alleen borduren. Op badstof zakt drukinkt weg in de lussen, terwijl borduurwerk scherp blijft en jarenlang mooi blijft, ook na vaak wassen.',
         ]),
     'badjassen': (
         'Over badjassen',
