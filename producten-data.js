@@ -428,6 +428,311 @@ window.HP_PRODUCTEN = [
   ]
  },
  {
+  "slug": "sweaters",
+  "naam": "Sweaters",
+  "fotomap": "sweaters",
+  "categorie": "kleding",
+  "minQty": 12,
+  "omschrijving": "Klassieke sweaters zonder capuchon, in stevig french terry. Een veelgevraagd basisstuk voor verenigingen die een rustiger alternatief voor de hoodie zoeken.",
+  "kenmerken": [
+   "280-320g french terry",
+   "Zeefdruk of borduurwerk",
+   "Geribde boorden aan hals, mouw en zoom",
+   "Unisex snit"
+  ],
+  "kleuren": [
+   {
+    "slug": "marineblauw",
+    "naam": "Marineblauw",
+    "hex": "#0d2450",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "antraciet",
+    "naam": "Antraciet",
+    "hex": "#3b3947",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "bordeauxrood",
+    "naam": "Bordeauxrood",
+    "hex": "#65173e",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "donkergrijs",
+    "naam": "Donkergrijs",
+    "hex": "#464349",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "flessengroen",
+    "naam": "Flessengroen",
+    "hex": "#1f3e31",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "geel",
+    "naam": "Geel",
+    "hex": "#f0ae28",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "hemelsblauw",
+    "naam": "Hemelsblauw",
+    "hex": "#a0c4e8",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "houtskoolgrijs",
+    "naam": "Houtskoolgrijs",
+    "hex": "#424242",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "kakigroen",
+    "naam": "Kakigroen",
+    "hex": "#8a8d75",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "koningsblauw",
+    "naam": "Koningsblauw",
+    "hex": "#1a61a9",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "lavendelblauw",
+    "naam": "Lavendelblauw",
+    "hex": "#acb0c3",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "lichtgrijs",
+    "naam": "Lichtgrijs",
+    "hex": "#b9b8bf",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "naturel",
+    "naam": "Naturel",
+    "hex": "#ded6cc",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "poederroze",
+    "naam": "Poederroze",
+    "hex": "#e1cbd3",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "rood",
+    "naam": "Rood",
+    "hex": "#cf132d",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "wit",
+    "naam": "Wit",
+    "hex": "#e8e8e8",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "zwart",
+    "naam": "Zwart",
+    "hex": "#1c1c1d",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   }
+  ]
+ },
+ {
   "slug": "longsleeve-t-shirts",
   "naam": "Longsleeve T-shirts",
   "fotomap": "t-shirt-longsleeve",
@@ -665,40 +970,23 @@ window.HP_PRODUCTEN = [
   ]
  },
  {
-  "slug": "oversized-t-shirts",
-  "naam": "Oversized T-shirts",
-  "fotomap": "t-shirt-oversized",
+  "slug": "quarter-zip-sweaters",
+  "naam": "Quarter-zip Sweaters",
+  "fotomap": "sweater-quarter-zip",
   "categorie": "kleding",
-  "minQty": 15,
-  "omschrijving": "T-shirts met een ruimere, moderne snit en laag vallende schoudernaad. Populair bij studentenverenigingen en voor merchandise met een streetwear-uitstraling.",
+  "minQty": 12,
+  "omschrijving": "Stijlvolle quarter-zip sweaters met ritssluiting bij de kraag. Populair als teamwear, dispuutsartikel en bedrijfskleding. Verkrijgbaar met geborduurde branding.",
   "kenmerken": [
-   "Zwaarder katoen, 180-220g",
-   "Ruime snit, laag vallende schouder",
-   "Groot bedrukbaar vlak voor- en achterkant",
-   "Unisex pasvorm"
+   "Fleece of french terry",
+   "Rits bij kraag",
+   "Borduurwerk of print",
+   "Meerdere kleuren beschikbaar"
   ],
   "kleuren": [
    {
-    "slug": "wit",
-    "naam": "Wit",
-    "hex": "#e8e8e8",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
     "slug": "blauw",
     "naam": "Blauw",
-    "hex": "#656d9d",
+    "hex": "#0d62ac",
     "fotos": [
      "1_voorkant",
      "2_achterkant",
@@ -713,9 +1001,9 @@ window.HP_PRODUCTEN = [
     ]
    },
    {
-    "slug": "blauw_2",
-    "naam": "Blauw 2",
-    "hex": "#716d83",
+    "slug": "donkergrijs",
+    "naam": "Donkergrijs",
+    "hex": "#4e494f",
     "fotos": [
      "1_voorkant",
      "2_achterkant",
@@ -730,9 +1018,9 @@ window.HP_PRODUCTEN = [
     ]
    },
    {
-    "slug": "geel",
-    "naam": "Geel",
-    "hex": "#f8e69e",
+    "slug": "donkergroen",
+    "naam": "Donkergroen",
+    "hex": "#244437",
     "fotos": [
      "1_voorkant",
      "2_achterkant",
@@ -749,7 +1037,7 @@ window.HP_PRODUCTEN = [
    {
     "slug": "lichtgrijs",
     "naam": "Lichtgrijs",
-    "hex": "#c4b7cf",
+    "hex": "#c3c3c8",
     "fotos": [
      "1_voorkant",
      "2_achterkant",
@@ -766,7 +1054,7 @@ window.HP_PRODUCTEN = [
    {
     "slug": "marineblauw",
     "naam": "Marineblauw",
-    "hex": "#2c2840",
+    "hex": "#161a2e",
     "fotos": [
      "1_voorkant",
      "2_achterkant",
@@ -781,9 +1069,9 @@ window.HP_PRODUCTEN = [
     ]
    },
    {
-    "slug": "oranje",
-    "naam": "Oranje",
-    "hex": "#d7c5b6",
+    "slug": "rood",
+    "naam": "Rood",
+    "hex": "#dc022e",
     "fotos": [
      "1_voorkant",
      "2_achterkant",
@@ -798,9 +1086,26 @@ window.HP_PRODUCTEN = [
     ]
    },
    {
-    "slug": "wit_2",
-    "naam": "Wit 2",
-    "hex": "#f8f2e7",
+    "slug": "roze",
+    "naam": "Roze",
+    "hex": "#7d2a4d",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "wit",
+    "naam": "Wit",
+    "hex": "#e5e5e6",
     "fotos": [
      "1_voorkant",
      "2_achterkant",
@@ -817,7 +1122,108 @@ window.HP_PRODUCTEN = [
    {
     "slug": "zwart",
     "naam": "Zwart",
-    "hex": "#252527",
+    "hex": "#141315",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   }
+  ]
+ },
+ {
+  "slug": "longsleeve-polos",
+  "naam": "Longsleeve Polo's",
+  "fotomap": "polo-longsleeve",
+  "categorie": "kleding",
+  "minQty": 15,
+  "omschrijving": "Polo's met lange mouwen in piqué stof. Netjes genoeg voor bedrijfskleding en warm genoeg voor buiten, met dezelfde borduurmogelijkheden als de korte variant.",
+  "kenmerken": [
+   "100% katoen piqué",
+   "Geborduurde branding op borst of mouw",
+   "Geknoopte placket",
+   "Unisex pasvorm beschikbaar"
+  ],
+  "kleuren": [
+   {
+    "slug": "ls_marineblauw",
+    "naam": "Marineblauw",
+    "hex": "#383644",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "longsleeve_wit",
+    "naam": "Wit",
+    "hex": "#c7c7c7",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "ls_donkergrijs",
+    "naam": "Donkergrijs",
+    "hex": "#312e2d",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "ls_lichtgrijs",
+    "naam": "Lichtgrijs",
+    "hex": "#bdbcbe",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "ls_rood",
+    "naam": "Rood",
+    "hex": "#b12e3e",
     "fotos": [
      "1_voorkant",
      "2_achterkant",
@@ -1309,40 +1715,23 @@ window.HP_PRODUCTEN = [
   ]
  },
  {
-  "slug": "longsleeve-polos",
-  "naam": "Longsleeve Polo's",
-  "fotomap": "polo-longsleeve",
+  "slug": "oversized-t-shirts",
+  "naam": "Oversized T-shirts",
+  "fotomap": "t-shirt-oversized",
   "categorie": "kleding",
   "minQty": 15,
-  "omschrijving": "Polo's met lange mouwen in piqué stof. Netjes genoeg voor bedrijfskleding en warm genoeg voor buiten, met dezelfde borduurmogelijkheden als de korte variant.",
+  "omschrijving": "T-shirts met een ruimere, moderne snit en laag vallende schoudernaad. Populair bij studentenverenigingen en voor merchandise met een streetwear-uitstraling.",
   "kenmerken": [
-   "100% katoen piqué",
-   "Geborduurde branding op borst of mouw",
-   "Geknoopte placket",
-   "Unisex pasvorm beschikbaar"
+   "Zwaarder katoen, 180-220g",
+   "Ruime snit, laag vallende schouder",
+   "Groot bedrukbaar vlak voor- en achterkant",
+   "Unisex pasvorm"
   ],
   "kleuren": [
    {
-    "slug": "ls_marineblauw",
-    "naam": "Marineblauw",
-    "hex": "#383644",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "longsleeve_wit",
+    "slug": "wit",
     "naam": "Wit",
-    "hex": "#c7c7c7",
+    "hex": "#e8e8e8",
     "fotos": [
      "1_voorkant",
      "2_achterkant",
@@ -1357,9 +1746,9 @@ window.HP_PRODUCTEN = [
     ]
    },
    {
-    "slug": "ls_donkergrijs",
-    "naam": "Donkergrijs",
-    "hex": "#312e2d",
+    "slug": "blauw",
+    "naam": "Blauw",
+    "hex": "#656d9d",
     "fotos": [
      "1_voorkant",
      "2_achterkant",
@@ -1374,9 +1763,43 @@ window.HP_PRODUCTEN = [
     ]
    },
    {
-    "slug": "ls_lichtgrijs",
+    "slug": "blauw_2",
+    "naam": "Blauw 2",
+    "hex": "#716d83",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "geel",
+    "naam": "Geel",
+    "hex": "#f8e69e",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "lichtgrijs",
     "naam": "Lichtgrijs",
-    "hex": "#bdbcbe",
+    "hex": "#c4b7cf",
     "fotos": [
      "1_voorkant",
      "2_achterkant",
@@ -1391,9 +1814,60 @@ window.HP_PRODUCTEN = [
     ]
    },
    {
-    "slug": "ls_rood",
-    "naam": "Rood",
-    "hex": "#b12e3e",
+    "slug": "marineblauw",
+    "naam": "Marineblauw",
+    "hex": "#2c2840",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "oranje",
+    "naam": "Oranje",
+    "hex": "#d7c5b6",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "wit_2",
+    "naam": "Wit 2",
+    "hex": "#f8f2e7",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
+    "slug": "zwart",
+    "naam": "Zwart",
+    "hex": "#252527",
     "fotos": [
      "1_voorkant",
      "2_achterkant",
@@ -1580,480 +2054,6 @@ window.HP_PRODUCTEN = [
     "slug": "zwart",
     "naam": "Zwart",
     "hex": "#1e1a22",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   }
-  ]
- },
- {
-  "slug": "sweaters",
-  "naam": "Sweaters",
-  "fotomap": "sweaters",
-  "categorie": "kleding",
-  "minQty": 12,
-  "omschrijving": "Klassieke sweaters zonder capuchon, in stevig french terry. Een veelgevraagd basisstuk voor verenigingen die een rustiger alternatief voor de hoodie zoeken.",
-  "kenmerken": [
-   "280-320g french terry",
-   "Zeefdruk of borduurwerk",
-   "Geribde boorden aan hals, mouw en zoom",
-   "Unisex snit"
-  ],
-  "kleuren": [
-   {
-    "slug": "marineblauw",
-    "naam": "Marineblauw",
-    "hex": "#0d2450",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "antraciet",
-    "naam": "Antraciet",
-    "hex": "#3b3947",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "bordeauxrood",
-    "naam": "Bordeauxrood",
-    "hex": "#65173e",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "donkergrijs",
-    "naam": "Donkergrijs",
-    "hex": "#464349",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "flessengroen",
-    "naam": "Flessengroen",
-    "hex": "#1f3e31",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "geel",
-    "naam": "Geel",
-    "hex": "#f0ae28",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "hemelsblauw",
-    "naam": "Hemelsblauw",
-    "hex": "#a0c4e8",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "houtskoolgrijs",
-    "naam": "Houtskoolgrijs",
-    "hex": "#424242",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "kakigroen",
-    "naam": "Kakigroen",
-    "hex": "#8a8d75",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "koningsblauw",
-    "naam": "Koningsblauw",
-    "hex": "#1a61a9",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "lavendelblauw",
-    "naam": "Lavendelblauw",
-    "hex": "#acb0c3",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "lichtgrijs",
-    "naam": "Lichtgrijs",
-    "hex": "#b9b8bf",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "naturel",
-    "naam": "Naturel",
-    "hex": "#ded6cc",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "poederroze",
-    "naam": "Poederroze",
-    "hex": "#e1cbd3",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "rood",
-    "naam": "Rood",
-    "hex": "#cf132d",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "wit",
-    "naam": "Wit",
-    "hex": "#e8e8e8",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "zwart",
-    "naam": "Zwart",
-    "hex": "#1c1c1d",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   }
-  ]
- },
- {
-  "slug": "quarter-zip-sweaters",
-  "naam": "Quarter-zip Sweaters",
-  "fotomap": "sweater-quarter-zip",
-  "categorie": "kleding",
-  "minQty": 12,
-  "omschrijving": "Stijlvolle quarter-zip sweaters met ritssluiting bij de kraag. Populair als teamwear, dispuutsartikel en bedrijfskleding. Verkrijgbaar met geborduurde branding.",
-  "kenmerken": [
-   "Fleece of french terry",
-   "Rits bij kraag",
-   "Borduurwerk of print",
-   "Meerdere kleuren beschikbaar"
-  ],
-  "kleuren": [
-   {
-    "slug": "blauw",
-    "naam": "Blauw",
-    "hex": "#0d62ac",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "donkergrijs",
-    "naam": "Donkergrijs",
-    "hex": "#4e494f",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "donkergroen",
-    "naam": "Donkergroen",
-    "hex": "#244437",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "lichtgrijs",
-    "naam": "Lichtgrijs",
-    "hex": "#c3c3c8",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "marineblauw",
-    "naam": "Marineblauw",
-    "hex": "#161a2e",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "rood",
-    "naam": "Rood",
-    "hex": "#dc022e",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "roze",
-    "naam": "Roze",
-    "hex": "#7d2a4d",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "wit",
-    "naam": "Wit",
-    "hex": "#e5e5e6",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "zwart",
-    "naam": "Zwart",
-    "hex": "#141315",
     "fotos": [
      "1_voorkant",
      "2_achterkant",
@@ -2376,209 +2376,6 @@ window.HP_PRODUCTEN = [
     "slug": "zwart",
     "naam": "Zwart",
     "hex": "#2a2623",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   }
-  ]
- },
- {
-  "slug": "sport-tanktops",
-  "naam": "Sport Tanktops",
-  "fotomap": "tanktop-sport",
-  "categorie": "kleding",
-  "minQty": 15,
-  "omschrijving": "Mouwloze sportshirts in ademend polyester. Veel gebruikt bij roeien, atletiek en zaalsporten, en als zomerartikel bij verenigingsevenementen.",
-  "kenmerken": [
-   "100% polyester, sneldrogend",
-   "Sublimatie of zeefdruk",
-   "Racerback of rechte snit",
-   "Alle maten beschikbaar"
-  ],
-  "kleuren": [
-   {
-    "slug": "blauw",
-    "naam": "Blauw",
-    "hex": "#334487",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "blauw_2",
-    "naam": "Blauw 2",
-    "hex": "#5b92b7",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "geel",
-    "naam": "Geel",
-    "hex": "#d1d75e",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "geel_2",
-    "naam": "Geel 2",
-    "hex": "#edd51a",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "groen",
-    "naam": "Groen",
-    "hex": "#a7bf42",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "marineblauw",
-    "naam": "Marineblauw",
-    "hex": "#252746",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "oranje",
-    "naam": "Oranje",
-    "hex": "#d15518",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "rood",
-    "naam": "Rood",
-    "hex": "#ae2234",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "roze",
-    "naam": "Roze",
-    "hex": "#d3387f",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "wit",
-    "naam": "Wit",
-    "hex": "#e3e3e2",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "zwart",
-    "naam": "Zwart",
-    "hex": "#262224",
     "fotos": [
      "1_voorkant",
      "2_achterkant",

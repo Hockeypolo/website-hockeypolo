@@ -30,46 +30,18 @@ PRODUCTEN = [
                   "Alle kleuren en maten beschikbaar", "Geschikt voor kleine en grote aantallen"],
     },
     {
-        "fotomap": "t-shirt-longsleeve", "slug": "longsleeve-t-shirts", "naam": "Longsleeve T-shirts",
-        "categorie": "kleding", "minQty": 15,
-        "desc": "T-shirts met lange mouwen, in hetzelfde katoen als onze reguliere shirts. Een logische keuze voor het tussenseizoen of als je meer bedrukbaar oppervlak wilt.",
-        "specs": ["Katoen of polyester blend", "Zeefdruk, DTG of borduurwerk",
-                  "Bedrukking ook op de mouw mogelijk", "Unisex pasvorm"],
-    },
-    {
-        "fotomap": "t-shirt-oversized", "slug": "oversized-t-shirts", "naam": "Oversized T-shirts",
-        "categorie": "kleding", "minQty": 15,
-        "desc": "T-shirts met een ruimere, moderne snit en laag vallende schoudernaad. Populair bij studentenverenigingen en voor merchandise met een streetwear-uitstraling.",
-        "specs": ["Zwaarder katoen, 180-220g", "Ruime snit, laag vallende schouder",
-                  "Groot bedrukbaar vlak voor- en achterkant", "Unisex pasvorm"],
-    },
-    {
-        "fotomap": "polo", "slug": "polos", "naam": "Polo's",
-        "categorie": "kleding", "minQty": 15,
-        "desc": "Klassieke polo's in piqué stof, beschikbaar in effen uitvoering of met contrasterende bies. Perfect voor sportclubs, bedrijven en studentenverenigingen.",
-        "specs": ["100% katoen piqué", "Geborduurde of gedrukte branding",
-                  "Effen of met streepdetail", "Unisex pasvorm beschikbaar"],
-    },
-    {
-        "fotomap": "polo-longsleeve", "slug": "longsleeve-polos", "naam": "Longsleeve Polo's",
-        "categorie": "kleding", "minQty": 15,
-        "desc": "Polo's met lange mouwen in piqué stof. Netjes genoeg voor bedrijfskleding en warm genoeg voor buiten, met dezelfde borduurmogelijkheden als de korte variant.",
-        "specs": ["100% katoen piqué", "Geborduurde branding op borst of mouw",
-                  "Geknoopte placket", "Unisex pasvorm beschikbaar"],
-    },
-    {
-        "fotomap": "hoodies", "slug": "hoodies", "naam": "Hoodies",
-        "categorie": "kleding", "minQty": 10,
-        "desc": "Warme hoodies in fleece of french terry, ideaal als clubkleding of dispuutsartikel. Voorzien van kangoeroezak en verstelbare capuchon.",
-        "specs": ["280-320g fleece of french terry", "Zeefdruk of borduurwerk",
-                  "Unisex snit", "Geschikt voor hoge aantallen"],
-    },
-    {
         "fotomap": "sweaters", "slug": "sweaters", "naam": "Sweaters",
         "categorie": "kleding", "minQty": 12,
         "desc": "Klassieke sweaters zonder capuchon, in stevig french terry. Een veelgevraagd basisstuk voor verenigingen die een rustiger alternatief voor de hoodie zoeken.",
         "specs": ["280-320g french terry", "Zeefdruk of borduurwerk",
                   "Geribde boorden aan hals, mouw en zoom", "Unisex snit"],
+    },
+    {
+        "fotomap": "t-shirt-longsleeve", "slug": "longsleeve-t-shirts", "naam": "Longsleeve T-shirts",
+        "categorie": "kleding", "minQty": 15,
+        "desc": "T-shirts met lange mouwen, in hetzelfde katoen als onze reguliere shirts. Een logische keuze voor het tussenseizoen of als je meer bedrukbaar oppervlak wilt.",
+        "specs": ["Katoen of polyester blend", "Zeefdruk, DTG of borduurwerk",
+                  "Bedrukking ook op de mouw mogelijk", "Unisex pasvorm"],
     },
     {
         "fotomap": "sweater-quarter-zip", "slug": "quarter-zip-sweaters", "naam": "Quarter-zip Sweaters",
@@ -79,18 +51,39 @@ PRODUCTEN = [
                   "Borduurwerk of print", "Meerdere kleuren beschikbaar"],
     },
     {
+        "fotomap": "polo-longsleeve", "slug": "longsleeve-polos", "naam": "Longsleeve Polo's",
+        "categorie": "kleding", "minQty": 15,
+        "desc": "Polo's met lange mouwen in piqué stof. Netjes genoeg voor bedrijfskleding en warm genoeg voor buiten, met dezelfde borduurmogelijkheden als de korte variant.",
+        "specs": ["100% katoen piqué", "Geborduurde branding op borst of mouw",
+                  "Geknoopte placket", "Unisex pasvorm beschikbaar"],
+    },
+    {
+        "fotomap": "polo", "slug": "polos", "naam": "Polo's",
+        "categorie": "kleding", "minQty": 15,
+        "desc": "Klassieke polo's in piqué stof, beschikbaar in effen uitvoering of met contrasterende bies. Perfect voor sportclubs, bedrijven en studentenverenigingen.",
+        "specs": ["100% katoen piqué", "Geborduurde of gedrukte branding",
+                  "Effen of met streepdetail", "Unisex pasvorm beschikbaar"],
+    },
+    {
+        "fotomap": "t-shirt-oversized", "slug": "oversized-t-shirts", "naam": "Oversized T-shirts",
+        "categorie": "kleding", "minQty": 15,
+        "desc": "T-shirts met een ruimere, moderne snit en laag vallende schoudernaad. Populair bij studentenverenigingen en voor merchandise met een streetwear-uitstraling.",
+        "specs": ["Zwaarder katoen, 180-220g", "Ruime snit, laag vallende schouder",
+                  "Groot bedrukbaar vlak voor- en achterkant", "Unisex pasvorm"],
+    },
+    {
+        "fotomap": "hoodies", "slug": "hoodies", "naam": "Hoodies",
+        "categorie": "kleding", "minQty": 10,
+        "desc": "Warme hoodies in fleece of french terry, ideaal als clubkleding of dispuutsartikel. Voorzien van kangoeroezak en verstelbare capuchon.",
+        "specs": ["280-320g fleece of french terry", "Zeefdruk of borduurwerk",
+                  "Unisex snit", "Geschikt voor hoge aantallen"],
+    },
+    {
         "fotomap": "sportshirt", "slug": "sportshirts", "naam": "Sportshirts",
         "categorie": "kleding", "minQty": 15,
         "desc": "Functionele sportshirts in ademend materiaal, perfect voor hockey, voetbal en andere sporten. Verkrijgbaar in tweekleurig design met sublimatiemogelijkheden.",
         "specs": ["100% polyester, ademend", "Sublimatie of zeefdruk",
                   "Teamkleurenoptie", "Alle maten beschikbaar"],
-    },
-    {
-        "fotomap": "tanktop-sport", "slug": "sport-tanktops", "naam": "Sport Tanktops",
-        "categorie": "kleding", "minQty": 15,
-        "desc": "Mouwloze sportshirts in ademend polyester. Veel gebruikt bij roeien, atletiek en zaalsporten, en als zomerartikel bij verenigingsevenementen.",
-        "specs": ["100% polyester, sneldrogend", "Sublimatie of zeefdruk",
-                  "Racerback of rechte snit", "Alle maten beschikbaar"],
     },
     {
         "fotomap": "shorts-sport", "slug": "sportbroeken", "naam": "Sportbroeken",
@@ -284,12 +277,6 @@ OVER = {
         [
             'Functionele sportshirts in ademend polyester, ontworpen om te presteren tijdens hockey, voetbal en andere sporten. Sublimatie maakt een volledig bedrukt, naadloos ontwerp mogelijk — inclusief kleurverloop en scherpe teamkleuren-combinaties.',
             'Wil je zelf spelen met kleuren en indeling? Gebruik onze online ontwerptool en zie direct hoe jouw teamshirt eruitziet, voordat je een aanvraag indient.',
-        ]),
-    'sport-tanktops': (
-        'Over sporttanktops',
-        [
-            'Mouwloze sportshirts in ademend polyester, gemaakt voor intensieve inspanning. Veel gebruikt bij roeien, atletiek en zaalsporten, waar bewegingsvrijheid in de schouders telt.',
-            'Sublimatie maakt een volledig doorlopend ontwerp mogelijk, inclusief clubkleuren en rugnummers. Ook geschikt als zomerartikel bij verenigingsevenementen.',
         ]),
     'sportbroeken': (
         'Over sportbroeken',

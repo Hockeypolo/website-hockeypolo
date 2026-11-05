@@ -39,6 +39,11 @@
       "source": "/producten/bucket-hats-washed",
       "destination": "/producten/bucket-hats",
       "permanent": true
+    },
+    {
+      "source": "/producten/sport-tanktops",
+      "destination": "/producten/sportshirts",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -63,40 +68,36 @@
       "destination": "/producten-t-shirts.html"
     },
     {
-      "source": "/producten/longsleeve-t-shirts",
-      "destination": "/producten-longsleeve-t-shirts.html"
-    },
-    {
-      "source": "/producten/oversized-t-shirts",
-      "destination": "/producten-oversized-t-shirts.html"
-    },
-    {
-      "source": "/producten/polos",
-      "destination": "/producten-polos.html"
-    },
-    {
-      "source": "/producten/longsleeve-polos",
-      "destination": "/producten-longsleeve-polos.html"
-    },
-    {
-      "source": "/producten/hoodies",
-      "destination": "/producten-hoodies.html"
-    },
-    {
       "source": "/producten/sweaters",
       "destination": "/producten-sweaters.html"
+    },
+    {
+      "source": "/producten/longsleeve-t-shirts",
+      "destination": "/producten-longsleeve-t-shirts.html"
     },
     {
       "source": "/producten/quarter-zip-sweaters",
       "destination": "/producten-quarter-zip-sweaters.html"
     },
     {
-      "source": "/producten/sportshirts",
-      "destination": "/producten-sportshirts.html"
+      "source": "/producten/longsleeve-polos",
+      "destination": "/producten-longsleeve-polos.html"
     },
     {
-      "source": "/producten/sport-tanktops",
-      "destination": "/producten-sport-tanktops.html"
+      "source": "/producten/polos",
+      "destination": "/producten-polos.html"
+    },
+    {
+      "source": "/producten/oversized-t-shirts",
+      "destination": "/producten-oversized-t-shirts.html"
+    },
+    {
+      "source": "/producten/hoodies",
+      "destination": "/producten-hoodies.html"
+    },
+    {
+      "source": "/producten/sportshirts",
+      "destination": "/producten-sportshirts.html"
     },
     {
       "source": "/producten/sportbroeken",
