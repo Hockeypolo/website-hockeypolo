@@ -34,6 +34,11 @@
       "source": "/deel-je-idee",
       "destination": "/start-project",
       "permanent": true
+    },
+    {
+      "source": "/producten/bucket-hats-washed",
+      "destination": "/producten/bucket-hats",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -122,10 +127,6 @@
       "destination": "/producten-bucket-hats.html"
     },
     {
-      "source": "/producten/bucket-hats-washed",
-      "destination": "/producten-bucket-hats-washed.html"
-    },
-    {
       "source": "/producten/caps",
       "destination": "/producten-caps.html"
     },
@@ -144,6 +145,10 @@
     {
       "source": "/producten/badjassen",
       "destination": "/producten-badjassen.html"
+    },
+    {
+      "source": "/producten/handdoeken",
+      "destination": "/producten-handdoeken.html"
     },
     {
       "source": "/producten/paraplus",
@@ -172,10 +177,6 @@
     {
       "source": "/producten/schorten",
       "destination": "/producten-schorten.html"
-    },
-    {
-      "source": "/producten/handdoeken",
-      "destination": "/producten-handdoeken.html"
     },
     {
       "source": "/producten/mutsen",

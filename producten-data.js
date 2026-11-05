@@ -18,6 +18,23 @@ window.HP_PRODUCTEN = [
   ],
   "kleuren": [
    {
+    "slug": "hemelsblauw",
+    "naam": "Hemelsblauw",
+    "hex": "#99b9d6",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
     "slug": "azuurblauw",
     "naam": "Azuurblauw",
     "hex": "#3367a8",
@@ -89,23 +106,6 @@ window.HP_PRODUCTEN = [
     "slug": "geel",
     "naam": "Geel",
     "hex": "#eece5c",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "hemelsblauw",
-    "naam": "Hemelsblauw",
-    "hex": "#99b9d6",
     "fotos": [
      "1_voorkant",
      "2_achterkant",
@@ -442,6 +442,23 @@ window.HP_PRODUCTEN = [
   ],
   "kleuren": [
    {
+    "slug": "lichtgrijs",
+    "naam": "Lichtgrijs",
+    "hex": "#c1bebf",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
     "slug": "blauw",
     "naam": "Blauw",
     "hex": "#2e2d76",
@@ -513,23 +530,6 @@ window.HP_PRODUCTEN = [
     "slug": "groen",
     "naam": "Groen",
     "hex": "#558f5b",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "lichtgrijs",
-    "naam": "Lichtgrijs",
-    "hex": "#c1bebf",
     "fotos": [
      "1_voorkant",
      "2_achterkant",
@@ -679,6 +679,23 @@ window.HP_PRODUCTEN = [
   ],
   "kleuren": [
    {
+    "slug": "wit",
+    "naam": "Wit",
+    "hex": "#e8e8e8",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
     "slug": "blauw",
     "naam": "Blauw",
     "hex": "#656d9d",
@@ -781,23 +798,6 @@ window.HP_PRODUCTEN = [
     ]
    },
    {
-    "slug": "wit",
-    "naam": "Wit",
-    "hex": "#e8e8e8",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
     "slug": "wit_2",
     "naam": "Wit 2",
     "hex": "#f8f2e7",
@@ -847,6 +847,23 @@ window.HP_PRODUCTEN = [
    "Unisex pasvorm beschikbaar"
   ],
   "kleuren": [
+   {
+    "slug": "bordeauxrood",
+    "naam": "Bordeauxrood",
+    "hex": "#6c393f",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
    {
     "slug": "blauw",
     "naam": "Blauw",
@@ -919,23 +936,6 @@ window.HP_PRODUCTEN = [
     "slug": "blauw_5",
     "naam": "Blauw 5",
     "hex": "#598bba",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "bordeauxrood",
-    "naam": "Bordeauxrood",
-    "hex": "#6c393f",
     "fotos": [
      "1_voorkant",
      "2_achterkant",
@@ -1323,6 +1323,23 @@ window.HP_PRODUCTEN = [
   ],
   "kleuren": [
    {
+    "slug": "ls_marineblauw",
+    "naam": "Marineblauw",
+    "hex": "#383644",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
     "slug": "longsleeve_wit",
     "naam": "Wit",
     "hex": "#c7c7c7",
@@ -1374,23 +1391,6 @@ window.HP_PRODUCTEN = [
     ]
    },
    {
-    "slug": "ls_marineblauw",
-    "naam": "Marineblauw",
-    "hex": "#383644",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
     "slug": "ls_rood",
     "naam": "Rood",
     "hex": "#b12e3e",
@@ -1424,6 +1424,23 @@ window.HP_PRODUCTEN = [
   ],
   "kleuren": [
    {
+    "slug": "koningsblauw",
+    "naam": "Koningsblauw",
+    "hex": "#08509c",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
     "slug": "bordeauxrood",
     "naam": "Bordeauxrood",
     "hex": "#541a2f",
@@ -1444,23 +1461,6 @@ window.HP_PRODUCTEN = [
     "slug": "donkergrijs",
     "naam": "Donkergrijs",
     "hex": "#38353b",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "koningsblauw",
-    "naam": "Koningsblauw",
-    "hex": "#08509c",
     "fotos": [
      "1_voorkant",
      "2_achterkant",
@@ -1609,6 +1609,23 @@ window.HP_PRODUCTEN = [
    "Unisex snit"
   ],
   "kleuren": [
+   {
+    "slug": "marineblauw",
+    "naam": "Marineblauw",
+    "hex": "#0d2450",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
    {
     "slug": "antraciet",
     "naam": "Antraciet",
@@ -1783,23 +1800,6 @@ window.HP_PRODUCTEN = [
     "slug": "lichtgrijs",
     "naam": "Lichtgrijs",
     "hex": "#b9b8bf",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "marineblauw",
-    "naam": "Marineblauw",
-    "hex": "#0d2450",
     "fotos": [
      "1_voorkant",
      "2_achterkant",
@@ -2794,6 +2794,23 @@ window.HP_PRODUCTEN = [
   ],
   "kleuren": [
    {
+    "slug": "cobaltblue",
+    "naam": "Kobaltblauw",
+    "hex": "#076ec9",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
     "slug": "black",
     "naam": "Zwart",
     "hex": "#2e2e2e",
@@ -2816,23 +2833,6 @@ window.HP_PRODUCTEN = [
     "fotos": [
      "1_voorkant",
      "2_achterkant",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "cobaltblue",
-    "naam": "Kobaltblauw",
-    "hex": "#076ec9",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
      "4_gevouwen",
      "5_closeup_logo",
      "6_closeup_stof"
@@ -2927,6 +2927,23 @@ window.HP_PRODUCTEN = [
   ],
   "kleuren": [
    {
+    "slug": "marineblauw",
+    "naam": "Marineblauw",
+    "hex": "#33344f",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
+   {
     "slug": "donkergrijs",
     "naam": "Donkergrijs",
     "hex": "#6b6267",
@@ -2947,23 +2964,6 @@ window.HP_PRODUCTEN = [
     "slug": "geel",
     "naam": "Geel",
     "hex": "#bcaf9f",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   },
-   {
-    "slug": "marineblauw",
-    "naam": "Marineblauw",
-    "hex": "#33344f",
     "fotos": [
      "1_voorkant",
      "2_achterkant",
@@ -3027,6 +3027,23 @@ window.HP_PRODUCTEN = [
    "Maat S t/m XXL"
   ],
   "kleuren": [
+   {
+    "slug": "zwart",
+    "naam": "Zwart",
+    "hex": "#272329",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
    {
     "slug": "blauw",
     "naam": "Blauw",
@@ -3111,23 +3128,6 @@ window.HP_PRODUCTEN = [
     "groot": [
      "1_voorkant"
     ]
-   },
-   {
-    "slug": "zwart",
-    "naam": "Zwart",
-    "hex": "#272329",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
    }
   ]
  },
@@ -3146,9 +3146,9 @@ window.HP_PRODUCTEN = [
   ],
   "kleuren": [
    {
-    "slug": "blauw",
-    "naam": "Blauw",
-    "hex": "#5264a6",
+    "slug": "donkergrijs",
+    "naam": "Donkergrijs",
+    "hex": "#3b323c",
     "fotos": [
      "1_voorkant",
      "2_achterkant",
@@ -3163,9 +3163,9 @@ window.HP_PRODUCTEN = [
     ]
    },
    {
-    "slug": "donkergrijs",
-    "naam": "Donkergrijs",
-    "hex": "#3b323c",
+    "slug": "blauw",
+    "naam": "Blauw",
+    "hex": "#5264a6",
     "fotos": [
      "1_voorkant",
      "2_achterkant",
@@ -3255,14 +3255,31 @@ window.HP_PRODUCTEN = [
   "fotomap": "buckethats",
   "categorie": "accessoires",
   "minQty": 20,
-  "omschrijving": "Bucket hats met een brede rand, geborduurd met jouw logo of tekst. Een vast onderdeel van introductieweken en festivalmerchandise.",
+  "omschrijving": "Bucket hats met een brede rand, geborduurd met jouw logo of tekst. Verkrijgbaar in een reguliere en een gewassen (washed) uitvoering. Een vast onderdeel van introductieweken en festivalmerchandise.",
   "kenmerken": [
-   "100% katoen twill",
+   "Katoen twill of gewassen katoen",
+   "Regulier of washed",
    "Geborduurde branding",
-   "One size fits most",
-   "Meerdere kleuren beschikbaar"
+   "One size fits most"
   ],
   "kleuren": [
+   {
+    "slug": "wassing_bordeaux",
+    "naam": "Bordeauxrood (washed)",
+    "hex": "#863c53",
+    "fotos": [
+     "1_voorkant",
+     "2_achterkant",
+     "3_driekwart",
+     "4_gevouwen",
+     "5_closeup_logo",
+     "6_closeup_stof"
+    ],
+    "modelfotos": [],
+    "groot": [
+     "1_voorkant"
+    ]
+   },
    {
     "slug": "black",
     "naam": "Zwart",
@@ -3318,39 +3335,6 @@ window.HP_PRODUCTEN = [
     "slug": "olivegreen",
     "naam": "Olijfgroen",
     "hex": "#525343",
-    "fotos": [
-     "1_voorkant",
-     "2_achterkant",
-     "3_driekwart",
-     "4_gevouwen",
-     "5_closeup_logo",
-     "6_closeup_stof"
-    ],
-    "modelfotos": [],
-    "groot": [
-     "1_voorkant"
-    ]
-   }
-  ]
- },
- {
-  "slug": "bucket-hats-washed",
-  "naam": "Bucket Hats Washed",
-  "fotomap": "buckethats-washed",
-  "categorie": "accessoires",
-  "minQty": 20,
-  "omschrijving": "Bucket hats met een gewassen, licht vervaagde look. Zelfde model als de reguliere variant, maar met een zachtere stof en een gedragen uitstraling.",
-  "kenmerken": [
-   "Gewassen katoen, zachte touch",
-   "Vintage-uitstraling",
-   "Geborduurde branding",
-   "One size fits most"
-  ],
-  "kleuren": [
-   {
-    "slug": "wassing_bordeaux",
-    "naam": "Bordeauxrood (washed)",
-    "hex": "#863c53",
     "fotos": [
      "1_voorkant",
      "2_achterkant",

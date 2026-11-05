@@ -70,6 +70,18 @@ EERSTE_KLEUR = {
     "sportbroeken-dames": "dames_rood_wit",   # logo klein rechtsonder, zoals gewenst
     "caps": "wassing_groen",                  # echte productfoto, groen washed met borduursel
     "tote-bags": "mint_naturel",              # gestreepte tas als hoofdfoto
+    "bucket-hats": "wassing_bordeaux",        # washed bordeaux vooraan
+    "bomberjacks": "marineblauw",
+    "oversized-t-shirts": "wit",
+    "longsleeve-t-shirts": "lichtgrijs",
+    "t-shirts": "hemelsblauw",
+    "polos": "bordeauxrood",
+    "longsleeve-polos": "ls_marineblauw",
+    "hoodies": "koningsblauw",
+    "sweaters": "marineblauw",
+    "zwembroeken": "cobaltblue",
+    "softshell-jassen": "zwart",
+    "windjacks": "donkergrijs",
 }
 
 # Kleurbolletje handmatig vastzetten waar de automatische mediaan misleidt

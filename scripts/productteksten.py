@@ -139,15 +139,8 @@ PRODUCTEN = [
     {
         "fotomap": "buckethats", "slug": "bucket-hats", "naam": "Bucket Hats",
         "categorie": "accessoires", "minQty": 20,
-        "desc": "Bucket hats met een brede rand, geborduurd met jouw logo of tekst. Een vast onderdeel van introductieweken en festivalmerchandise.",
-        "specs": ["100% katoen twill", "Geborduurde branding",
-                  "One size fits most", "Meerdere kleuren beschikbaar"],
-    },
-    {
-        "fotomap": "buckethats-washed", "slug": "bucket-hats-washed", "naam": "Bucket Hats Washed",
-        "categorie": "accessoires", "minQty": 20,
-        "desc": "Bucket hats met een gewassen, licht vervaagde look. Zelfde model als de reguliere variant, maar met een zachtere stof en een gedragen uitstraling.",
-        "specs": ["Gewassen katoen, zachte touch", "Vintage-uitstraling",
+        "desc": "Bucket hats met een brede rand, geborduurd met jouw logo of tekst. Verkrijgbaar in een reguliere en een gewassen (washed) uitvoering. Een vast onderdeel van introductieweken en festivalmerchandise.",
+        "specs": ["Katoen twill of gewassen katoen", "Regulier of washed",
                   "Geborduurde branding", "One size fits most"],
     },
     {
@@ -338,13 +331,7 @@ OVER = {
         'Over bucket hats',
         [
             'Bucket hats met een brede rand, geborduurd met jouw logo of tekst. Ze zijn de afgelopen jaren uitgegroeid tot een vast onderdeel van introductieweken en festivalmerchandise.',
-            'Het katoenen twill houdt zijn vorm en is goed te borduren. One size fits most, waardoor je bij het bestellen geen maatverdeling hoeft uit te vragen.',
-        ]),
-    'bucket-hats-washed': (
-        'Over washed bucket hats',
-        [
-            'Dezelfde bucket hat, maar met een gewassen afwerking: zachtere stof en een licht vervaagde kleur. Het resultaat oogt gedragen en minder uitgesproken dan de reguliere uitvoering.',
-            'De vintage-uitstraling past goed bij collecties waarin ook oversized shirts en sweaters zitten. Borduurwerk komt op de gewassen stof mooi tot zijn recht.',
+            'Je kiest uit twee uitvoeringen. De reguliere bucket hat is van stevig katoenen twill dat zijn vorm houdt. De washed-variant is gewassen: zachtere stof en een licht vervaagde kleur, voor een gedragen, vintage uitstraling. Allebei one size fits most, dus je hoeft geen maatverdeling uit te vragen.',
         ]),
     'caps': (
         'Over caps',
