@@ -2,7 +2,8 @@
 <html lang="nl">
 <head>
   <!-- No-flash: verberg alle pagina's tot JS de juiste activeert -->
-  <style id="no-flash">.page { visibility: hidden !important; }</style>
+  <style id="no-flash">.page { visibility: hidden !important; }
+  </style>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -147,7 +148,7 @@
   }
   </script>
   <!-- Preload kritieke hero-afbeelding voor snellere LCP -->
-  <link rel="preload" as="image" href="fotomateriaal/hero-homepage/hero-slide-1.jpg" fetchpriority="high" />
+  <link rel="preload" as="image" href="fotomateriaal/hero-homepage/hero-slide-7.jpg" fetchpriority="high" />
   <!-- Self-hosted fonts: preload de twee belangrijkste voor snelle eerste render -->
   <link rel="preload" as="font" type="font/woff2" href="fonts/space-grotesk-v22-latin-700.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="fonts/inter-v20-latin-regular.woff2" crossorigin />
@@ -3715,6 +3716,96 @@
     .mobile-menu-zoek { display: flex; align-items: center; gap: 10px; }
     .mobile-menu-zoek svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 2; }
 
+
+    /* ═══ DOELGROEPKEUZE (onder de hero) ═══════════════════════════ */
+    .doelgroep-keuze { padding: 40px 80px 8px; background: var(--white); }
+    .doelgroep-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1440px; margin: 0 auto; }
+    .doelgroep-tegel { position: relative; display: block; border-radius: 14px; overflow: hidden; aspect-ratio: 16 / 10; background: #111; color: #fff; isolation: isolate; }
+    .doelgroep-tegel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease); z-index: -1; }
+    .doelgroep-tegel::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(0,0,0,.82) 0%, rgba(0,0,0,.35) 48%, rgba(0,0,0,0) 72%); }
+    .doelgroep-tegel:hover img { transform: scale(1.05); }
+    .doelgroep-tekst { position: absolute; left: 22px; right: 72px; bottom: 20px; display: flex; flex-direction: column; gap: 4px; }
+    .doelgroep-tekst strong { font-family: var(--font-head); font-size: clamp(20px, 1.8vw, 26px); font-weight: 700; letter-spacing: -.03em; line-height: 1.1; }
+    .doelgroep-tekst span { font-size: 14px; line-height: 1.45; color: rgba(255,255,255,.82); }
+    .doelgroep-pijl { position: absolute; right: 20px; bottom: 20px; width: 40px; height: 40px; border-radius: 50%; background: var(--green); display: grid; place-items: center; transition: transform .25s var(--ease); }
+    .doelgroep-pijl svg { width: 16px; height: 16px; }
+    .doelgroep-tegel:hover .doelgroep-pijl { transform: translateX(3px); }
+    .doelgroep-tegel:focus-visible { outline: 3px solid var(--green); outline-offset: 3px; }
+    @media (max-width: 1024px) { .doelgroep-keuze { padding: 32px 32px 8px; } }
+    @media (max-width: 640px) {
+      .doelgroep-keuze { padding: 12px 16px 4px; }
+      .doelgroep-grid { grid-template-columns: 1fr; gap: 8px; }
+      .doelgroep-tegel { aspect-ratio: auto; display: flex; align-items: center; gap: 14px; padding: 8px 12px 8px 8px; background: var(--gray-100); color: var(--black); border-radius: 12px; min-height: 68px; }
+      .doelgroep-tegel::after { display: none; }
+      .doelgroep-tegel img { position: static; width: 56px; height: 52px; border-radius: 8px; flex-shrink: 0; z-index: 0; }
+      .doelgroep-tekst { position: static; flex: 1; min-width: 0; gap: 2px; }
+      .doelgroep-tekst strong { font-size: 16px; }
+      .doelgroep-tekst span { font-size: 12.5px; color: var(--gray-600); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .doelgroep-pijl { position: static; width: 32px; height: 32px; flex-shrink: 0; color: #fff; }
+      .doelgroep-pijl svg { width: 14px; height: 14px; }
+
+      /* Hero korter, zodat de doelgroeptegels in het eerste scherm vallen */
+      #page-home .hero,
+      #page-home .hero-left { min-height: max(360px, calc(100svh - 72px - var(--usp-h) - 248px)); }
+      #page-home .hero-left { padding-bottom: 20px; }
+      #page-home .hero-h1, #page-home .hero-accent { font-size: 38px; }
+      #page-home .hero-sub { margin-bottom: 16px; }
+
+      /* Collectie: twee kolommen, maximaal vier producten */
+      .collectie-grid { grid-template-columns: 1fr 1fr !important; gap: 10px; }
+      .collectie-grid > .product-card:nth-child(n+5) { display: none; }
+      .collectie-grid .product-card-name { font-size: 15px; }
+      .collectie-grid .product-card-btn { display: none; }
+      .collectie-grid .product-card-label { padding: 24px 12px 12px; }
+
+      /* Inklapbare secties */
+      .mob-inklap { position: relative; }
+      .mob-inklap.is-dicht > .mob-inklap-inhoud { max-height: var(--inklap-h, 420px); overflow: hidden; }
+      .mob-inklap.is-dicht > .mob-inklap-inhoud::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 120px; background: linear-gradient(to bottom, rgba(255,255,255,0), var(--inklap-bg, #fff)); pointer-events: none; }
+      .mob-inklap-inhoud { position: relative; }
+      .mob-inklap-knop { display: flex; margin: 12px auto 0; align-items: center; gap: 8px; background: none; border: 1.5px solid currentColor; border-radius: 100px; padding: 10px 20px; font-family: var(--font-head); font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: inherit; cursor: pointer; }
+    }
+    @media (min-width: 641px) { .mob-inklap-knop { display: none; } }
+
+    /* Scroll-animaties: eerder starten en korter, zodat er geen witte vlakken ontstaan */
+    @media (max-width: 640px) {
+      .reveal { transform: translateY(14px); transition-duration: .45s; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .reveal.in, .reveal.visible { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .doelgroep-tegel img, .doelgroep-pijl { transition: none; }
+    }
+  
+    /* ═══ DOELGROEPMENU ("Voor wie") ═══════════════════════════════ */
+    .nav-voorwie { position: relative; }
+    .nav-voorwie-knop {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: none; border: 0; padding: 0; cursor: pointer;
+      font-family: var(--font-head); font-size: 12px; font-weight: 500;
+      letter-spacing: .08em; text-transform: uppercase; color: var(--black);
+      transition: color .2s;
+    }
+    .nav-voorwie-knop svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2.4; transition: transform .2s; }
+    .nav-voorwie-knop:hover, .nav-voorwie.open .nav-voorwie-knop { color: var(--green); }
+    .nav-voorwie.open .nav-voorwie-knop svg { transform: rotate(180deg); }
+    .nav-voorwie-menu {
+      position: absolute; top: calc(100% + 18px); left: 50%; transform: translateX(-50%);
+      min-width: 260px; background: #fff; border: 1px solid var(--gray-200);
+      border-radius: 12px; box-shadow: 0 16px 40px rgba(0,0,0,.12);
+      padding: 8px; display: none; z-index: 210;
+    }
+    .nav-voorwie-menu::before { content: ''; position: absolute; left: 0; right: 0; top: -18px; height: 18px; }
+    .nav-voorwie.open .nav-voorwie-menu { display: block; }
+    @media (hover: hover) { .nav-voorwie:hover .nav-voorwie-menu { display: block; } }
+    .nav-voorwie-menu a {
+      display: block; padding: 10px 12px; border-radius: 8px;
+      text-transform: none; letter-spacing: 0; font-size: 14px; font-weight: 600;
+    }
+    .nav-voorwie-menu a span { display: block; font-family: var(--font-body, Inter, sans-serif); font-size: 12px; font-weight: 400; color: var(--gray-600, #555); margin-top: 2px; }
+    .nav-voorwie-menu a:hover { background: var(--gray-100, #f4f4f4); color: var(--black); }
+    .nav-voorwie-menu a:hover span { color: var(--gray-600, #555); }
+    .nav-links:has(.nav-voorwie) { gap: 24px; }
+    .mobile-menu-doelgroep { color: var(--green) !important; }
   </style>
   <script defer src="/_vercel/insights/script.js"></script>
 
@@ -3744,6 +3835,7 @@
   <div class="nav-right">
     <ul class="nav-links">
       <li><a onclick="showPage('home')" id="nav-home">Home</a></li>
+      <li class="nav-voorwie"><button type="button" class="nav-voorwie-knop" aria-expanded="false" aria-haspopup="true">Voor wie <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg></button><div class="nav-voorwie-menu"><a href="/bedrijven">Voor bedrijven<span>Bedrijfskleding en merchandise</span></a><a href="/studenten">Voor studenten<span>Disputen, lustrum en skireis</span></a><a href="/evenementen">Voor evenementen<span>Sportevents, festivals, beurzen</span></a></div></li>
       <li><a onclick="showPage('producten')" id="nav-producten">Producten</a></li>
       <li><a onclick="showPage('impressies')" id="nav-impressies">Impressies</a></li>
       <li><a onclick="showPage('blog')" id="nav-blog">Blog</a></li>
@@ -3774,6 +3866,9 @@
 <div class="mobile-menu" id="mobile-menu">
   <a class="mobile-menu-item mobile-menu-zoek" href="#" onclick="var m=document.getElementById('mobile-menu');if(m.classList.contains('open'))toggleMobileMenu();document.getElementById('zoek-knop').click();return false;"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Zoeken</a>
   <a class="mobile-menu-item" onclick="showPage('home');closeMobileMenu()">Home</a>
+  <a class="mobile-menu-item mobile-menu-doelgroep" href="/bedrijven">Voor bedrijven</a>
+  <a class="mobile-menu-item mobile-menu-doelgroep" href="/studenten">Voor studenten</a>
+  <a class="mobile-menu-item mobile-menu-doelgroep" href="/evenementen">Voor evenementen</a>
   <a class="mobile-menu-item" onclick="showPage('producten');closeMobileMenu()">Producten</a>
   <a class="mobile-menu-item" onclick="showPage('impressies');closeMobileMenu()">Impressies</a>
   <a class="mobile-menu-item" onclick="showPage('blog');closeMobileMenu()">Blog</a>
@@ -3837,11 +3932,15 @@
       <div class="hero-slideshow-wrap">
         <div class="hero-slideshow">
           <img class="hero-slide active"
-            src="fotomateriaal/hero-homepage/hero-slide-1.jpg"
+            src="fotomateriaal/hero-homepage/hero-slide-7.jpg"
             fetchpriority="high"
-            alt="Hockeypolo, KWF Bruggenloop 2025" />
+            alt="Hockeypolo, sweaters voor The Meat Boys" />
           <img class="hero-slide"
-            src="fotomateriaal/hero-homepage/hero-slide-2.jpg"
+            src="fotomateriaal/hero-homepage/hero-slide-5.jpg"
+            loading="lazy"
+            alt="Hockeypolo, Philips Innovation Award 2025" />
+          <img class="hero-slide"
+            src="fotomateriaal/hero-homepage/hero-slide-1.jpg"
             loading="lazy"
             alt="Hockeypolo, KWF Bruggenloop 2025" />
           <img class="hero-slide"
@@ -3849,21 +3948,17 @@
             loading="lazy"
             alt="Hockeypolo, Dispuutsblouses Botlek" />
           <img class="hero-slide"
+            src="fotomateriaal/hero-homepage/hero-slide-2.jpg"
+            loading="lazy"
+            alt="Hockeypolo, KWF Bruggenloop 2025" />
+          <img class="hero-slide"
             src="fotomateriaal/hero-homepage/hero-slide-4.jpg"
             loading="lazy"
             alt="Hockeypolo, Lustrumvlag Apache" />
           <img class="hero-slide"
-            src="fotomateriaal/hero-homepage/hero-slide-5.jpg"
-            loading="lazy"
-            alt="Hockeypolo, Philips Innovation Award 2025" />
-          <img class="hero-slide"
             src="fotomateriaal/hero-homepage/hero-slide-6.jpg"
             loading="lazy"
             alt="Hockeypolo, KWF Bruggenloop 2025" />
-          <img class="hero-slide"
-            src="fotomateriaal/hero-homepage/hero-slide-7.jpg"
-            loading="lazy"
-            alt="Hockeypolo, sweaters voor The Meat Boys" />
         </div>
       </div>
       <div class="hero-badge">Rotterdam · Sinds 2005</div>
@@ -3871,39 +3966,61 @@
     </div>
   </section>
 
+  <!-- ═══════════════ DOELGROEPKEUZE ═══════════════ -->
+  <section class="doelgroep-keuze" aria-label="Kies je doelgroep">
+    <div class="doelgroep-grid">
+      <a class="doelgroep-tegel" href="/bedrijven">
+        <img src="/fotomateriaal/doelgroepen/bedrijven-tegel.webp" alt="Team van The Meat Boys in sweaters met logo" width="700" height="525" loading="eager" decoding="async">
+        <span class="doelgroep-tekst"><strong>Voor bedrijven</strong><span>Bedrijfskleding en merch met logo</span></span>
+        <span class="doelgroep-pijl"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 8h10M8 3l5 5-5 5"/></svg></span>
+      </a>
+      <a class="doelgroep-tegel" href="/studenten">
+        <img src="/fotomateriaal/doelgroepen/studenten-tegel.webp" alt="Student met skireis-sjaal van Botlek en Apache" width="700" height="525" loading="eager" decoding="async">
+        <span class="doelgroep-tekst"><strong>Voor studenten</strong><span>Dispuut, lustrum of skireis</span></span>
+        <span class="doelgroep-pijl"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 8h10M8 3l5 5-5 5"/></svg></span>
+      </a>
+      <a class="doelgroep-tegel" href="/evenementen">
+        <img src="/fotomateriaal/doelgroepen/evenementen-tegel.webp" alt="Lopers in sportshirts tijdens de KWF Bruggenloop" width="700" height="525" loading="eager" decoding="async">
+        <span class="doelgroep-tekst"><strong>Voor evenementen</strong><span>Shirts, schorten en vlaggen</span></span>
+        <span class="doelgroep-pijl"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 8h10M8 3l5 5-5 5"/></svg></span>
+      </a>
+    </div>
+  </section>
+
+
   <!-- ═══════════════ LOGO BAND ═══════════════ -->
     <div class="logo-band">
     <span class="logo-band-label">Vertrouwd door</span>
     <div class="logo-band-sep"></div>
     <div class="marquee-wrap">
       <div class="marquee-track">
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/brand-logo-1.png" alt="R.S.C. / R.V.S.V." style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-2.png" alt="Philips Innovation Award" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-3.png" alt="Panorama Festival Rotterdam" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-4.png" alt="Oma's Soep" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-5.png" alt="Zegevieren Festival" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-6.png" alt="Café Vader Kleinjan" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-7.png" alt="Laurentius Rotterdam" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-8.png" alt="De Beurs" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-9.png" alt="Heart to Handle" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-10.png" alt="The Meat Boys" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
         <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-11.png" alt="EY" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-10.png" alt="The Meat Boys" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
         <span class="marquee-item"><img src="fotomateriaal/partner-logos/client-logo-spaik.png" alt="SPAIK" style="height:30px;width:auto;display:block;opacity:.8;" /></span>
         <span class="marquee-item"><img src="fotomateriaal/partner-logos/client-logo-no-such-ventures.png" alt="No Such Ventures" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-2.png" alt="Philips Innovation Award" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-3.png" alt="Panorama Festival Rotterdam" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-5.png" alt="Zegevieren Festival" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-4.png" alt="Oma's Soep" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-6.png" alt="Café Vader Kleinjan" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-8.png" alt="De Beurs" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-9.png" alt="Heart to Handle" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/brand-logo-1.png" alt="R.S.C. / R.V.S.V." style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-7.png" alt="Laurentius Rotterdam" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
         <span class="marquee-item"><img src="fotomateriaal/partner-logos/client-logo-fsa.svg" alt="FSA – Financial Study Association Amsterdam" style="height:26px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/brand-logo-1.png" alt="R.S.C. / R.V.S.V." style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-2.png" alt="Philips Innovation Award" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-3.png" alt="Panorama Festival Rotterdam" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-4.png" alt="Oma's Soep" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-5.png" alt="Zegevieren Festival" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-6.png" alt="Café Vader Kleinjan" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-7.png" alt="Laurentius Rotterdam" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-8.png" alt="De Beurs" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-9.png" alt="Heart to Handle" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-10.png" alt="The Meat Boys" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
         <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-11.png" alt="EY" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-10.png" alt="The Meat Boys" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
         <span class="marquee-item"><img src="fotomateriaal/partner-logos/client-logo-spaik.png" alt="SPAIK" style="height:30px;width:auto;display:block;opacity:.8;" /></span>
         <span class="marquee-item"><img src="fotomateriaal/partner-logos/client-logo-no-such-ventures.png" alt="No Such Ventures" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-2.png" alt="Philips Innovation Award" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-3.png" alt="Panorama Festival Rotterdam" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-5.png" alt="Zegevieren Festival" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-4.png" alt="Oma's Soep" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-6.png" alt="Café Vader Kleinjan" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-8.png" alt="De Beurs" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-9.png" alt="Heart to Handle" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/brand-logo-1.png" alt="R.S.C. / R.V.S.V." style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-7.png" alt="Laurentius Rotterdam" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
         <span class="marquee-item"><img src="fotomateriaal/partner-logos/client-logo-fsa.svg" alt="FSA – Financial Study Association Amsterdam" style="height:26px;width:auto;display:block;opacity:.8;" /></span>
       </div>
     </div>
@@ -3966,17 +4083,6 @@
     </div>
 
     <div class="collectie-grid">
-      <!-- Featured -->
-      <div class="product-card reveal" style="cursor:pointer;" onclick="location.href='/producten/zwembroeken'">
-        <img class="product-card-img"
-          src="https://static.wixstatic.com/media/0cb13e_1dcf14e69dd3458a9f73ffaa076383d7~mv2.png"
-          alt="Zwembroeken" />
-        <div class="product-card-label">
-          <span class="product-card-name">Zwembroeken</span>
-          <a class="product-card-btn" href="/producten/zwembroeken" onclick="event.stopPropagation()">Kopen <svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a>
-        </div>
-      </div>
-      <!-- Grid items -->
       <div class="product-card reveal" style="cursor:pointer;" onclick="location.href='/producten/hoodies'">
         <img class="product-card-img"
           src="https://static.wixstatic.com/media/0cb13e_19e17d2bcf4f4e22916dc4d6f22ebfd1~mv2.png"
@@ -3984,24 +4090,6 @@
         <div class="product-card-label">
           <span class="product-card-name">Hoodies</span>
           <a class="product-card-btn" href="/producten/hoodies" onclick="event.stopPropagation()">Kopen <svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a>
-        </div>
-      </div>
-      <div class="product-card reveal" style="cursor:pointer;" onclick="location.href='/producten/sjaals'">
-        <img class="product-card-img"
-          src="https://static.wixstatic.com/media/0cb13e_38bd63c90108403ea563c89f8325416a~mv2.png"
-          alt="Sjaals" />
-        <div class="product-card-label">
-          <span class="product-card-name">Sjaals</span>
-          <a class="product-card-btn" href="/producten/sjaals" onclick="event.stopPropagation()">Kopen <svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a>
-        </div>
-      </div>
-      <div class="product-card reveal" style="cursor:pointer;" onclick="location.href='/producten/sportshirts'">
-        <img class="product-card-img"
-          src="https://static.wixstatic.com/media/0cb13e_5932cd8fc2e9458ba8870c2165f84499~mv2.png"
-          alt="Sportshirts" />
-        <div class="product-card-label">
-          <span class="product-card-name">Sportshirts</span>
-          <a class="product-card-btn" href="/producten/sportshirts" onclick="event.stopPropagation()">Kopen <svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a>
         </div>
       </div>
       <div class="product-card reveal" style="cursor:pointer;" onclick="location.href='/producten/overhemden'">
@@ -4013,11 +4101,38 @@
           <a class="product-card-btn" href="/producten/overhemden" onclick="event.stopPropagation()">Kopen <svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a>
         </div>
       </div>
+      <div class="product-card reveal" style="cursor:pointer;" onclick="location.href='/producten/sportshirts'">
+        <img class="product-card-img"
+          src="https://static.wixstatic.com/media/0cb13e_5932cd8fc2e9458ba8870c2165f84499~mv2.png"
+          alt="Sportshirts" />
+        <div class="product-card-label">
+          <span class="product-card-name">Sportshirts</span>
+          <a class="product-card-btn" href="/producten/sportshirts" onclick="event.stopPropagation()">Kopen <svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a>
+        </div>
+      </div>
+      <div class="product-card reveal" style="cursor:pointer;" onclick="location.href='/producten/sjaals'">
+        <img class="product-card-img"
+          src="https://static.wixstatic.com/media/0cb13e_38bd63c90108403ea563c89f8325416a~mv2.png"
+          alt="Sjaals" />
+        <div class="product-card-label">
+          <span class="product-card-name">Sjaals</span>
+          <a class="product-card-btn" href="/producten/sjaals" onclick="event.stopPropagation()">Kopen <svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a>
+        </div>
+      </div>
       <div class="product-card reveal" style="cursor:pointer;" onclick="location.href='/producten/vlaggen'">
         <img class="product-card-img" id="collectie-vlaggen-img" src="" alt="Vlaggen" />
         <div class="product-card-label">
           <span class="product-card-name">Vlaggen</span>
           <a class="product-card-btn" href="/producten/vlaggen" onclick="event.stopPropagation()">Kopen <svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a>
+        </div>
+      </div>
+      <div class="product-card reveal" style="cursor:pointer;" onclick="location.href='/producten/zwembroeken'">
+        <img class="product-card-img"
+          src="https://static.wixstatic.com/media/0cb13e_1dcf14e69dd3458a9f73ffaa076383d7~mv2.png"
+          alt="Zwembroeken" />
+        <div class="product-card-label">
+          <span class="product-card-name">Zwembroeken</span>
+          <a class="product-card-btn" href="/producten/zwembroeken" onclick="event.stopPropagation()">Kopen <svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a>
         </div>
       </div>
     </div>
@@ -4289,7 +4404,7 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0, rootMargin: '0px 0px 20% 0px' });
 
     revealEls.forEach(el => observer.observe(el));
   </script>
@@ -6463,6 +6578,22 @@
           <div id="file-list" class="file-list"></div>
         </div>
         <div class="form-group full">
+          <label class="form-label" for="cf-hoe">Hoe heb je ons gevonden? *</label>
+          <select id="cf-hoe" name="hoe_gevonden" class="form-select" required>
+            <option value="">Maak een keuze...</option>
+            <option>Google-advertentie</option>
+            <option>Google (gewoon zoeken)</option>
+            <option>Instagram</option>
+            <option>LinkedIn</option>
+            <option>Aanbeveling / via via</option>
+            <option>Eerder klant</option>
+            <option>Anders</option>
+          </select>
+        </div>
+        <input type="hidden" name="segment" value="algemeen">
+        <input type="hidden" name="via_advertentie" value="nee">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <div class="form-group full">
           <div class="whatsapp-opt-in">
             <div class="whatsapp-opt-in-text">
               <strong>Mogen we je via WhatsApp benaderen?</strong>
@@ -6551,7 +6682,7 @@
       <div class="breadcrumb"><span onclick="showPage('home')">Home</span> <i>/</i> <span>Privacyverklaring</span></div>
       <span class="lbl">Juridisch</span>
       <h2>Privacy<em>verklaring</em></h2>
-      <p>Hoe Hockeypolo omgaat met jouw persoonsgegevens. Laatst bijgewerkt: 16 oktober 2026.</p>
+      <p>Hoe Hockeypolo omgaat met jouw persoonsgegevens. Laatst bijgewerkt: 16 november 2026.</p>
     </div>
   </div>
 
@@ -6577,6 +6708,7 @@
         <li>Telefoonnummer (als je dat invult)</li>
         <li>Naam van je bedrijf, vereniging of dispuut (als je dat invult)</li>
         <li>De inhoud van je aanvraag, zoals je bericht, ontwerpen, logo's en andere bestanden die je meestuurt</li>
+        <li>Hoe je ons hebt gevonden (je antwoord op die vraag in het formulier), voor welke doelgroep je aanvraag is (bedrijven, studenten, evenementen of algemeen) en of je via een advertentie op onze website kwam. Dat laatste is alleen ja of nee: we slaan geen advertentiecode op en plaatsen hiervoor geen extra cookies</li>
         <li>Gegevens over je bezoek aan onze website en over de advertentie waarop je hebt geklikt, alleen als je daarvoor toestemming geeft (zie Cookies)</li>
       </ul>
 
@@ -6589,6 +6721,7 @@
         <li>Het behandelen van je offerteaanvraag of bericht en het uitvoeren van je bestelling</li>
         <li>Contact met je opnemen per e-mail, telefoon of WhatsApp (WhatsApp alleen als je daarvoor kiest)</li>
         <li>Verzenden van onze nieuwsbrief en/of reclamefolder, als je je daarvoor hebt aangemeld</li>
+        <li>Bijhouden via welke kanalen aanvragen binnenkomen, zodat we weten welke marketing werkt</li>
         <li>Meten welke advertenties tot een offerteaanvraag leiden en onze advertenties verbeteren, alleen met jouw toestemming</li>
         <li>Het beveiligen van onze formulieren tegen spam en misbruik</li>
       </ul>
@@ -6604,6 +6737,7 @@
       <ul class="privacy-list">
         <li><strong>Vercel</strong> — hosting van onze website, opslag van bestanden die je via een formulier meestuurt, en anonieme bezoekersstatistieken zonder cookies</li>
         <li><strong>FormSubmit</strong> — doorsturen van ingevulde formulieren naar ons e-mailadres</li>
+        <li><strong>Google Workspace</strong> — e-mail en het bijhouden van binnengekomen aanvragen in een interne spreadsheet</li>
         <li><strong>Brevo</strong> — verzenden van onze nieuwsbrief</li>
         <li><strong>Google</strong> — reCAPTCHA (spambeveiliging), Google Maps (kaart op de contactpagina) en, alleen met jouw toestemming, Google Ads (advertentiemeting)</li>
         <li><strong>Meta</strong> — alleen met jouw toestemming: de Meta Pixel (advertentiemeting voor Facebook en Instagram)</li>
@@ -7007,7 +7141,7 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0, rootMargin: '0px 0px 20% 0px' });
     els.forEach(el => { el.classList.remove('in'); observer.observe(el); });
   }
 
@@ -7360,7 +7494,7 @@
     const revealEls = document.querySelectorAll('#page-home .reveal');
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); e.target.classList.add('in'); obs.unobserve(e.target); } });
-    }, { threshold: 0.12 });
+    }, { threshold: 0, rootMargin: '0px 0px 20% 0px' });
     revealEls.forEach(el => obs.observe(el));
   })();
 
@@ -8108,11 +8242,14 @@
     var achternaam = document.getElementById('cf-achternaam').value.trim();
     var email      = document.getElementById('cf-email').value.trim();
     var bericht    = document.getElementById('cf-bericht').value.trim();
+    var hoeEl      = document.getElementById('cf-hoe');
+    var hoe        = hoeEl ? hoeEl.value : 'n.v.t.';
     var feedback   = document.getElementById('cf-feedback');
 
-    if (!voornaam || !achternaam || !email || !bericht) {
+    if (!voornaam || !achternaam || !email || !bericht || !hoe) {
       feedback.style.color = '#e53e3e';
-      feedback.textContent = 'Vul alle verplichte velden in (voornaam, achternaam, e-mail en bericht).';
+      feedback.textContent = 'Vul alle verplichte velden in (voornaam, achternaam, e-mail, bericht en hoe je ons gevonden hebt).';
+      if (!hoe && hoeEl) hoeEl.focus();
       return false;
     }
 
@@ -8138,6 +8275,9 @@
     // Bouw FormData expliciet uit het formulier + voeg ALLE uploadedFiles toe
     var form = document.getElementById('contact-form');
     var fd   = new FormData(form);
+    // Herkomst: segment + via_advertentie (ja/nee), zonder de klik-ID zelf (consent.js)
+    if (window.hpVoegHerkomstToe) window.hpVoegHerkomstToe(fd, 'algemeen');
+    fd.set('_replyto', email);
     // FormSubmit toont in zijn e-mail-tabel maar één rij per veldnaam, dus
     // meerdere bestanden onder hetzelfde "attachment"-veld worden visueel
     // samengevouwen tot één. We geven daarom elk bestand een uniek veldnaam:
@@ -8166,6 +8306,8 @@
     // Submit cross-origin naar FormSubmit. multipart/form-data is een "simple
     // request", dus geen CORS-preflight nodig. Response is opaque (no-cors),
     // maar de e-mail wordt aan onze kant wel netjes afgeleverd.
+    // Kopie naar de aanvragen-spreadsheet (alleen als die gekoppeld is, zie consent.js)
+    if (window.hpStuurNaarSheet) window.hpStuurNaarSheet(fd, /ontwerptool/i.test(bericht) ? 'Ontwerptool' : 'Contact');
     fetch(form.action, { method: 'POST', mode: 'no-cors', body: fd })
       .then(function() {
         // Eenmalige vlag voor de conversie op /bedankt + gclid meenemen (consent.js)
@@ -9719,6 +9861,46 @@
 })();
 </script>
 
+
+<!-- ── Mobiel: lange homepage-secties inklapbaar ── -->
+<script>
+(function () {
+  if (!window.matchMedia('(max-width: 640px)').matches) return;
+  var doelen = [
+    ['#page-home .values-grid', 'Toon alle voordelen', 330],
+    ['#page-home .blog-teaser-grid', 'Toon meer artikelen', 460],
+    ['#page-home .instagram-widget-wrap', 'Toon Instagram', 260]
+  ];
+  doelen.forEach(function (d) {
+    var el = document.querySelector(d[0]);
+    if (!el || el.closest('.mob-inklap')) return;
+    var sectie = el.closest('section') || el.parentNode;
+    var bg = getComputedStyle(sectie).backgroundColor;
+    var wrap = document.createElement('div');
+    wrap.className = 'mob-inklap is-dicht';
+    wrap.style.setProperty('--inklap-h', d[2] + 'px');
+    if (bg && bg !== 'rgba(0, 0, 0, 0)') wrap.style.setProperty('--inklap-bg', bg);
+    var inhoud = document.createElement('div');
+    inhoud.className = 'mob-inklap-inhoud';
+    el.parentNode.insertBefore(wrap, el);
+    inhoud.appendChild(el);
+    wrap.appendChild(inhoud);
+    var knop = document.createElement('button');
+    knop.type = 'button';
+    knop.className = 'mob-inklap-knop';
+    knop.setAttribute('aria-expanded', 'false');
+    knop.textContent = d[1];
+    knop.addEventListener('click', function () {
+      var dicht = wrap.classList.toggle('is-dicht');
+      knop.setAttribute('aria-expanded', dicht ? 'false' : 'true');
+      knop.textContent = dicht ? d[1] : 'Toon minder';
+      if (dicht) wrap.scrollIntoView({ block: 'nearest' });
+    });
+    wrap.appendChild(knop);
+  });
+})();
+</script>
+
 <!-- ── Nieuwsbrief Pop-up Modal ────────────────────────── -->
 <div id="nl-popup-overlay" role="dialog" aria-modal="true" aria-labelledby="nl-popup-title">
   <div id="nl-popup-modal">
@@ -9738,32 +9920,39 @@
 </div>
 <script>
 (function() {
-  var POPUP_DELAY_MS  = 8000;
-  var STORAGE_KEY     = 'hp_nl_popup_seen';
-  var overlay = document.getElementById('nl-popup-overlay');
+  // Nieuwsbrief-pop-up ("10% korting")
+  // - niet voor bezoekers via een advertentie (klik-ID in URL of sessie)
+  // - niet op bedank-, welkom-, privacy-, contact- en ontwerptoolpagina
+  //   (/bedrijven en /evenementen zijn losse pagina's zonder pop-up)
+  // - na 30 seconden, of eerder bij exit-intent op desktop
+  // - maximaal één keer per sessie, nooit tegelijk met de cookiemelding
+  var VERTRAGING_MS = 30000;
+  var STORAGE_KEY   = 'hp_nl_popup_seen';
+  var NIET_OP       = ['bedankt', 'welkom', 'privacy', 'contact', 'ontwerp-tool'];
+  var overlay  = document.getElementById('nl-popup-overlay');
   var closeBtn = document.getElementById('nl-popup-close');
-  var slot    = document.getElementById('nl-popup-form-slot');
-  var shown   = false;
-  var timer   = null;
+  var shown    = false;
 
-  function isHomePage() {
-    var home = document.getElementById('page-home');
-    return home && home.classList.contains('active');
+  function alGezien() {
+    try { return sessionStorage.getItem(STORAGE_KEY) === '1'; } catch (e) { return false; }
+  }
+  function huidigePagina() {
+    var p = document.querySelector('.page.active');
+    return p ? p.id.replace(/^page-/, '') : '';
+  }
+  function magTonen() {
+    if (shown || alGezien()) return false;
+    if (window.hpViaAdvertentie && window.hpViaAdvertentie()) return false;
+    if (NIET_OP.indexOf(huidigePagina()) !== -1) return false;
+    if (document.querySelector('.hp-cookie.zichtbaar')) return false;
+    if (window.hpCookieKeuze && !window.hpCookieKeuze()) return false;
+    return true;
   }
 
   function openPopup() {
-    if (shown) return;
-    // Niet tegelijk met de cookiemelding: wacht tot de bezoeker een keuze heeft gemaakt
-    if (window.hpCookieKeuze && !window.hpCookieKeuze()) {
-      timer = null;
-      document.addEventListener('hp:cookiekeuze', function() {
-        if (isHomePage()) timer = setTimeout(openPopup, 1500);
-      }, { once: true });
-      return;
-    }
+    if (!magTonen()) return;
     shown = true;
-    sessionStorage.setItem(STORAGE_KEY, '1');
-    // Lazy-mount het formulier in de slot
+    try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
     if (window.__mountNewsletterForms) window.__mountNewsletterForms();
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -9775,39 +9964,37 @@
   }
 
   closeBtn.addEventListener('click', closePopup);
-  overlay.addEventListener('click', function(e) {
-    if (e.target === overlay) closePopup();
-  });
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closePopup(); });
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && overlay.classList.contains('open')) closePopup();
   });
 
-  // Toon na 8 seconden op de homepage, maximaal 1x per sessie
-  function maybeStartTimer() {
-    if (sessionStorage.getItem(STORAGE_KEY) === '1') return;
-    if (!isHomePage()) return;
-    if (timer) return;
-    timer = setTimeout(openPopup, POPUP_DELAY_MS);
-  }
+  if (alGezien() || (window.hpViaAdvertentie && window.hpViaAdvertentie())) return;
 
-  function cancelTimer() {
-    if (timer) { clearTimeout(timer); timer = null; }
-  }
+  // Timer: na 30 seconden op de site. Staat de bezoeker dan op een pagina waar
+  // de pop-up niet mag (of is de cookiemelding nog open), dan bij de volgende
+  // geschikte pagina of direct na de cookiekeuze.
+  var timerKlaar = false;
+  setTimeout(function() { timerKlaar = true; openPopup(); }, VERTRAGING_MS);
 
-  // Reageer op SPA-navigatie via showPage
   var origShow = window.showPage;
   window.showPage = function(id, push) {
     var r = origShow(id, push);
-    if (id === 'home') maybeStartTimer();
-    else cancelTimer();
+    if (timerKlaar) setTimeout(openPopup, 1500);
     return r;
   };
+  document.addEventListener('hp:cookiekeuze', function() {
+    if (timerKlaar) setTimeout(openPopup, 1500);
+  });
 
-  // Initial check bij DOM ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', maybeStartTimer);
-  } else {
-    maybeStartTimer();
+  // Exit-intent (alleen desktop met muis): cursor verlaat het venster aan de bovenkant
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    var startTijd = Date.now();
+    document.addEventListener('mouseout', function(e) {
+      if (e.relatedTarget || e.clientY > 0) return;
+      if (Date.now() - startTijd < 5000) return;   // niet direct bij binnenkomst
+      openPopup();
+    });
   }
 })();
 </script>
@@ -9966,6 +10153,22 @@
     var inVeld = /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName);
     if (e.key === '/' && !inVeld) { e.preventDefault(); open(); }
     if ((e.key === 'k' || e.key === 'K') && (e.metaKey || e.ctrlKey)) { e.preventDefault(); open(); }
+  });
+})();
+</script>
+
+<script>
+// doelgroepmenu: klik/touch en toetsenbord voor "Voor wie"
+(function () {
+  document.querySelectorAll('.nav-voorwie').forEach(function (li) {
+    var knop = li.querySelector('.nav-voorwie-knop');
+    knop.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = li.classList.toggle('open');
+      knop.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', function () { li.classList.remove('open'); knop.setAttribute('aria-expanded', 'false'); });
+    li.addEventListener('keydown', function (e) { if (e.key === 'Escape') { li.classList.remove('open'); knop.focus(); } });
   });
 })();
 </script>

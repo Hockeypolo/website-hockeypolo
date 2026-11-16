@@ -12,6 +12,8 @@
       URL staan tijdens SPA-navigatie en bij links naar andere pagina's,
       zodat ze op de bedanktpagina nog aanwezig zijn. Na toestemming
       worden ze ook in sessionStorage bewaard (overleeft herladen).
+   3b. hpVoegHerkomstToe(formData, segment) zet de velden segment en
+      via_advertentie (ja/nee) in een formulier, zonder de klik-ID zelf.
    4. Conversie "Offerteaanvraag verzonden" gaat alleen af op een
       bedanktpagina als er vlak daarvoor écht een formulier is verzonden
       (eenmalige vlag via hpMarkeerAanvraag), dus niet bij herladen of
@@ -130,6 +132,41 @@
     } catch (e) { return url; }
   }
   window.hpUrl = metKlikIds;
+
+  // Herkomst voor formulieren: kwam de bezoeker via een advertentie (klik-ID
+  // aanwezig in URL of sessie)? Alleen ja/nee, de klik-ID zelf gaat niet mee.
+  // Werkt ook zonder cookietoestemming: de klik-ID staat dan nog in de URL.
+  window.hpViaAdvertentie = function () { return !!klikIds; };
+  window.hpVoegHerkomstToe = function (doel, segment) {
+    var velden = {
+      segment: segment || 'algemeen',
+      via_advertentie: klikIds ? 'ja' : 'nee'
+    };
+    Object.keys(velden).forEach(function (k) {
+      if (doel && typeof doel.set === 'function') doel.set(k, velden[k]);
+      else if (doel) doel[k] = velden[k];
+    });
+    return doel;
+  };
+
+  // Kopie van elke aanvraag naar de Google Sheet "Hockeypolo – Website-aanvragen"
+  // (Apps Script web-app, zie docs/aanvragen-sheet-apps-script.md). Zolang
+  // SHEET_URL leeg is gebeurt er niets. Bestanden gaan nooit mee, alleen tekst.
+  // sendBeacon overleeft de doorverwijzing naar de bedanktpagina.
+  var SHEET_URL = '';
+  window.hpStuurNaarSheet = function (velden, formulier) {
+    if (!SHEET_URL || !velden) return;
+    try {
+      var p = new URLSearchParams();
+      var zet = function (k, v) { if (typeof v === 'string' && k.charAt(0) !== '_') p.set(k, v.slice(0, 2000)); };
+      if (typeof velden.forEach === 'function' && typeof velden.get === 'function') velden.forEach(function (v, k) { zet(k, v); });
+      else Object.keys(velden).forEach(function (k) { zet(k, velden[k]); });
+      if (velden.get ? velden.get('_honey') : velden._honey) return;   // spambot
+      p.set('formulier', formulier || 'Onbekend');
+      if (navigator.sendBeacon) navigator.sendBeacon(SHEET_URL, p);
+      else fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', body: p, keepalive: true });
+    } catch (e) {}
+  };
 
   // De SPA (index.html) schrijft de URL via pushState/replaceState opnieuw
   // en zou de query-string daarbij weggooien. Houd de klik-ID's erin.

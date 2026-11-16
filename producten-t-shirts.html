@@ -282,6 +282,37 @@
     .mobile-menu-zoek { display: flex; align-items: center; gap: 10px; }
     .mobile-menu-zoek svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 2; }
 
+  
+    /* ═══ DOELGROEPMENU ("Voor wie") ═══════════════════════════════ */
+    .nav-voorwie { position: relative; }
+    .nav-voorwie-knop {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: none; border: 0; padding: 0; cursor: pointer;
+      font-family: var(--font-head); font-size: 12px; font-weight: 500;
+      letter-spacing: .08em; text-transform: uppercase; color: var(--black);
+      transition: color .2s;
+    }
+    .nav-voorwie-knop svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2.4; transition: transform .2s; }
+    .nav-voorwie-knop:hover, .nav-voorwie.open .nav-voorwie-knop { color: var(--green); }
+    .nav-voorwie.open .nav-voorwie-knop svg { transform: rotate(180deg); }
+    .nav-voorwie-menu {
+      position: absolute; top: calc(100% + 18px); left: 50%; transform: translateX(-50%);
+      min-width: 260px; background: #fff; border: 1px solid var(--gray-200);
+      border-radius: 12px; box-shadow: 0 16px 40px rgba(0,0,0,.12);
+      padding: 8px; display: none; z-index: 210;
+    }
+    .nav-voorwie-menu::before { content: ''; position: absolute; left: 0; right: 0; top: -18px; height: 18px; }
+    .nav-voorwie.open .nav-voorwie-menu { display: block; }
+    @media (hover: hover) { .nav-voorwie:hover .nav-voorwie-menu { display: block; } }
+    .nav-voorwie-menu a {
+      display: block; padding: 10px 12px; border-radius: 8px;
+      text-transform: none; letter-spacing: 0; font-size: 14px; font-weight: 600;
+    }
+    .nav-voorwie-menu a span { display: block; font-family: var(--font-body, Inter, sans-serif); font-size: 12px; font-weight: 400; color: var(--gray-600, #555); margin-top: 2px; }
+    .nav-voorwie-menu a:hover { background: var(--gray-100, #f4f4f4); color: var(--black); }
+    .nav-voorwie-menu a:hover span { color: var(--gray-600, #555); }
+    .nav-links:has(.nav-voorwie) { gap: 24px; }
+    .mobile-menu-doelgroep { color: var(--green) !important; }
   </style>
 </head>
 <body data-product="t-shirts">
@@ -300,6 +331,7 @@
   <div class="nav-right">
     <ul class="nav-links">
       <li><a href="/">Home</a></li>
+      <li class="nav-voorwie"><button type="button" class="nav-voorwie-knop" aria-expanded="false" aria-haspopup="true">Voor wie <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg></button><div class="nav-voorwie-menu"><a href="/bedrijven">Voor bedrijven<span>Bedrijfskleding en merchandise</span></a><a href="/studenten">Voor studenten<span>Disputen, lustrum en skireis</span></a><a href="/evenementen">Voor evenementen<span>Sportevents, festivals, beurzen</span></a></div></li>
       <li><a href="/producten">Producten</a></li>
       <li><a href="/impressies">Impressies</a></li>
       <li><a href="/blog">Blog</a></li>
@@ -324,6 +356,9 @@
 <div class="mobile-menu" id="mobile-menu">
   <a class="mobile-menu-item mobile-menu-zoek" href="#" onclick="var m=document.getElementById('mobile-menu');if(m.classList.contains('open'))toggleMobileMenu();document.getElementById('zoek-knop').click();return false;"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Zoeken</a>
   <a class="mobile-menu-item" href="/">Home</a>
+  <a class="mobile-menu-item mobile-menu-doelgroep" href="/bedrijven">Voor bedrijven</a>
+  <a class="mobile-menu-item mobile-menu-doelgroep" href="/studenten">Voor studenten</a>
+  <a class="mobile-menu-item mobile-menu-doelgroep" href="/evenementen">Voor evenementen</a>
   <a class="mobile-menu-item" href="/producten">Producten</a>
   <a class="mobile-menu-item" href="/impressies">Impressies</a>
   <a class="mobile-menu-item" href="/blog">Blog</a>
@@ -634,6 +669,22 @@ document.addEventListener('DOMContentLoaded', function () {
     var inVeld = /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName);
     if (e.key === '/' && !inVeld) { e.preventDefault(); open(); }
     if ((e.key === 'k' || e.key === 'K') && (e.metaKey || e.ctrlKey)) { e.preventDefault(); open(); }
+  });
+})();
+</script>
+
+<script>
+// doelgroepmenu: klik/touch en toetsenbord voor "Voor wie"
+(function () {
+  document.querySelectorAll('.nav-voorwie').forEach(function (li) {
+    var knop = li.querySelector('.nav-voorwie-knop');
+    knop.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = li.classList.toggle('open');
+      knop.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', function () { li.classList.remove('open'); knop.setAttribute('aria-expanded', 'false'); });
+    li.addEventListener('keydown', function (e) { if (e.key === 'Escape') { li.classList.remove('open'); knop.focus(); } });
   });
 })();
 </script>

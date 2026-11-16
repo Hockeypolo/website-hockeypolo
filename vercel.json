@@ -64,6 +64,18 @@
       "destination": "/bedankt-deel-je-idee.html"
     },
     {
+      "source": "/bedrijven",
+      "destination": "/bedrijven.html"
+    },
+    {
+      "source": "/studenten",
+      "destination": "/studenten.html"
+    },
+    {
+      "source": "/evenementen",
+      "destination": "/evenementen.html"
+    },
+    {
       "source": "/producten/t-shirts",
       "destination": "/producten-t-shirts.html"
     },

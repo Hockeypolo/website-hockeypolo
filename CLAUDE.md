@@ -170,6 +170,21 @@ Dev-server: `npm run dev` op poort **3002** (vanuit `hockeypolo-sourcing/`)
 
 ---
 
+## Doelgroeppagina's, formulieren en herkomst
+
+- `/bedrijven`, `/studenten`, `/evenementen` = `bedrijven.html` enz., gegenereerd door
+  `scripts/genereer-doelgroeppaginas.py` uit `scripts/doelgroepteksten.py` (teksten daar aanpassen).
+  Navbar/footer/stijl worden overgenomen van `producten-polos.html`.
+- Volgorde na productwijzigingen: genereer-productdata → genereer-overzicht → genereer-productpaginas →
+  voeg-uspbalk-toe → voeg-zoekbalk-toe → **voeg-doelgroepmenu-toe** → **genereer-doelgroeppaginas** → genereer-routes.
+- Alle offerteformulieren hebben een verplichte vraag `hoe_gevonden` en de velden `segment`
+  (bedrijven/studenten/evenementen/algemeen) en `via_advertentie` (ja/nee, via `hpVoegHerkomstToe` in consent.js;
+  de klik-ID zelf wordt nooit opgeslagen).
+- `hpStuurNaarSheet` (consent.js) stuurt een tekstkopie naar de Google Sheet zodra `SHEET_URL` is ingevuld;
+  zie `docs/aanvragen-sheet-apps-script.md`. `docs/` wordt niet gepubliceerd (.vercelignore).
+- Nieuwsbrief-pop-up (index.html): na 30 s of exit-intent, 1× per sessie, nooit bij klik-ID, cookiemelding,
+  of op bedankt/welkom/privacy/contact/ontwerptool.
+
 ## Deployment
 
 ```bash
