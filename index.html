@@ -3806,6 +3806,40 @@
     .nav-voorwie-menu a:hover span { color: var(--gray-600, #555); }
     .nav-links:has(.nav-voorwie) { gap: 24px; }
     .mobile-menu-doelgroep { color: var(--green) !important; }
+
+    /* ═══ SPLIT-HERO (binnenpagina's: tekst links, foto rechts) ═════ */
+    .page-hero.split { background-image: none; padding: 0 80px; min-height: 0; }
+    .page-hero.split::before { display: none; }
+    .page-hero.split::after { content: ''; position: absolute; top: -140px; left: 35%; width: 460px; height: 460px; border-radius: 50%; background: radial-gradient(circle, rgba(0,166,82,.16) 0%, transparent 70%); pointer-events: none; }
+    .page-hero-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; padding: 64px 0 72px; position: relative; z-index: 1; }
+    .page-hero.split h1, .page-hero.split h2 { font-size: clamp(38px, 4.4vw, 64px); letter-spacing: -.045em; line-height: 1.02; margin-bottom: 20px; }
+    .page-hero.split p { color: rgba(255,255,255,.72); max-width: 540px; }
+    .page-hero-foto { border-radius: 18px; overflow: hidden; aspect-ratio: 4 / 3.6; background: #111; }
+    .page-hero-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ph-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .ph-feiten { display: flex; flex-wrap: wrap; gap: 10px 22px; list-style: none; margin: 28px 0 0; padding: 0; }
+    .ph-feiten li { display: flex; align-items: center; gap: 8px; font-size: 14px; color: rgba(255,255,255,.8); }
+    .ph-feiten svg { width: 16px; height: 16px; color: var(--green); flex-shrink: 0; }
+    .btn-outline-white { background: transparent; color: var(--white); border-color: rgba(255,255,255,.35); }
+    .btn-outline-white:hover { background: var(--white); color: var(--black); }
+    /* Blogartikel: titel en omslagfoto staan al in de hero */
+    .page-hero.split + .blog-article-outer .blog-article-title,
+    .page-hero.split + .blog-article-outer .blog-article-cover { display: none; }
+    @media (max-width: 1024px) {
+      .page-hero.split { padding: 0 32px; }
+      .page-hero-grid { gap: 32px; }
+    }
+    @media (max-width: 768px) {
+      .page-hero.split { padding: 0 16px !important; min-height: 0 !important; }
+      .page-hero-grid { grid-template-columns: 1fr; gap: 0; padding: 0 0 32px; }
+      .page-hero-foto { order: -1; aspect-ratio: 16 / 9; border-radius: 0 0 16px 16px; margin: 0 -16px 24px; }
+      .page-hero.split .breadcrumb { display: none; }
+      .page-hero.split h1, .page-hero.split h2 { font-size: 36px; margin-bottom: 14px; }
+      .page-hero.split p { font-size: 15.5px; }
+      .ph-btns { display: grid; grid-template-columns: 1fr; margin-top: 20px; }
+      .ph-btns .btn { justify-content: center; }
+      .ph-feiten { flex-direction: column; gap: 8px; margin-top: 20px; }
+    }
   </style>
   <script defer src="/_vercel/insights/script.js"></script>
 
@@ -4412,13 +4446,18 @@
 
 <div class="page" id="page-producten">
 
-  <div class="page-hero" style="--hero-photo:url('fotomateriaal/klantprojecten/ruis/ruis2-hero.jpg'); --hero-pos:center;">
+  <div class="page-hero split">
+  <div class="page-hero-grid">
     <div class="page-hero-inner">
       <div class="breadcrumb"><span onclick="showPage('home')">Home</span> <i>/</i> <span>Producten</span></div>
       <span class="lbl">Assortiment</span>
       <h2>Onze <em>collectie</em></h2>
       <p>Van teamkleding tot accessoires. Alles volledig op maat, bedrukt of geborduurd met jouw logo en kleuren.</p>
+      <div class="ph-btns"><a class="btn btn-green" href="/start-project">Start je project <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a><a class="btn btn-outline-white" href="/ontwerp-sportshirt" onclick="showPage('ontwerp-tool'); return false;">Ontwerp zelf je shirt</a></div>
+      <ul class="ph-feiten"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Gratis ontwerp en digitale proef</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Levering in 2–4 weken</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Bedrukt of geborduurd met jouw logo</span></li></ul>
     </div>
+    <div class="page-hero-foto"><img src="fotomateriaal/paginaheroes/producten.webp" alt="Felgroene dispuutsblouse van Ruis met roze opdruk" width="1100" height="619" decoding="async" style="object-position:center"></div>
+  </div>
   </div>
 
   <div class="products-section">
@@ -5001,13 +5040,18 @@
 
 <div class="page" id="page-impressies">
 
-  <div class="page-hero" style="--hero-photo:url('fotomateriaal/klantprojecten/fraters-kwf2026/Fraters_KWF2026_2-hero.jpg'); --hero-pos:center 20%;">
+  <div class="page-hero split">
+  <div class="page-hero-grid">
     <div class="page-hero-inner">
       <div class="breadcrumb"><span onclick="showPage('home')">Home</span> <i>/</i> <span>Impressies</span></div>
       <span class="lbl">Projecten</span>
       <h2>Onze <em>impressies</em></h2>
       <p>Een selectie van recent ontworpen en geleverde merchandise. Van teamkleding tot lustrumartikelen, elk project met zorg gemaakt.</p>
+      <div class="ph-btns"><a class="btn btn-green" href="/start-project">Start je project <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a><a class="btn btn-outline-white" href="/producten" onclick="showPage('producten'); return false;">Bekijk producten</a></div>
+      <ul class="ph-feiten"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>500+ projecten sinds 2005</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Voor bedrijven, studenten en evenementen</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Altijd eerst een digitale proef</span></li></ul>
     </div>
+    <div class="page-hero-foto"><img src="fotomateriaal/paginaheroes/impressies.webp" alt="Lopers van dispuut Fraters in sportshirts tijdens de KWF Bruggenloop" width="1100" height="1186" loading="lazy" decoding="async" style="object-position:center 25%"></div>
+  </div>
   </div>
 
   <!-- Filters -->
@@ -5150,13 +5194,18 @@
 ═══════════════════════════════════════════════════════════════ -->
 <div class="page" id="page-blog">
 
-  <div class="page-hero" style="--hero-photo:url('fotomateriaal/klantprojecten/phia/phia4.jpeg'); --hero-pos:center;">
+  <div class="page-hero split">
+  <div class="page-hero-grid">
     <div class="page-hero-inner">
       <div class="breadcrumb"><span onclick="showPage('home')">Home</span> <i>/</i> <span>Blog</span></div>
       <span class="lbl">Inspiratie &amp; kennis</span>
       <h2>Van de <em>werkvloer</em></h2>
       <p>Tips, verhalen en trends uit de wereld van teamwear en merchandise. Direct van de mensen die het elke dag doen.</p>
+      <div class="ph-btns"><a class="btn btn-green" href="/start-project">Start je project <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a><a class="btn btn-outline-white" href="/impressies" onclick="showPage('impressies'); return false;">Bekijk impressies</a></div>
+      <ul class="ph-feiten"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Tips voor teamkleding en merchandise</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Cases en trends</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Van de mensen die het elke dag doen</span></li></ul>
     </div>
+    <div class="page-hero-foto"><img src="fotomateriaal/paginaheroes/blog.webp" alt="Organisatie van de Philips Innovation Award in quarter-zip sweaters" width="1100" height="734" loading="lazy" decoding="async" style="object-position:center"></div>
+  </div>
   </div>
 
   <div class="filter-bar">
@@ -5293,12 +5342,15 @@
 
 <!-- ═══ BLOG ARTIKEL 1 ═══ -->
 <div class="page" id="page-blog-artikel-1">
-  <div class="page-hero">
+  <div class="page-hero split">
+  <div class="page-hero-grid">
     <div class="page-hero-inner">
       <div class="breadcrumb"><span onclick="showPage('home')">Home</span> <i>/</i> <span onclick="showPage('blog')">Blog</span> <i>/</i> <span>Perfecte clubmerch</span></div>
       <span class="lbl">Tips</span>
       <h2>Hoe kies je de perfecte <em>clubmerch?</em></h2>
     </div>
+    <div class="page-hero-foto"><img src="fotomateriaal/paginaheroes/blog-artikel-1.webp" alt="Clubmerch samenstellen" width="1100" height="733" loading="lazy" decoding="async" style="object-position:center"></div>
+  </div>
   </div>
 
   <div class="blog-article-outer">
@@ -5385,12 +5437,15 @@
 
 <!-- ═══ BLOG ARTIKEL 2 ═══ -->
 <div class="page" id="page-blog-artikel-2">
-  <div class="page-hero">
+  <div class="page-hero split">
+  <div class="page-hero-grid">
     <div class="page-hero-inner">
       <div class="breadcrumb"><span onclick="showPage('home')">Home</span> <i>/</i> <span onclick="showPage('blog')">Blog</span> <i>/</i> <span>Bedrukken of borduren</span></div>
       <span class="lbl">Tips</span>
       <h2>Bedrukken of borduren: <em>wat past bij jou?</em></h2>
     </div>
+    <div class="page-hero-foto"><img src="fotomateriaal/paginaheroes/blog-artikel-2.webp" alt="Bedrukken of borduren" width="1100" height="619" loading="lazy" decoding="async" style="object-position:center"></div>
+  </div>
   </div>
 
   <div class="blog-article-outer">
@@ -5472,12 +5527,15 @@
 
 <!-- ═══ BLOG ARTIKEL 3 ═══ -->
 <div class="page" id="page-blog-artikel-3">
-  <div class="page-hero">
+  <div class="page-hero split">
+  <div class="page-hero-grid">
     <div class="page-hero-inner">
       <div class="breadcrumb"><span onclick="showPage('home')">Home</span> <i>/</i> <span onclick="showPage('blog')">Blog</span> <i>/</i> <span>Case: PHIA, Rotterdam 2025</span></div>
       <span class="lbl">Cases</span>
       <h2>Achter de schermen: <em>project PHIA, Rotterdam 2025</em></h2>
     </div>
+    <div class="page-hero-foto"><img src="fotomateriaal/paginaheroes/blog-artikel-3.webp" alt="Project PHIA Rotterdam" width="1100" height="734" loading="lazy" decoding="async" style="object-position:center"></div>
+  </div>
   </div>
 
   <div class="blog-article-outer">
@@ -5551,12 +5609,15 @@
 
 <!-- ═══ BLOG ARTIKEL 4 ═══ -->
 <div class="page" id="page-blog-artikel-4">
-  <div class="page-hero">
+  <div class="page-hero split">
+  <div class="page-hero-grid">
     <div class="page-hero-inner">
       <div class="breadcrumb"><span onclick="showPage('home')">Home</span> <i>/</i> <span onclick="showPage('blog')">Blog</span> <i>/</i> <span>Duurzame trends 2025</span></div>
       <span class="lbl">Trends</span>
       <h2>Duurzame teamkleding: <em>de trends voor 2025</em></h2>
     </div>
+    <div class="page-hero-foto"><img src="fotomateriaal/paginaheroes/blog-artikel-4.webp" alt="Duurzame teamkleding" width="1100" height="1649" loading="lazy" decoding="async" style="object-position:center 35%"></div>
+  </div>
   </div>
 
   <div class="blog-article-outer">
@@ -5630,12 +5691,15 @@
 
 <!-- ═══ BLOG ARTIKEL 5 ═══ -->
 <div class="page" id="page-blog-artikel-6">
-  <div class="page-hero">
+  <div class="page-hero split">
+  <div class="page-hero-grid">
     <div class="page-hero-inner">
       <div class="breadcrumb"><span onclick="showPage('home')">Home</span> <i>/</i> <span onclick="showPage('blog')">Blog</span> <i>/</i> <span>Lustrum merchandise</span></div>
       <span class="lbl">Tips</span>
       <h2>Lustrum merchandise laten maken: ideeen en tips voor <em>studentenverenigingen</em></h2>
     </div>
+    <div class="page-hero-foto"><img src="fotomateriaal/paginaheroes/blog-artikel-6.webp" alt="Lustrummerchandise" width="1100" height="1467" loading="lazy" decoding="async" style="object-position:center 35%"></div>
+  </div>
   </div>
 
   <div class="blog-article-outer">
@@ -5763,12 +5827,15 @@
 </div>
 
 <div class="page" id="page-blog-artikel-5" data-publish-date="2026-05-20T09:00">
-  <div class="page-hero">
+  <div class="page-hero split">
+  <div class="page-hero-grid">
     <div class="page-hero-inner">
       <div class="breadcrumb"><span onclick="showPage('home')">Home</span> <i>/</i> <span onclick="showPage('blog')">Blog</span> <i>/</i> <span>Werkkleding als marketingtool</span></div>
       <span class="lbl">Teamwear</span>
       <h2>Werkkleding als <em>marketingtool</em>: zo bouw je merkbeleving van binnenuit</h2>
     </div>
+    <div class="page-hero-foto"><img src="fotomateriaal/paginaheroes/blog-artikel-5.webp" alt="Werkkleding als marketingtool" width="1100" height="734" loading="lazy" decoding="async" style="object-position:center"></div>
+  </div>
   </div>
 
   <div class="blog-article-outer">
@@ -5876,13 +5943,18 @@
 <!-- ═══ OVER ONS ═══ -->
 <div class="page" id="page-overons">
 
-  <div class="page-hero" style="--hero-photo:url('fotomateriaal/klantprojecten/fraters-kwf2026/Fraters_KWF2026_3-hero.jpg'); --hero-pos:center 48%;">
+  <div class="page-hero split">
+  <div class="page-hero-grid">
     <div class="page-hero-inner">
       <div class="breadcrumb"><span onclick="showPage('home')">Home</span> <i>/</i> <span>Over Ons</span></div>
       <span class="lbl">Ons verhaal</span>
       <h2>Wie zijn <em>wij?</em></h2>
       <p>Opgericht in 2005 in Rotterdam. Bijna 20 jaar later nog altijd het adres voor iedereen die merchandise wil die klopt, van ontwerp tot levering.</p>
+      <div class="ph-btns"><a class="btn btn-green" href="/start-project">Start je project <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a><a class="btn btn-outline-white" href="/impressies" onclick="showPage('impressies'); return false;">Bekijk impressies</a></div>
+      <ul class="ph-feiten"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Sinds 2005 vanuit Rotterdam</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>500+ projecten</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Eén vast aanspreekpunt</span></li></ul>
     </div>
+    <div class="page-hero-foto"><img src="fotomateriaal/paginaheroes/overons.webp" alt="Lopers van dispuut Fraters in groene sportshirts" width="1100" height="1650" loading="lazy" decoding="async" style="object-position:center 40%"></div>
+  </div>
   </div>
 
   <!-- Intro split -->
@@ -6067,13 +6139,18 @@
 ═══════════════════════════════════════════════════════════════ -->
 <div class="page" id="page-faq">
 
-  <div class="page-hero" style="--hero-photo:url('fotomateriaal/klantprojecten/keizersnee-kwf2026/Keizersnee_KWF2026_4-hero.jpg'); --hero-pos:center 20%;">
+  <div class="page-hero split">
+  <div class="page-hero-grid">
     <div class="page-hero-inner">
       <div class="breadcrumb"><span onclick="showPage('home')">Home</span> <i>/</i> <span>F.A.Q.</span></div>
       <span class="lbl">Veelgestelde vragen</span>
       <h2>Alles over <em>Hockeypolo</em></h2>
       <p>Staat jouw vraag er niet bij? Neem dan direct contact met ons op, we helpen je graag verder.</p>
+      <div class="ph-btns"><a class="btn btn-green" href="/startproject" onclick="showPage('contact'); return false;">Stel je vraag <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a><a class="btn btn-outline-white" href="/start-project">Start je project</a></div>
+      <ul class="ph-feiten"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Reactie binnen één werkdag</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Vrijblijvende offerte</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Gratis ontwerp en digitale proef</span></li></ul>
     </div>
+    <div class="page-hero-foto"><img src="fotomateriaal/paginaheroes/faq.webp" alt="Loper van dispuut Keizersnee in een sportshirt met KWF-logo" width="1100" height="1650" loading="lazy" decoding="async" style="object-position:center 25%"></div>
+  </div>
   </div>
 
   <div class="faq-layout">
@@ -6512,13 +6589,18 @@
 ═══════════════════════════════════════════════════════════════ -->
 <div class="page" id="page-contact">
 
-  <div class="page-hero" style="--hero-photo:url('fotomateriaal/klantprojecten/phia/phia5.jpeg'); --hero-pos:center 30%;">
+  <div class="page-hero split">
+  <div class="page-hero-grid">
     <div class="page-hero-inner">
       <div class="breadcrumb"><span onclick="showPage('home')">Home</span> <i>/</i> <span>Contact</span></div>
       <span class="lbl">Contact</span>
       <h2>Neem <em>contact</em> op</h2>
       <p>Vertel ons wat je nodig hebt. We reageren binnen één werkdag en zorgen dat jouw merchandise er perfect uitziet.</p>
+      <div class="ph-btns"><a class="btn btn-green" href="#contact-form" onclick="document.getElementById('contact-form').scrollIntoView({behavior:'smooth',block:'start'}); return false;">Naar het formulier <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a><a class="btn btn-outline-white" href="tel:+31614200114">Bel +31 6 14200114</a></div>
+      <ul class="ph-feiten"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Reactie binnen één werkdag</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Vrijblijvende offerte</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Gratis ontwerp en digitale proef</span></li></ul>
     </div>
+    <div class="page-hero-foto"><img src="fotomateriaal/paginaheroes/contact.webp" alt="Organisatie van de Philips Innovation Award in donkerblauwe sweaters" width="1100" height="734" loading="lazy" decoding="async" style="object-position:center 30%"></div>
+  </div>
   </div>
 
   <div class="contact-layout">
@@ -6677,13 +6759,16 @@
 ═══════════════════════════════════════════════════════════════ -->
 <div class="page" id="page-privacy">
 
-  <div class="page-hero">
+  <div class="page-hero split">
+  <div class="page-hero-grid">
     <div class="page-hero-inner">
       <div class="breadcrumb"><span onclick="showPage('home')">Home</span> <i>/</i> <span>Privacyverklaring</span></div>
       <span class="lbl">Juridisch</span>
       <h2>Privacy<em>verklaring</em></h2>
       <p>Hoe Hockeypolo omgaat met jouw persoonsgegevens. Laatst bijgewerkt: 16 november 2026.</p>
     </div>
+    <div class="page-hero-foto"><img src="fotomateriaal/paginaheroes/privacy.webp" alt="Sweater van de Philips Innovation Award" width="1100" height="1467" loading="lazy" decoding="async" style="object-position:center"></div>
+  </div>
   </div>
 
   <section style="background:var(--white);padding:clamp(48px,8vw,80px) clamp(16px,5vw,80px) clamp(64px,10vw,120px);display:flex;justify-content:center;">
@@ -6806,13 +6891,17 @@
 ═══════════════════════════════════════════════════════════════ -->
 <div class="page" id="page-welkom">
 
-  <div class="page-hero">
+  <div class="page-hero split">
+  <div class="page-hero-grid">
     <div class="page-hero-inner">
       <div class="breadcrumb"><span onclick="showPage('home')">Home</span> <i>/</i> <span>Welkom</span></div>
       <span class="lbl">Inschrijving bevestigd</span>
       <h2>Welkom bij de <em>Hockeypolo</em> nieuwsbrief!</h2>
       <p>Je inschrijving is succesvol bevestigd. Vanaf nu blijf je op de hoogte van onze nieuwste producten, seizoensacties en inspiratie.</p>
+      <div class="ph-btns"><a class="btn btn-green" href="/producten" onclick="showPage('producten'); return false;">Bekijk producten <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a><a class="btn btn-outline-white" href="/start-project">Start je project</a></div>
     </div>
+    <div class="page-hero-foto"><img src="fotomateriaal/paginaheroes/welkom.webp" alt="Student in hoodie met geborduurd logo op skireis" width="1100" height="1467" loading="lazy" decoding="async" style="object-position:center 35%"></div>
+  </div>
   </div>
 
   <section style="background:var(--white);padding:clamp(48px,8vw,80px) clamp(16px,5vw,80px) clamp(64px,10vw,120px);display:flex;justify-content:center;">
@@ -6901,13 +6990,18 @@
 ═══════════════════════════════════════════════════════════════ -->
 <div class="page" id="page-bedankt">
 
-  <div class="page-hero">
+  <div class="page-hero split">
+  <div class="page-hero-grid">
     <div class="page-hero-inner">
       <div class="breadcrumb"><span onclick="showPage('home')">Home</span> <i>/</i> <span onclick="showPage('contact')">Start Project</span> <i>/</i> <span>Bedankt</span></div>
       <span class="lbl">Aanvraag ontvangen</span>
       <h2>Gelukt! We <em>nemen contact</em> op</h2>
       <p>Je aanvraag is succesvol verstuurd. We reageren binnen één werkdag.</p>
+      <div class="ph-btns"><a class="btn btn-green" href="/impressies" onclick="showPage('impressies'); return false;">Bekijk impressies <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a><a class="btn btn-outline-white" href="/" onclick="showPage('home'); return false;">Terug naar home</a></div>
+      <ul class="ph-feiten"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Reactie binnen één werkdag</span></li></ul>
     </div>
+    <div class="page-hero-foto"><img src="fotomateriaal/paginaheroes/bedankt.webp" alt="Dispuut Keizersnee in sportshirts van Hockeypolo" width="1100" height="733" loading="lazy" decoding="async" style="object-position:center"></div>
+  </div>
   </div>
 
   <section style="background:var(--white);padding:clamp(48px,8vw,80px) clamp(16px,5vw,80px) clamp(64px,10vw,120px);display:flex;justify-content:center;">
