@@ -21,11 +21,11 @@
   <link rel="preload" as="font" type="font/woff2" href="/fonts/space-grotesk-v22-latin-700.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-v20-latin-regular.woff2" crossorigin />
   <style>
-    @font-face { font-family:'Inter'; font-style:normal; font-weight:400; font-display:swap; src:url('fonts/inter-v20-latin-regular.woff2') format('woff2'); }
-    @font-face { font-family:'Inter'; font-style:normal; font-weight:500; font-display:swap; src:url('fonts/inter-v20-latin-500.woff2') format('woff2'); }
-    @font-face { font-family:'Inter'; font-style:normal; font-weight:600; font-display:swap; src:url('fonts/inter-v20-latin-600.woff2') format('woff2'); }
-    @font-face { font-family:'Space Grotesk'; font-style:normal; font-weight:600; font-display:swap; src:url('fonts/space-grotesk-v22-latin-600.woff2') format('woff2'); }
-    @font-face { font-family:'Space Grotesk'; font-style:normal; font-weight:700; font-display:swap; src:url('fonts/space-grotesk-v22-latin-700.woff2') format('woff2'); }
+    @font-face { font-family:'Inter'; font-style:normal; font-weight:400; font-display:swap; src:url('/fonts/inter-v20-latin-regular.woff2') format('woff2'); }
+    @font-face { font-family:'Inter'; font-style:normal; font-weight:500; font-display:swap; src:url('/fonts/inter-v20-latin-500.woff2') format('woff2'); }
+    @font-face { font-family:'Inter'; font-style:normal; font-weight:600; font-display:swap; src:url('/fonts/inter-v20-latin-600.woff2') format('woff2'); }
+    @font-face { font-family:'Space Grotesk'; font-style:normal; font-weight:600; font-display:swap; src:url('/fonts/space-grotesk-v22-latin-600.woff2') format('woff2'); }
+    @font-face { font-family:'Space Grotesk'; font-style:normal; font-weight:700; font-display:swap; src:url('/fonts/space-grotesk-v22-latin-700.woff2') format('woff2'); }
 
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
     :root {
@@ -313,6 +313,14 @@
     .nav-voorwie-menu a:hover span { color: var(--gray-600, #555); }
     .nav-links:has(.nav-voorwie) { gap: 24px; }
     .mobile-menu-doelgroep { color: var(--green) !important; }
+  
+    /* ═══ MOBIEL: tikdoelen en leesbaarheid ═══════════════════════ */
+    @media (max-width: 640px) {
+      .footer-col a { padding: 9px 0; margin-bottom: 0 !important; }
+      .footer-col h4 { margin-bottom: 6px; }
+      .footer-bottom a, .hp-cookie-link { display: inline-block; padding: 8px 2px; }
+      .product-card-minafname { font-size: 12px; }
+    }
   </style>
 </head>
 <body data-product="caps">

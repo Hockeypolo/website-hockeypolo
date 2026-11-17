@@ -22,11 +22,11 @@
   <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-v20-latin-regular.woff2" crossorigin />
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Wat is de minimale afname?", "acceptedAnswer": {"@type": "Answer", "text": "Dat verschilt per product: hoodies, schorten en softshell jassen vanaf 10 stuks, quarter-zips vanaf 12, polo's en T-shirts vanaf 15. Bij elk product staat het minimum vermeld."}}, {"@type": "Question", "name": "Hoe snel hebben we de kleding?", "acceptedAnswer": {"@type": "Answer", "text": "Reken op 2 tot 4 weken na akkoord op de digitale proef. Heb je een vaste datum, zoals een beurs of personeelsfeest? Zet die in je aanvraag, dan plannen we daarop."}}, {"@type": "Question", "name": "Kunnen jullie ons logo in onze huisstijlkleuren borduren?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. We stemmen de garen- of drukkleuren af op jullie huisstijl. Je ziet het resultaat eerst in een digitale proef, pas na jouw akkoord gaan we produceren."}}, {"@type": "Question", "name": "Kunnen we later nabestellen?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Geef in je aanvraag aan dat je later wilt nabestellen, bijvoorbeeld voor nieuwe collega's. Dan houden we daar rekening mee bij de keuze van product en kleur."}}, {"@type": "Question", "name": "Is een proefexemplaar mogelijk?", "acceptedAnswer": {"@type": "Answer", "text": "In veel gevallen wel, afhankelijk van het product en het aantal. Vraag ernaar in je aanvraag. Een digitale proef krijg je altijd."}}]}</script>
   <style>
-    @font-face { font-family:'Inter'; font-style:normal; font-weight:400; font-display:swap; src:url('fonts/inter-v20-latin-regular.woff2') format('woff2'); }
-    @font-face { font-family:'Inter'; font-style:normal; font-weight:500; font-display:swap; src:url('fonts/inter-v20-latin-500.woff2') format('woff2'); }
-    @font-face { font-family:'Inter'; font-style:normal; font-weight:600; font-display:swap; src:url('fonts/inter-v20-latin-600.woff2') format('woff2'); }
-    @font-face { font-family:'Space Grotesk'; font-style:normal; font-weight:600; font-display:swap; src:url('fonts/space-grotesk-v22-latin-600.woff2') format('woff2'); }
-    @font-face { font-family:'Space Grotesk'; font-style:normal; font-weight:700; font-display:swap; src:url('fonts/space-grotesk-v22-latin-700.woff2') format('woff2'); }
+    @font-face { font-family:'Inter'; font-style:normal; font-weight:400; font-display:swap; src:url('/fonts/inter-v20-latin-regular.woff2') format('woff2'); }
+    @font-face { font-family:'Inter'; font-style:normal; font-weight:500; font-display:swap; src:url('/fonts/inter-v20-latin-500.woff2') format('woff2'); }
+    @font-face { font-family:'Inter'; font-style:normal; font-weight:600; font-display:swap; src:url('/fonts/inter-v20-latin-600.woff2') format('woff2'); }
+    @font-face { font-family:'Space Grotesk'; font-style:normal; font-weight:600; font-display:swap; src:url('/fonts/space-grotesk-v22-latin-600.woff2') format('woff2'); }
+    @font-face { font-family:'Space Grotesk'; font-style:normal; font-weight:700; font-display:swap; src:url('/fonts/space-grotesk-v22-latin-700.woff2') format('woff2'); }
 
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
     :root {
@@ -314,6 +314,14 @@
     .nav-voorwie-menu a:hover span { color: var(--gray-600, #555); }
     .nav-links:has(.nav-voorwie) { gap: 24px; }
     .mobile-menu-doelgroep { color: var(--green) !important; }
+  
+    /* ═══ MOBIEL: tikdoelen en leesbaarheid ═══════════════════════ */
+    @media (max-width: 640px) {
+      .footer-col a { padding: 9px 0; margin-bottom: 0 !important; }
+      .footer-col h4 { margin-bottom: 6px; }
+      .footer-bottom a, .hp-cookie-link { display: inline-block; padding: 8px 2px; }
+      .product-card-minafname { font-size: 12px; }
+    }
   
     /* ═══ DOELGROEPPAGINA ═════════════════════════════════════════ */
     .dg-wrap { max-width: 1200px; margin: 0 auto; padding: 0 80px; }

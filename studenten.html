@@ -22,11 +22,11 @@
   <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-v20-latin-regular.woff2" crossorigin />
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Hoe ver van tevoren moeten we bestellen?", "acceptedAnswer": {"@type": "Answer", "text": "Reken op 2 tot 4 weken na akkoord op de digitale proef. In augustus en september is het druk door de introductietijd, dus begin voor een lustrum of skireis op tijd."}}, {"@type": "Question", "name": "Wat is de minimale afname?", "acceptedAnswer": {"@type": "Answer", "text": "Dat verschilt per product: hoodies en vlaggen vanaf 10 stuks, blouses vanaf 15, sjaals vanaf 20, sokken vanaf 25 en mutsen vanaf 30."}}, {"@type": "Question", "name": "Kunnen jullie ons dispuutswapen borduren?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Stuur je wapen of logo mee in de beste kwaliteit die je hebt. Wij maken er een digitale proef van, zodat je precies ziet hoe het wordt."}}, {"@type": "Question", "name": "Kunnen we verschillende maten bestellen?", "acceptedAnswer": {"@type": "Answer", "text": "Ja, je geeft per product de maatverdeling door. Weet je die nog niet precies, dan kan dat ook later in het traject."}}]}</script>
   <style>
-    @font-face { font-family:'Inter'; font-style:normal; font-weight:400; font-display:swap; src:url('fonts/inter-v20-latin-regular.woff2') format('woff2'); }
-    @font-face { font-family:'Inter'; font-style:normal; font-weight:500; font-display:swap; src:url('fonts/inter-v20-latin-500.woff2') format('woff2'); }
-    @font-face { font-family:'Inter'; font-style:normal; font-weight:600; font-display:swap; src:url('fonts/inter-v20-latin-600.woff2') format('woff2'); }
-    @font-face { font-family:'Space Grotesk'; font-style:normal; font-weight:600; font-display:swap; src:url('fonts/space-grotesk-v22-latin-600.woff2') format('woff2'); }
-    @font-face { font-family:'Space Grotesk'; font-style:normal; font-weight:700; font-display:swap; src:url('fonts/space-grotesk-v22-latin-700.woff2') format('woff2'); }
+    @font-face { font-family:'Inter'; font-style:normal; font-weight:400; font-display:swap; src:url('/fonts/inter-v20-latin-regular.woff2') format('woff2'); }
+    @font-face { font-family:'Inter'; font-style:normal; font-weight:500; font-display:swap; src:url('/fonts/inter-v20-latin-500.woff2') format('woff2'); }
+    @font-face { font-family:'Inter'; font-style:normal; font-weight:600; font-display:swap; src:url('/fonts/inter-v20-latin-600.woff2') format('woff2'); }
+    @font-face { font-family:'Space Grotesk'; font-style:normal; font-weight:600; font-display:swap; src:url('/fonts/space-grotesk-v22-latin-600.woff2') format('woff2'); }
+    @font-face { font-family:'Space Grotesk'; font-style:normal; font-weight:700; font-display:swap; src:url('/fonts/space-grotesk-v22-latin-700.woff2') format('woff2'); }
 
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
     :root {
@@ -314,6 +314,14 @@
     .nav-voorwie-menu a:hover span { color: var(--gray-600, #555); }
     .nav-links:has(.nav-voorwie) { gap: 24px; }
     .mobile-menu-doelgroep { color: var(--green) !important; }
+  
+    /* ═══ MOBIEL: tikdoelen en leesbaarheid ═══════════════════════ */
+    @media (max-width: 640px) {
+      .footer-col a { padding: 9px 0; margin-bottom: 0 !important; }
+      .footer-col h4 { margin-bottom: 6px; }
+      .footer-bottom a, .hp-cookie-link { display: inline-block; padding: 8px 2px; }
+      .product-card-minafname { font-size: 12px; }
+    }
   
     /* ═══ DOELGROEPPAGINA ═════════════════════════════════════════ */
     .dg-wrap { max-width: 1200px; margin: 0 auto; padding: 0 80px; }

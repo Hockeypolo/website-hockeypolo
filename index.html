@@ -148,7 +148,7 @@
   }
   </script>
   <!-- Preload kritieke hero-afbeelding voor snellere LCP -->
-  <link rel="preload" as="image" href="fotomateriaal/hero-homepage/hero-slide-7.jpg" fetchpriority="high" />
+  <link rel="preload" as="image" href="fotomateriaal/hero-homepage/hero-slide-7.webp" fetchpriority="high" />
   <!-- Self-hosted fonts: preload de twee belangrijkste voor snelle eerste render -->
   <link rel="preload" as="font" type="font/woff2" href="fonts/space-grotesk-v22-latin-700.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="fonts/inter-v20-latin-regular.woff2" crossorigin />
@@ -164,42 +164,42 @@
       font-style: normal;
       font-weight: 400;
       font-display: swap;
-      src: url('fonts/inter-v20-latin-regular.woff2') format('woff2');
+      src: url('/fonts/inter-v20-latin-regular.woff2') format('woff2');
     }
     @font-face {
       font-family: 'Inter';
       font-style: normal;
       font-weight: 500;
       font-display: swap;
-      src: url('fonts/inter-v20-latin-500.woff2') format('woff2');
+      src: url('/fonts/inter-v20-latin-500.woff2') format('woff2');
     }
     @font-face {
       font-family: 'Inter';
       font-style: normal;
       font-weight: 600;
       font-display: swap;
-      src: url('fonts/inter-v20-latin-600.woff2') format('woff2');
+      src: url('/fonts/inter-v20-latin-600.woff2') format('woff2');
     }
     @font-face {
       font-family: 'Space Grotesk';
       font-style: normal;
       font-weight: 500;
       font-display: swap;
-      src: url('fonts/space-grotesk-v22-latin-500.woff2') format('woff2');
+      src: url('/fonts/space-grotesk-v22-latin-500.woff2') format('woff2');
     }
     @font-face {
       font-family: 'Space Grotesk';
       font-style: normal;
       font-weight: 600;
       font-display: swap;
-      src: url('fonts/space-grotesk-v22-latin-600.woff2') format('woff2');
+      src: url('/fonts/space-grotesk-v22-latin-600.woff2') format('woff2');
     }
     @font-face {
       font-family: 'Space Grotesk';
       font-style: normal;
       font-weight: 700;
       font-display: swap;
-      src: url('fonts/space-grotesk-v22-latin-700.woff2') format('woff2');
+      src: url('/fonts/space-grotesk-v22-latin-700.woff2') format('woff2');
     }
 
     /* ═══════════════════════════════════════════════════
@@ -3870,6 +3870,26 @@
     .contact-optie-tijd { font-family: var(--font-h); font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--green); }
     .contact-optie-actie { margin-top: 6px; font-family: var(--font-h); font-size: 13px; font-weight: 700; color: var(--green); }
     @media (max-width: 640px) { .contact-keuze { grid-template-columns: 1fr; gap: 10px; margin-bottom: 28px; } .contact-optie { padding: 16px 18px; } }
+  
+    /* ═══ MOBIEL: tikdoelen en leesbaarheid ═══════════════════════ */
+    @media (max-width: 640px) {
+      .footer-col a { padding: 9px 0; margin-bottom: 0 !important; }
+      .footer-col h4 { margin-bottom: 6px; }
+      .footer-bottom a, .hp-cookie-link { display: inline-block; padding: 8px 2px; }
+      .product-card-minafname { font-size: 12px; }
+    }
+
+    @media (max-width: 640px) {
+      .newsletter-form .nl-consent input[type="checkbox"] { width: 20px; height: 20px; margin-top: 0; }
+      .newsletter-form .nl-consent { align-items: flex-start; gap: 10px; }
+      .blog-article-back { padding: 12px 0; }
+      .team-li-btn { min-width: 44px; min-height: 44px; }
+      .product-groups .pc-kleurbadge, .product-groups .pc-staal-meer { font-size: 12px; }
+      .stats-band .stat-item-lbl, .stat-item-lbl { font-size: 11.5px; }
+      #wa-widget { bottom: 16px; right: 16px; transition: opacity .25s, transform .25s; }
+      #wa-fab { width: 52px; height: 52px; }
+      #wa-widget.wa-verborgen { opacity: 0; transform: translateY(12px); pointer-events: none; }
+    }
   </style>
   <script defer src="/_vercel/insights/script.js"></script>
 
@@ -3996,31 +4016,31 @@
       <div class="hero-slideshow-wrap">
         <div class="hero-slideshow">
           <img class="hero-slide active"
-            src="fotomateriaal/hero-homepage/hero-slide-7.jpg"
+            src="fotomateriaal/hero-homepage/hero-slide-7.webp"
             fetchpriority="high"
             alt="Hockeypolo, sweaters voor The Meat Boys" />
           <img class="hero-slide"
-            src="fotomateriaal/hero-homepage/hero-slide-5.jpg"
+            src="fotomateriaal/hero-homepage/hero-slide-5.webp"
             loading="lazy"
             alt="Hockeypolo, Philips Innovation Award 2025" />
           <img class="hero-slide"
-            src="fotomateriaal/hero-homepage/hero-slide-1.jpg"
+            src="fotomateriaal/hero-homepage/hero-slide-1.webp"
             loading="lazy"
             alt="Hockeypolo, KWF Bruggenloop 2025" />
           <img class="hero-slide"
-            src="fotomateriaal/hero-homepage/hero-slide-3.jpg"
+            src="fotomateriaal/hero-homepage/hero-slide-3.webp"
             loading="lazy"
             alt="Hockeypolo, Dispuutsblouses Botlek" />
           <img class="hero-slide"
-            src="fotomateriaal/hero-homepage/hero-slide-2.jpg"
+            src="fotomateriaal/hero-homepage/hero-slide-2.webp"
             loading="lazy"
             alt="Hockeypolo, KWF Bruggenloop 2025" />
           <img class="hero-slide"
-            src="fotomateriaal/hero-homepage/hero-slide-4.jpg"
+            src="fotomateriaal/hero-homepage/hero-slide-4.webp"
             loading="lazy"
             alt="Hockeypolo, Lustrumvlag Apache" />
           <img class="hero-slide"
-            src="fotomateriaal/hero-homepage/hero-slide-6.jpg"
+            src="fotomateriaal/hero-homepage/hero-slide-6.webp"
             loading="lazy"
             alt="Hockeypolo, KWF Bruggenloop 2025" />
         </div>
@@ -4058,34 +4078,34 @@
     <div class="logo-band-sep"></div>
     <div class="marquee-wrap">
       <div class="marquee-track">
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-11.png" alt="EY" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-10.png" alt="The Meat Boys" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/client-logo-spaik.png" alt="SPAIK" style="height:30px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/client-logo-no-such-ventures.png" alt="No Such Ventures" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-2.png" alt="Philips Innovation Award" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-3.png" alt="Panorama Festival Rotterdam" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-5.png" alt="Zegevieren Festival" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-4.png" alt="Oma's Soep" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-6.png" alt="Café Vader Kleinjan" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-8.png" alt="De Beurs" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-9.png" alt="Heart to Handle" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/brand-logo-1.png" alt="R.S.C. / R.V.S.V." style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-7.png" alt="Laurentius Rotterdam" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/client-logo-fsa.svg" alt="FSA – Financial Study Association Amsterdam" style="height:26px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-11.png" alt="EY" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-10.png" alt="The Meat Boys" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/client-logo-spaik.png" alt="SPAIK" style="height:30px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/client-logo-no-such-ventures.png" alt="No Such Ventures" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-2.png" alt="Philips Innovation Award" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-3.png" alt="Panorama Festival Rotterdam" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-5.png" alt="Zegevieren Festival" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-4.png" alt="Oma's Soep" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-6.png" alt="Café Vader Kleinjan" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-8.png" alt="De Beurs" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-9.png" alt="Heart to Handle" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/brand-logo-1.png" alt="R.S.C. / R.V.S.V." style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/img-7.png" alt="Laurentius Rotterdam" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
-        <span class="marquee-item"><img src="fotomateriaal/partner-logos/client-logo-fsa.svg" alt="FSA – Financial Study Association Amsterdam" style="height:26px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/img-11.png" alt="EY" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/img-10.png" alt="The Meat Boys" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/client-logo-spaik.png" alt="SPAIK" style="height:30px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/client-logo-no-such-ventures.png" alt="No Such Ventures" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/img-2.png" alt="Philips Innovation Award" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/img-3.png" alt="Panorama Festival Rotterdam" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/img-5.png" alt="Zegevieren Festival" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/img-4.png" alt="Oma's Soep" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/img-6.png" alt="Café Vader Kleinjan" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/img-8.png" alt="De Beurs" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/img-9.png" alt="Heart to Handle" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/brand-logo-1.png" alt="R.S.C. / R.V.S.V." style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/img-7.png" alt="Laurentius Rotterdam" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/client-logo-fsa.svg" alt="FSA – Financial Study Association Amsterdam" style="height:26px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/img-11.png" alt="EY" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/img-10.png" alt="The Meat Boys" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/client-logo-spaik.png" alt="SPAIK" style="height:30px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/client-logo-no-such-ventures.png" alt="No Such Ventures" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/img-2.png" alt="Philips Innovation Award" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/img-3.png" alt="Panorama Festival Rotterdam" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/img-5.png" alt="Zegevieren Festival" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/img-4.png" alt="Oma's Soep" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/img-6.png" alt="Café Vader Kleinjan" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/img-8.png" alt="De Beurs" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/img-9.png" alt="Heart to Handle" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/brand-logo-1.png" alt="R.S.C. / R.V.S.V." style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/img-7.png" alt="Laurentius Rotterdam" style="height:44px;width:auto;display:block;opacity:.8;" /></span>
+        <span class="marquee-item"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/client-logo-fsa.svg" alt="FSA – Financial Study Association Amsterdam" style="height:26px;width:auto;display:block;opacity:.8;" /></span>
       </div>
     </div>
   </div>
@@ -4148,8 +4168,8 @@
 
     <div class="collectie-grid">
       <div class="product-card reveal" style="cursor:pointer;" onclick="location.href='/producten/hoodies'">
-        <img class="product-card-img"
-          src="https://static.wixstatic.com/media/0cb13e_19e17d2bcf4f4e22916dc4d6f22ebfd1~mv2.png"
+        <img loading="lazy" decoding="async" class="product-card-img"
+          src="https://static.wixstatic.com/media/0cb13e_19e17d2bcf4f4e22916dc4d6f22ebfd1~mv2.png/v1/fit/w_700,h_700,q_80,enc_auto/foto.png"
           alt="Hoodies" />
         <div class="product-card-label">
           <span class="product-card-name">Hoodies</span>
@@ -4157,8 +4177,8 @@
         </div>
       </div>
       <div class="product-card reveal" style="cursor:pointer;" onclick="location.href='/producten/overhemden'">
-        <img class="product-card-img"
-          src="https://static.wixstatic.com/media/0cb13e_9b1786d56f45432fab46f5eff049267f~mv2.png"
+        <img loading="lazy" decoding="async" class="product-card-img"
+          src="https://static.wixstatic.com/media/0cb13e_9b1786d56f45432fab46f5eff049267f~mv2.png/v1/fit/w_700,h_700,q_80,enc_auto/foto.png"
           alt="Overhemden" />
         <div class="product-card-label">
           <span class="product-card-name">Overhemden</span>
@@ -4166,8 +4186,8 @@
         </div>
       </div>
       <div class="product-card reveal" style="cursor:pointer;" onclick="location.href='/producten/sportshirts'">
-        <img class="product-card-img"
-          src="https://static.wixstatic.com/media/0cb13e_5932cd8fc2e9458ba8870c2165f84499~mv2.png"
+        <img loading="lazy" decoding="async" class="product-card-img"
+          src="https://static.wixstatic.com/media/0cb13e_5932cd8fc2e9458ba8870c2165f84499~mv2.png/v1/fit/w_700,h_700,q_80,enc_auto/foto.png"
           alt="Sportshirts" />
         <div class="product-card-label">
           <span class="product-card-name">Sportshirts</span>
@@ -4175,8 +4195,8 @@
         </div>
       </div>
       <div class="product-card reveal" style="cursor:pointer;" onclick="location.href='/producten/sjaals'">
-        <img class="product-card-img"
-          src="https://static.wixstatic.com/media/0cb13e_38bd63c90108403ea563c89f8325416a~mv2.png"
+        <img loading="lazy" decoding="async" class="product-card-img"
+          src="https://static.wixstatic.com/media/0cb13e_38bd63c90108403ea563c89f8325416a~mv2.png/v1/fit/w_700,h_700,q_80,enc_auto/foto.png"
           alt="Sjaals" />
         <div class="product-card-label">
           <span class="product-card-name">Sjaals</span>
@@ -4184,15 +4204,15 @@
         </div>
       </div>
       <div class="product-card reveal" style="cursor:pointer;" onclick="location.href='/producten/vlaggen'">
-        <img class="product-card-img" id="collectie-vlaggen-img" src="" alt="Vlaggen" />
+        <img loading="lazy" decoding="async" class="product-card-img" id="collectie-vlaggen-img" src="" alt="Vlaggen" />
         <div class="product-card-label">
           <span class="product-card-name">Vlaggen</span>
           <a class="product-card-btn" href="/producten/vlaggen" onclick="event.stopPropagation()">Kopen <svg viewBox="0 0 16 16"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a>
         </div>
       </div>
       <div class="product-card reveal" style="cursor:pointer;" onclick="location.href='/producten/zwembroeken'">
-        <img class="product-card-img"
-          src="https://static.wixstatic.com/media/0cb13e_1dcf14e69dd3458a9f73ffaa076383d7~mv2.png"
+        <img loading="lazy" decoding="async" class="product-card-img"
+          src="https://static.wixstatic.com/media/0cb13e_1dcf14e69dd3458a9f73ffaa076383d7~mv2.png/v1/fit/w_700,h_700,q_80,enc_auto/foto.png"
           alt="Zwembroeken" />
         <div class="product-card-label">
           <span class="product-card-name">Zwembroeken</span>
@@ -4255,19 +4275,19 @@
 
     <div class="impressies-grid">
       <div class="impressie-item reveal" onclick="openProject(3)">
-        <img src="fotomateriaal/klantprojecten/phia/gallery-2.jpg" alt="Philips Innovation Award 2025" />
+        <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/phia/gallery-2.jpg" alt="Philips Innovation Award 2025" />
         <div class="impressie-overlay"><div class="impressie-overlay-title">Philips Innovation Award 2025</div><div class="impressie-overlay-sub">Evenement · 2025</div></div><div class="impressie-overlay-icon"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
       </div>
       <div class="impressie-item reveal" onclick="openProject(14)">
-        <img src="/fotomateriaal/klantprojecten/keizersnee-kwf2026/keizersnee1.JPG" alt="Dispuut Keizersnee x KWF Bruggenloop 2026" />
+        <img loading="lazy" decoding="async" src="/fotomateriaal/klantprojecten/keizersnee-kwf2026/keizersnee1.JPG" alt="Dispuut Keizersnee x KWF Bruggenloop 2026" />
         <div class="impressie-overlay"><div class="impressie-overlay-title">Keizersnee x KWF Bruggenloop</div><div class="impressie-overlay-sub">Evenement · 2026</div></div><div class="impressie-overlay-icon"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
       </div>
       <div class="impressie-item reveal" onclick="openProject(16)">
-        <img src="fotomateriaal/klantprojecten/eurekaweek-2026/eureka-stelz.jpg" alt="R.S.C./R.V.S.V. Eurekaweek 2026" />
+        <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/eurekaweek-2026/eureka-stelz.jpg" alt="R.S.C./R.V.S.V. Eurekaweek 2026" />
         <div class="impressie-overlay"><div class="impressie-overlay-title">R.S.C./R.V.S.V. Eurekaweek 2026</div><div class="impressie-overlay-sub">Evenement · 2026</div></div><div class="impressie-overlay-icon"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
       </div>
       <div class="impressie-item reveal" onclick="openProject(11)">
-        <img src="fotomateriaal/klantprojecten/meatboys-2026/meatboys-rug.jpg" alt="Meatboys 2026" style="object-position:center 34%;" />
+        <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/meatboys-2026/meatboys-rug.jpg" alt="Meatboys 2026" style="object-position:center 34%;" />
         <div class="impressie-overlay"><div class="impressie-overlay-title">Meatboys 2026</div><div class="impressie-overlay-sub">Evenement · 2026</div></div><div class="impressie-overlay-icon"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
       </div>
     </div>
@@ -4308,7 +4328,7 @@
 
       <article class="blog-card" onclick="showPage('blog-artikel-6')" style="cursor:pointer;">
         <div class="blog-card-img">
-          <img src="fotomateriaal/klantprojecten/apache-skireis/apache-skireis-sjaal-muts.jpeg" alt="Lustrum merchandise laten maken" style="object-position:center 25%;">
+          <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/apache-skireis/apache-skireis-sjaal-muts.jpeg" alt="Lustrum merchandise laten maken" style="object-position:center 25%;">
           <span class="blog-cat-tag tag-tips">Tips</span>
         </div>
         <div class="blog-card-body">
@@ -4321,7 +4341,7 @@
 
       <article class="blog-card" data-publish-date="2026-05-20T09:00" onclick="showPage('blog-artikel-5')" style="cursor:pointer;">
         <div class="blog-card-img">
-          <img src="fotomateriaal/klantprojecten/meatboys-2026/meatboys1.jpg" alt="Werkkleding als marketingtool">
+          <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/meatboys-2026/meatboys1.jpg" alt="Werkkleding als marketingtool">
           <span class="blog-cat-tag tag-teamwear">Teamwear</span>
         </div>
         <div class="blog-card-body">
@@ -4334,7 +4354,7 @@
 
       <article class="blog-card" onclick="showPage('blog-artikel-1')" style="cursor:pointer;">
         <div class="blog-card-img">
-          <img src="fotomateriaal/klantprojecten/keizersnee-kwf2026/Keizersnee_KWF2026_1.jpg" alt="Perfecte clubmerch">
+          <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/keizersnee-kwf2026/Keizersnee_KWF2026_1.jpg" alt="Perfecte clubmerch">
           <span class="blog-cat-tag tag-tips">Tips</span>
         </div>
         <div class="blog-card-body">
@@ -4347,7 +4367,7 @@
 
       <article class="blog-card" onclick="showPage('blog-artikel-3')" style="cursor:pointer;">
         <div class="blog-card-img">
-          <img src="fotomateriaal/klantprojecten/phia/phia3.jpeg" alt="Project PHIA, Rotterdam 2025">
+          <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/phia/phia3.jpeg" alt="Project PHIA, Rotterdam 2025">
           <span class="blog-cat-tag tag-cases">Cases</span>
         </div>
         <div class="blog-card-body">
@@ -4424,7 +4444,7 @@
       <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
     </div>
     <div class="footer-grid">
-      <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
+      <div><div class="footer-logo"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
       <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
@@ -4486,7 +4506,7 @@
       <div class="ph-btns"><a class="btn btn-green" href="/start-project">Start je project <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a><a class="btn btn-outline-white" href="/ontwerp-sportshirt" onclick="showPage('ontwerp-tool'); return false;">Ontwerp zelf je shirt</a></div>
       <ul class="ph-feiten"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Gratis ontwerp en digitale proef</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Levering in 2–4 weken</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Bedrukt of geborduurd met jouw logo</span></li></ul>
     </div>
-    <div class="page-hero-foto"><img src="fotomateriaal/paginaheroes/producten.webp" alt="Deelnemers aan de KWF Bruggenloop in sportshirts van Hockeypolo" width="1200" height="800" decoding="async" style="object-position:center"></div>
+    <div class="page-hero-foto"><img loading="lazy" decoding="async" src="fotomateriaal/paginaheroes/producten.webp" alt="Deelnemers aan de KWF Bruggenloop in sportshirts van Hockeypolo" width="1200" height="800" decoding="async" style="object-position:center"></div>
   </div>
   </div>
 
@@ -5046,7 +5066,7 @@
       <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
     </div>
     <div class="footer-grid">
-      <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
+      <div><div class="footer-logo"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
       <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
@@ -5097,7 +5117,7 @@
   <div class="featured-project-wrap" data-cats="sportkleding disputen evenementen">
     <div class="featured-project reveal">
       <div class="fp-img">
-        <img src="fotomateriaal/klantprojecten/fraters-kwf2026/Fraters_KWF2026_1.jpg" alt="Dispuut Fraters x KWF Bruggenloop 2026" />
+        <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/fraters-kwf2026/Fraters_KWF2026_1.jpg" alt="Dispuut Fraters x KWF Bruggenloop 2026" />
       </div>
       <div class="fp-content">
         <div class="fp-tag">⭐ Uitgelicht project</div>
@@ -5131,7 +5151,7 @@
   <!-- Masonry gallery -->
   <div class="impressies-masonry">
     <div class="imp-item reveal" data-cats="sportkleding evenementen" onclick="openProject(16)">
-      <img src="fotomateriaal/klantprojecten/eurekaweek-2026/eureka-stelz.jpg" alt="R.S.C./R.V.S.V. Eurekaweek 2026" />
+      <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/eurekaweek-2026/eureka-stelz.jpg" alt="R.S.C./R.V.S.V. Eurekaweek 2026" />
       <div class="imp-overlay"><div class="imp-overlay-title">R.S.C./R.V.S.V. Eurekaweek 2026</div><div class="imp-overlay-sub">Sportshirts · Evenement</div></div>
       <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
@@ -5146,37 +5166,37 @@
       </div>
     </div>
     <div class="imp-item reveal" data-cats="evenementen" onclick="openProject(11)">
-      <img src="fotomateriaal/klantprojecten/meatboys-2026/meatboys-rug.jpg" alt="Meatboys 2026" />
+      <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/meatboys-2026/meatboys-rug.jpg" alt="Meatboys 2026" />
       <div class="imp-overlay"><div class="imp-overlay-title">Meatboys 2026</div><div class="imp-overlay-sub">Sweaters · Evenement</div></div>
       <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
     <div class="imp-item reveal" data-cats="sportkleding evenementen" onclick="openProject(1)">
-      <img src="fotomateriaal/klantprojecten/kwf-bruggenloop-2025/gallery-1.jpg" alt="KWF Bruggenloop 2025" />
+      <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/kwf-bruggenloop-2025/gallery-1.jpg" alt="KWF Bruggenloop 2025" />
       <div class="imp-overlay"><div class="imp-overlay-title">KWF Bruggenloop 2025</div><div class="imp-overlay-sub">Hardloopshirts · Evenement</div></div>
       <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
     <div class="imp-item reveal" data-cats="disputen" onclick="openProject(2)">
-      <img src="https://static.wixstatic.com/media/d9f76e_4354bbe426304ae69807344a1a664347~mv2.jpg" alt="Dispuutsblouses Botlek" />
+      <img loading="lazy" decoding="async" src="https://static.wixstatic.com/media/d9f76e_4354bbe426304ae69807344a1a664347~mv2.jpg/v1/fit/w_1400,h_1400,q_80,enc_auto/foto.jpg" alt="Dispuutsblouses Botlek" />
       <div class="imp-overlay"><div class="imp-overlay-title">Dispuutsblouses Botlek</div><div class="imp-overlay-sub">Blouses · R.S.C./R.V.S.V.</div></div>
       <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
     <div class="imp-item reveal" data-cats="disputen" onclick="openProject(12)">
-      <img src="fotomateriaal/klantprojecten/apollo-comitas-2025/img-12.jpg" alt="Custom sweaters S.C.D. Apollo" />
+      <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/apollo-comitas-2025/img-12.jpg" alt="Custom sweaters S.C.D. Apollo" />
       <div class="imp-overlay"><div class="imp-overlay-title">S.C.D. Apollo Lustrum</div><div class="imp-overlay-sub">Sweaters · Amsterdam</div></div>
       <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
     <div class="imp-item reveal" data-cats="evenementen" onclick="openProject(3)">
-      <img src="fotomateriaal/klantprojecten/phia/gallery-2.jpg" alt="Philips Innovation Award 2025" />
+      <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/phia/gallery-2.jpg" alt="Philips Innovation Award 2025" />
       <div class="imp-overlay"><div class="imp-overlay-title">Philips Innovation Award 2025</div><div class="imp-overlay-sub">Merchandise · Rotterdam</div></div>
       <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
     <div class="imp-item reveal" data-cats="disputen" onclick="openProject(4)">
-      <img src="/fotomateriaal/klantprojecten/ruis/ruis1.JPG" alt="Dispuutsblouses Ruis" />
+      <img loading="lazy" decoding="async" src="/fotomateriaal/klantprojecten/ruis/ruis1.JPG" alt="Dispuutsblouses Ruis" />
       <div class="imp-overlay"><div class="imp-overlay-title">Dispuutsblouses Ruis</div><div class="imp-overlay-sub">Blouses · R.S.C./R.V.S.V.</div></div>
       <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
     <div class="imp-item reveal" data-cats="disputen accessoires" onclick="openProject(13)">
-      <img src="/fotomateriaal/klantprojecten/apache-vlaggen-2024/apache1.jpg" alt="Vlaggen Dispuut Apache" />
+      <img loading="lazy" decoding="async" src="/fotomateriaal/klantprojecten/apache-vlaggen-2024/apache1.jpg" alt="Vlaggen Dispuut Apache" />
       <div class="imp-overlay"><div class="imp-overlay-title">Vlaggen Dispuut Apache</div><div class="imp-overlay-sub">Vlaggen · Rotterdam</div></div>
       <div class="imp-expand"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
@@ -5203,7 +5223,7 @@
       <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
     </div>
     <div class="footer-grid">
-      <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
+      <div><div class="footer-logo"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
       <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
@@ -5251,7 +5271,7 @@
 
       <article class="blog-card reveal" data-cat="tips" onclick="showPage('blog-artikel-6')">
         <div class="blog-card-img">
-          <img src="fotomateriaal/klantprojecten/apache-skireis/apache-skireis-sjaal-muts.jpeg" alt="Lustrum merchandise laten maken voor studentenverenigingen">
+          <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/apache-skireis/apache-skireis-sjaal-muts.jpeg" alt="Lustrum merchandise laten maken voor studentenverenigingen">
           <span class="blog-cat-tag tag-tips">Tips</span>
         </div>
         <div class="blog-card-body">
@@ -5264,7 +5284,7 @@
 
       <article class="blog-card reveal" data-cat="teamwear" data-publish-date="2026-05-20T09:00" onclick="showPage('blog-artikel-5')">
         <div class="blog-card-img">
-          <img src="fotomateriaal/klantprojecten/meatboys-2026/meatboys1.jpg" alt="Werkkleding als marketingtool">
+          <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/meatboys-2026/meatboys1.jpg" alt="Werkkleding als marketingtool">
           <span class="blog-cat-tag tag-teamwear">Teamwear</span>
         </div>
         <div class="blog-card-body">
@@ -5277,7 +5297,7 @@
 
       <article class="blog-card reveal" data-cat="tips" onclick="showPage('blog-artikel-1')">
         <div class="blog-card-img">
-          <img src="fotomateriaal/klantprojecten/keizersnee-kwf2026/Keizersnee_KWF2026_1.jpg" alt="Clubmerch samenstellen">
+          <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/keizersnee-kwf2026/Keizersnee_KWF2026_1.jpg" alt="Clubmerch samenstellen">
           <span class="blog-cat-tag tag-tips">Tips</span>
         </div>
         <div class="blog-card-body">
@@ -5290,7 +5310,7 @@
 
       <article class="blog-card reveal" data-cat="tips" onclick="showPage('blog-artikel-2')">
         <div class="blog-card-img">
-          <img src="fotomateriaal/klantprojecten/keizersnee-kwf2026/keizersnee1.JPG" alt="Bedrukken of borduren">
+          <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/keizersnee-kwf2026/keizersnee1.JPG" alt="Bedrukken of borduren">
           <span class="blog-cat-tag tag-tips">Tips</span>
         </div>
         <div class="blog-card-body">
@@ -5303,7 +5323,7 @@
 
       <article class="blog-card reveal" data-cat="cases" onclick="showPage('blog-artikel-3')">
         <div class="blog-card-img">
-          <img src="fotomateriaal/klantprojecten/phia/phia3.jpeg" alt="Project PHIA, Rotterdam 2025">
+          <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/phia/phia3.jpeg" alt="Project PHIA, Rotterdam 2025">
           <span class="blog-cat-tag tag-cases">Cases</span>
         </div>
         <div class="blog-card-body">
@@ -5316,7 +5336,7 @@
 
       <article class="blog-card reveal" data-cat="trends" onclick="showPage('blog-artikel-4')">
         <div class="blog-card-img">
-          <img src="fotomateriaal/klantprojecten/apache-vlaggen-2024/apache1.jpg" alt="Duurzame teamkleding trends">
+          <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/apache-vlaggen-2024/apache1.jpg" alt="Duurzame teamkleding trends">
           <span class="blog-cat-tag tag-trends">Trends</span>
         </div>
         <div class="blog-card-body">
@@ -5354,7 +5374,7 @@
       <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
     </div>
     <div class="footer-grid">
-      <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
+      <div><div class="footer-logo"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
       <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
@@ -5392,7 +5412,7 @@
       </div>
       <h2 class="blog-article-title">Hoe kies je de perfecte <em>clubmerch?</em></h2>
       <div class="blog-article-cover">
-        <img src="fotomateriaal/klantprojecten/keizersnee-kwf2026/Keizersnee_KWF2026_1.jpg" alt="Clubmerch samenstellen">
+        <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/keizersnee-kwf2026/Keizersnee_KWF2026_1.jpg" alt="Clubmerch samenstellen">
       </div>
       <div class="blog-article-body">
         <p>Of je nu een hockeyteam van 20 spelers of een bedrijf van 200+ medewerkers vertegenwoordigt: merchandise bestellen is altijd spannend. Je wil dat het er goed uitziet, betaalbaar is en op tijd geleverd wordt. Maar hoe begin je? Na meer dan 20 jaar ervaring met clubs, verenigingen, bedrijven en evenementen delen we alles wat je moet weten.</p>
@@ -5449,7 +5469,7 @@
       <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
     </div>
     <div class="footer-grid">
-      <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
+      <div><div class="footer-logo"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
       <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
@@ -5487,7 +5507,7 @@
       </div>
       <h2 class="blog-article-title">Bedrukken of borduren: <em>wat past bij jou?</em></h2>
       <div class="blog-article-cover">
-        <img src="fotomateriaal/klantprojecten/keizersnee-kwf2026/keizersnee1.JPG" alt="Bedrukken of borduren">
+        <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/keizersnee-kwf2026/keizersnee1.JPG" alt="Bedrukken of borduren">
       </div>
       <div class="blog-article-body">
         <p>Een van de meest gestelde vragen: moet ik mijn logo laten bedrukken of borduren? Het antwoord hangt af van het product, het doel en de gewenste uitstraling. We leggen beide technieken voor je uit.</p>
@@ -5539,7 +5559,7 @@
       <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
     </div>
     <div class="footer-grid">
-      <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
+      <div><div class="footer-logo"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
       <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
@@ -5577,7 +5597,7 @@
       </div>
       <h2 class="blog-article-title">Achter de schermen: <em>project PHIA, Rotterdam 2025</em></h2>
       <div class="blog-article-cover">
-        <img src="fotomateriaal/klantprojecten/phia/phia3.jpeg" alt="Project PHIA, Rotterdam 2025">
+        <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/phia/phia3.jpeg" alt="Project PHIA, Rotterdam 2025">
       </div>
       <div class="blog-article-body">
         <p>De Philips Innovation Award, ook wel de PHIA, is een van de meest prestigieuze ondernemerswedstrijden voor studenten in Nederland. Georganiseerd door een commissie van het R.S.C./R.V.S.V., brengt het evenement elk jaar de meest ambitieuze studentondernemers uit heel het land samen. Zij pitchen hun ideeën voor een jury, worden gedurende een heel jaar begeleid in hun traject, en staan uiteindelijk in de finale opnieuw voor een panel van topbestuurders uit het Nederlandse bedrijfsleven. Pieter Zwart (Coolblue), Roy Jakobs (Philips), Ali Niknam (Bunq) en Mark de Boer (Upfront) schoven eerder al aan als jurylid. De winnaar ontvangt een geldbedrag om de eigen startup verder te laten groeien.</p>
@@ -5621,7 +5641,7 @@
       <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
     </div>
     <div class="footer-grid">
-      <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
+      <div><div class="footer-logo"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
       <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
@@ -5659,7 +5679,7 @@
       </div>
       <h2 class="blog-article-title">Duurzame teamkleding: <em>de trends voor 2025</em></h2>
       <div class="blog-article-cover">
-        <img src="fotomateriaal/klantprojecten/apache-vlaggen-2024/apache1.jpg" alt="Duurzame teamkleding">
+        <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/apache-vlaggen-2024/apache1.jpg" alt="Duurzame teamkleding">
       </div>
       <div class="blog-article-body">
         <p>Duurzaamheid staat hoog op de agenda bij steeds meer clubs en bedrijven. En dat is niet zomaar een trend: het is een fundamentele verschuiving in hoe we kijken naar productie, materiaalgebruik en de levensduur van kleding. Wat zijn de belangrijkste ontwikkelingen voor 2025?</p>
@@ -5703,7 +5723,7 @@
       <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
     </div>
     <div class="footer-grid">
-      <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
+      <div><div class="footer-logo"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
       <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
@@ -5741,7 +5761,7 @@
       </div>
       <h2 class="blog-article-title">Lustrum merchandise laten maken: ideeen en tips voor <em>studentenverenigingen</em></h2>
       <div class="blog-article-cover">
-        <img src="fotomateriaal/klantprojecten/apache-skireis/apache-skireis-sjaal-muts.jpeg" alt="Studenten met lustrummerchandise: sjaal en muts met verenigingslogo" style="object-position:center 25%;">
+        <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/apache-skireis/apache-skireis-sjaal-muts.jpeg" alt="Studenten met lustrummerchandise: sjaal en muts met verenigingslogo" style="object-position:center 25%;">
       </div>
       <div class="blog-article-body">
         <p><strong>Een lustrum vier je maar een keer per vijf jaar. De merchandise die je ervoor laat maken, draagt je leden nog jaren daarna. In dit artikel delen we alles wat je moet weten om lustrummerch te laten maken die echt indruk maakt, van productideeen tot bestelproces.</strong></p>
@@ -5760,7 +5780,7 @@
         <p>Het meest laagdrempelige lustrumartikel: iedereen draagt het. Lage kosten per stuk, dus ook geschikt voor grotere oplages. Ideaal als basisitem van de lustrumcollectie.</p>
 
         <div class="blog-article-cover" style="margin:32px 0;">
-          <img src="fotomateriaal/klantprojecten/apache-skireis/apache-skireis-sjaal.jpeg" alt="Studentenvereniging met gepersonaliseerde sjaals tijdens skireis" style="border-radius:12px;">
+          <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/apache-skireis/apache-skireis-sjaal.jpeg" alt="Studentenvereniging met gepersonaliseerde sjaals tijdens skireis" style="border-radius:12px;">
         </div>
 
         <h3>Sportshirts</h3>
@@ -5776,7 +5796,7 @@
         <p>De kleine items die het verschil maken. Stickers duiken overal op (laptops, waterflessen, ramen) en aanstekers zijn een klassiek verenigingsartikel. Beiden zijn goedkoop te produceren, zelfs in grote aantallen.</p>
 
         <div class="blog-article-cover" style="margin:32px 0;">
-          <img src="fotomateriaal/klantprojecten/apache-skireis/apache-botlek-skireis-sticker.jpeg" alt="Gepersonaliseerde stickers voor studentenvereniging lustrum" style="border-radius:12px;object-position:20% 80%;">
+          <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/apache-skireis/apache-botlek-skireis-sticker.jpeg" alt="Gepersonaliseerde stickers voor studentenvereniging lustrum" style="border-radius:12px;object-position:20% 80%;">
         </div>
 
         <h3>Handdoeken</h3>
@@ -5841,7 +5861,7 @@
       <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
     </div>
     <div class="footer-grid">
-      <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
+      <div><div class="footer-logo"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
       <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
@@ -5877,7 +5897,7 @@
       </div>
       <h2 class="blog-article-title">Werkkleding als <em>marketingtool</em>: zo bouw je merkbeleving van binnenuit</h2>
       <div class="blog-article-cover">
-        <img src="fotomateriaal/klantprojecten/meatboys-2026/meatboys1.jpg" alt="Meatboys-team in branded werkkleding op een evenement — werkkleding als marketingtool">
+        <img loading="lazy" decoding="async" src="fotomateriaal/klantprojecten/meatboys-2026/meatboys1.jpg" alt="Meatboys-team in branded werkkleding op een evenement — werkkleding als marketingtool">
       </div>
       <div class="blog-article-body">
         <h2>Waarom merkbeleving begint bij je eigen mensen</h2>
@@ -5954,7 +5974,7 @@
       <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
     </div>
     <div class="footer-grid">
-      <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
+      <div><div class="footer-logo"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
       <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
@@ -5997,7 +6017,7 @@
       <p>Wij geloven in duidelijke afspraken, vaste kwaliteit en directe communicatie. Je weet altijd waar je aan toe bent.</p>
     </div>
     <div class="about-intro-right">
-      <img src="fotomateriaal/over-ons/img-14.jpg" alt="Hockeypolo Rotterdam" />
+      <img loading="lazy" decoding="async" src="fotomateriaal/over-ons/img-14.jpg" alt="Hockeypolo Rotterdam" />
     </div>
   </div>
 
@@ -6097,7 +6117,7 @@
     <div class="team-grid">
       <div class="team-card reveal">
         <div class="team-card-img">
-          <img src="fotomateriaal/team/shirt-preview-15.jpg" alt="Benjamin van Splunder" />
+          <img loading="lazy" decoding="async" src="fotomateriaal/team/shirt-preview-15.jpg" alt="Benjamin van Splunder" />
         </div>
         <div class="team-card-body">
           <div class="team-card-name">Benjamin</div>
@@ -6107,7 +6127,7 @@
       </div>
       <div class="team-card reveal">
         <div class="team-card-img">
-          <img src="fotomateriaal/team/img-15.jpg" alt="Julius Hartman" />
+          <img loading="lazy" decoding="async" src="fotomateriaal/team/img-15.jpg" alt="Julius Hartman" />
         </div>
         <div class="team-card-body">
           <div class="team-card-name">Julius</div>
@@ -6117,7 +6137,7 @@
       </div>
       <div class="team-card reveal">
         <div class="team-card-img">
-          <img src="fotomateriaal/team/img-16.jpg" alt="Mees Laninga" />
+          <img loading="lazy" decoding="async" src="fotomateriaal/team/img-16.jpg" alt="Mees Laninga" />
         </div>
         <div class="team-card-body">
           <div class="team-card-name">Mees</div>
@@ -6148,7 +6168,7 @@
       <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
     </div>
     <div class="footer-grid">
-      <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
+      <div><div class="footer-logo"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
       <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
@@ -6348,7 +6368,7 @@
       <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
     </div>
     <div class="footer-grid">
-      <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
+      <div><div class="footer-logo"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
       <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
@@ -6598,7 +6618,7 @@
       <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
     </div>
     <div class="footer-grid">
-      <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
+      <div><div class="footer-logo"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
       <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
@@ -6783,7 +6803,7 @@
       <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
     </div>
     <div class="footer-grid">
-      <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
+      <div><div class="footer-logo"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
       <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
@@ -6914,7 +6934,7 @@
       <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
     </div>
     <div class="footer-grid">
-      <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
+      <div><div class="footer-logo"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
       <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
@@ -7013,7 +7033,7 @@
       <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
     </div>
     <div class="footer-grid">
-      <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
+      <div><div class="footer-logo"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
       <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
@@ -7115,7 +7135,7 @@
       <div class="footer-newsletter-slot" data-newsletter-variant="footer"></div>
     </div>
     <div class="footer-grid">
-      <div><div class="footer-logo"><img src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
+      <div><div class="footer-logo"><img loading="lazy" decoding="async" src="fotomateriaal/partner-logos/brand-logo-2.png" alt="Hockeypolo" style="height:52px;width:auto;display:block;margin-bottom:4px;" class="footer-logo-img"></div><p class="footer-desc">Al 20+ jaar maatwerk in gepersonaliseerde merchandise. Van Rotterdam naar heel Nederland.</p></div>
       <div class="footer-col"><h4>Navigatie</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('producten')">Producten</a><a onclick="showPage('impressies')">Impressies</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('overons')">Over Ons</a><a onclick="showPage('faq')">F.A.Q.</a><a onclick="showPage('contact')">Contact</a><a onclick="showPage('privacy')">Privacyverklaring</a></div>
       <div class="footer-col"><h4>Assortiment</h4><a href="/producten#kleding" onclick="return gotoProductGroup('kleding')">Kleding</a><a href="/producten#accessoires" onclick="return gotoProductGroup('accessoires')">Accessoires</a><a href="/producten#promotie" onclick="return gotoProductGroup('promotie')">Promotie</a></div>
       <div class="footer-col"><h4>Contact</h4><a>Pr. Julianalaan 78</a><a>3062 DL Rotterdam</a><a href="mailto:info@hockeypolo.com">info@hockeypolo.com</a><a href="tel:+31614200114">+31 6 14200114</a><a>KvK 24375214</a><a>BTW-nummer NL814306639B01</a></div>
@@ -7683,7 +7703,7 @@
         { icon: '<path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>', label: "Blouses" }
       ],
       photos: [
-        "https://static.wixstatic.com/media/d9f76e_4354bbe426304ae69807344a1a664347~mv2.jpg",
+        "https://static.wixstatic.com/media/d9f76e_4354bbe426304ae69807344a1a664347~mv2.jpg/v1/fit/w_1400,h_1400,q_80,enc_auto/foto.jpg",
         "fotomateriaal/klantprojecten/botlek/product-photo-37.jpg",
         "fotomateriaal/klantprojecten/botlek/product-photo-36.jpg",
         "/fotomateriaal/klantprojecten/botlek/botlek1.JPG"
@@ -7748,9 +7768,9 @@
         { icon: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>', label: "Full colour bedrukking" }
       ],
       photos: [
-        "https://static.wixstatic.com/media/d9f76e_f4302756f2ff4f54bab225fa263242cf~mv2.jpeg",
-        "https://static.wixstatic.com/media/d9f76e_4354bbe426304ae69807344a1a664347~mv2.jpg",
-        "https://static.wixstatic.com/media/d9f76e_21f771ba5cdb4eff8d6f046e02ca7628~mv2.jpeg"
+        "https://static.wixstatic.com/media/d9f76e_f4302756f2ff4f54bab225fa263242cf~mv2.jpeg/v1/fit/w_1400,h_1400,q_80,enc_auto/foto.jpeg",
+        "https://static.wixstatic.com/media/d9f76e_4354bbe426304ae69807344a1a664347~mv2.jpg/v1/fit/w_1400,h_1400,q_80,enc_auto/foto.jpg",
+        "https://static.wixstatic.com/media/d9f76e_21f771ba5cdb4eff8d6f046e02ca7628~mv2.jpeg/v1/fit/w_1400,h_1400,q_80,enc_auto/foto.jpeg"
       ]
     },
     {
@@ -7764,9 +7784,9 @@
         { icon: '<path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/>', label: "Geborduurde afwerking" }
       ],
       photos: [
-        "https://static.wixstatic.com/media/d9f76e_ac443b81bb5d466fa181a424a78525f6~mv2.jpeg",
-        "https://static.wixstatic.com/media/d9f76e_073d26274fd348d8ae0e72dbfeb31199~mv2.jpg",
-        "https://static.wixstatic.com/media/d9f76e_0f38141b5d2d4707b8ce7b7c71874f9e~mv2.jpg"
+        "https://static.wixstatic.com/media/d9f76e_ac443b81bb5d466fa181a424a78525f6~mv2.jpeg/v1/fit/w_1400,h_1400,q_80,enc_auto/foto.jpeg",
+        "https://static.wixstatic.com/media/d9f76e_073d26274fd348d8ae0e72dbfeb31199~mv2.jpg/v1/fit/w_1400,h_1400,q_80,enc_auto/foto.jpg",
+        "https://static.wixstatic.com/media/d9f76e_0f38141b5d2d4707b8ce7b7c71874f9e~mv2.jpg/v1/fit/w_1400,h_1400,q_80,enc_auto/foto.jpg"
       ]
     },
     {
@@ -7780,9 +7800,9 @@
         { icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', label: "Lustrumjaar 2022" }
       ],
       photos: [
-        "https://static.wixstatic.com/media/d9f76e_b13ffbe53de4464d9b6c8ff394ceb583~mv2.jpeg",
-        "https://static.wixstatic.com/media/d9f76e_ac443b81bb5d466fa181a424a78525f6~mv2.jpeg",
-        "https://static.wixstatic.com/media/d9f76e_073d26274fd348d8ae0e72dbfeb31199~mv2.jpg"
+        "https://static.wixstatic.com/media/d9f76e_b13ffbe53de4464d9b6c8ff394ceb583~mv2.jpeg/v1/fit/w_1400,h_1400,q_80,enc_auto/foto.jpeg",
+        "https://static.wixstatic.com/media/d9f76e_ac443b81bb5d466fa181a424a78525f6~mv2.jpeg/v1/fit/w_1400,h_1400,q_80,enc_auto/foto.jpeg",
+        "https://static.wixstatic.com/media/d9f76e_073d26274fd348d8ae0e72dbfeb31199~mv2.jpg/v1/fit/w_1400,h_1400,q_80,enc_auto/foto.jpg"
       ]
     },
     {
@@ -7796,9 +7816,9 @@
         { icon: '<path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/>', label: "Gouden borduurwerk" }
       ],
       photos: [
-        "https://static.wixstatic.com/media/d9f76e_ff0f4fcff7a34692b86769106e7d20a6~mv2.jpeg",
-        "https://static.wixstatic.com/media/d9f76e_b13ffbe53de4464d9b6c8ff394ceb583~mv2.jpeg",
-        "https://static.wixstatic.com/media/d9f76e_4354bbe426304ae69807344a1a664347~mv2.jpg",
+        "https://static.wixstatic.com/media/d9f76e_ff0f4fcff7a34692b86769106e7d20a6~mv2.jpeg/v1/fit/w_1400,h_1400,q_80,enc_auto/foto.jpeg",
+        "https://static.wixstatic.com/media/d9f76e_b13ffbe53de4464d9b6c8ff394ceb583~mv2.jpeg/v1/fit/w_1400,h_1400,q_80,enc_auto/foto.jpeg",
+        "https://static.wixstatic.com/media/d9f76e_4354bbe426304ae69807344a1a664347~mv2.jpg/v1/fit/w_1400,h_1400,q_80,enc_auto/foto.jpg",
         "fotomateriaal/klantprojecten/apollo-2023/product-photo-30.jpg"
       ]
     },
@@ -7813,9 +7833,9 @@
         { icon: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>', label: "Levering in 2 weken" }
       ],
       photos: [
-        "https://static.wixstatic.com/media/d9f76e_58b3f1285a134f7fbd7827597d041767~mv2.jpg",
-        "https://static.wixstatic.com/media/d9f76e_ff0f4fcff7a34692b86769106e7d20a6~mv2.jpeg",
-        "https://static.wixstatic.com/media/d9f76e_073d26274fd348d8ae0e72dbfeb31199~mv2.jpg"
+        "https://static.wixstatic.com/media/d9f76e_58b3f1285a134f7fbd7827597d041767~mv2.jpg/v1/fit/w_1400,h_1400,q_80,enc_auto/foto.jpg",
+        "https://static.wixstatic.com/media/d9f76e_ff0f4fcff7a34692b86769106e7d20a6~mv2.jpeg/v1/fit/w_1400,h_1400,q_80,enc_auto/foto.jpeg",
+        "https://static.wixstatic.com/media/d9f76e_073d26274fd348d8ae0e72dbfeb31199~mv2.jpg/v1/fit/w_1400,h_1400,q_80,enc_auto/foto.jpg"
       ]
     },
     {
@@ -7951,7 +7971,7 @@
     const thumbsEl = document.getElementById('proj-thumbs');
     thumbsEl.innerHTML = currentProject.photos.map((src, i) =>
       `<div class="proj-thumb ${i===0?'active':''}" onclick="goPhoto(event,${i})">
-         <img src="${src}" alt="foto ${i+1}" />
+         <img loading="lazy" decoding="async" src="${src}" alt="foto ${i+1}" />
        </div>`
     ).join('');
 
@@ -8209,7 +8229,7 @@
     const thumbsEl = document.getElementById('prod-thumbs');
     thumbsEl.innerHTML = currentProduct.photos.map((src, i) =>
       `<div class="proj-thumb ${i===0?'active':''}" onclick="goProdPhoto(event,${i})">
-         <img src="${src}" alt="foto ${i+1}" />
+         <img loading="lazy" decoding="async" src="${src}" alt="foto ${i+1}" />
        </div>`
     ).join('');
 
@@ -9646,7 +9666,7 @@
     <!-- Gallery -->
     <div class="proj-gallery">
       <div class="proj-gallery-main">
-        <img id="proj-main-img" src="" alt="Project foto" />
+        <img loading="lazy" decoding="async" id="proj-main-img" src="" alt="Project foto" />
         <button class="proj-gallery-arrow proj-gallery-prev" onclick="prevPhoto(event)" aria-label="Vorige foto">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
@@ -9683,7 +9703,7 @@
     <!-- Gallery -->
     <div class="proj-gallery">
       <div class="proj-gallery-main">
-        <img id="prod-main-img" src="" alt="Product foto" />
+        <img loading="lazy" decoding="async" id="prod-main-img" src="" alt="Product foto" />
         <button class="proj-gallery-arrow proj-gallery-prev" onclick="prevProdPhoto(event)" aria-label="Vorige foto">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
@@ -10248,6 +10268,23 @@
     document.addEventListener('click', function () { li.classList.remove('open'); knop.setAttribute('aria-expanded', 'false'); });
     li.addEventListener('keydown', function (e) { if (e.key === 'Escape') { li.classList.remove('open'); knop.focus(); } });
   });
+})();
+</script>
+
+<script>
+// Mobiel: WhatsApp-knop op de homepage pas tonen na het eerste scherm (valt anders over de doelgroeptegels)
+(function () {
+  var w = document.getElementById('wa-widget');
+  if (!w || !window.matchMedia('(max-width: 640px)').matches) return;
+  function check() {
+    var home = document.getElementById('page-home');
+    var opHome = home && home.classList.contains('active');
+    w.classList.toggle('wa-verborgen', opHome && window.scrollY < window.innerHeight * 0.8);
+  }
+  window.addEventListener('scroll', check, { passive: true });
+  var orig = window.showPage;
+  window.showPage = function (id, push) { var r = orig(id, push); setTimeout(check, 50); return r; };
+  check();
 })();
 </script>
 </body>

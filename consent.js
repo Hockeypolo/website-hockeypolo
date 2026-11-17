@@ -253,7 +253,9 @@
     '.hp-cookie button:focus-visible{outline:2px solid #00A652;outline-offset:2px}' +
     '.hp-cookie-link{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:2px}' +
     '.hp-cookie-link:hover{color:#fff}' +
-    '@media (max-width:640px){.hp-cookie{left:16px;right:16px;bottom:16px;width:auto;max-width:none;padding:18px}}';
+    '@media (max-width:640px){.hp-cookie{left:10px;right:10px;bottom:10px;width:auto;max-width:none;padding:14px 14px 12px;border-radius:12px}' +
+      '.hp-cookie h2{font-size:15px;margin:0 0 4px}.hp-cookie p{font-size:12.5px;line-height:1.45;margin:0 0 10px}' +
+      '.hp-cookie button{padding:11px 10px;font-size:11px}.hp-cookie .hp-lang{display:none}}';
 
   var melding = null;
   var cssGeplaatst = false;
@@ -277,8 +279,9 @@
     melding.setAttribute('aria-labelledby', 'hp-cookie-titel');
     melding.innerHTML =
       '<h2 id="hp-cookie-titel">Cookies</h2>' +
-      '<p>We willen graag meten welke advertenties van Google en Meta leiden tot een offerteaanvraag, ' +
-      'zodat we onze advertenties kunnen verbeteren. Daarvoor plaatsen we marketingcookies, alleen als jij dat goed vindt. ' +
+      '<p>We willen meten welke advertenties van Google en Meta tot een offerteaanvraag leiden. ' +
+      '<span class="hp-lang">Zo kunnen we onze advertenties verbeteren. </span>' +
+      'Daarvoor plaatsen we marketingcookies, alleen als jij dat goed vindt. ' +
       'Lees meer in onze <a href="/privacyverklaring">privacyverklaring</a>.</p>' +
       '<div class="hp-cookie-knoppen">' +
         '<button type="button" class="hp-weiger">Weigeren</button>' +
