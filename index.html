@@ -3859,6 +3859,17 @@
       .hero-right::before { display: none; }
       .hero-slideshow-wrap { inset: 24px 32px 24px 0; border-radius: 18px; }
     }
+
+    /* ═══ CONTACT: keuze kort formulier of projectformulier ═══ */
+    .contact-keuze { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 40px; }
+    .contact-optie { display: flex; flex-direction: column; gap: 6px; padding: 20px 22px; border: 1.5px solid var(--gray-200); border-radius: 14px; background: var(--white); color: var(--black); transition: border-color .2s, box-shadow .2s, transform .2s var(--ease); }
+    .contact-optie:hover { border-color: var(--green); box-shadow: 0 10px 28px rgba(0,0,0,.07); transform: translateY(-2px); }
+    .contact-optie.is-actief { border-color: var(--green); background: var(--green-dim); }
+    .contact-optie strong { font-family: var(--font-h); font-size: 18px; letter-spacing: -.02em; }
+    .contact-optie > span:not(.contact-optie-tijd):not(.contact-optie-actie) { font-size: 14px; line-height: 1.55; color: var(--gray-600); }
+    .contact-optie-tijd { font-family: var(--font-h); font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--green); }
+    .contact-optie-actie { margin-top: 6px; font-family: var(--font-h); font-size: 13px; font-weight: 700; color: var(--green); }
+    @media (max-width: 640px) { .contact-keuze { grid-template-columns: 1fr; gap: 10px; margin-bottom: 28px; } .contact-optie { padding: 16px 18px; } }
   </style>
   <script defer src="/_vercel/insights/script.js"></script>
 
@@ -6625,6 +6636,20 @@
   <div class="contact-layout">
     <!-- Form (volledige breedte; bedrijfsinfo staat in de footer) -->
     <div class="contact-right">
+      <div class="contact-keuze" role="group" aria-label="Kies hoe je contact opneemt">
+        <a class="contact-optie is-actief" href="#contact-form" onclick="document.getElementById('contact-form').scrollIntoView({behavior:'smooth',block:'start'}); return false;">
+          <span class="contact-optie-tijd">± 2 minuten</span>
+          <strong>Korte vraag of offerte</strong>
+          <span>Een paar velden en een bericht. Ideaal als je nog aan het oriënteren bent of een vraag hebt.</span>
+          <span class="contact-optie-actie">Formulier hieronder &darr;</span>
+        </a>
+        <a class="contact-optie" href="/start-project">
+          <span class="contact-optie-tijd">± 5 minuten · 9 korte stappen</span>
+          <strong>Project al helder? Projectformulier</strong>
+          <span>Product, aantallen, logo's, kleuren, maten, budget en deadline. Dan krijg je sneller een complete offerte.</span>
+          <span class="contact-optie-actie">Start projectformulier &rarr;</span>
+        </a>
+      </div>
       <h3>Stuur ons een bericht</h3>
       <p>Vul het formulier in en we nemen binnen één werkdag contact met je op.</p>
 
@@ -9912,67 +9937,7 @@
 })();
 </script>
 
-<!-- ── Idee-widget: zwevende knop linksonder ──────────────────────────────── -->
-<div id="idea-widget">
-  <div id="idea-popup" role="dialog" aria-label="Deel je idee">
-    <div class="idea-header">
-      <div class="idea-header-title">Weet je al precies wat je wilt?</div>
-      <button class="idea-close" id="idea-close" aria-label="Sluiten">&#x2715;</button>
-    </div>
-    <div class="idea-body">
-      <p>Product, aantallen, logo's, deadline: je hebt het al helder op een rij. Vul het uitgebreide formulier in en we gaan direct voor je aan de slag.</p>
-      <a href="/start-project">Vul het formulier in</a>
-    </div>
-  </div>
-  <button id="idea-fab" aria-label="Uitgebreid formulier openen">
-    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.5c.6.5 1 1.2 1 2v.5h6v-.5c0-.8.4-1.5 1-2A7 7 0 0 0 12 2z"/>
-    </svg>
-    Uitgebreid formulier
-  </button>
-</div>
-<script>
-(function() {
-  var widget = document.getElementById('idea-widget');
-  var popup  = document.getElementById('idea-popup');
-  var fab    = document.getElementById('idea-fab');
-  var close  = document.getElementById('idea-close');
 
-  function syncVisibility() {
-    var activePage = document.querySelector('.page.active');
-    if (activePage && activePage.id === 'page-contact') {
-      widget.classList.add('visible');
-    } else {
-      widget.classList.remove('visible');
-      popup.classList.remove('open');
-    }
-  }
-
-  // Meteen synchroniseren met de huidige pagina — dekt ook het geval dat de
-  // site direct op /startproject geladen wordt, vóórdat showPage() ooit is
-  // aangeroepen ná het inhaken hieronder.
-  syncVisibility();
-
-  var origShow2 = window.showPage;
-  window.showPage = function(id, push) {
-    var r = origShow2(id, push);
-    syncVisibility();
-    return r;
-  };
-
-  fab.addEventListener('click', function(e) {
-    e.stopPropagation();
-    popup.classList.toggle('open');
-  });
-  close.addEventListener('click', function(e) {
-    e.stopPropagation();
-    popup.classList.remove('open');
-  });
-  document.addEventListener('click', function(e) {
-    if (!widget.contains(e.target)) popup.classList.remove('open');
-  });
-})();
-</script>
 
 
 <!-- ── Mobiel: lange homepage-secties inklapbaar ── -->
