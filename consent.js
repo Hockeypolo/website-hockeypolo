@@ -153,7 +153,7 @@
   // (Apps Script web-app, zie docs/aanvragen-sheet-apps-script.md). Zolang
   // SHEET_URL leeg is gebeurt er niets. Bestanden gaan nooit mee, alleen tekst.
   // sendBeacon overleeft de doorverwijzing naar de bedanktpagina.
-  var SHEET_URL = '';
+  var SHEET_URL = 'https://script.google.com/macros/s/AKfycbzKcfA9dd4TBJncGsTaOdJt7HKRC7MxQajtAdSD08mZQ0bNfGN7Tb7KOkfzVjqYwFv-/exec';
   window.hpStuurNaarSheet = function (velden, formulier) {
     if (!SHEET_URL || !velden) return;
     try {

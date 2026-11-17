@@ -8,6 +8,11 @@ bestanden) naar de sheet **Hockeypolo – Website-aanvragen** in de gedeelde dri
 
 Werkt de sheet een keer niet, dan komt de mail gewoon binnen.
 
+## Status
+
+Ingericht op 17-11-2026: Apps Script-project **Website-aanvragen** (web-app, versie 2). De URL staat in `consent.js` (`SHEET_URL`).
+Code aanpassen? Daarna in Apps Script: Implementeren → Implementaties beheren → potlood → Versie: Nieuwe versie → Implementeren (de URL blijft gelijk).
+
 ## Stappen (± 5 minuten)
 
 1. Open de sheet **Hockeypolo – Website-aanvragen**.
@@ -33,6 +38,7 @@ via deze URL, want het script heeft geen `doGet`.
 // Hockeypolo – website-aanvragen naar de sheet (kolommen A t/m R).
 // Ontvangt een POST van de website (zie consent.js → hpStuurNaarSheet).
 var TABBLAD = 'Aanvragen';
+var SHEET_ID = '1XHBtOKCA2hn9AnD4zTD281Ot99QtxqKIp0NEM4YZCwE';
 
 function doPost(e) {
   var lock = LockService.getScriptLock();
@@ -71,7 +77,7 @@ function doPost(e) {
 
     if (!naam && !v('E-mail')) return ContentService.createTextOutput('leeg');
 
-    var blad = SpreadsheetApp.getActive().getSheetByName(TABBLAD);
+    var blad = SpreadsheetApp.openById(SHEET_ID).getSheetByName(TABBLAD);
     blad.appendRow(rij);
     blad.getRange(blad.getLastRow(), 1).setNumberFormat('dd-mm-yyyy hh:mm');
     return ContentService.createTextOutput('ok');
