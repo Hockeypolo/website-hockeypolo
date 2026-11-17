@@ -150,10 +150,9 @@
   <!-- Preload kritieke hero-afbeelding voor snellere LCP -->
   <link rel="preload" as="image" href="fotomateriaal/hero-homepage/hero-slide-7.webp" fetchpriority="high" />
   <!-- Self-hosted fonts: preload de twee belangrijkste voor snelle eerste render -->
-  <link rel="preload" as="font" type="font/woff2" href="fonts/space-grotesk-v22-latin-700.woff2" crossorigin />
-  <link rel="preload" as="font" type="font/woff2" href="fonts/inter-v20-latin-regular.woff2" crossorigin />
-  <!-- Google reCAPTCHA v2 (gebruikt door het nieuwsbrief-formulier) -->
-  <script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoaded&render=explicit&hl=nl" async defer></script>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/space-grotesk-v22-latin-700.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-v20-latin-regular.woff2" crossorigin />
+  <!-- Google reCAPTCHA v2 (nieuwsbrief) wordt pas geladen als een nieuwsbriefformulier in beeld komt; zie laadRecaptcha() -->
   <style>
 
     /* ═══════════════════════════════════════════════════
@@ -3890,6 +3889,45 @@
       #wa-fab { width: 52px; height: 52px; }
       #wa-widget.wa-verborgen { opacity: 0; transform: translateY(12px); pointer-events: none; }
     }
+
+    /* ═══ ONTWERPTOOL MOBIEL: shirt blijft in beeld tijdens het ontwerpen ═══ */
+    .designer-head .breadcrumb { color: var(--gray-400); }
+    .designer-head .breadcrumb span { color: var(--gray-600); }
+    .designer-head .breadcrumb span:last-child { color: var(--black); }
+    @media (max-width: 640px) {
+      #page-ontwerp-tool .designer-outer { padding-top: 12px; }
+      #page-ontwerp-tool .designer-head { margin-bottom: 14px; }
+      #page-ontwerp-tool .designer-head .breadcrumb { display: none; }
+      #page-ontwerp-tool .designer-head h2 { font-size: 26px; }
+      #page-ontwerp-tool .designer-head p { font-size: 14px; line-height: 1.5; }
+      #page-ontwerp-tool .designer-grid > div:first-child {
+        display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 8px; align-items: start;
+        background: var(--gray-50); padding: 8px 0 10px;
+      }
+      #page-ontwerp-tool .designer-sides { grid-column: 1 / -1; grid-template-columns: repeat(4, 1fr); gap: 4px; padding: 4px; margin: 0; }
+      #page-ontwerp-tool .designer-side-tab { min-height: 40px; padding: 6px 2px; font-size: 11.5px; }
+      #page-ontwerp-tool .designer-toolbar { flex-direction: column; gap: 6px; margin: 0; }
+      #page-ontwerp-tool .designer-toolbar-btn { width: 44px; height: 44px; }
+      #page-ontwerp-tool .designer-canvas-wrap { padding: 8px; width: 100%; max-width: 290px; justify-self: center; }
+      /* Geen inzoomen op iPhone bij het typen: invoervelden minimaal 16px */
+      #page-ontwerp-tool input, #page-ontwerp-tool select, #page-ontwerp-tool textarea { font-size: 16px !important; }
+      #page-ontwerp-tool .designer-size-cell input { min-height: 44px; padding: 8px 4px; }
+      #page-ontwerp-tool .designer-btn { min-height: 46px; }
+      #page-ontwerp-tool .designer-shirt-color { font-size: 11.5px; }
+      #page-ontwerp-tool .designer-shirt-color .swatch { width: 32px; height: 32px; }
+    }
+    @media (max-width: 640px) and (min-height: 680px) {
+      /* overflow:hidden maakt sticky onmogelijk; clip knipt net zo goed af zonder scrollcontainer */
+      #page-ontwerp-tool, #page-ontwerp-tool .designer-outer { overflow-x: clip !important; overflow-y: visible !important; }
+      #page-ontwerp-tool .designer-grid > div:first-child {
+        position: sticky; top: calc(72px + var(--usp-h)); z-index: 20;
+        box-shadow: 0 12px 14px -12px rgba(0,0,0,.25);
+      }
+      /* Automatisch scrollen (focus, ankers) niet onder het vaste shirt laten eindigen */
+      html:has(#page-ontwerp-tool.active) { scroll-padding-top: 470px; }
+      /* Tijdens typen schuift het shirt mee weg, zodat het toetsenbord het veld niet bedekt */
+      #page-ontwerp-tool .designer-grid.is-typen > div:first-child { position: static; box-shadow: none; }
+    }
   </style>
   <script defer src="/_vercel/insights/script.js"></script>
 
@@ -7458,6 +7496,25 @@
       } catch (e) { /* al gerenderd of niet beschikbaar */ }
     }
 
+    // reCAPTCHA (±350 KB) pas laden als een nieuwsbriefformulier bijna in beeld is
+    // of als iemand erin klikt. Formulieren op verborgen pagina's laden niets.
+    var recaptchaGeladen = false;
+    function laadRecaptcha() {
+      if (recaptchaGeladen) return;
+      recaptchaGeladen = true;
+      var s = document.createElement('script');
+      s.src = 'https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoaded&render=explicit&hl=nl';
+      s.async = true; s.defer = true;
+      document.head.appendChild(s);
+    }
+    window.hpLaadRecaptcha = laadRecaptcha;
+    var captchaObserver = ('IntersectionObserver' in window) ? new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        // De pop-up staat altijd (onzichtbaar) in beeld; die laadt pas bij openen
+        if (e.isIntersecting && !e.target.closest('#nl-popup-overlay')) { laadRecaptcha(); captchaObserver.disconnect(); }
+      });
+    }, { rootMargin: '400px 0px' }) : null;
+
     function mountCaptcha(host, theme) {
       var div = document.createElement('div');
       div.className = 'g-recaptcha';
@@ -7468,6 +7525,9 @@
         renderOneCaptcha(entry);
       } else {
         pendingCaptchas.push(entry);
+        var form = host.closest('.newsletter-form') || host;
+        form.addEventListener('focusin', laadRecaptcha, { once: true });
+        if (captchaObserver) captchaObserver.observe(div); else laadRecaptcha();
       }
       return div;
     }
@@ -10052,6 +10112,7 @@
     shown = true;
     try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
     if (window.__mountNewsletterForms) window.__mountNewsletterForms();
+    if (window.hpLaadRecaptcha) window.hpLaadRecaptcha();
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -10285,6 +10346,17 @@
   var orig = window.showPage;
   window.showPage = function (id, push) { var r = orig(id, push); setTimeout(check, 50); return r; };
   check();
+})();
+</script>
+
+<script>
+// Ontwerptool mobiel: sticky shirt tijdelijk loslaten zolang er in een veld getypt wordt
+(function () {
+  var grid = document.querySelector('#page-ontwerp-tool .designer-grid');
+  if (!grid) return;
+  var TYPEN = 'input:not([type=range]):not([type=checkbox]):not([type=file]):not([type=color]), textarea, select';
+  grid.addEventListener('focusin', function (e) { if (e.target.matches(TYPEN)) grid.classList.add('is-typen'); });
+  grid.addEventListener('focusout', function (e) { if (e.target.matches(TYPEN)) grid.classList.remove('is-typen'); });
 })();
 </script>
 </body>
