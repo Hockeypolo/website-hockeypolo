@@ -3071,7 +3071,7 @@
   .designer-contact-card h3 { font-family: var(--font-h); font-size: 18px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 6px; }
   .designer-contact-card p { font-size: 14px; color: var(--gray-600); line-height: 1.5; }
   .designer-contact-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-  .designer-contact-actions a {
+  .designer-contact-actions a { border-radius: var(--radius) !important;
     display: inline-flex; align-items: center; gap: 8px;
     padding: 10px 16px; border-radius: 999px; font-family: var(--font-b); font-size: 13px; font-weight: 500;
     text-decoration: none; border: 1.5px solid var(--gray-200); color: var(--black); background: var(--white);
@@ -3832,13 +3832,32 @@
     @media (max-width: 768px) {
       .page-hero.split { padding: 0 16px !important; min-height: 0 !important; }
       .page-hero-grid { grid-template-columns: 1fr; gap: 0; padding: 0 0 32px; }
-      .page-hero-foto { order: -1; aspect-ratio: 16 / 9; border-radius: 0 0 16px 16px; margin: 0 -16px 24px; }
+      .page-hero-foto { order: -1; aspect-ratio: 16 / 9; border-radius: 16px; margin: 16px 0 24px; }
       .page-hero.split .breadcrumb { display: none; }
       .page-hero.split h1, .page-hero.split h2 { font-size: 36px; margin-bottom: 14px; }
       .page-hero.split p { font-size: 15.5px; }
       .ph-btns { display: grid; grid-template-columns: 1fr; margin-top: 20px; }
       .ph-btns .btn { justify-content: center; }
       .ph-feiten { flex-direction: column; gap: 8px; margin-top: 20px; }
+    }
+
+    /* ═══ AFRONDING: foto's en knoppen overal afgeronde rechthoeken ═══ */
+    .prod-filter, .imp-filter, .filter-btn, #idea-fab, .mob-inklap-knop, .designer-shirt-color, .product-card-design-badge { border-radius: var(--radius) !important; }
+    /* Over ons: foto past in één scherm, afgeronde hoeken */
+    .about-intro { align-items: center; min-height: 0; }
+    .about-intro-right { background: transparent; overflow: visible; padding: 48px 80px 48px 0; }
+    .about-intro-right::before { display: none; }
+    .about-intro-right img { display: block; height: auto; aspect-ratio: 4 / 4.4; max-height: min(620px, calc(100vh - 200px)); border-radius: 18px; }
+    @media (max-width: 1024px) {
+      .about-intro-right { padding: 0 32px 40px; min-height: 0 !important; }
+      .about-intro-right img { aspect-ratio: 16 / 10; max-height: none; }
+    }
+    @media (max-width: 640px) { .about-intro-right { padding: 0 16px 32px; } }
+    /* Homepage-hero (desktop): foto als afgerond paneel */
+    @media (min-width: 641px) {
+      .hero-right { background: var(--white); }
+      .hero-right::before { display: none; }
+      .hero-slideshow-wrap { inset: 24px 32px 24px 0; border-radius: 18px; }
     }
   </style>
   <script defer src="/_vercel/insights/script.js"></script>
@@ -4456,7 +4475,7 @@
       <div class="ph-btns"><a class="btn btn-green" href="/start-project">Start je project <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 8h10M8 3l5 5-5 5"/></svg></a><a class="btn btn-outline-white" href="/ontwerp-sportshirt" onclick="showPage('ontwerp-tool'); return false;">Ontwerp zelf je shirt</a></div>
       <ul class="ph-feiten"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Gratis ontwerp en digitale proef</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Levering in 2–4 weken</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg><span>Bedrukt of geborduurd met jouw logo</span></li></ul>
     </div>
-    <div class="page-hero-foto"><img src="fotomateriaal/paginaheroes/producten.webp" alt="Felgroene dispuutsblouse van Ruis met roze opdruk" width="1100" height="619" decoding="async" style="object-position:center"></div>
+    <div class="page-hero-foto"><img src="fotomateriaal/paginaheroes/producten.webp" alt="Deelnemers aan de KWF Bruggenloop in sportshirts van Hockeypolo" width="1200" height="800" decoding="async" style="object-position:center"></div>
   </div>
   </div>
 

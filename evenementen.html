@@ -423,7 +423,7 @@
     .dg-chips { display: flex; flex-wrap: wrap; gap: 8px; }
     .dg-chip { position: relative; }
     .dg-chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-    .dg-chip span { display: inline-block; padding: 8px 14px; border: 1.5px solid var(--gray-200); border-radius: 100px; font-size: 14px; cursor: pointer; transition: border-color .15s, background .15s, color .15s; }
+    .dg-chip span { display: inline-block; padding: 8px 14px; border: 1.5px solid var(--gray-200); border-radius: var(--radius); font-size: 14px; cursor: pointer; transition: border-color .15s, background .15s, color .15s; }
     .dg-chip input:checked + span { border-color: var(--green); background: var(--green-dim); color: #006b35; font-weight: 600; }
     .dg-chip input:focus-visible + span { outline: 2px solid var(--green); outline-offset: 2px; }
     .dg-honing { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
@@ -444,7 +444,7 @@
       .dg-sectie { padding: 52px 0; }
       .dg-kop { margin-bottom: 24px; }
       .dg-hero-grid { grid-template-columns: 1fr; gap: 0; padding-top: 0; padding-bottom: 32px; }
-      .dg-hero-foto { order: -1; aspect-ratio: 16 / 9; border-radius: 0 0 16px 16px; margin: 0 -16px 24px; }
+      .dg-hero-foto { order: -1; aspect-ratio: 16 / 9; border-radius: 16px; margin: 16px 0 24px; }
       .dg-hero .breadcrumb { display: none; }
       .dg-hero h1 { font-size: 36px; margin-bottom: 14px; }
       .dg-hero-intro { font-size: 15.5px; margin-bottom: 20px; }
